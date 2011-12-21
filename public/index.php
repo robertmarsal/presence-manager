@@ -1,5 +1,9 @@
 <?php 
-    session_start();
+
+//set the ROOT path
+define('ROOT', dirname(dirname(__FILE__)));
+
+session_start();
    
     // if user is logged in do not show login screen
     if (isset($_SESSION['role'])){
@@ -12,6 +16,26 @@
                 break;
         }
     }
+//-----------------------------------------------------------------------------------------------//
+// BOOTSTRAPER ----------------------------------------------------------------------------------//
+//-----------------------------------------------------------------------------------------------//
+$url = $_GET['url'];
+    
+//-----------------------------------------------------------------------------------------------//
+// AUTOLOADER -----------------------------------------------------------------------------------//
+//-----------------------------------------------------------------------------------------------//
+
+function presence_autoloader($class_name){
+    if (file_exists(ROOT.'/app/'.$class_name.'.class.php')) {
+        require_once(ROOT.'/app/'.$class_name.'.class.php');
+    }else if (file_exists(ROOT.'/app/controllers/'.$class_name.'.php')) {
+        require_once(ROOT.'/app/controllers/'.$class_name.'.php');
+    }else if (file_exists(ROOT.'/app/models/'.$class_name.'.php')) {
+        require_once(ROOT.'/app/models/'.$class_name.'.php');
+    }
+}
+
+spl_autoload_register('presence_autoloader'); 
 ?>
 
 <!DOCTYPE html>
@@ -19,9 +43,9 @@
 <head>
 	<meta charset="utf-8">
 	<title>Home | Presence</title>
-	<link rel="stylesheet" href="../lib/twitter-bootstrap/bootstrap.css" type="text/css">
+	<link rel="stylesheet" href="css/lib/twitter-bootstrap/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="css/screen.css" type="text/css">
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="img/favicon.ico">
 </head>
 <body>
     <!-- Topbar
