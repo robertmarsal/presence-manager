@@ -29,7 +29,7 @@ class AdminIndexView extends View{
         </ul>
 
 		<ul class="nav secondary-nav">
-            <li><a href="logout.php">Log Out</a></li>
+            <li><a href="http://localhost/presence-manager/auth/logout">Log Out</a></li>
         </ul>
 
         </div>

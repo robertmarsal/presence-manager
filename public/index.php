@@ -37,23 +37,28 @@ if(isset($_POST['email']) && isset($_POST['password'])){
     new AuthController($dependencies, 'login', $params);
 }
 
+    
+$url = $_GET['url'];
+    
+$url_params = empty($url) ? null : explode('/',$url);
+$url_params && $controller = array_shift($url_params); //remove the controller
+    
+$action = $url_params[0] == null ? 'index' : array_shift($url_params);     
+
 if(isset($_SESSION['role'])){
-    
-    $url = $_GET['url'];
-    
-    $url_fragments = empty($url) ? null : explode('/',$url);
-    $url_fragments && array_shift($url_fragments); //remove the controller
-    
-    $action = $url_fragments[0] == null ? 'index' : array_shift($url_fragments);
-                
+          
     switch($_SESSION['role']){
         case 'user': 
-            new UserController($dependencies, $action, $url_fragments);
+            new UserController($dependencies, $action, $url_params);
             break;
         case 'admin':
-            new AdminController($dependencies, $action, $url_fragments);
+            new AdminController($dependencies, $action, $url_params);
             break;
     }
 }else{
-    new LoginController($dependencies, 'ask_login', null);
+    if($url == null){
+        new LoginController($dependencies, 'ask_login', null);
+    }else{
+        new $controller.Controller($dependencies, $action, $url_params);
+    }
 }
