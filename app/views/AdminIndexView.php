@@ -1,12 +1,9 @@
 <?php
-    session_start();
-    
-    // check to avoid direct url access
-    if (!isset($_SESSION['role']) && $_SESSION['role'] != 'admin'){
-        header('Location: ../index.php');
-    }
-?>
 
+class AdminIndexView extends View{
+    
+    public function __construct() {
+        echo '
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,4 +36,6 @@
       </div>
     </div>
 </body>
-</html>
+</html>';
+    }
+}
