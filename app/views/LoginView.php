@@ -3,6 +3,8 @@
 class LoginView extends View{
     
     public function __construct() {
+        global $config;
+        
         echo '
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +41,7 @@ class LoginView extends View{
                     <p>Log in to manage users, check system status,...</p>
                 </div>
 				<div class="span10">
-					<form class="form-stacked" action="index.php" method="post">
+					<form class="form-stacked" action="'.$config['wwwroot'].'/auth/login/index.php" method="post">
 						<fieldset>
                             <div class="clearfix">
                                 <label for="email">Email</label>

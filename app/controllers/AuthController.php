@@ -17,13 +17,15 @@ class AuthController extends Controller{
     
     private function login($params){
 
+        global $config;
+        
         $sql = "SELECT * 
                 FROM presence_users
                 WHERE email = ?
                 AND password = ?";
         
         $st = $this->_db->prepare($sql);
-        $st->execute(array($params->email, md5($params->password)));
+        $st->execute(array($params['email'], md5($params['password'])));
         $st->setFetchMode(PDO::FETCH_ASSOC);
         $result = $st->fetch();
 
@@ -31,14 +33,20 @@ class AuthController extends Controller{
             session_start();
             $_SESSION['user'] = $result['email'];
             $_SESSION['role'] = $result['role'];
+        
+            header('Location: '.$config['wwwroot'].'/'.$result['role'].'/index/');
         }
+        
     }
     
     private function logout(){
+        
+        global $config;
         
         session_start();
         session_unset(); 
         session_destroy(); 
         
+        header('Location: '.$config['wwwroot']);
     }
 }
