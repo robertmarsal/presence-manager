@@ -41,8 +41,8 @@ $dependencies = new DependencyContainer($config);
 $url = $_GET['url'];
 
 if($url == null && $_SESSION['role'] == null){
-    $controller = "LoginController";
-    $action ="ask_login";
+    $controller = "AuthController";
+    $action ="asklogin";
     $url_params = array();
 }else if($url == null && isset($_SESSION['role'])){
     $controller = ucfirst($_SESSION['role']).'Controller';

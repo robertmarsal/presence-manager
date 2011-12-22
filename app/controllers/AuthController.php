@@ -51,4 +51,8 @@ class AuthController extends Controller{
         
         header('Location: '.$config['wwwroot']);
     }
+    
+    private function asklogin(){
+        $this->view = new LoginView();
+    }
 }
