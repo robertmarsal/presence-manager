@@ -18,7 +18,7 @@ class AuthController extends Controller{
     private function login($params){
 
         global $config;
-        
+        //TO DO: sanitize input
         $sql = "SELECT * 
                 FROM presence_users
                 WHERE email = ?

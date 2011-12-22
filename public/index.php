@@ -9,7 +9,11 @@ session_start();
 // AUTOLOADER ----------------------------------------------------------------//
 //----------------------------------------------------------------------------//
 
+
 function presence_autoloader($class_name){
+    
+    global $config;
+    
     if (file_exists(ROOT.'/app/'.lcfirst($class_name).'.class.php')) {
         require_once(ROOT.'/app/'.lcfirst($class_name).'.class.php');
     }else if (file_exists(ROOT.'/app/controllers/'.$class_name.'.php')) {
@@ -18,6 +22,8 @@ function presence_autoloader($class_name){
         require_once(ROOT.'/app/library/'.$class_name.'.php');
     }else if (file_exists(ROOT.'/app/views/'.$class_name.'.php')) {
         require_once(ROOT.'/app/views/'.$class_name.'.php');
+    }else{ //redirect to 404 page
+        header('Location: '.$config['wwwroot'].'/error/notfound');
     }
 }
 
@@ -29,7 +35,7 @@ global $config;
 $dependencies = new DependencyContainer($config);
 
 //----------------------------------------------------------------------------//
-// BOOTSTRAPER ---------------------------------------------------------------//
+// FRONT CONTROLLER ----------------------------------------------------------//
 //----------------------------------------------------------------------------//
     
 $url = $_GET['url'];
