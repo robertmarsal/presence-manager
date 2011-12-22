@@ -35,6 +35,8 @@ class AuthController extends Controller{
             $_SESSION['role'] = $result['role'];
         
             header('Location: '.$config['wwwroot'].'/'.$result['role'].'/index/');
+        }else{
+            header('Location: '.$config['wwwroot']);
         }
         
     }

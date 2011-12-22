@@ -10,8 +10,8 @@ session_start();
 //----------------------------------------------------------------------------//
 
 function presence_autoloader($class_name){
-    if (file_exists(ROOT.'/app/'.$class_name.'.class.php')) {
-        require_once(ROOT.'/app/'.$class_name.'.class.php');
+    if (file_exists(ROOT.'/app/'.lcfirst($class_name).'.class.php')) {
+        require_once(ROOT.'/app/'.lcfirst($class_name).'.class.php');
     }else if (file_exists(ROOT.'/app/controllers/'.$class_name.'.php')) {
         require_once(ROOT.'/app/controllers/'.$class_name.'.php');
     }else if (file_exists(ROOT.'/app/library/'.$class_name.'.php')) {

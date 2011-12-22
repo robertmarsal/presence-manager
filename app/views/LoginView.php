@@ -2,46 +2,50 @@
 
 class LoginView extends View{
     
-    public function __construct() {
+    public function head(){
         global $config;
         
-        echo '
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>Home | Presence</title>
-	<link rel="stylesheet" href="css/lib/twitter-bootstrap/bootstrap.css" type="text/css">
-    <link rel="stylesheet" href="css/screen.css" type="text/css">
-    <link rel="shortcut icon" href="img/favicon.ico">
-</head>
-<body>
-    <!-- Topbar
-    ================================================== -->
-    <div class="topbar" data-scrollspy="scrollspy" >
-      <div class="topbar-inner">
-        <div class="container">
-            <a class="brand" href="index.php">Presence</a>
-            <ul class="nav">
-                <li class="active"><a href="index.php">Login</a></li>
-                <li><a href="app/help.php">Help</a></li>
-            </ul>
-     
-        </div>
-      </div>
-    </div>
+        return 
+        '<head>
+            <meta charset="utf-8">
+            <title>Home | Presence</title>
+            <link rel="stylesheet" href="'.$config['wwwroot'].'/public/css/lib/twitter-bootstrap/bootstrap.css" type="text/css">
+            <link rel="stylesheet" href="'.$config['wwwroot'].'/public/css/screen.css" type="text/css">
+            <link rel="shortcut icon" href="'.$config['wwwroot'].'/public/img/favicon.ico">
+        </head>';
+    }
     
-	<div class="container">
-		<section id="login">
-			<div class="row">
-				<div class="span6">
-                    <h2>Users</h2>
-                    <p>Log in to ...</p>
-                    <h2>Admins</h2>
-                    <p>Log in to manage users, check system status,...</p>
+    public function body(){
+        global $config;
+        
+        return
+        '<body>
+            <!-- Topbar
+            ================================================== -->
+            <div class="topbar" data-scrollspy="scrollspy" >
+                <div class="topbar-inner">
+                    <div class="container">
+                        <a class="brand" href="index.php">Presence</a>
+                            <ul class="nav">
+                                <li class="active"><a href="index.php">Login</a></li>
+                                <li><a href="app/help.php">Help</a></li>
+                            </ul>
+     
+                    </div>
                 </div>
-				<div class="span10">
-					<form class="form-stacked" action="'.$config['wwwroot'].'/auth/login/index.php" method="post">
+            </div>
+    
+            <div class="container">
+                <section id="login">
+                    <div class="row">
+                        <div class="span6">
+                            <h2>Users</h2>
+                            <p>Log in to ...</p>
+                            <h2>Admins</h2>
+                            <p>Log in to manage users, check system status,...</p>
+                        </div>
+                    <div class="span10">
+                        <form class="form-stacked" action="'.$config['wwwroot'].'/auth/login/index.php" method="post">
 						<fieldset>
                             <div class="clearfix">
                                 <label for="email">Email</label>
@@ -60,20 +64,17 @@ class LoginView extends View{
                                 <button type="reset" class="btn">Cancel</button>
                             </div>
     					</fieldset>
-					</form>
-
-			</div>
-		</section>
-        <footer class="footer">
-            <div class="container">
-                <p>Developed by <a href="http://twitter.com/robertboloc" target="_blank">@robertboloc</a><br/>
-                Licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>
-                </p>
+                        </form>
+                    </div>
+                </section>
+            <footer class="footer">
+                <div class="container">
+                    <p>Developed by <a href="http://twitter.com/robertboloc" target="_blank">@robertboloc</a><br/>
+                    Licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>
+                    </p>
+                </div>
+            </footer>
             </div>
-        </footer>
-	</div>
-
-</body>
-</html>';
+        </body>';
     }
 }
