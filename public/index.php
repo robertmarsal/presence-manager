@@ -46,13 +46,13 @@ if($url == null && $_SESSION['role'] == null){
     $url_params = array();
 }else if($url == null && isset($_SESSION['role'])){
     $controller = ucfirst($_SESSION['role']).'Controller';
-    $action = 'index';
+    $action = 'activity';
     $url_params = array();
 }else{
     $url_params = explode('/',$url);
     $controller = ucfirst(array_shift($url_params)); //get the controller
     $controller .= 'Controller';    
-    $action = $url_params[0] == null ? 'index' : array_shift($url_params);
+    $action = $url_params[0] == null ? 'activity' : array_shift($url_params);
 }
 
 $extra_params = $_POST;
