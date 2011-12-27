@@ -38,14 +38,15 @@ $dependencies = new DependencyContainer($config);
 // FRONT CONTROLLER ----------------------------------------------------------//
 //----------------------------------------------------------------------------//
     
-$url = $_GET['url'];
+$url = isset($_GET['url']) ? $_GET['url'] : null;
+$role = isset($_SESSION['role']) ? $_SESSION['role'] : null;
 
-if($url == null && $_SESSION['role'] == null){
+if($url == null && $role == null){
     $controller = "AuthController";
     $action ="asklogin";
     $url_params = array();
-}else if($url == null && isset($_SESSION['role'])){
-    $controller = ucfirst($_SESSION['role']).'Controller';
+}else if($url == null && isset($role)){
+    $controller = ucfirst($role).'Controller';
     $action = 'activity';
     $url_params = array();
 }else{

@@ -11,7 +11,7 @@ class DependencyContainer{
     
     public function get_db(){
         
-        if(empty($this->$_instances['db']) ||
+        if(empty($this->_instances['db']) ||
             !is_a($this->_instances,'PDO')){
             
             $this->_instances['db'] = new PDO(
