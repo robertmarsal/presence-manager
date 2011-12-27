@@ -1,6 +1,6 @@
 <?php
 
-class AdminActivityView extends View{
+class ActivityView extends View{
     
 	private $_entries;
 	
@@ -14,7 +14,7 @@ class AdminActivityView extends View{
         return '
         <head>
             <meta charset="utf-8">
-            <title>Admin | Presence</title>
+            <title> | Presence</title>
             <link rel="stylesheet" href="'.$config['wwwroot'].'/public/css/lib/twitter-bootstrap/bootstrap.css" type="text/css">
             <link rel="stylesheet" href="'.$config['wwwroot'].'/public/css/screen.css" type="text/css">
 			<script src="'.$config['wwwroot'].'/public/css/lib/twitter-bootstrap/js/bootstrap-dropdown.js" type="text/javascript"></script>
@@ -44,27 +44,7 @@ class AdminActivityView extends View{
 		
         return '
         <body>
-        <div class="topbar" id="topbar-container" data-dropdown="dropdown">
-            <div class="topbar-inner">
-                <div class="container">
-                    <a class="brand" href="'.$config['wwwroot'].'">Presence</a>
-                        <ul class="nav">
-                            <li class="active"><a href="'.$config['wwwroot'].'/admin/activity">Activity</a></li>
-                            <li><a href="'.$config['wwwroot'].'/admin/users">Users</a></li>
-                        </ul>
-                        <ul class="nav secondary-nav">
-							<li class="dropdown" data-dropdown="dropdown" >
-								<a href="#" class="dropdown-toggle">'.$_SESSION['user'].'</a>
-								<ul class="dropdown-menu">
-									<li class="dropdown_mod"><a href="#">Profile</a></li>
-									<li class="divider"></li>
-									<li class="dropdown_mod"><a href="'.$config['wwwroot'].'/auth/logout">Log Out</a></li>
-								</ul>
-							</li>
-						</ul>
-                </div>
-            </div>
-        </div>
+		'.$this->get_navigation($_SESSION['role']).'
 		<div class="container">
 			<table class="activity_table">
 				<thead>
@@ -79,7 +59,7 @@ class AdminActivityView extends View{
 				<tbody>'.$activity_table_content.'
 				</tbody>
 			</table>
-			<form class="form-stacked" action="'.$config['wwwroot'].'/admin/activity/index.php" method="post">
+			<form class="form-stacked" action="'.$config['wwwroot'].'/'.$_SESSION['role'].'/activity/index.php" method="post">
 				<input type="hidden" value="20" name="activity_maxrecords"/>
 				<button class="btn right_aligned">More</button>
 			</form>
