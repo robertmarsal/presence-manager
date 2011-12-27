@@ -20,21 +20,7 @@ class LoginView extends View{
         
         return
         '<body>
-            <!-- Topbar
-            ================================================== -->
-            <div class="topbar" data-scrollspy="scrollspy" >
-                <div class="topbar-inner">
-                    <div class="container">
-                        <a class="brand" href="index.php">Presence</a>
-                            <ul class="nav">
-                                <li class="active"><a href="index.php">Login</a></li>
-                                <li><a href="app/help.php">Help</a></li>
-                            </ul>
-     
-                    </div>
-                </div>
-            </div>
-    
+			'.$this->get_navigation().'
             <div class="container">
                 <section id="login">
                     <div class="row">
