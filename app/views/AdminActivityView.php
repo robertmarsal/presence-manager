@@ -17,6 +17,9 @@ class AdminActivityView extends View{
             <title>Admin | Presence</title>
             <link rel="stylesheet" href="'.$config['wwwroot'].'/public/css/lib/twitter-bootstrap/bootstrap.css" type="text/css">
             <link rel="stylesheet" href="'.$config['wwwroot'].'/public/css/screen.css" type="text/css">
+			<script src="'.$config['wwwroot'].'/public/css/lib/twitter-bootstrap/js/bootstrap-dropdown.js" type="text/javascript"></script>
+			<script src="'.$config['wwwroot'].'/public/js/lib/jquery-1.7.1.min.js"></script>
+			
             <link rel="shortcut icon" href="'.$config['wwwroot'].'/public/img/favicon.ico">
         </head>';
     }
@@ -41,9 +44,7 @@ class AdminActivityView extends View{
 		
         return '
         <body>
-        <!-- Topbar
-        ================================================== -->
-        <div class="topbar" data-scrollspy="scrollspy" >
+        <div class="topbar" id="topbar-container" data-dropdown="dropdown">
             <div class="topbar-inner">
                 <div class="container">
                     <a class="brand" href="'.$config['wwwroot'].'">Presence</a>
@@ -52,8 +53,15 @@ class AdminActivityView extends View{
                             <li><a href="'.$config['wwwroot'].'/admin/users">Users</a></li>
                         </ul>
                         <ul class="nav secondary-nav">
-                            <li><a href="'.$config['wwwroot'].'/auth/logout">Log Out</a></li>
-                        </ul>
+							<li class="dropdown" data-dropdown="dropdown" >
+								<a href="#" class="dropdown-toggle">'.$_SESSION['user'].'</a>
+								<ul class="dropdown-menu">
+									<li class="dropdown_mod"><a href="#">Profile</a></li>
+									<li class="divider"></li>
+									<li class="dropdown_mod"><a href="'.$config['wwwroot'].'/auth/logout">Log Out</a></li>
+								</ul>
+							</li>
+						</ul>
                 </div>
             </div>
         </div>
@@ -75,7 +83,7 @@ class AdminActivityView extends View{
 				<input type="hidden" value="20" name="activity_maxrecords"/>
 				<button class="btn right_aligned">More</button>
 			</form>
-		</div>
+		</div><script src="'.$config['wwwroot'].'/public/js/app.js"></script>
         </body>';
     }
 	

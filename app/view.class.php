@@ -17,4 +17,5 @@ abstract class View{
     abstract function head();
     
     abstract function body();
+	
 }

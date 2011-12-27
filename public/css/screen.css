@@ -9,3 +9,7 @@ body{
 .right_aligned{
 	float:right;
 }
+
+.dropdown_mod{
+	width:200px;
+}
