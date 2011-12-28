@@ -30,6 +30,7 @@ class AdminUsersView extends View{
 			foreach($this->_users as $user){
 				$users_table_content .= '
 				<tr>
+					<td>'.$user['id'].'</td>
 					<td>'.$user['firstname'].'</td>
 					<td>'.$user['lastname'].'</td>
 					<td>'.$user['email'].'</td>
@@ -58,6 +59,7 @@ class AdminUsersView extends View{
 			<table class="activity_table">
 				<thead>
 					<tr>
+						<th>#</th>
 						<th>First Name</th>
 						<th>Last Name</th>
 						<th>Contact</th>

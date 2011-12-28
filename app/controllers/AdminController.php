@@ -34,7 +34,7 @@ class AdminController extends Controller{
         $st->setFetchMode(PDO::FETCH_ASSOC);
         $activity_entries = $st->fetchAll();
 
-        $this->_view = new ActivityView($activity_entries);
+        $this->_view = new AdminActivityView($activity_entries);
     }
 	
 	public function users(){

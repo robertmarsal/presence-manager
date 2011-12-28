@@ -24,7 +24,7 @@ class UserController extends Controller{
 		// set maxrecords to 10 if is not set
 		$max_records = isset($params['activity_maxrecords']) ? $params['activity_maxrecords'] : 10 ;
 	
-        $sql = "SELECT paa.id, paa.userid, paa.action, paa.timestamp, pu.firstname, pu.lastname
+        $sql = "SELECT paa.id, paa.userid, paa.action, paa.timestamp
 				FROM presence_admin_activity paa
 				JOIN presence_users pu ON paa.userid = pu.email
 				WHERE pu.email = ?
@@ -35,7 +35,7 @@ class UserController extends Controller{
         $st->setFetchMode(PDO::FETCH_ASSOC);
         $activity_entries = $st->fetchAll();
 
-        $this->_view = new ActivityView($activity_entries);
+        $this->_view = new UserActivityView($activity_entries);
     }
 
 }

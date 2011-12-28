@@ -20,7 +20,17 @@ class LoginView extends View{
         
         return
         '<body>
-			'.$this->get_navigation().'
+			<div class="topbar" data-scrollspy="scrollspy">
+						<div class="topbar-inner">
+							<div class="container">
+								<a class="brand" href="index.php">Presence</a>
+								<ul class="nav">
+									<li class="active"><a href="'.$config['wwwroot'].'">Login</a></li>
+									<li><a href="'.$config['wwwroot'].'/help/main">Help</a></li>
+								</ul>     
+							</div>
+						</div>
+					</div>
             <div class="container">
                 <section id="login">
                         <form id="login-form" class="form-stacked" action="'.$config['wwwroot'].'/auth/login/index.php" method="post">
