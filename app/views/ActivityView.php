@@ -16,10 +16,7 @@ class ActivityView extends View{
             <meta charset="utf-8">
             <title> | Presence</title>
             <link rel="stylesheet" href="'.$config['wwwroot'].'/public/css/lib/twitter-bootstrap/bootstrap.css" type="text/css">
-            <link rel="stylesheet" href="'.$config['wwwroot'].'/public/css/screen.css" type="text/css">
-			<script src="'.$config['wwwroot'].'/public/css/lib/twitter-bootstrap/js/bootstrap-dropdown.js" type="text/javascript"></script>
-			<script src="'.$config['wwwroot'].'/public/js/lib/jquery-1.7.1.min.js"></script>
-			
+            <link rel="stylesheet" href="'.$config['wwwroot'].'/public/css/screen.css" type="text/css">			
             <link rel="shortcut icon" href="'.$config['wwwroot'].'/public/img/favicon.ico">
         </head>';
     }
@@ -63,7 +60,7 @@ class ActivityView extends View{
 				<input type="hidden" value="20" name="activity_maxrecords"/>
 				<button class="btn right_aligned">More</button>
 			</form>
-		</div><script src="'.$config['wwwroot'].'/public/js/app.js"></script>
+		</div>
         </body>';
     }
 	

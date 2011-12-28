@@ -25,7 +25,7 @@ abstract class View{
 		switch($user_type){
 			case 'admin':
 				return '
-				    <div class="topbar" id="topbar-container" data-dropdown="dropdown">
+				    <div class="topbar" id="topbar-container">
 						<div class="topbar-inner">
 							<div class="container">
 								<a class="brand" href="'.$config['wwwroot'].'">Presence</a>
@@ -34,19 +34,14 @@ abstract class View{
 									<li><a href="'.$config['wwwroot'].'/admin/users">Users</a></li>
 								</ul>
 								<ul class="nav secondary-nav">
-									<li class="dropdown" data-dropdown="dropdown" >
-										<a href="#" class="dropdown-toggle">'.$_SESSION['user'].'</a>
-										<ul class="dropdown-menu">
-											<li class="dropdown_mod"><a href="'.$config['wwwroot'].'/auth/logout">Log Out</a></li>
-										</ul>
-									</li>
+									<li><a href="'.$config['wwwroot'].'/auth/logout">Log Out</a></li>
 								</ul>
 							</div>
 						</div>
 					</div>';
 			case 'user':
 				return '
-				    <div class="topbar" id="topbar-container" data-dropdown="dropdown">
+				    <div class="topbar" id="topbar-container">
 						<div class="topbar-inner">
 							<div class="container">
 								<a class="brand" href="'.$config['wwwroot'].'">Presence</a>
@@ -54,12 +49,7 @@ abstract class View{
 									<li class="active"><a href="'.$config['wwwroot'].'/user/activity">Activity</a></li>
 								</ul>
 								<ul class="nav secondary-nav">
-									<li class="dropdown" data-dropdown="dropdown" >
-										<a href="#" class="dropdown-toggle">'.$_SESSION['user'].'</a>
-										<ul class="dropdown-menu">
-											<li class="dropdown_mod"><a href="'.$config['wwwroot'].'/auth/logout">Log Out</a></li>
-										</ul>
-									</li>
+									<li><a href="'.$config['wwwroot'].'/auth/logout">Log Out</a></li>
 								</ul>
 							</div>
 						</div>
