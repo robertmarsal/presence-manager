@@ -31,8 +31,8 @@ class AdminUsersView extends View{
 				$users_table_content .= '
 				<tr>
 					<td>'.$user['id'].'</td>
-					<td>'.$user['firstname'].'</td>
-					<td>'.$user['lastname'].'</td>
+					<td>'.utf8_encode($user['firstname']).'</td>
+					<td>'.utf8_encode($user['lastname']).'</td>
 					<td>'.$user['email'].'</td>
 					<td>'.$user['role'].'</td>
 				 </tr>
