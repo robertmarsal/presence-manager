@@ -23,15 +23,7 @@ class LoginView extends View{
 			'.$this->get_navigation().'
             <div class="container">
                 <section id="login">
-                    <div class="row">
-                        <div class="span6">
-                            <h2>Users</h2>
-                            <p>Log in to ...</p>
-                            <h2>Admins</h2>
-                            <p>Log in to manage users, check system status,...</p>
-                        </div>
-                    <div class="span10">
-                        <form class="form-stacked" action="'.$config['wwwroot'].'/auth/login/index.php" method="post">
+                        <form id="login-form" class="form-stacked" action="'.$config['wwwroot'].'/auth/login/index.php" method="post">
 						<fieldset>
                             <div class="clearfix">
                                 <label for="email">Email</label>
@@ -51,9 +43,8 @@ class LoginView extends View{
                             </div>
     					</fieldset>
                         </form>
-                    </div>
                 </section>
-            <footer class="footer">
+            <footer id="footer">
                 <div class="container">
                     <p>Developed by <a href="http://twitter.com/robertboloc" target="_blank">@robertboloc</a><br/>
                     Licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>

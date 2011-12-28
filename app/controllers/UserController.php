@@ -21,10 +21,8 @@ class UserController extends Controller{
     
     public function activity($params){
 	
-		global $config;
-
 		// set maxrecords to 10 if is not set
-		$max_records = isset($params['activity_maxrecords']) ? $params['activity_maxrecords'] : 1 ;
+		$max_records = isset($params['activity_maxrecords']) ? $params['activity_maxrecords'] : 10 ;
 	
         $sql = "SELECT paa.id, paa.userid, paa.action, paa.timestamp, pu.firstname, pu.lastname
 				FROM presence_admin_activity paa

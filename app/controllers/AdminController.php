@@ -20,11 +20,9 @@ class AdminController extends Controller{
     }
     
     public function activity($params){
-	
-		global $config;
 
 		// set maxrecords to 10 if is not set
-		$max_records = isset($params['activity_maxrecords']) ? $params['activity_maxrecords'] : 1 ;
+		$max_records = isset($params['activity_maxrecords']) ? $params['activity_maxrecords'] : 10 ;
 	
         $sql = "SELECT paa.id, paa.userid, paa.action, paa.timestamp, pu.firstname, pu.lastname
 				FROM presence_admin_activity paa
@@ -38,4 +36,18 @@ class AdminController extends Controller{
 
         $this->_view = new ActivityView($activity_entries);
     }
+	
+	public function users(){
+		
+		$sql = "SELECT *
+				FROM presence_users
+				ORDER BY lastname ASC";
+		$st = $this->_db->prepare($sql);
+		$st->execute();
+        $st->setFetchMode(PDO::FETCH_ASSOC);
+        $presence_users = $st->fetchAll();
+		
+		$this->_view = new AdminUsersView($presence_users);
+	}
+
 }
