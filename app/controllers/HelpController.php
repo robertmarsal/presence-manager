@@ -1,9 +1,9 @@
 <?php
 
-class HelpController extends Controller{
-    
-    
-    private function main(){
+class HelpController extends Controller {
+
+    private function main() {
         //set view
     }
+
 }

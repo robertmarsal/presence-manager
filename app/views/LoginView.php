@@ -1,7 +1,6 @@
 <?php
 
-class LoginView extends View{
-
+class LoginView extends View {
 
     public function __construct() {
 
@@ -10,25 +9,25 @@ class LoginView extends View{
         $this->title($string['home']);
     }
 
-    public function body(){
+    public function body() {
         global $config, $string;
 
         return
-        '<body>
+                '<body>
 			<div class="topbar" data-scrollspy="scrollspy">
 						<div class="topbar-inner">
 							<div class="container">
-								<a class="brand" href="index.php">'.$string['brand'].'</a>
+								<a class="brand" href="index.php">' . $string['brand'] . '</a>
 								<ul class="nav">
-									<li class="active"><a href="'.$config['wwwroot'].'">'.$string['login'].'</a></li>
-									<li><a href="'.$config['wwwroot'].'/help/main">'.$string['help'].'</a></li>
+									<li class="active"><a href="' . $config['wwwroot'] . '">' . $string['login'] . '</a></li>
+									<li><a href="' . $config['wwwroot'] . '/help/main">' . $string['help'] . '</a></li>
 								</ul>
 							</div>
 						</div>
 					</div>
             <div class="container">
                 <section id="login">
-                        <form id="login-form" class="form-stacked" action="'.$config['wwwroot'].'/auth/login/index.php" method="post">
+                        <form id="login-form" class="form-stacked" action="' . $config['wwwroot'] . '/auth/login/index.php" method="post">
 						<fieldset>
                             <div class="clearfix">
                                 <label for="email">Email</label>
@@ -59,4 +58,5 @@ class LoginView extends View{
             </div>
         </body>';
     }
+
 }

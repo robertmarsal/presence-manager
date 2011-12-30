@@ -1,47 +1,47 @@
 <?php
 
-class AdminUsersView extends View{
+class AdminUsersView extends View {
 
-	private  $_users;
+    private $_users;
 
-	public function __construct($users){
+    public function __construct($users) {
 
         global $string;
 
-		$this->_users = $users;
+        $this->_users = $users;
         $this->title($string['users']);
-	}
+    }
 
-    public function body(){
+    public function body() {
 
-		global $config;
+        global $config;
 
-		$users_table_content = '';
-		if(!empty($this->_users)){
-			foreach($this->_users as $user){
-				$users_table_content .= '
+        $users_table_content = '';
+        if (!empty($this->_users)) {
+            foreach ($this->_users as $user) {
+                $users_table_content .= '
 				<tr>
-					<td>'.$user['id'].'</td>
-					<td>'.utf8_encode($user['firstname']).'</td>
-					<td>'.utf8_encode($user['lastname']).'</td>
-					<td>'.$user['email'].'</td>
-					<td>'.$user['role'].'</td>
+					<td>' . $user['id'] . '</td>
+					<td>' . utf8_encode($user['firstname']) . '</td>
+					<td>' . utf8_encode($user['lastname']) . '</td>
+					<td>' . $user['email'] . '</td>
+					<td>' . $user['role'] . '</td>
 				 </tr>
 				';
-			}
-		}
+            }
+        }
 
-		return '
+        return '
 		<div class="topbar" id="topbar-container">
 			<div class="topbar-inner">
 				<div class="container">
-					<a class="brand" href="'.$config['wwwroot'].'">Presence</a>
+					<a class="brand" href="' . $config['wwwroot'] . '">Presence</a>
 					<ul class="nav">
-						<li><a href="'.$config['wwwroot'].'/admin/activity">Activity</a></li>
-						<li class="active"><a href="'.$config['wwwroot'].'/admin/users">Users</a></li>
+						<li><a href="' . $config['wwwroot'] . '/admin/activity">Activity</a></li>
+						<li class="active"><a href="' . $config['wwwroot'] . '/admin/users">Users</a></li>
 					</ul>
 					<ul class="nav secondary-nav">
-						<li><a href="'.$config['wwwroot'].'/auth/logout">Log Out</a></li>
+						<li><a href="' . $config['wwwroot'] . '/auth/logout">Log Out</a></li>
 					</ul>
 				</div>
 			</div>
@@ -58,7 +58,7 @@ class AdminUsersView extends View{
 					</tr>
 				</thead>
 				<tbody>
-				'.$users_table_content.'
+				' . $users_table_content . '
 				</tbody>
 			</table>
 		</div>';

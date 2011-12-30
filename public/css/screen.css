@@ -1,17 +1,17 @@
 body{
-	padding-top: 75px;
+    padding-top: 75px;
 }
 
 #login{
-	padding-top:225px;
+    padding-top:225px;
 }
 
 .right_aligned{
-	float:right;
+    float:right;
 }
 
- #login-form, #footer{
-	margin: 0 auto;
-	padding: 0;
-	width: 300px;
- }
+#login-form, #footer{
+    margin: 0 auto;
+    padding: 0;
+    width: 300px;
+}

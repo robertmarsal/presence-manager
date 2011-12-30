@@ -1,6 +1,6 @@
 <?php
 
-class NotFoundView extends View{
+class NotFoundView extends View {
 
     public function __construct() {
 
@@ -15,8 +15,9 @@ class NotFoundView extends View{
         return '
         <body>
             <div class="container">
-                <h2>Ooops! This is a 404...quick, go <a href="'.$config['wwwroot'].'">back!</a></h2>
+                <h2>Ooops! This is a 404...quick, go <a href="' . $config['wwwroot'] . '">back!</a></h2>
             </div>
         </body>';
     }
+
 }
