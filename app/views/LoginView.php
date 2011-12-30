@@ -1,23 +1,18 @@
 <?php
 
 class LoginView extends View{
-    
-    public function head(){
-        global $config;
-        
-        return 
-        '<head>
-            <meta charset="utf-8">
-            <title>Home | Presence</title>
-            <link rel="stylesheet" href="'.$config['wwwroot'].'/public/css/lib/twitter-bootstrap/bootstrap.min.css" type="text/css">
-            <link rel="stylesheet" href="'.$config['wwwroot'].'/public/css/screen.css" type="text/css">
-            <link rel="shortcut icon" href="'.$config['wwwroot'].'/public/img/favicon.ico">
-        </head>';
+
+
+    public function __construct() {
+
+        global $string;
+
+        $this->title($string['home']);
     }
-    
+
     public function body(){
         global $config, $string;
-        
+
         return
         '<body>
 			<div class="topbar" data-scrollspy="scrollspy">
@@ -27,7 +22,7 @@ class LoginView extends View{
 								<ul class="nav">
 									<li class="active"><a href="'.$config['wwwroot'].'">'.$string['login'].'</a></li>
 									<li><a href="'.$config['wwwroot'].'/help/main">'.$string['help'].'</a></li>
-								</ul>     
+								</ul>
 							</div>
 						</div>
 					</div>

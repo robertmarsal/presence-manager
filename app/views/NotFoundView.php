@@ -1,23 +1,17 @@
 <?php
 
 class NotFoundView extends View{
-    
-    public function head() {
-        global $config;
-        
-        return '
-        <head>
-            <meta charset="utf-8">
-            <title>404 | Presence</title>
-            <link rel="stylesheet" href="'.$config['wwwroot'].'/public/css/lib/twitter-bootstrap/bootstrap.min.css" type="text/css">
-            <link rel="stylesheet" href="'.$config['wwwroot'].'/public/css/screen.css" type="text/css">
-            <link rel="shortcut icon" href="'.$config['wwwroot'].'/public/img/favicon.ico">
-        </head>';
+
+    public function __construct() {
+
+        global $string;
+
+        $this->title($string['404']);
     }
-    
+
     public function body() {
         global $config;
-        
+
         return '
         <body>
             <div class="container">

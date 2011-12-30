@@ -1,30 +1,21 @@
 <?php
 
 class AdminUsersView extends View{
-    	
+
 	private  $_users;
-		
+
 	public function __construct($users){
+
+        global $string;
+
 		$this->_users = $users;
+        $this->title($string['users']);
 	}
-	
-    public function head(){
-        global $config;
-        
-        return '
-        <head>
-            <meta charset="utf-8">
-            <title> Users | Presence</title>
-            <link rel="stylesheet" href="'.$config['wwwroot'].'/public/css/lib/twitter-bootstrap/bootstrap.min.css" type="text/css">
-            <link rel="stylesheet" href="'.$config['wwwroot'].'/public/css/screen.css" type="text/css">			
-            <link rel="shortcut icon" href="'.$config['wwwroot'].'/public/img/favicon.ico">
-        </head>';
-    }
-    
+
     public function body(){
-        
+
 		global $config;
-		
+
 		$users_table_content = '';
 		if(!empty($this->_users)){
 			foreach($this->_users as $user){
@@ -39,7 +30,7 @@ class AdminUsersView extends View{
 				';
 			}
 		}
-		
+
 		return '
 		<div class="topbar" id="topbar-container">
 			<div class="topbar-inner">
@@ -72,5 +63,5 @@ class AdminUsersView extends View{
 			</table>
 		</div>';
     }
-	
+
 }

@@ -1,29 +1,21 @@
 <?php
 
 class AdminActivityView extends View{
-    
+
 	private $_entries;
-	
+
 	public function __construct($entries){
-		$this->_entries = $entries;
-	}
-	
-    public function head(){
-        global $config;
-        
-        return '
-        <head>
-            <meta charset="utf-8">
-            <title>Activity | Presence</title>
-            <link rel="stylesheet" href="'.$config['wwwroot'].'/public/css/lib/twitter-bootstrap/bootstrap.min.css" type="text/css">
-            <link rel="stylesheet" href="'.$config['wwwroot'].'/public/css/screen.css" type="text/css">			
-            <link rel="shortcut icon" href="'.$config['wwwroot'].'/public/img/favicon.ico">
-        </head>';
+
+        global $string;
+
+        $this->_entries = $entries;
+        $this->title($string['activity']);
     }
-    
+
     public function body(){
-        global $config;
         
+        global $config;
+
 		$activity_table_content = '';
 		if(!empty($this->_entries)){
 			foreach($this->_entries as $entry){
@@ -39,7 +31,7 @@ class AdminActivityView extends View{
 				';
 			}
 		}
-		
+
         return '
         <body>
 		<div class="topbar" id="topbar-container">
@@ -78,7 +70,7 @@ class AdminActivityView extends View{
 		</div>
         </body>';
     }
-	
+
 	private function get_event_description($event){
 		switch($event){
 			case 'success': return 'Check-In';
