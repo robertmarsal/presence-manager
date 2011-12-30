@@ -15,7 +15,7 @@ class AdminActivityView extends View{
         <head>
             <meta charset="utf-8">
             <title>Activity | Presence</title>
-            <link rel="stylesheet" href="'.$config['wwwroot'].'/public/css/lib/twitter-bootstrap/bootstrap.css" type="text/css">
+            <link rel="stylesheet" href="'.$config['wwwroot'].'/public/css/lib/twitter-bootstrap/bootstrap.min.css" type="text/css">
             <link rel="stylesheet" href="'.$config['wwwroot'].'/public/css/screen.css" type="text/css">			
             <link rel="shortcut icon" href="'.$config['wwwroot'].'/public/img/favicon.ico">
         </head>';
