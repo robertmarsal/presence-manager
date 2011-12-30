@@ -32,7 +32,8 @@ class AdminActivityView extends View{
 					<td>'.$entry['id'].'</td>
 					<td><span class="label '.$entry['action'].'">'.$this->get_event_description($entry['action']).'</span></td>
 					<td>'.date('D M j G:i:s Y',$entry['timestamp']).'</td>
-					<td>'.utf8_encode($entry['firstname']).' '.utf8_encode($entry['lastname']).'</td>
+					<td>'.utf8_encode($entry['firstname']).'</td>
+                                        <td>'.utf8_encode($entry['lastname']).'</td>
 					<td>'.$entry['userid'].'</td>
 				 </tr>
 				';
@@ -62,8 +63,9 @@ class AdminActivityView extends View{
 						<th>#</th>
 						<th>Action</th>
 						<th>Time</th>
+						<th>First Name</th>
+                                                <th>Last Name</th>
 						<th>User</th>
-						<th>Contact</th>
 					</tr>
 				</thead>
 				<tbody>'.$activity_table_content.'

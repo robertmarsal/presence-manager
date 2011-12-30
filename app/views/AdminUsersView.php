@@ -62,7 +62,7 @@ class AdminUsersView extends View{
 						<th>#</th>
 						<th>First Name</th>
 						<th>Last Name</th>
-						<th>Contact</th>
+						<th>User</th>
 						<th>Role</th>
 					</tr>
 				</thead>

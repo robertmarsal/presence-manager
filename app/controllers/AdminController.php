@@ -11,8 +11,8 @@ class AdminController extends Controller{
 		// get the connection to the database from the dependencies container
         $this->_db = $dependencies->get_db();
 		
-        // check if the required action is defined
-        if(method_exists($this, $action)){ 
+        // check if is admin and if the required action is defined
+        if($this->check_role('admin') && method_exists($this, $action)){ 
             $this->$action($params);
         }else{
             header('Location: '.$config['wwwroot'].'/error/notfound');

@@ -7,12 +7,12 @@ class UserController extends Controller{
     public function __construct($dependencies, $action, $params) {
         
         global $config;
-
-		// get the connection to the database from the dependencies container
+        
+        // get the connection to the database from the dependencies container
         $this->_db = $dependencies->get_db();
 		
-        // check if the required action is defined
-        if(method_exists($this, $action)){ 
+        // check if is user and the required action is defined
+        if($this->check_role('user') && method_exists($this, $action)){ 
             $this->$action($params);
         }else{
             header('Location: '.$config['wwwroot'].'/error/notfound');
