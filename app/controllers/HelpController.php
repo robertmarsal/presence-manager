@@ -2,8 +2,16 @@
 
 class HelpController extends Controller {
 
+	public function __construct(DependencyContainer $dependencies, $action, $params) {
+
+		// check if the required action is defined
+		if (method_exists($this, $action)) {
+            $this->$action($params);
+		}
+    }
+
     private function main() {
-        //set view
+        $this->_view = new HelpView();
     }
 
 }
