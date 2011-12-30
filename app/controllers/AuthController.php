@@ -30,7 +30,6 @@ class AuthController extends Controller {
         $result = $st->fetch();
 
         if ($result) {
-            session_start();
             $_SESSION['user'] = $result['email'];
             $_SESSION['role'] = $result['role'];
 
@@ -44,7 +43,6 @@ class AuthController extends Controller {
 
         global $config;
 
-        session_start();
         session_unset();
         session_destroy();
 

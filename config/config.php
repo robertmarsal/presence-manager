@@ -2,10 +2,10 @@
 
 unset($config);
 
-$config['wwwroot'] = 'http://127.0.0.1:8888/presence-manager';
+$config['wwwroot'] = 'http://localhost/presence-manager';
 
 //API
-$config['api_root'] = 'http://127.0.0.1:8888/presence-manager/api';
+$config['api_root'] = 'http://localhost/presence-manager/api';
 $config['api_key'] = 'd2104a400c7f629a197f33bb33fe80c0';
 
 $config['debug'] = 1;

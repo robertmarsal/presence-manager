@@ -27,7 +27,7 @@ class AdminController extends Controller {
         $sql = "SELECT pu.id, pa.userid, pa.action, pa.timestamp, pu.firstname, pu.lastname, pu.email
 				FROM presence_activity pa
 				JOIN presence_users pu ON pa.userid = pu.id
-				ORDER BY id DESC LIMIT " . $max_records;
+				ORDER BY pa.timestamp DESC LIMIT " . $max_records;
 
         $st = $this->_db->prepare($sql);
         $st->execute();
