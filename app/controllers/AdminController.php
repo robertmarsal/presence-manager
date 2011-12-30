@@ -24,9 +24,9 @@ class AdminController extends Controller {
         // set maxrecords to 10 if is not set
         $max_records = isset($params['activity_maxrecords']) ? $params['activity_maxrecords'] : 10;
 
-        $sql = "SELECT paa.id, paa.userid, paa.action, paa.timestamp, pu.firstname, pu.lastname
-				FROM presence_activity paa
-				JOIN presence_users pu ON paa.userid = pu.email
+        $sql = "SELECT pu.id, pa.userid, pa.action, pa.timestamp, pu.firstname, pu.lastname, pu.email
+				FROM presence_activity pa
+				JOIN presence_users pu ON pa.userid = pu.id
 				ORDER BY id DESC LIMIT " . $max_records;
 
         $st = $this->_db->prepare($sql);

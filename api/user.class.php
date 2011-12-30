@@ -40,9 +40,9 @@ class User extends PresenceApi{
 		// set maxrecords to 10 if is not set
         $max_records = isset($params['activities']) ? $params['activities'] : 10;
 
-        $sql = "SELECT paa.id, paa.userid, paa.action, paa.timestamp
-				FROM presence_activity paa
-				JOIN presence_users pu ON `userid` = `email`
+        $sql = "SELECT pa.id, pa.userid, pa.action, pa.timestamp
+				FROM presence_activity pa
+				JOIN presence_users pu ON `userid` = pu.id
 				WHERE `email` = ?
 				ORDER BY id DESC LIMIT 10";
 
