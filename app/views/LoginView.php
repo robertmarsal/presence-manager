@@ -16,17 +16,17 @@ class LoginView extends View{
     }
     
     public function body(){
-        global $config;
+        global $config, $string;
         
         return
         '<body>
 			<div class="topbar" data-scrollspy="scrollspy">
 						<div class="topbar-inner">
 							<div class="container">
-								<a class="brand" href="index.php">Presence</a>
+								<a class="brand" href="index.php">'.$string['brand'].'</a>
 								<ul class="nav">
-									<li class="active"><a href="'.$config['wwwroot'].'">Login</a></li>
-									<li><a href="'.$config['wwwroot'].'/help/main">Help</a></li>
+									<li class="active"><a href="'.$config['wwwroot'].'">'.$string['login'].'</a></li>
+									<li><a href="'.$config['wwwroot'].'/help/main">'.$string['help'].'</a></li>
 								</ul>     
 							</div>
 						</div>

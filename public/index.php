@@ -3,13 +3,20 @@
 //----------------------------------------------------------------------------//
 // BOOTSTRAP -----------------------------------------------------------------//
 //----------------------------------------------------------------------------//
-//set the ROOT path
+session_start();
+
+// include the config
 define('ROOT', dirname(dirname(__FILE__)));
 require_once (ROOT.'/config/config.php');
 global $config;
 
+// activate/deactivate debug
 error_reporting(E_ALL);
 $config['debug'] && ini_set('display_errors', '1');
+
+// set language
+$_SESSION['lang'] = isset($_SESSION['lang']) ? $_SESSION['lang'] : 'en';
+require_once (ROOT.'/lang/'.$_SESSION['lang'].'.php');;
 
 //----------------------------------------------------------------------------//
 // AUTOLOADER ----------------------------------------------------------------//
@@ -41,7 +48,6 @@ $dependencies = new DependencyContainer($config);
 //----------------------------------------------------------------------------//
 // FRONT CONTROLLER ----------------------------------------------------------//
 //----------------------------------------------------------------------------//
-session_start();
 
 $url = isset($_GET['url']) ? $_GET['url'] : null;
 $role = isset($_SESSION['role']) ? $_SESSION['role'] : null;
