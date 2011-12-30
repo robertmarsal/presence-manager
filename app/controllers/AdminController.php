@@ -25,7 +25,7 @@ class AdminController extends Controller {
         $max_records = isset($params['activity_maxrecords']) ? $params['activity_maxrecords'] : 10;
 
         $sql = "SELECT paa.id, paa.userid, paa.action, paa.timestamp, pu.firstname, pu.lastname
-				FROM presence_admin_activity paa
+				FROM presence_activity paa
 				JOIN presence_users pu ON paa.userid = pu.email
 				ORDER BY id DESC LIMIT " . $max_records;
 

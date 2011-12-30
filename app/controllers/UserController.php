@@ -21,19 +21,13 @@ class UserController extends Controller {
 
     public function activity($params) {
 
-        // set maxrecords to 10 if is not set
-        $max_records = isset($params['activity_maxrecords']) ? $params['activity_maxrecords'] : 10;
+		global $config;
 
-        $sql = "SELECT paa.id, paa.userid, paa.action, paa.timestamp
-				FROM presence_admin_activity paa
-				JOIN presence_users pu ON paa.userid = pu.email
-				WHERE pu.email = ?
-				ORDER BY id DESC LIMIT " . $max_records;
+        $count = isset($params['count']) ? $params['count'] : 10;
+	
+		$raw_activity_entries = file_get_contents($config['api_root'].'/?method=user&action=getActivity&api_key='.$config['api_key'].'&userid='.$_SESSION['user'].'&count='.$count);
 
-        $st = $this->_db->prepare($sql);
-        $st->execute(array($_SESSION['user']));
-        $st->setFetchMode(PDO::FETCH_ASSOC);
-        $activity_entries = $st->fetchAll();
+		$activity_entries = json_decode($raw_activity_entries, true);
 
         $this->_view = new UserActivityView($activity_entries);
     }
