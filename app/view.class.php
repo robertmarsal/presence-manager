@@ -14,14 +14,21 @@ abstract class View {
 
         echo '<!DOCTYPE html>';
         echo '<html lang="en">
-                  <head>
-                      <meta charset="utf-8">
-                      <title>' . $this->_title . ' | ' . $string['brand'] . '</title>
-                      <link rel="stylesheet" href="' . $config['wwwroot'] . '/public/css/lib/twitter-bootstrap/bootstrap.min.css" type="text/css">
-                      <link rel="stylesheet" href="' . $config['wwwroot'] . '/public/css/screen.css" type="text/css">
-                      <link rel="shortcut icon" href="' . $config['wwwroot'] . '/public/img/favicon.ico">
-                  </head>';
-        echo $this->body();
+                <head>
+                <meta charset="utf-8">
+                    <title>' . $this->_title . ' | ' . $string['brand'] . '</title>
+                    <link rel="stylesheet" href="' . $config['wwwroot'] . '/public/css/lib/twitter-bootstrap/bootstrap.min.css" type="text/css">
+                    <link rel="stylesheet" href="' . $config['wwwroot'] . '/public/css/screen.css" type="text/css">
+                    <link rel="shortcut icon" href="' . $config['wwwroot'] . '/public/img/favicon.ico">
+                </head>
+                <body>
+                '.$this->menu().'
+                    <div class="container">
+                    '.$this->content().'
+                    </div>
+                </body>
+                  ';
+
         echo '</html>';
     }
 
@@ -29,5 +36,6 @@ abstract class View {
         $this->_title = $title;
     }
 
-    abstract function body();
+    abstract function menu();
+    abstract function content();
 }

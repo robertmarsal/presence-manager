@@ -12,7 +12,28 @@ class UserActivityView extends View {
         $this->title($string['activity']);
     }
 
-    public function body() {
+    public function menu() {
+
+        global $config;
+
+        return '
+        <div class="topbar" id="topbar-container">
+                <div class="topbar-inner">
+                    <div class="container">
+                        <a class="brand" href="' . $config['wwwroot'] . '">Presence</a>
+                        <ul class="nav">
+                            <li class="active"><a href="' . $config['wwwroot'] . '/user/activity">Activity</a></li>
+                        </ul>
+                        <ul class="nav secondary-nav">
+                            <li><a href="' . $config['wwwroot'] . '/auth/logout">Log Out</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>';
+    }
+
+    public function content() {
+
         global $config;
 
         $activity_table_content = '';
@@ -29,21 +50,6 @@ class UserActivityView extends View {
         }
 
         return '
-        <body>
-		<div class="topbar" id="topbar-container">
-						<div class="topbar-inner">
-							<div class="container">
-								<a class="brand" href="' . $config['wwwroot'] . '">Presence</a>
-								<ul class="nav">
-									<li class="active"><a href="' . $config['wwwroot'] . '/user/activity">Activity</a></li>
-								</ul>
-								<ul class="nav secondary-nav">
-									<li><a href="' . $config['wwwroot'] . '/auth/logout">Log Out</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-		<div class="container">
 			<table class="activity_table">
 				<thead>
 					<tr>
@@ -58,9 +64,7 @@ class UserActivityView extends View {
 			<form class="form-stacked" action="' . $config['wwwroot'] . '/' . $_SESSION['role'] . '/activity/index.php" method="post">
 				<input type="hidden" value="20" name="activity_maxrecords"/>
 				<button class="btn right_aligned">More</button>
-			</form>
-		</div>
-        </body>';
+			</form>';
     }
 
     private function get_event_description($event) {

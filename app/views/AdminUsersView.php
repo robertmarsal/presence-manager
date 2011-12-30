@@ -12,7 +12,28 @@ class AdminUsersView extends View {
         $this->title($string['users']);
     }
 
-    public function body() {
+    public function menu() {
+
+        global $config;
+
+        return '
+        <div class="topbar" id="topbar-container">
+			<div class="topbar-inner">
+				<div class="container">
+					<a class="brand" href="' . $config['wwwroot'] . '">Presence</a>
+					<ul class="nav">
+						<li><a href="' . $config['wwwroot'] . '/admin/activity">Activity</a></li>
+						<li class="active"><a href="' . $config['wwwroot'] . '/admin/users">Users</a></li>
+					</ul>
+					<ul class="nav secondary-nav">
+						<li><a href="' . $config['wwwroot'] . '/auth/logout">Log Out</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>';
+    }
+
+    public function content() {
 
         global $config;
 
@@ -32,21 +53,6 @@ class AdminUsersView extends View {
         }
 
         return '
-		<div class="topbar" id="topbar-container">
-			<div class="topbar-inner">
-				<div class="container">
-					<a class="brand" href="' . $config['wwwroot'] . '">Presence</a>
-					<ul class="nav">
-						<li><a href="' . $config['wwwroot'] . '/admin/activity">Activity</a></li>
-						<li class="active"><a href="' . $config['wwwroot'] . '/admin/users">Users</a></li>
-					</ul>
-					<ul class="nav secondary-nav">
-						<li><a href="' . $config['wwwroot'] . '/auth/logout">Log Out</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div class="container">
 			<table class="activity_table">
 				<thead>
 					<tr>
@@ -60,8 +66,7 @@ class AdminUsersView extends View {
 				<tbody>
 				' . $users_table_content . '
 				</tbody>
-			</table>
-		</div>';
+			</table>';
     }
 
 }
