@@ -41,13 +41,13 @@ class AdminActivityView extends View {
         if (!empty($this->_entries)) {
             foreach ($this->_entries as $entry) {
                 $activity_table_content .=
-                        '<tr>
+                '<tr>
 					<td>' . $entry['id'] . '</td>
 					<td><span class="label ' . $entry['action'] . '">' . $this->get_event_description($entry['action']) . '</span></td>
 					<td>' . date('D M j G:i:s Y', $entry['timestamp']) . '</td>
 					<td>' . utf8_encode($entry['firstname']) . '</td>
-                                        <td>' . utf8_encode($entry['lastname']) . '</td>
-					<td>' . $entry['userid'] . '</td>
+                    <td>' . utf8_encode($entry['lastname']) . '</td>
+					<td><a href="'.$config['wwwroot'].'/admin/viewUser/'.$entry['userid'].'">' . $entry['userid'] . '</a></td>
 				 </tr>
 				';
             }

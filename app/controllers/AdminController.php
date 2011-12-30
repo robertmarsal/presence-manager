@@ -50,4 +50,14 @@ class AdminController extends Controller {
         $this->_view = new AdminUsersView($presence_users);
     }
 
+	public function viewUser($params){
+		
+		global $config;
+	
+		$raw_user_data = file_get_contents($config['api_root'].'/?method=user&action=getData&api_key='.$config['api_key'].'&userid='.$params[0]);
+
+		$user = json_decode($raw_user_data, true);
+
+		$this->_view = new AdminViewUserView($user);
+	}
 }

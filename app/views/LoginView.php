@@ -17,7 +17,7 @@ class LoginView extends View {
         <div class="topbar" data-scrollspy="scrollspy">
         <div class="topbar-inner">
             <div class="container">
-                <a class="brand" href="index.php">' . $string['brand'] . '</a>
+                <a class="brand" href="' . $config['wwwroot'] . '">' . $string['brand'] . '</a>
                 <ul class="nav">
                     <li class="active"><a href="' . $config['wwwroot'] . '">' . $string['login'] . '</a></li>
                     <li><a href="' . $config['wwwroot'] . '/help/main">' . $string['help'] . '</a></li>

@@ -36,7 +36,7 @@ class AdminUsersView extends View {
     public function content() {
 
         global $config;
-
+	
         $users_table_content = '';
         if (!empty($this->_users)) {
             foreach ($this->_users as $user) {
@@ -45,7 +45,7 @@ class AdminUsersView extends View {
 					<td>' . $user['id'] . '</td>
 					<td>' . utf8_encode($user['firstname']) . '</td>
 					<td>' . utf8_encode($user['lastname']) . '</td>
-					<td>' . $user['email'] . '</td>
+					<td><a href="'.$config['wwwroot'].'/admin/viewUser/'.$user['email'].'">' . $user['email'] . '</a></td>
 					<td>' . $user['role'] . '</td>
 				 </tr>
 				';
