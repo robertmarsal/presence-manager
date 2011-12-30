@@ -2,12 +2,12 @@
 
 unset($config);
 
-$config['wwwroot'] = 'http://localhost/presence-manager';
+$config['wwwroot'] = 'http://127.0.0.1:8888/presence-manager';
 
 $config['debug'] = 1;
 
 $config['dbhost'] = 'localhost';
 $config['dbname'] = 'presence';
 $config['dbuser'] = 'root';
-$config['dbpassword'] = 'doremi';
+$config['dbpassword'] = '';
 
