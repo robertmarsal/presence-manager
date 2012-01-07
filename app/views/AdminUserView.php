@@ -1,6 +1,6 @@
 <?php
 
-class AdminViewUserView extends View{
+class AdminUserView extends View{
 
 	private $_user;
 
