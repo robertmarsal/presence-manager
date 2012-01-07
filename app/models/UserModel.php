@@ -24,7 +24,7 @@ class UserModel extends Model{
        
         $sql = "SELECT email, firstname, lastname, role
                 FROM ".$this->_table."
-                WHERE `email` = ?";
+                WHERE `id` = ?";
 
         $st = $this->_db->prepare($sql);
         $st->execute(array($userid));

@@ -34,7 +34,9 @@ class AdminController extends Controller {
 	public function user($params){
 		
         $user_model = new UserModel($this->_dependencies->get_db());
-		$this->_view = new AdminUserView($user_model->getUserData($params[0]));
+        $activity_model = new ActivityModel($this->_dependencies->get_db());
+        
+		$this->_view = new AdminUserView($user_model->getUserData($params[0]), $activity_model->getUserActivity($params[0]));
         
 	}
 }

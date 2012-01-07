@@ -45,7 +45,7 @@ class AdminUsersView extends View {
 					<td>' . $user['id'] . '</td>
 					<td>' . utf8_encode($user['firstname']) . '</td>
 					<td>' . utf8_encode($user['lastname']) . '</td>
-					<td><a href="'.$config['wwwroot'].'/admin/user/'.$user['email'].'">' . $user['email'] . '</a></td>
+					<td><a href="'.$config['wwwroot'].'/admin/user/'.$user['id'].'">' . $user['email'] . '</a></td>
 					<td>' . $user['role'] . '</td>
 				 </tr>
 				';

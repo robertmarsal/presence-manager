@@ -3,12 +3,15 @@
 class AdminUserView extends View{
 
 	private $_user;
-
-    public function __construct($user) {
+    private $_activity;
+    
+    public function __construct($user, $activity) {
 
         global $string;
 
         $this->_user = $user;
+        $this->_activity = $activity;
+
         $this->title($string['user']);
     }
 	
@@ -39,7 +42,19 @@ class AdminUserView extends View{
 	
 		$selected_user = $this->_user['role'] == 'user' ? 'SELECTED' : '';
 		$selected_admin = $this->_user['role'] == 'admin' ? 'SELECTED' : '';
-		
+        
+		$activity_table_content = '';
+        if (!empty($this->_activity)) {
+            foreach ($this->_activity as $entry) {
+                $activity_table_content .=
+                '<tr>
+					<td><span class="label ' . $entry['action'] . '">' . $this->get_event_description($entry['action']) . '</span></td>
+					<td>' . date('D M j G:i:s Y', $entry['timestamp']) . '</td>
+				 </tr>
+				';
+            }
+        }
+        
 		return '
 		<section id="details">
 			<div class="page-header">
@@ -86,9 +101,27 @@ class AdminUserView extends View{
 			<div class="page-header">
 				<h3>Activity</h1>
 			</div>
+            <table class="activity_table">
+				<thead>
+					<tr>
+						<th>Action</th>
+						<th>Time</th>
+					</tr>
+				</thead>
+				<tbody>' . $activity_table_content . '
+				</tbody>
+			</table>
 		</section>
 		';
 		
 	}
+    
+    private function get_event_description($event) {
+        switch ($event) {
+            case 'success': return 'Check-In';
+            case 'important': return 'Check-Out';
+            case 'warning': return 'Incidence';
+        }
+    }
 
 }
