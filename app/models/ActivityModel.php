@@ -2,8 +2,8 @@
 
 class ActivityModel extends Model {
 
-    public function __construct($db) {
-        parent::__construct($db);
+    public function __construct($dependencies) {
+        parent::__construct($dependencies);
 
         $this->_table = 'presence_activity';
     }

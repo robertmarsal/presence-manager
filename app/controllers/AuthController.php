@@ -26,8 +26,7 @@ class AuthController extends Controller {
 
         $st = $this->_db->prepare($sql);
         $st->execute(array($params['email'], md5($params['password'])));
-        $st->setFetchMode(PDO::FETCH_ASSOC);
-        $result = $st->fetch();
+        $result = $st->fetch(PDO::FETCH_ASSOC);
 
         if ($result) {
             $_SESSION['user'] = $result['email'];
