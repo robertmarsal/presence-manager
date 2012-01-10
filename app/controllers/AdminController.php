@@ -46,10 +46,13 @@ class AdminController extends Controller {
 
     public function update_user($params) {
 
-        $userid = array_shift($params);
-        $this->_user_model->update_user($userid, $params);
+        global $string;
 
-        $this->_view = new AdminUserDetailsView($this->_user_model->get_user_data($userid), $this->_activity_model->get_user_activity($userid));
+        $userid = array_shift($params);
+        $success = $this->_user_model->update_user($userid, $params);
+        $success == true ? $alert = Alert::show('success', $string['user:update:success']) : $alert = Alert::show('error', $string['user:update:failed']);
+
+        $this->_view = new AdminUserDetailsView($this->_user_model->get_user_data($userid), $alert);
     }
 
     public function settings(){

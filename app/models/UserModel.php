@@ -44,7 +44,7 @@ class UserModel extends Model {
                     WHERE `id` = ?";
 
             $st = $this->_db->prepare($sql);
-            $st->execute(array($userid));
+            return $st->execute(array($userid));
         }
 
     }

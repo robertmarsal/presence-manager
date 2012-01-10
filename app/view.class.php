@@ -20,6 +20,8 @@ abstract class View {
                     <link rel="stylesheet" href="' . $config['wwwroot'] . '/public/css/lib/twitter-bootstrap/bootstrap.min.css" type="text/css">
                     <link rel="stylesheet" href="' . $config['wwwroot'] . '/public/css/screen.css" type="text/css">
                     <link rel="shortcut icon" href="' . $config['wwwroot'] . '/public/img/favicon.ico">
+                    <script type="text/javascript" src="' . $config['wwwroot'] . '/public/js/jquery-1.7.1.min.js"></script>
+                    <script type="text/javascript" src="' . $config['wwwroot'] . '/public/js/bootstrap-alerts.js"></script>
                 </head>
                 <body>
                 '.$this->menu().'

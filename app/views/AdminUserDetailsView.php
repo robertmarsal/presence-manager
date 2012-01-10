@@ -3,13 +3,14 @@
 class AdminUserDetailsView extends View{
 
 	private $_user;
-    private $_activity;
+    private $_alert;
 
-    public function __construct($user) {
+    public function __construct($user, $alert = null) {
 
         global $string;
 
         $this->_user = $user;
+        $this->_alert = $alert;
 
         $this->title($string['user']);
     }
@@ -45,6 +46,7 @@ class AdminUserDetailsView extends View{
 		$selected_admin = $this->_user['role'] == 'admin' ? 'SELECTED' : '';
 
 		return '
+        '.$this->_alert.'
         <ul class="tabs">
             <li class="active"><a href="'.$config['wwwroot'].'/admin/user_details/'.$this->_user['id'].'">Details</a></li>
             <li><a href="'.$config['wwwroot'].'/admin/user_activity/'.$this->_user['id'].'">Activity</a></li>
