@@ -8,19 +8,19 @@ class ActivityModel extends Model {
         $this->_table = 'presence_activity';
     }
 
-    public function getAllActivity() {
+    public function get_all_activity($limit=100) {
 
         $sql = "SELECT pu.id, pa.userid, pa.action, pa.timestamp, pu.firstname, pu.lastname, pu.email
 				FROM " . $this->_table . " pa
 				JOIN presence_users pu ON pa.userid = pu.id
-				ORDER BY pa.timestamp DESC LIMIT 100";
+				ORDER BY pa.timestamp DESC LIMIT ".$limit;
 
         $st = $this->_db->prepare($sql);
         $st->execute();
         return $st->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getUserActivity($userid) {
+    public function get_user_activity($userid) {
 
         $sql = "SELECT pa.id, pa.userid, pa.action, pa.timestamp
 				FROM " . $this->_table . " pa

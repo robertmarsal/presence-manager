@@ -4,7 +4,7 @@ class AdminUserView extends View{
 
 	private $_user;
     private $_activity;
-    
+
     public function __construct($user, $activity) {
 
         global $string;
@@ -14,9 +14,9 @@ class AdminUserView extends View{
 
         $this->title($string['user']);
     }
-	
+
 	public function menu(){
-		
+
 		global $config;
 
         return '
@@ -35,14 +35,14 @@ class AdminUserView extends View{
 			</div>
 		</div>';
 	}
-	
+
 	public function content(){
 
 		global $config;
-	
+
 		$selected_user = $this->_user['role'] == 'user' ? 'SELECTED' : '';
 		$selected_admin = $this->_user['role'] == 'admin' ? 'SELECTED' : '';
-        
+
 		$activity_table_content = '';
         if (!empty($this->_activity)) {
             foreach ($this->_activity as $entry) {
@@ -54,13 +54,13 @@ class AdminUserView extends View{
 				';
             }
         }
-        
+
 		return '
 		<section id="details">
 			<div class="page-header">
 				<h3>Details</h1>
 			</div>
-			<form class="form-stacked" action="'.$config['wwwroot'].'/admin/modUser/">
+			<form class="form-stacked left-form" method="post" action="'.$config['wwwroot'].'/admin/update_user/'.$this->_user['id'].'">
 				<fieldset>
 					<div class="clearfix">
 						<label for="firstname">First Name</label>
@@ -101,7 +101,7 @@ class AdminUserView extends View{
 			<div class="page-header">
 				<h3>Activity</h1>
 			</div>
-            <table class="activity_table">
+            <table class="activity_table zebra-striped">
 				<thead>
 					<tr>
 						<th>Action</th>
@@ -113,9 +113,9 @@ class AdminUserView extends View{
 			</table>
 		</section>
 		';
-		
+
 	}
-    
+
     private function get_event_description($event) {
         switch ($event) {
             case 'success': return 'Check-In';

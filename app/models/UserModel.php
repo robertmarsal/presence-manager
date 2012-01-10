@@ -8,7 +8,7 @@ class UserModel extends Model {
         $this->_table = 'presence_users';
     }
 
-    public function getAllUsers() {
+    public function get_all_users() {
 
         $sql = "SELECT *
 				FROM " . $this->_table . "
@@ -19,15 +19,34 @@ class UserModel extends Model {
         return $st->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getUserData($userid) {
+    public function get_user_data($userid) {
 
-        $sql = "SELECT email, firstname, lastname, role
+        $sql = "SELECT id, email, firstname, lastname, role
                 FROM " . $this->_table . "
                 WHERE `id` = ?";
 
         $st = $this->_db->prepare($sql);
         $st->execute(array($userid));
         return $st->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function update_user($userid, $params){
+
+        if(isset($userid)){
+
+            $update_params = array();
+            foreach($params as $key => $param){
+                $update_params [] = '`'.$key.'`="'.$param.'"';
+            }
+
+            $sql = "UPDATE " . $this->_table . "
+                    SET ".implode(',', $update_params)."
+                    WHERE `id` = ?";
+
+            $st = $this->_db->prepare($sql);
+            $st->execute(array($userid));
+        }
+
     }
 
 }

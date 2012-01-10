@@ -54,7 +54,7 @@ class AdminActivityView extends View {
         }
 
         return '
-			<table class="activity_table">
+			<table class="activity_table zebra-striped">
 				<thead>
 					<tr>
 						<th>#</th>
@@ -68,9 +68,9 @@ class AdminActivityView extends View {
 				<tbody>' . $activity_table_content . '
 				</tbody>
 			</table>
-			<form class="form-stacked" action="' . $config['wwwroot'] . '/' . $_SESSION['role'] . '/activity/index.php" method="post">
+			<form class="form-stacked" action="' . $config['wwwroot'] . '/' . $_SESSION['role'] . '/activity" method="post">
 				<input type="hidden" value="20" name="activity_maxrecords"/>
-				<button class="btn right_aligned">More</button>
+				<button class="btn right_aligned">Show</button>
 			</form>';
     }
 
