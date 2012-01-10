@@ -24,6 +24,8 @@ class AdminActivityView extends View {
                     <ul class="nav">
                         <li class="active"><a href="' . $config['wwwroot'] . '/admin/activity">Activity</a></li>
                         <li><a href="' . $config['wwwroot'] . '/admin/users">Users</a></li>
+                        <li><a href="' . $config['wwwroot'] . '/admin/settings">Settings</a></li>
+                        <li><a href="' . $config['wwwroot'] . '/admin/help">Help</a></li>
                     </ul>
                     <ul class="nav secondary-nav">
                         <li><a href="' . $config['wwwroot'] . '/auth/logout">Log Out</a></li>
@@ -47,7 +49,7 @@ class AdminActivityView extends View {
 					<td>' . date('D M j G:i:s Y', $entry['timestamp']) . '</td>
 					<td>' . utf8_encode($entry['firstname']) . '</td>
                     <td>' . utf8_encode($entry['lastname']) . '</td>
-					<td><a href="'.$config['wwwroot'].'/admin/user/'.$entry['id'].'">' . $entry['email'] . '</a></td>
+					<td><a href="'.$config['wwwroot'].'/admin/user_details/'.$entry['id'].'">' . $entry['email'] . '</a></td>
 				 </tr>
 				';
             }

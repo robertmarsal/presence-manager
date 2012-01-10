@@ -20,13 +20,13 @@ class ActivityModel extends Model {
         return $st->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function get_user_activity($userid) {
+    public function get_user_activity($userid, $limit=10) {
 
         $sql = "SELECT pa.id, pa.userid, pa.action, pa.timestamp
 				FROM " . $this->_table . " pa
 				JOIN presence_users pu ON `userid` = pu.id
 				WHERE `userid` = ?
-				ORDER BY id DESC LIMIT 10";
+				ORDER BY id DESC LIMIT ".$limit;
 
         $st = $this->_db->prepare($sql);
         $st->execute(array($userid));

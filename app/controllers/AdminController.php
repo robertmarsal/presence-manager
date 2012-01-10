@@ -27,26 +27,39 @@ class AdminController extends Controller {
     public function activity() {
 
         $this->_view = new AdminActivityView($this->_activity_model->get_all_activity());
-
     }
 
     public function users() {
 
         $this->_view = new AdminUsersView($this->_user_model->get_all_users());
-
     }
 
-	public function user($params){
+    public function user_details($params) {
 
-		$this->_view = new AdminUserView($this->_user_model->get_user_data($params[0]), $this->_activity_model->get_user_activity($params[0]));
+        $this->_view = new AdminUserDetailsView($this->_user_model->get_user_data($params[0]));
+    }
 
-	}
+    public function user_activity($params) {
 
-    public function update_user($params){
+        $this->_view = new AdminUserActivityView($this->_user_model->get_user_data($params[0]), $this->_activity_model->get_user_activity($params[0]));
+    }
+
+    public function update_user($params) {
 
         $userid = array_shift($params);
         $this->_user_model->update_user($userid, $params);
 
-        $this->_view = new AdminUserView($this->_user_model->get_user_data($userid), $this->_activity_model->get_user_activity($userid));
+        $this->_view = new AdminUserDetailsView($this->_user_model->get_user_data($userid), $this->_activity_model->get_user_activity($userid));
     }
+
+    public function settings(){
+
+        $this->_view = new AdminSettingsView();
+    }
+
+    public function help(){
+
+        $this->_view = new AdminHelpView();
+    }
+
 }

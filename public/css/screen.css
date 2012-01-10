@@ -19,3 +19,12 @@ body{
 .left-form{
     padding-left: 0 !important;
 }
+
+.custom-actions{
+    margin-top: 15px;
+}
+
+.id-tab{
+    float: right !important;
+    padding-top: 10px;
+}
