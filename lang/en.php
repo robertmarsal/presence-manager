@@ -1,6 +1,6 @@
 <?php
 
-unset($string);
+$string = null;
 
 //page titles
 $string['brand'] = 'Presence';

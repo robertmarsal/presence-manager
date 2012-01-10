@@ -58,6 +58,8 @@ class AdminUserActivityView extends View{
         <ul class="tabs">
             <li><a href="'.$config['wwwroot'].'/admin/user_details/'.$this->_user['id'].'">Details</a></li>
             <li class="active"><a href="'.$config['wwwroot'].'/admin/user_activity/'.$this->_user['id'].'">Activity</a></li>
+            <li><a href="#">Statistics</a></li>
+            <li><a href="#">Summary</a></li>
             <li class="id-tab">'.$this->_user['firstname'].' '.$this->_user['lastname'].'</li>
         </ul>
 		<section id="activity">
