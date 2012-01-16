@@ -33,8 +33,10 @@ body{
     padding-top: 10px;
 }
 
-#ajax-loading{
-	display:none;
-	width:50px;
-	margin:0 auto;
+.topbar {
+    box-shadow: #999999 0px 4px 8px 0;
+}
+
+table{
+    border: 1px solid #DDDDDD;
 }

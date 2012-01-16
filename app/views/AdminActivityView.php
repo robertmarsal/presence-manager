@@ -53,7 +53,7 @@ class AdminActivityView extends View {
 
         return '
 		'.$this->_alert.'		
-			<table id="activity_table" class="zebra-striped">
+			<table id="activity_table" class="zebra-striped ">
 				<thead>
 					<tr>
 						<th>#</th>

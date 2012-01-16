@@ -2,7 +2,7 @@
 
 unset($config);
 
-$config['wwwroot'] = 'http://127.0.0.1:8888/presence-manager';
+$config['wwwroot'] = 'http://localhost/presence-manager';
 
 //API
 $config['api_root'] = 'http://localhost/presence-manager/api';
