@@ -28,6 +28,32 @@ class AdminController extends Controller {
 
         $this->_view = new AdminActivityView($this->_activity_model->get_all_activity());
     }
+	
+	public function more_activity($params){
+		
+		global $config;
+
+		$timestamp = isset($params[0]) ? $params[0] : 0;
+		
+		$entries = $this->_activity_model->get_all_activity($timestamp);
+
+		$activity = '';
+		if($entries){
+			foreach($entries as $entry){
+				$activity .='<tr id="'.$entry['timestamp'].'">
+								<td>' . $entry['id'] . '</td>
+								<td><span class="label ' . $entry['action'] . '">' . Helper::get_event_description($entry['action']) . '</span></td>
+								<td>' . date('D M j G:i:s Y', $entry['timestamp']) . '</td>
+								<td>' . utf8_encode($entry['firstname']) . '</td>
+								<td>' . utf8_encode($entry['lastname']) . '</td>
+								<td><a href="'.$config['wwwroot'].'/admin/user_details/'.$entry['id'].'">' . $entry['email'] . '</a></td>
+							</tr>
+				';
+			}
+		}
+		
+		print_r( $activity);
+	}
 
     public function users() {
 
@@ -50,7 +76,7 @@ class AdminController extends Controller {
 
         $userid = array_shift($params);
         $success = $this->_user_model->update_user($userid, $params);
-        $success == true ? $alert = Alert::show('success', $string['user:update:success']) : $alert = Alert::show('error', $string['user:update:failed']);
+        $success == true ? $alert = Helper::alert('success', $string['user:update:success']) : $alert = Helper::alert('error', $string['user:update:failed']);
 
         $this->_view = new AdminUserDetailsView($this->_user_model->get_user_data($userid), $alert);
     }
@@ -64,5 +90,11 @@ class AdminController extends Controller {
 
         $this->_view = new AdminHelpView();
     }
-
+    private function get_event_description($event) {
+        switch ($event) {
+            case 'success': return 'Check-In';
+            case 'important': return 'Check-Out';
+            case 'warning': return 'Incidence';
+        }
+    }
 }

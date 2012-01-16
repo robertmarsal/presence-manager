@@ -28,3 +28,9 @@ body{
     float: right !important;
     padding-top: 10px;
 }
+
+#ajax-loading{
+	display:none;
+	width:50px;
+	margin:0 auto;
+}

@@ -43,7 +43,7 @@ class AdminActivityView extends View {
         if (!empty($this->_entries)) {
             foreach ($this->_entries as $entry) {
                 $activity_table_content .=
-                '<tr>
+                '<tr id="'.$entry['timestamp'].'">
 					<td>' . $entry['id'] . '</td>
 					<td><span class="label ' . $entry['action'] . '">' . $this->get_event_description($entry['action']) . '</span></td>
 					<td>' . date('D M j G:i:s Y', $entry['timestamp']) . '</td>
@@ -56,7 +56,26 @@ class AdminActivityView extends View {
         }
 
         return '
-			<table class="activity_table zebra-striped">
+		<script type="text/javascript">
+			$(window).scroll(function(){
+				if($(window).scrollTop() == $(document).height() - $(window).height()){
+					$("div#ajax-loading").show();
+					$.ajax({
+						url: "'.$config['wwwroot'].'/admin/more_activity/" + $("#activity_table tr:last").attr("id"),
+						success: function(html){
+							if(html){
+								$("#activity_table tr:last").after(html);
+								$("div#ajax-loading").hide();
+							}else{
+								$("div#ajax-loading").html("No more records to show!");
+							}
+						}
+					});
+				}
+			});
+		</script>
+		
+			<table id="activity_table" class="zebra-striped">
 				<thead>
 					<tr>
 						<th>#</th>
@@ -70,10 +89,8 @@ class AdminActivityView extends View {
 				<tbody>' . $activity_table_content . '
 				</tbody>
 			</table>
-			<form class="form-stacked" action="' . $config['wwwroot'] . '/' . $_SESSION['role'] . '/activity" method="post">
-				<input type="hidden" value="20" name="activity_maxrecords"/>
-				<button class="btn right_aligned">Show</button>
-			</form>';
+			<div id="ajax-loading"><img src="'.$config['wwwroot'].'/public/img/ajax-loader.gif" /></div>
+			';
     }
 
 

@@ -2,7 +2,7 @@
 
 unset($config);
 
-$config['wwwroot'] = 'http://localhost/presence-manager';
+$config['wwwroot'] = 'http://127.0.0.1:8888/presence-manager';
 
 //API
 $config['api_root'] = 'http://localhost/presence-manager/api';
@@ -12,6 +12,6 @@ $config['debug'] = 1;
 
 $config['dbhost'] = 'localhost';
 $config['dbname'] = 'presence';
-$config['dbuser'] = 'rboloc';
-$config['dbpassword'] = 'doremi';
+$config['dbuser'] = 'root';
+$config['dbpassword'] = '';
 
