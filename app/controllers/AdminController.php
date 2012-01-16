@@ -44,6 +44,23 @@ class AdminController extends Controller {
         $this->_view = new AdminUserActivityView($this->_user_model->get_user_data($params[0]), $this->_activity_model->get_user_activity($params[0]));
     }
 
+	public function user_account($params) {
+
+        $this->_view = new AdminUserAccountView($this->_user_model->get_user_data($params[0]));
+    }
+	
+	public function user_delete($params) {
+	
+        if(isset($params['userid'])){
+			// delete the user data
+			$this->_user_model->delete_user($params['userid']);
+			// delete the user activity
+			$this->_activity_model->delete_user_activity($params['userid']);
+		}
+		
+		$this->_view = new AdminActivityView($this->_activity_model->get_all_activity());
+    }
+	
     public function update_user($params) {
 
         global $string;

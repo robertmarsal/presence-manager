@@ -20,17 +20,26 @@ class ActivityModel extends Model {
         return $st->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function get_user_activity($userid, $limit=10) {
+    public function get_user_activity($userid) {
 
         $sql = "SELECT pa.id, pa.userid, pa.action, pa.timestamp
 				FROM " . $this->_table . " pa
 				JOIN presence_users pu ON `userid` = pu.id
 				WHERE `userid` = ?
-				ORDER BY id DESC LIMIT ".$limit;
+				ORDER BY id DESC LIMIT 15";
 
         $st = $this->_db->prepare($sql);
         $st->execute(array($userid));
         return $st->fetchAll(PDO::FETCH_ASSOC);
     }
+	
+	public function delete_user_activity($userid){
+		
+		$sql = "DELETE FROM ".$this->_table."
+					WHERE `userid` = ?";
+
+        $st = $this->_db->prepare($sql);
+        $st->execute(array($userid));
+	}
 
 }

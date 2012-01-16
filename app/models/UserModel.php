@@ -48,5 +48,17 @@ class UserModel extends Model {
         }
 
     }
+	
+	public function delete_user($userid){
+	
+		if (isset($userid)){
+		
+			$sql = "DELETE FROM ".$this->_table."
+					WHERE `id` = ?";
+					
+			$st = $this->_db->prepare($sql);
+            return $st->execute(array($userid));
+		}
+	}
 
 }

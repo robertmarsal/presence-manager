@@ -1,17 +1,15 @@
 <?php
 
-class AdminUserActivityView extends View{
+class AdminUserAccountView extends View{
 
 	private $_user;
-    private $_activity;
 
-    public function __construct($user, $activity) {
+    public function __construct($user) {
 
         global $string;
 
         $this->_user = $user;
-        $this->_activity = $activity;
-
+		
         $this->title($string['user']);
     }
 
@@ -35,38 +33,20 @@ class AdminUserActivityView extends View{
 
 		global $config;
 
-		$activity_table_content = '';
-        if (!empty($this->_activity)) {
-            foreach ($this->_activity as $entry) {
-                $activity_table_content .=
-                '<tr>
-					<td><span class="label ' . $entry['action'] . '">' . Helper::get_event_description($entry['action']) . '</span></td>
-					<td>' . date('D M j G:i:s Y', $entry['timestamp']) . '</td>
-				 </tr>
-				';
-            }
-        }
-
 		return '
         <ul class="tabs">
             <li><a href="'.$config['wwwroot'].'/admin/user_details/'.$this->_user['id'].'">Details</a></li>
-            <li class="active"><a href="'.$config['wwwroot'].'/admin/user_activity/'.$this->_user['id'].'">Activity</a></li>
+            <li><a href="'.$config['wwwroot'].'/admin/user_activity/'.$this->_user['id'].'">Activity</a></li>
             <li><a href="#">Statistics</a></li>
             <li><a href="#">Summary</a></li>
-			<li><a href="'.$config['wwwroot'].'/admin/user_account/'.$this->_user['id'].'">Account</a></li>
+			<li class="active"><a href="'.$config['wwwroot'].'/admin/user_account/'.$this->_user['id'].'">Account</a></li>
             <li class="id-tab">'.$this->_user['firstname'].' '.$this->_user['lastname'].'</li>
         </ul>
-		<section id="activity">
-            <table class="activity_table zebra-striped">
-				<thead>
-					<tr>
-						<th>Action</th>
-						<th>Time</th>
-					</tr>
-				</thead>
-				<tbody>' . $activity_table_content . '
-				</tbody>
-			</table>
+		<section id="account">
+			<form action="' . $config['wwwroot'] . '/admin/user_delete" method="post">
+				<input type="submit" class="btn danger" value="Delete Account"> This action cannot be undone!
+				<input type="hidden" name="userid" value="'.$this->_user['id'].'">
+			</form>
 		</section>
 		';
 
