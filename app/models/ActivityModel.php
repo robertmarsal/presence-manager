@@ -8,18 +8,15 @@ class ActivityModel extends Model {
         $this->_table = 'presence_activity';
     }
 
-    public function get_all_activity($timestamp = 0) {
+    public function get_all_activity() {
 
-		$where = $timestamp > 0 ? 'WHERE pa.timestamp < ?' : '';
-	
-        $sql = "SELECT pu.id, pa.userid, pa.action, pa.timestamp, pu.firstname, pu.lastname, pu.email
+		$sql = "SELECT pu.id, pa.userid, pa.action, pa.timestamp, pu.firstname, pu.lastname, pu.email
 				FROM " . $this->_table . " pa
 				JOIN presence_users pu ON pa.userid = pu.id
-				".$where."
-				ORDER BY pa.timestamp DESC LIMIT 10";
+				ORDER BY pa.timestamp DESC LIMIT 15";
 
         $st = $this->_db->prepare($sql);
-        $st->execute(array($timestamp));
+        $st->execute();
         return $st->fetchAll(PDO::FETCH_ASSOC);
     }
 

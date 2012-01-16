@@ -18,5 +18,9 @@ class Helper{
             case 'warning': return 'Incidence';
 		}
 	}
+	
+	static function redirect($url){
+		header('Location: '.$url);
+	}
 		
 }

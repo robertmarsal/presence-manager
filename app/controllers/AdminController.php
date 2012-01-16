@@ -20,7 +20,7 @@ class AdminController extends Controller {
         if ($this->check_role('admin') && method_exists($this, $action)) {
             $this->$action($params);
         } else {
-            header('Location: ' . $config['wwwroot'] . '/error/notfound');
+			Helper::redirect($config['wwwroot'] . '/error/notfound');
         }
     }
 
@@ -29,32 +29,6 @@ class AdminController extends Controller {
         $this->_view = new AdminActivityView($this->_activity_model->get_all_activity());
     }
 	
-	public function more_activity($params){
-		
-		global $config;
-
-		$timestamp = isset($params[0]) ? $params[0] : 0;
-		
-		$entries = $this->_activity_model->get_all_activity($timestamp);
-
-		$activity = '';
-		if($entries){
-			foreach($entries as $entry){
-				$activity .='<tr id="'.$entry['timestamp'].'">
-								<td>' . $entry['id'] . '</td>
-								<td><span class="label ' . $entry['action'] . '">' . Helper::get_event_description($entry['action']) . '</span></td>
-								<td>' . date('D M j G:i:s Y', $entry['timestamp']) . '</td>
-								<td>' . utf8_encode($entry['firstname']) . '</td>
-								<td>' . utf8_encode($entry['lastname']) . '</td>
-								<td><a href="'.$config['wwwroot'].'/admin/user_details/'.$entry['id'].'">' . $entry['email'] . '</a></td>
-							</tr>
-				';
-			}
-		}
-		
-		print_r( $activity);
-	}
-
     public function users() {
 
         $this->_view = new AdminUsersView($this->_user_model->get_all_users());
@@ -90,11 +64,5 @@ class AdminController extends Controller {
 
         $this->_view = new AdminHelpView();
     }
-    private function get_event_description($event) {
-        switch ($event) {
-            case 'success': return 'Check-In';
-            case 'important': return 'Check-Out';
-            case 'warning': return 'Incidence';
-        }
-    }
+
 }

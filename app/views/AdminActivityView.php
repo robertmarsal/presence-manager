@@ -37,7 +37,7 @@ class AdminActivityView extends View {
 
     public function content() {
 
-        global $config;
+        global $config, $string;
 
         $activity_table_content = '';
         if (!empty($this->_entries)) {
@@ -45,7 +45,7 @@ class AdminActivityView extends View {
                 $activity_table_content .=
                 '<tr id="'.$entry['timestamp'].'">
 					<td>' . $entry['id'] . '</td>
-					<td><span class="label ' . $entry['action'] . '">' . $this->get_event_description($entry['action']) . '</span></td>
+					<td><span class="label ' . $entry['action'] . '">' . Helper::get_event_description($entry['action']) . '</span></td>
 					<td>' . date('D M j G:i:s Y', $entry['timestamp']) . '</td>
 					<td>' . utf8_encode($entry['firstname']) . '</td>
                     <td>' . utf8_encode($entry['lastname']) . '</td>
@@ -55,26 +55,7 @@ class AdminActivityView extends View {
             }
         }
 
-        return '
-		<script type="text/javascript">
-			$(window).scroll(function(){
-				if($(window).scrollTop() == $(document).height() - $(window).height()){
-					$("div#ajax-loading").show();
-					$.ajax({
-						url: "'.$config['wwwroot'].'/admin/more_activity/" + $("#activity_table tr:last").attr("id"),
-						success: function(html){
-							if(html){
-								$("#activity_table tr:last").after(html);
-								$("div#ajax-loading").hide();
-							}else{
-								$("div#ajax-loading").html("No more records to show!");
-							}
-						}
-					});
-				}
-			});
-		</script>
-		
+        return '		
 			<table id="activity_table" class="zebra-striped">
 				<thead>
 					<tr>
@@ -89,7 +70,6 @@ class AdminActivityView extends View {
 				<tbody>' . $activity_table_content . '
 				</tbody>
 			</table>
-			<div id="ajax-loading"><img src="'.$config['wwwroot'].'/public/img/ajax-loader.gif" /></div>
 			';
     }
 
