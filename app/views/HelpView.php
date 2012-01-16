@@ -14,17 +14,10 @@ class HelpView extends View{
         global $config, $string;
 
         return '
-        <div class="topbar" data-scrollspy="scrollspy">
-        <div class="topbar-inner">
-            <div class="container">
-                <a class="brand" href="' . $config['wwwroot'] . '">' . $string['brand'] . '</a>
-                <ul class="nav">
-                    <li><a href="' . $config['wwwroot'] . '">' . $string['login'] . '</a></li>
-                    <li class="active"><a href="' . $config['wwwroot'] . '/help/main">' . $string['help'] . '</a></li>
-                </ul>
-            </div>
-        </div>
-        </div>';
+			<ul class="nav">
+				<li><a href="' . $config['wwwroot'] . '">' . $string['login'] . '</a></li>
+                <li class="active"><a href="' . $config['wwwroot'] . '/help/main">' . $string['help'] . '</a></li>
+            </ul>';
     }
 
 	public function content() {

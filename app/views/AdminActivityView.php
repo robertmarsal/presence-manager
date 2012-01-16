@@ -17,22 +17,15 @@ class AdminActivityView extends View {
         global $config;
 
         return '
-        <div class="topbar" id="topbar-container">
-            <div class="topbar-inner">
-                <div class="container">
-                    <a class="brand" href="' . $config['wwwroot'] . '">Presence</a>
-                    <ul class="nav">
-                        <li class="active"><a href="' . $config['wwwroot'] . '/admin/activity">Activity</a></li>
-                        <li><a href="' . $config['wwwroot'] . '/admin/users">Users</a></li>
-                        <li><a href="' . $config['wwwroot'] . '/admin/settings">Settings</a></li>
-                        <li><a href="' . $config['wwwroot'] . '/admin/help">Help</a></li>
-                    </ul>
-                    <ul class="nav secondary-nav">
-                        <li><a href="' . $config['wwwroot'] . '/auth/logout">Log Out</a></li>
-                    </ul>
-                </div>
-            </div>
-		</div>';
+			<ul class="nav">
+				<li class="active"><a href="' . $config['wwwroot'] . '/admin/activity">Activity</a></li>
+                <li><a href="' . $config['wwwroot'] . '/admin/users">Users</a></li>
+                <li><a href="' . $config['wwwroot'] . '/admin/settings">Settings</a></li>
+                <li><a href="' . $config['wwwroot'] . '/admin/help">Help</a></li>
+            </ul>
+            <ul class="nav secondary-nav">
+				<li><a href="' . $config['wwwroot'] . '/auth/logout">Log Out</a></li>
+            </ul>';
     }
 
     public function content() {
@@ -43,7 +36,7 @@ class AdminActivityView extends View {
         if (!empty($this->_entries)) {
             foreach ($this->_entries as $entry) {
                 $activity_table_content .=
-                '<tr id="'.$entry['timestamp'].'">
+                '<tr>
 					<td>' . $entry['id'] . '</td>
 					<td><span class="label ' . $entry['action'] . '">' . Helper::get_event_description($entry['action']) . '</span></td>
 					<td>' . date('D M j G:i:s Y', $entry['timestamp']) . '</td>
@@ -72,14 +65,4 @@ class AdminActivityView extends View {
 			</table>
 			';
     }
-
-
-    private function get_event_description($event) {
-        switch ($event) {
-            case 'success': return 'Check-In';
-            case 'important': return 'Check-Out';
-            case 'warning': return 'Incidence';
-        }
-    }
-
 }

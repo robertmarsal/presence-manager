@@ -24,7 +24,16 @@ abstract class View {
                     <script type="text/javascript" src="' . $config['wwwroot'] . '/public/js/bootstrap-alerts.js"></script>
                 </head>
                 <body>
+					<!--MENU-->
+					<div class="topbar" id="topbar-container">
+						<div class="topbar-inner">
+							<div class="container">
+								<a class="brand" href="' . $config['wwwroot'] . '">Presence</a>
                 '.$this->menu().'
+				            </div>
+						</div>
+					</div>
+					<!--MAIN-->
                     <div class="container">
                     '.$this->content().'
                     </div>
