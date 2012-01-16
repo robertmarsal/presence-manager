@@ -39,7 +39,7 @@ class ActivityModel extends Model {
 					WHERE `userid` = ?";
 
         $st = $this->_db->prepare($sql);
-        $st->execute(array($userid));
+        return $st->execute(array($userid));
 	}
 
 }

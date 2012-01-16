@@ -3,12 +3,15 @@
 class AdminActivityView extends View {
 
     private $_entries;
+	private $_alert;
 
-    public function __construct($entries) {
+    public function __construct($entries, $alert = null) {
 
         global $string;
 
         $this->_entries = $entries;
+		$this->_alert = $alert;
+		
         $this->title($string['activity']);
     }
 
@@ -48,7 +51,8 @@ class AdminActivityView extends View {
             }
         }
 
-        return '		
+        return '
+		'.$this->_alert.'		
 			<table id="activity_table" class="zebra-striped">
 				<thead>
 					<tr>

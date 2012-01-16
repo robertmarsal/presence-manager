@@ -43,7 +43,7 @@ class AdminUserAccountView extends View{
             <li class="id-tab">'.$this->_user['firstname'].' '.$this->_user['lastname'].'</li>
         </ul>
 		<section id="account">
-			<form action="' . $config['wwwroot'] . '/admin/user_delete" method="post">
+			<form action="' . $config['wwwroot'] . '/admin/delete_user" method="post">
 				<input type="submit" class="btn danger" value="Delete Account"> This action cannot be undone!
 				<input type="hidden" name="userid" value="'.$this->_user['id'].'">
 			</form>

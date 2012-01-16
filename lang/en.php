@@ -16,6 +16,8 @@ $string['404'] = '404';
 //user
 $string['user:update:success'] = 'User details updated successfully!';
 $string['user:update:failed'] = 'User details update falied!';
+$string['user:delete:success'] = 'User deleted successfully!';
+$string['user:delete:failed'] = 'User deleition falied!';
 
 //activity
 $string['admin:no:activities'] = 'No more activity!';
