@@ -4,9 +4,9 @@ class AdminHelpView extends View{
 
     function __construct() {
 
-        global $string;
+        global $STRINGS;
 
-        $this->title($string['help']);
+        $this->title($STRINGS['help']);
     }
 
     public function menu() {

@@ -4,12 +4,15 @@ class AdminUsersView extends View {
 
     private $_users;
 
-    public function __construct($users) {
+    public function __construct($users, $alert = null) {
+        parent::__construct($alert);
 
-        global $string;
+        global $STRINGS;
 
         $this->_users = $users;
-        $this->title($string['users']);
+        $this->_alert = $alert;
+
+        $this->title($STRINGS['users']);
     }
 
     public function menu() {
@@ -29,7 +32,7 @@ class AdminUsersView extends View {
 
     public function content() {
 
-        global $CONFIG;
+        global $CONFIG, $STRINGS;
 
         $users_table_content = '';
         if (!empty($this->_users)) {
@@ -60,7 +63,10 @@ class AdminUsersView extends View {
 				<tbody>
 				' . $users_table_content . '
 				</tbody>
-			</table>';
+			</table>
+            <form action="' . $CONFIG['wwwroot'] . '/admin/user_add" method="post">
+				<button class="btn right_aligned success">+ '.$STRINGS['add:user'].'</button>
+			</form>';
     }
 
 }

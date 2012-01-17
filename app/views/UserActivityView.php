@@ -6,10 +6,10 @@ class UserActivityView extends View {
 
     public function __construct($entries) {
 
-        global $string;
+        global $STRINGS;
 
         $this->_entries = $entries;
-        $this->title($string['activity']);
+        $this->title($STRINGS['activity']);
     }
 
     public function menu() {

@@ -49,9 +49,38 @@ class AdminController extends Controller {
         $this->_view = new AdminUserAccountView($this->_user_model->get_user_data($params[0]));
     }
 
-	public function delete_user($params) {
+    public function user_add(){
 
-		global $string;
+        $this->_view = new AdminUserCreateView();
+    }
+
+    public function create_user($params){
+
+        global $STRINGS;
+
+        $valid = true;
+
+        foreach ($params as $param){
+            if(empty($param)){
+                $valid = false;
+                break;
+            }
+        }
+
+        if($valid){
+            $result = $this->_user_model->create_user($params);
+            $result == true ? $alert = Helper::alert('success', $STRINGS['user:create:success']) : $alert = Helper::alert('error', $STRINGS['user:create:failed']);
+
+            $this->_view = new AdminUsersView($this->_user_model->get_all_users(), $alert);
+
+        }else{
+            $this->_view = new AdminUserCreateView(Helper::alert('error', $STRINGS['user:create:failed']));
+        }
+    }
+
+    public function delete_user($params) {
+
+		global $STRINGS;
 
 		$result = false;
         if(isset($params['userid'])){
@@ -63,18 +92,18 @@ class AdminController extends Controller {
 			$result = $op1 && $op2;
 		}
 
-		$result == true ? $alert = Helper::alert('success', $string['user:delete:success']) : $alert = Helper::alert('error', $string['user:delete:failed']);
+		$result == true ? $alert = Helper::alert('success', $STRINGS['user:delete:success']) : $alert = Helper::alert('error', $STRINGS['user:delete:failed']);
 
 		$this->_view = new AdminActivityView($this->_activity_model->get_all_activity(), $alert);
     }
 
     public function update_user($params) {
 
-        global $string;
+        global $STRINGS;
 
         $userid = array_shift($params);
         $success = $this->_user_model->update_user($userid, $params);
-        $success == true ? $alert = Helper::alert('success', $string['user:update:success']) : $alert = Helper::alert('error', $string['user:update:failed']);
+        $success == true ? $alert = Helper::alert('success', $STRINGS['user:update:success']) : $alert = Helper::alert('error', $STRINGS['user:update:failed']);
 
         $this->_view = new AdminUserDetailsView($this->_user_model->get_user_data($userid), $alert);
     }

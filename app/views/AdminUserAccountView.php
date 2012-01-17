@@ -6,11 +6,11 @@ class AdminUserAccountView extends View{
 
     public function __construct($user) {
 
-        global $string;
+        global $STRINGS;
 
         $this->_user = $user;
 
-        $this->title($string['user']);
+        $this->title($STRINGS['user']);
     }
 
 	public function menu(){

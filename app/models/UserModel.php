@@ -30,6 +30,17 @@ class UserModel extends Model {
         return $st->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function create_user($user){
+
+        $sql = "INSERT INTO ".$this->_table."
+                    (email, password, role, firstname, lastname)
+                VALUES (?, ?, ?, ?, ?)";
+
+        $st = $this->_db->prepare($sql);
+        return $st->execute(array($user['email'], md5($user['password']),$user['role'],
+            $user['firstname'], $user['lastname']));
+    }
+
     public function update_user($userid, $params){
 
         if(isset($userid)){
@@ -48,14 +59,14 @@ class UserModel extends Model {
         }
 
     }
-	
+
 	public function delete_user($userid){
-	
+
 		if (isset($userid)){
-		
+
 			$sql = "DELETE FROM ".$this->_table."
 					WHERE `id` = ?";
-					
+
 			$st = $this->_db->prepare($sql);
             return $st->execute(array($userid));
 		}

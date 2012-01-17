@@ -3,16 +3,16 @@
 class AdminActivityView extends View {
 
     private $_entries;
-	private $_alert;
 
     public function __construct($entries, $alert = null) {
-
-        global $string;
+        parent::__construct($alert);
+        
+        global $STRINGS;
 
         $this->_entries = $entries;
 		$this->_alert = $alert;
 
-        $this->title($string['activity']);
+        $this->title($STRINGS['activity']);
     }
 
     public function menu() {
@@ -32,7 +32,7 @@ class AdminActivityView extends View {
 
     public function content() {
 
-        global $CONFIG, $string;
+        global $CONFIG;
 
         $activity_table_content = '';
         if (!empty($this->_entries)) {
@@ -51,7 +51,6 @@ class AdminActivityView extends View {
         }
 
         return '
-		'.$this->_alert.'
 			<table id="activity_table" class="zebra-striped ">
 				<thead>
 					<tr>

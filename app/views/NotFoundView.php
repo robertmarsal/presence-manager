@@ -4,20 +4,13 @@ class NotFoundView extends View {
 
     public function __construct() {
 
-        global $string;
+        global $STRINGS;
 
-        $this->title($string['404']);
+        $this->title($STRINGS['404']);
     }
 
     public function menu(){
-
-        global $CONFIG, $string;
-
-        return '
-			<ul class="nav">
-				<li class="active"><a href="' . $CONFIG['wwwroot'] . '">' . $string['login'] . '</a></li>
-                <li><a href="' . $CONFIG['wwwroot'] . '/help/main">' . $string['help'] . '</a></li>
-            </ul>';
+        return null;
     }
 
     public function content(){

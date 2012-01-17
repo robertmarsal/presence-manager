@@ -4,19 +4,19 @@ class LoginView extends View {
 
     public function __construct() {
 
-        global $string;
+        global $STRINGS;
 
-        $this->title($string['home']);
+        $this->title($STRINGS['home']);
     }
 
     public function menu() {
 
-        global $CONFIG, $string;
+        global $CONFIG, $STRINGS;
 
         return '
 			<ul class="nav">
-				<li class="active"><a href="' . $CONFIG['wwwroot'] . '">' . $string['login'] . '</a></li>
-                <li><a href="' . $CONFIG['wwwroot'] . '/help/main">' . $string['help'] . '</a></li>
+				<li class="active"><a href="' . $CONFIG['wwwroot'] . '">' . $STRINGS['login'] . '</a></li>
+                <li><a href="' . $CONFIG['wwwroot'] . '/help/main">' . $STRINGS['help'] . '</a></li>
             </ul>';
     }
 

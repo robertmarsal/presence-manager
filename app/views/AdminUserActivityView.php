@@ -7,12 +7,12 @@ class AdminUserActivityView extends View{
 
     public function __construct($user, $activity) {
 
-        global $string;
+        global $STRINGS;
 
         $this->_user = $user;
         $this->_activity = $activity;
 
-        $this->title($string['user']);
+        $this->title($STRINGS['user']);
     }
 
 	public function menu(){

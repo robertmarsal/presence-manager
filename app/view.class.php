@@ -3,6 +3,12 @@
 abstract class View {
 
     private $_title;
+    protected $_alert;
+
+    public function __construct($alert) {
+        $this->_alert = $alert;
+    }
+
 
     public function __destruct() {
         $this->render();
@@ -10,13 +16,13 @@ abstract class View {
 
     private function render() {
 
-        global $CONFIG, $string;
+        global $CONFIG, $STRINGS;
 
         echo '<!DOCTYPE html>';
         echo '<html lang="en">
                 <head>
                 <meta charset="utf-8">
-                    <title>' . $this->_title . ' | ' . $string['brand'] . '</title>
+                    <title>' . $this->_title . ' | ' . $STRINGS['brand'] . '</title>
                     <link rel="stylesheet" href="' . $CONFIG['wwwroot'] . '/public/css/lib/twitter-bootstrap/bootstrap.min.css" type="text/css">
                     <link rel="stylesheet" href="' . $CONFIG['wwwroot'] . '/public/css/screen.css" type="text/css">
                     <link rel="shortcut icon" href="' . $CONFIG['wwwroot'] . '/public/img/favicon.ico">
@@ -35,6 +41,7 @@ abstract class View {
 					</div>
 					<!--MAIN-->
                     <div class="container">
+                    '.$this->_alert.'
                     '.$this->content().'
                     </div>
                 </body>
