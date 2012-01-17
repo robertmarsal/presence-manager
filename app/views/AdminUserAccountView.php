@@ -9,7 +9,7 @@ class AdminUserAccountView extends View{
         global $string;
 
         $this->_user = $user;
-		
+
         $this->title($string['user']);
     }
 
@@ -21,7 +21,6 @@ class AdminUserAccountView extends View{
 			<ul class="nav">
 				<li><a href="' . $config['wwwroot'] . '/admin/activity">Activity</a></li>
 				<li class="active"><a href="' . $config['wwwroot'] . '/admin/users">Users</a></li>
-                <li><a href="' . $config['wwwroot'] . '/admin/settings">Settings</a></li>
                 <li><a href="' . $config['wwwroot'] . '/admin/help">Help</a></li>
 			</ul>
 			<ul class="nav secondary-nav">

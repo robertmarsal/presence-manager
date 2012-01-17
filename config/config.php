@@ -12,6 +12,6 @@ $config['debug'] = 1;
 
 $config['dbhost'] = 'localhost';
 $config['dbname'] = 'presence';
-$config['dbuser'] = 'root';
-$config['dbpassword'] = '';
+$config['dbuser'] = 'rboloc';
+$config['dbpassword'] = 'doremi';
 

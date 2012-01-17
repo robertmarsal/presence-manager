@@ -11,7 +11,7 @@ class AdminActivityView extends View {
 
         $this->_entries = $entries;
 		$this->_alert = $alert;
-		
+
         $this->title($string['activity']);
     }
 
@@ -23,7 +23,6 @@ class AdminActivityView extends View {
 			<ul class="nav">
 				<li class="active"><a href="' . $config['wwwroot'] . '/admin/activity">Activity</a></li>
                 <li><a href="' . $config['wwwroot'] . '/admin/users">Users</a></li>
-                <li><a href="' . $config['wwwroot'] . '/admin/settings">Settings</a></li>
                 <li><a href="' . $config['wwwroot'] . '/admin/help">Help</a></li>
             </ul>
             <ul class="nav secondary-nav">
@@ -52,7 +51,7 @@ class AdminActivityView extends View {
         }
 
         return '
-		'.$this->_alert.'		
+		'.$this->_alert.'
 			<table id="activity_table" class="zebra-striped ">
 				<thead>
 					<tr>
