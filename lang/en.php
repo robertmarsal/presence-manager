@@ -20,6 +20,7 @@ $STRINGS['user:delete:success'] = 'User deleted successfully!';
 $STRINGS['user:delete:failed'] = 'User deleition falied!';
 $STRINGS['user:create:success'] = 'The new user has been created!';
 $STRINGS['user:create:failed'] = 'Error creating new user!';
+$STRINGS['user:create:duplicate'] = 'This user already exists!';
 
 //activity
 $STRINGS['admin:no:activities'] = 'No more activity!';

@@ -30,6 +30,17 @@ class UserModel extends Model {
         return $st->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function get_user_by_email($email){
+
+        $sql = "SELECT email
+                FROM ".$this->_table."
+                WHERE `email` = ?";
+
+        $st = $this->_db->prepare($sql);
+        $st->execute(array($email));
+        return $st->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function create_user($user){
 
         $sql = "INSERT INTO ".$this->_table."

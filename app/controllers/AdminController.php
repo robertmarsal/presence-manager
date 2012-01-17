@@ -20,7 +20,7 @@ class AdminController extends Controller {
         if ($this->check_role('admin') && method_exists($this, $action)) {
             $this->$action($params);
         } else {
-			Helper::redirect($CONFIG['wwwroot'] . '/error/notfound');
+            Helper::redirect($CONFIG['wwwroot'] . '/error/notfound');
         }
     }
 
@@ -44,57 +44,65 @@ class AdminController extends Controller {
         $this->_view = new AdminUserActivityView($this->_user_model->get_user_data($params[0]), $this->_activity_model->get_user_activity($params[0]));
     }
 
-	public function user_account($params) {
+    public function user_account($params) {
 
         $this->_view = new AdminUserAccountView($this->_user_model->get_user_data($params[0]));
     }
 
-    public function user_add(){
+    public function user_add() {
 
         $this->_view = new AdminUserCreateView();
     }
 
-    public function create_user($params){
+    public function create_user($params) {
 
         global $STRINGS;
 
         $valid = true;
+        $duplicate = false;
 
-        foreach ($params as $param){
-            if(empty($param)){
+        // check all the params
+        foreach ($params as $param) {
+            if (empty($param)) {
                 $valid = false;
                 break;
             }
         }
 
-        if($valid){
+        // check if the email is already registred
+        if ($this->_user_model->get_user_by_email($params['email']) == true) {
+            $duplicate = true;
+        }
+
+        if ($valid && !$duplicate) {
             $result = $this->_user_model->create_user($params);
             $result == true ? $alert = Helper::alert('success', $STRINGS['user:create:success']) : $alert = Helper::alert('error', $STRINGS['user:create:failed']);
 
             $this->_view = new AdminUsersView($this->_user_model->get_all_users(), $alert);
-
-        }else{
+        } else if (!$valid && !$duplicate) {
             $this->_view = new AdminUserCreateView(Helper::alert('error', $STRINGS['user:create:failed']));
+        } else if ($duplicate) {
+            $this->_view = new AdminUsersView($this->_user_model->get_all_users(), Helper::alert('error', $STRINGS['user:create:duplicate']));
         }
     }
 
     public function delete_user($params) {
 
-		global $STRINGS;
+        global $STRINGS;
 
-		$result = false;
-        if(isset($params['userid'])){
-			// delete the user data
-			$op1 = $this->_user_model->delete_user($params['userid']);
-			// delete the user activity
-			$op2 = $this->_activity_model->delete_user_activity($params['userid']);
+        $result = false;
+        if (isset($params['userid'])) {
+            // delete the user data
+            $op1 = $this->_user_model->delete_user($params['userid']);
+            // delete the user activity
+            $op2 = $this->_activity_model->delete_user_activity($params['userid']);
 
-			$result = $op1 && $op2;
-		}
+            $result = $op1 && $op2;
+        }
 
-		$result == true ? $alert = Helper::alert('success', $STRINGS['user:delete:success']) : $alert = Helper::alert('error', $STRINGS['user:delete:failed']);
+        $result == true ? $alert = Helper::alert('success', $STRINGS['user:delete:success']) : $alert = Helper::alert('error', $STRINGS['user:delete:failed']);
 
-		$this->_view = new AdminActivityView($this->_activity_model->get_all_activity(), $alert);
+        $this->_view = new AdminActivityView($this->_activity_model->get_all_activity(), $alert);
     }
 
     public function update_user($params) {
@@ -108,12 +116,12 @@ class AdminController extends Controller {
         $this->_view = new AdminUserDetailsView($this->_user_model->get_user_data($userid), $alert);
     }
 
-    public function settings(){
+    public function settings() {
 
         $this->_view = new AdminSettingsView();
     }
 
-    public function help(){
+    public function help() {
 
         $this->_view = new AdminHelpView();
     }
