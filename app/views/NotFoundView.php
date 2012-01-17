@@ -11,22 +11,22 @@ class NotFoundView extends View {
 
     public function menu(){
 
-        global $config, $string;
+        global $CONFIG, $string;
 
         return '
 			<ul class="nav">
-				<li class="active"><a href="' . $config['wwwroot'] . '">' . $string['login'] . '</a></li>
-                <li><a href="' . $config['wwwroot'] . '/help/main">' . $string['help'] . '</a></li>
+				<li class="active"><a href="' . $CONFIG['wwwroot'] . '">' . $string['login'] . '</a></li>
+                <li><a href="' . $CONFIG['wwwroot'] . '/help/main">' . $string['help'] . '</a></li>
             </ul>';
     }
 
     public function content(){
 
-        global $config;
+        global $CONFIG;
 
         return '
         <div class="container">
-            <h2>Ooops! This is a 404...quick, go <a href="' . $config['wwwroot'] . '">back!</a></h2>
+            <h2>Ooops! This is a 404...quick, go <a href="' . $CONFIG['wwwroot'] . '">back!</a></h2>
         </div>';
     }
 

@@ -17,7 +17,7 @@ class AuthController extends Controller {
 
     private function login($params) {
 
-        global $config;
+        global $CONFIG;
         //TO DO: sanitize input
         $sql = "SELECT *
                 FROM presence_users
@@ -32,20 +32,20 @@ class AuthController extends Controller {
             $_SESSION['user'] = $result['email'];
             $_SESSION['role'] = $result['role'];
 
-            header('Location: ' . $config['wwwroot'] . '/' . $result['role'] . '/activity/');
+            header('Location: ' . $CONFIG['wwwroot'] . '/' . $result['role'] . '/activity/');
         } else {
-            header('Location: ' . $config['wwwroot']);
+            header('Location: ' . $CONFIG['wwwroot']);
         }
     }
 
     private function logout() {
 
-        global $config;
+        global $CONFIG;
 
         session_unset();
         session_destroy();
 
-        header('Location: ' . $config['wwwroot']);
+        header('Location: ' . $CONFIG['wwwroot']);
     }
 
     private function asklogin() {

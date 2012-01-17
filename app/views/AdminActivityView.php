@@ -17,22 +17,22 @@ class AdminActivityView extends View {
 
     public function menu() {
 
-        global $config;
+        global $CONFIG;
 
         return '
 			<ul class="nav">
-				<li class="active"><a href="' . $config['wwwroot'] . '/admin/activity">Activity</a></li>
-                <li><a href="' . $config['wwwroot'] . '/admin/users">Users</a></li>
-                <li><a href="' . $config['wwwroot'] . '/admin/help">Help</a></li>
+				<li class="active"><a href="' . $CONFIG['wwwroot'] . '/admin/activity">Activity</a></li>
+                <li><a href="' . $CONFIG['wwwroot'] . '/admin/users">Users</a></li>
+                <li><a href="' . $CONFIG['wwwroot'] . '/admin/help">Help</a></li>
             </ul>
             <ul class="nav secondary-nav">
-				<li><a href="' . $config['wwwroot'] . '/auth/logout">Log Out</a></li>
+				<li><a href="' . $CONFIG['wwwroot'] . '/auth/logout">Log Out</a></li>
             </ul>';
     }
 
     public function content() {
 
-        global $config, $string;
+        global $CONFIG, $string;
 
         $activity_table_content = '';
         if (!empty($this->_entries)) {
@@ -44,7 +44,7 @@ class AdminActivityView extends View {
 					<td>' . date('D M j G:i:s Y', $entry['timestamp']) . '</td>
 					<td>' . utf8_encode($entry['firstname']) . '</td>
                     <td>' . utf8_encode($entry['lastname']) . '</td>
-					<td><a href="'.$config['wwwroot'].'/admin/user_details/'.$entry['id'].'">' . $entry['email'] . '</a></td>
+					<td><a href="'.$CONFIG['wwwroot'].'/admin/user_details/'.$entry['id'].'">' . $entry['email'] . '</a></td>
 				 </tr>
 				';
             }

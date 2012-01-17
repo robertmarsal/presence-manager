@@ -14,20 +14,20 @@ class UserActivityView extends View {
 
     public function menu() {
 
-        global $config;
+        global $CONFIG;
 
         return '
 			<ul class="nav">
-				<li class="active"><a href="' . $config['wwwroot'] . '/user/activity">Activity</a></li>
+				<li class="active"><a href="' . $CONFIG['wwwroot'] . '/user/activity">Activity</a></li>
             </ul>
             <ul class="nav secondary-nav">
-				<li><a href="' . $config['wwwroot'] . '/auth/logout">Log Out</a></li>
+				<li><a href="' . $CONFIG['wwwroot'] . '/auth/logout">Log Out</a></li>
             </ul>';
     }
 
     public function content() {
 
-        global $config;
+        global $CONFIG;
 
         $activity_table_content = '';
         if (!empty($this->_entries)) {
@@ -54,7 +54,7 @@ class UserActivityView extends View {
 				<tbody>' . $activity_table_content . '
 				</tbody>
 			</table>
-			<form class="form-stacked" action="' . $config['wwwroot'] . '/' . $_SESSION['role'] . '/activity/index.php" method="post">
+			<form class="form-stacked" action="' . $CONFIG['wwwroot'] . '/' . $_SESSION['role'] . '/activity/index.php" method="post">
 				<input type="hidden" value="20" name="activity_maxrecords"/>
 				<button class="btn right_aligned">More</button>
 			</form>';

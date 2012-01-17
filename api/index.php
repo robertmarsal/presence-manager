@@ -11,7 +11,7 @@ require_once (ROOT . '/config/config.php');
 //----------------------------------------------------------------------------//
 function presence_api_autoloader($class_name) {
 
-    global $config;
+    global $CONFIG;
 
     if (file_exists(ROOT . '/api/' . $class_name . '.php')) {
         require_once(ROOT . '/api/' . $class_name . '.php');
@@ -27,7 +27,7 @@ spl_autoload_register('presence_api_autoloader');
 //----------------------------------------------------------------------------//
 // MANAGE DEPENDENCIES -------------------------------------------------------//
 //----------------------------------------------------------------------------//
-$dependencies = new DependencyContainer($config);
+$dependencies = new DependencyContainer($CONFIG);
 
 //----------------------------------------------------------------------------//
 // FRONT CONTROLLER ----------------------------------------------------------//

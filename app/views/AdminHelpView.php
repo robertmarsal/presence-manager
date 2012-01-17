@@ -11,16 +11,16 @@ class AdminHelpView extends View{
 
     public function menu() {
 
-        global $config;
+        global $CONFIG;
 
         return '
 			<ul class="nav">
-				<li><a href="' . $config['wwwroot'] . '/admin/activity">Activity</a></li>
-				<li><a href="' . $config['wwwroot'] . '/admin/users">Users</a></li>
-                <li class="active"><a href="' . $config['wwwroot'] . '/admin/help">Help</a></li>
+				<li><a href="' . $CONFIG['wwwroot'] . '/admin/activity">Activity</a></li>
+				<li><a href="' . $CONFIG['wwwroot'] . '/admin/users">Users</a></li>
+                <li class="active"><a href="' . $CONFIG['wwwroot'] . '/admin/help">Help</a></li>
 			</ul>
 			<ul class="nav secondary-nav">
-				<li><a href="' . $config['wwwroot'] . '/auth/logout">Log Out</a></li>
+				<li><a href="' . $CONFIG['wwwroot'] . '/auth/logout">Log Out</a></li>
 			</ul>';
     }
 

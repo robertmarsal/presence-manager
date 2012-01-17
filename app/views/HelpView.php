@@ -11,12 +11,12 @@ class HelpView extends View{
 
 	public function menu() {
 
-        global $config, $string;
+        global $CONFIG, $string;
 
         return '
 			<ul class="nav">
-				<li><a href="' . $config['wwwroot'] . '">' . $string['login'] . '</a></li>
-                <li class="active"><a href="' . $config['wwwroot'] . '/help/main">' . $string['help'] . '</a></li>
+				<li><a href="' . $CONFIG['wwwroot'] . '">' . $string['login'] . '</a></li>
+                <li class="active"><a href="' . $CONFIG['wwwroot'] . '/help/main">' . $string['help'] . '</a></li>
             </ul>';
     }
 

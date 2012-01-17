@@ -8,11 +8,11 @@ session_start();
 // include the config
 define('ROOT', dirname(dirname(__FILE__)));
 require_once (ROOT . '/config/config.php');
-global $config;
+global $CONFIG;
 
 // activate/deactivate debug
 error_reporting(E_ALL);
-$config['debug'] && ini_set('display_errors', '1');
+$CONFIG['debug'] && ini_set('display_errors', '1');
 
 // set language
 $_SESSION['lang'] = isset($_SESSION['lang']) ? $_SESSION['lang'] : 'en';
@@ -25,7 +25,7 @@ require_once (ROOT . '/lang/' . $_SESSION['lang'] . '.php');
 
 function presence_autoloader($class_name) {
 
-    global $config;
+    global $CONFIG;
 
     if (file_exists(ROOT . '/app/' . lcfirst($class_name) . '.class.php')) {
         require_once(ROOT . '/app/' . lcfirst($class_name) . '.class.php');
@@ -38,7 +38,7 @@ function presence_autoloader($class_name) {
     } else if (file_exists(ROOT . '/app/views/' . $class_name . '.php')) {
         require_once(ROOT . '/app/views/' . $class_name . '.php');
     } else { //redirect to 404 page
-        header('Location: ' . $config['wwwroot'] . '/error/notfound');
+        header('Location: ' . $CONFIG['wwwroot'] . '/error/notfound');
     }
 }
 
@@ -46,7 +46,7 @@ spl_autoload_register('presence_autoloader');
 //----------------------------------------------------------------------------//
 // MANAGE DEPENDENCIES -------------------------------------------------------//
 //----------------------------------------------------------------------------//
-$dependencies = new DependencyContainer($config);
+$dependencies = new DependencyContainer($CONFIG);
 
 //----------------------------------------------------------------------------//
 // FRONT CONTROLLER ----------------------------------------------------------//

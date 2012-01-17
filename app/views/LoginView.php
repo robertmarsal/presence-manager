@@ -11,22 +11,22 @@ class LoginView extends View {
 
     public function menu() {
 
-        global $config, $string;
+        global $CONFIG, $string;
 
         return '
 			<ul class="nav">
-				<li class="active"><a href="' . $config['wwwroot'] . '">' . $string['login'] . '</a></li>
-                <li><a href="' . $config['wwwroot'] . '/help/main">' . $string['help'] . '</a></li>
+				<li class="active"><a href="' . $CONFIG['wwwroot'] . '">' . $string['login'] . '</a></li>
+                <li><a href="' . $CONFIG['wwwroot'] . '/help/main">' . $string['help'] . '</a></li>
             </ul>';
     }
 
     public function content() {
 
-        global $config;
-        
+        global $CONFIG;
+
         return '
         <section id="login">
-                    <form id="login-form" class="form-stacked" action="' . $config['wwwroot'] . '/auth/login/index.php" method="post">
+                    <form id="login-form" class="form-stacked" action="' . $CONFIG['wwwroot'] . '/auth/login/index.php" method="post">
                     <fieldset>
                         <div class="clearfix">
                             <label for="email">Email</label>

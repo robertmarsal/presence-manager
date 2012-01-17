@@ -7,7 +7,7 @@ class AdminController extends Controller {
 
     public function __construct($dependencies, $action, $params) {
 
-        global $config;
+        global $CONFIG;
 
         // get the dependencies
         $this->_dependencies = $dependencies;
@@ -20,7 +20,7 @@ class AdminController extends Controller {
         if ($this->check_role('admin') && method_exists($this, $action)) {
             $this->$action($params);
         } else {
-			Helper::redirect($config['wwwroot'] . '/error/notfound');
+			Helper::redirect($CONFIG['wwwroot'] . '/error/notfound');
         }
     }
 
@@ -28,7 +28,7 @@ class AdminController extends Controller {
 
         $this->_view = new AdminActivityView($this->_activity_model->get_all_activity());
     }
-	
+
     public function users() {
 
         $this->_view = new AdminUsersView($this->_user_model->get_all_users());
@@ -48,26 +48,26 @@ class AdminController extends Controller {
 
         $this->_view = new AdminUserAccountView($this->_user_model->get_user_data($params[0]));
     }
-	
+
 	public function delete_user($params) {
-	
+
 		global $string;
-	
+
 		$result = false;
         if(isset($params['userid'])){
 			// delete the user data
 			$op1 = $this->_user_model->delete_user($params['userid']);
 			// delete the user activity
 			$op2 = $this->_activity_model->delete_user_activity($params['userid']);
-		
+
 			$result = $op1 && $op2;
 		}
-		
+
 		$result == true ? $alert = Helper::alert('success', $string['user:delete:success']) : $alert = Helper::alert('error', $string['user:delete:failed']);
-		
+
 		$this->_view = new AdminActivityView($this->_activity_model->get_all_activity(), $alert);
     }
-	
+
     public function update_user($params) {
 
         global $string;
