@@ -32,9 +32,9 @@ class ActivityModel extends Model {
         $st->execute(array($userid));
         return $st->fetchAll(PDO::FETCH_ASSOC);
     }
-	
+
 	public function delete_user_activity($userid){
-		
+
 		$sql = "DELETE FROM ".$this->_table."
 					WHERE `userid` = ?";
 

@@ -26,32 +26,20 @@ class AdminHelpView extends View{
 
     public function content() {
 
+        global $STRINGS;
+
         return '
         <section id="help">
             <div class="page-header">
-				<h3>Activity</h3>
+				<h3>F.A.Q</h3>
 			</div>
 			<div class="container">
-                <p> It displays the activity of all the users.
+                <p><b>Q:</b> When trying to create a new user I get the message: '.$STRINGS['user:create:failed'].'
+                </p>
+                <p><b>A:</b> All the fields in the form are mandatory, if one is empty you will get this message.
                 </p>
 			</div>
 
-            <div class="page-header">
-				<h3>Users</h3>
-			</div>
-			<div class="container">
-                <p> It shows a list of all the users in the system and provides
-                a link to edit the user data.
-                </p>
-			</div>
-
-            <div class="page-header">
-				<h3>Settings</h3>
-			</div>
-			<div class="container">
-                <p> Provides a interface to configure the application.
-                </p>
-			</div>
         </section>';
     }
 }
