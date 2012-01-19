@@ -1,56 +1,32 @@
 <?php
 
 class User extends PresenceApi{
-	
+
 	private $_userid;
 
 	public function __construct($dependencies, $action , $params){
 		parent::__construct($dependencies);
-		
-		// check for required params
-		if(!isset($params['userid'])){
-			print json_encode(array( 'error' => '1',
-									 'message' => 'Missing userid parameter'));
-			return null;
-		}else{
-			$this->_userid = $params['userid'];
-		}
-		
+
         // check if api key is valid and action exists
-        if ($this->check_api_key($params['api_key']) && method_exists($this, $action)) {
+        if (method_exists($this, $action)) {
             $this->$action($params);
+        }else{
+            print json_encode(array( 'error' => '1',
+                                     'message' => 'The required action does not exist!'));
         }
 	}
-	
-	private function getData($params){
 
-		$sql = "SELECT email, firstname, lastname, role
-                FROM presence_users
-                WHERE `email` = ?";
+    private function checkin($params){
 
-        $st = $this->_db->prepare($sql);
-        $st->execute(array($this->_userid));
-        $user_data = $st->fetch(PDO::FETCH_ASSOC);
-		
-		print json_encode($user_data);
-	}
-	
-	private function getActivity($params){
-		
-		// set maxrecords to 10 if is not set
-        $max_records = isset($params['activities']) ? $params['activities'] : 10;
+        //check required params
+        $required_params = array('mac');
+        $status = $this->required_params($params, $required_params);
 
-        $sql = "SELECT pa.id, pa.userid, pa.action, pa.timestamp
-				FROM presence_activity pa
-				JOIN presence_users pu ON `userid` = pu.id
-				WHERE `email` = ?
-				ORDER BY id DESC LIMIT 10";
-
-        $st = $this->_db->prepare($sql);
-        $st->execute(array($this->_userid));
-        $user_activity = $st->fetchAll(PDO::FETCH_ASSOC);
-
-        print json_encode($user_activity);
-	}
-
+        if(!$status){
+            print json_encode(array( 'error' => '1',
+                                     'message' => 'Missing required params!'));
+        }else{
+            print json_encode(array('status' => 'ok'));
+        }
+    }
 }

@@ -32,12 +32,12 @@ $dependencies = new DependencyContainer($CONFIG);
 //----------------------------------------------------------------------------//
 // FRONT CONTROLLER ----------------------------------------------------------//
 //----------------------------------------------------------------------------//
-$method = isset($_GET['method']) ? $_GET['method'] : null;
-$action = isset($_GET['action']) ? $_GET['action'] : null;
-$api_key = isset($_GET['api_key']) ? $_GET['api_key'] :  null;
+
+$method = isset($_POST['method']) ? $_POST['method'] : null;
+$action = isset($_POST['action']) ? $_POST['action'] : null;
 $params = array_merge($_GET, $_POST);
 
-if($method && $action && $api_key){
+if($method && $action){
 	new $method($dependencies, $action, $params);
 }else{
 	print json_encode(array( 'error' => '1',
