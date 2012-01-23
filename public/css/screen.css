@@ -40,3 +40,7 @@ body{
 table{
     border: 1px solid #DDDDDD;
 }
+
+.brand{
+    border-right: 1px solid black !important;
+}
