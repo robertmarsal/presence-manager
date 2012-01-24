@@ -26,7 +26,7 @@ class User extends PresenceApi{
             print json_encode(array( 'error' => '1',
                                      'message' => 'Missing required params!'));
         }else{
-            print json_encode(array('status' => 'ok'));
+            print json_encode(array('status' => 'ok', 'message' => 'test'));
         }
     }
 }

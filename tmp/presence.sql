@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.5
+-- version 3.4.5deb1
 -- http://www.phpmyadmin.net
 --
--- Servidor: 127.0.0.1
--- Temps de generació: 16-01-2012 a les 18:05:12
--- Versió del servidor: 5.5.16
--- Versió de PHP : 5.3.8
+-- Servidor: localhost
+-- Temps de generació: 24-01-2012 a les 13:41:11
+-- Versió del servidor: 5.1.58
+-- Versió de PHP : 5.3.6-13ubuntu3.3
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Base de dades: `presence`
 --
-CREATE DATABASE `presence` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
-USE `presence`;
 
 -- --------------------------------------------------------
 
@@ -34,48 +32,15 @@ CREATE TABLE IF NOT EXISTS `presence_activity` (
   `action` varchar(50) COLLATE utf8_bin NOT NULL,
   `timestamp` int(15) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=3 ;
 
 --
 -- Bolcant dades de la taula `presence_activity`
 --
 
 INSERT INTO `presence_activity` (`id`, `userid`, `action`, `timestamp`) VALUES
-(1, '2', 'success', 1325080875),
-(2, '2', 'warning', 1325080876),
-(3, '3', 'success', 1325080877),
-(4, '6', 'important', 1325080878),
-(5, '5', 'success', 1325080879),
-(6, '7', 'success', 1325080880),
-(7, '8', 'success', 1325080881),
-(8, '9', 'success', 1325080882),
-(9, '4', 'success', 1325080883),
-(10, '3', 'important', 1325080884),
-(11, '6', 'important', 1325080885),
-(12, '5', 'important', 1325080886),
-(13, '7', 'important', 1325080887),
-(14, '8', 'important', 1325080888),
-(15, '9', 'important', 1325080889),
-(16, '4', 'important', 1325080890);
-
--- --------------------------------------------------------
-
---
--- Estructura de la taula `presence_api`
---
-
-CREATE TABLE IF NOT EXISTS `presence_api` (
-  `user` varchar(200) COLLATE utf8_bin NOT NULL,
-  `key` varchar(150) COLLATE utf8_bin NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Bolcant dades de la taula `presence_api`
---
-
-INSERT INTO `presence_api` (`user`, `key`) VALUES
-('robert', 'd2104a400c7f629a197f33bb33fe80c0'),
-('robert', 'd2104a400c7f629a197f33bb33fe80c0');
+(1, '2', 'checkin', 1295791260),
+(2, '2', 'checkout', 1295910180);
 
 -- --------------------------------------------------------
 

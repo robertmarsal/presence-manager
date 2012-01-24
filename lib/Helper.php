@@ -10,17 +10,25 @@ class Helper{
                 <p><strong>'.$message.'</strong></p>
             </div>';
     }
-	
+
 	static function get_event_description($event) {
         switch ($event) {
-            case 'success': return 'Check-In';
-            case 'important': return 'Check-Out';
-            case 'warning': return 'Incidence';
+            case 'checkin': return 'Check-In';
+            case 'checkout': return 'Check-Out';
+            case 'incidence': return 'Incidence';
 		}
 	}
-	
+
+    static function get_label_for_action($action){
+       switch ($action) {
+            case 'checkin': return 'success';
+            case 'checkout': return 'important';
+            case 'incidence': return 'warning';
+		}
+    }
+
 	static function redirect($url){
 		header('Location: '.$url);
 	}
-		
+
 }

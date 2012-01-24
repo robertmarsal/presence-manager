@@ -39,7 +39,7 @@ class AdminUserActivityView extends View{
             foreach ($this->_activity as $entry) {
                 $activity_table_content .=
                 '<tr>
-					<td><span class="label ' . $entry['action'] . '">' . Helper::get_event_description($entry['action']) . '</span></td>
+					<td><span class="label ' . Helper::get_label_for_action($entry['action']) . '">' . Helper::get_event_description($entry['action']) . '</span></td>
 					<td>' . date('D M j G:i:s Y', $entry['timestamp']) . '</td>
 				 </tr>
 				';
