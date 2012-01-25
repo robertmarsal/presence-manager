@@ -31,7 +31,7 @@ class AdminHelpView extends View{
         return '
         <section id="help">
             <div class="page-header">
-				<h3>F.A.Q</h3>
+				<h3>FAQ</h3>
 			</div>
 			<div class="container">
                 <p><b>Q:</b> When trying to create a new user I get the message: '.$STRINGS['user:create:failed'].'
