@@ -30,16 +30,32 @@ spl_autoload_register('presence_api_autoloader');
 $dependencies = new DependencyContainer($CONFIG);
 
 //----------------------------------------------------------------------------//
-// FRONT CONTROLLER ----------------------------------------------------------//
+// API FRONT CONTROLLER ----------------------------------------------------------//
 //----------------------------------------------------------------------------//
 
-$method = isset($_POST['method']) ? $_POST['method'] : null;
-$action = isset($_POST['action']) ? $_POST['action'] : null;
-$params = array_merge($_GET, $_POST);
+$method = $_SERVER['REQUEST_METHOD'];
+$url = isset($_GET['url']) ? $_GET['url'] : null ; 
 
-if($method && $action){
-	new $method($dependencies, $action, $params);
-}else{
-	print json_encode(array( 'error' => '1',
-							 'message' => 'Bad API call'));
+switch($method){
+	case 'GET':
+		$params = $_GET;
+		break;
+	case 'POST':
+		$params = $_POST;
+		break;
+	default:
+		API::errResponse('405', 'Method Not Allowed');
 }
+
+$url_fragments = explode ('/', $url);
+
+if(count($url_fragments) > 2 || count($url_fragments) == 1){
+	API::errResponse('400', 'Bad Request');
+}else{
+	$class = $url_fragments[0];
+	$action = $url_fragments[1];
+	
+	new $class($dependencies, $action, $params);
+}
+
+

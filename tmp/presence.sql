@@ -1,4 +1,4 @@
--- phpMyAdmin SQL Dump
+﻿-- phpMyAdmin SQL Dump
 -- version 3.4.5deb1
 -- http://www.phpmyadmin.net
 --
@@ -20,6 +20,7 @@ SET time_zone = "+00:00";
 -- Base de dades: `presence`
 --
 
+USE presence;
 -- --------------------------------------------------------
 
 --

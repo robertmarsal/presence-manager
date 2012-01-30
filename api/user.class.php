@@ -1,32 +1,22 @@
 <?php
 
-class User extends PresenceApi{
-
-	private $_userid;
+class User extends API{
 
 	public function __construct($dependencies, $action , $params){
 		parent::__construct($dependencies);
 
-        // check if api key is valid and action exists
+        // check if action exists
         if (method_exists($this, $action)) {
             $this->$action($params);
         }else{
-            print json_encode(array( 'error' => '1',
-                                     'message' => 'The required action does not exist!'));
+            parent::errResponse('400', 'Bad Request');
         }
 	}
 
     private function checkin($params){
+	
+	//TODO: validate user
+		
 
-        //check required params
-        $required_params = array('mac');
-        $status = $this->required_params($params, $required_params);
-
-        if(!$status){
-            print json_encode(array( 'error' => '1',
-                                     'message' => 'Missing required params!'));
-        }else{
-            print json_encode(array('status' => 'ok', 'message' => 'test'));
-        }
     }
 }

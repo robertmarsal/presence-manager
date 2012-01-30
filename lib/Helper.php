@@ -30,5 +30,5 @@ class Helper{
 	static function redirect($url){
 		header('Location: '.$url);
 	}
-
+	
 }
