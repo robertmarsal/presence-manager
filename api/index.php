@@ -33,6 +33,9 @@ $dependencies = new DependencyContainer($CONFIG);
 // API FRONT CONTROLLER ----------------------------------------------------------//
 //----------------------------------------------------------------------------//
 
+//TODO: filter requests - ALLOW only LAN!!!
+//ROUTER ENABLE MAC FILTERING? - extra security
+
 $method = $_SERVER['REQUEST_METHOD'];
 $url = isset($_GET['url']) ? $_GET['url'] : null ; 
 
