@@ -32,7 +32,7 @@ class API{
 	}
 	
 	static function errResponse($code, $message){
-		header('HTTP/1.1 '.$code.$message);
+		header('HTTP/1.1 '.$code.' '.$message);
 		print (json_encode($message));
 		die();
 	}
