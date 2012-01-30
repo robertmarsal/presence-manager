@@ -15,14 +15,13 @@ class API{
 		$sql = "SELECT *
 				FROM `presence_users`
 				WHERE `mac` = ?";
-				
-		$st = $this->_db->prepare($sql);
-		$st->execute(array($params['mac']));
-		$user = $st->fetch();
+
+		$user = DB::getRecord($this->_db, $sql, array($params['mac']));
 		
 		if($user['id'] == null){
 			API::errResponse('401', 'Unauthorized');
 		}
+		
 		return $user['id'];
 	}
 	
