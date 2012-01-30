@@ -15,9 +15,7 @@ class ActivityModel extends Model {
 				JOIN presence_users pu ON pa.userid = pu.id
 				ORDER BY pa.timestamp DESC LIMIT 15";
 
-        $st = $this->_db->prepare($sql);
-        $st->execute();
-        return $st->fetchAll(PDO::FETCH_ASSOC);
+		return DB::getAllRecords($this->_db, $sql, null);
     }
 
     public function get_user_activity($userid) {
@@ -28,9 +26,7 @@ class ActivityModel extends Model {
 				WHERE `userid` = ?
 				ORDER BY id DESC LIMIT 15";
 
-        $st = $this->_db->prepare($sql);
-        $st->execute(array($userid));
-        return $st->fetchAll(PDO::FETCH_ASSOC);
+		return DB::getAllRecords($this->_db, $sql, array($userid));
     }
 
 	public function delete_user_activity($userid){

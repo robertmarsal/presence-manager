@@ -14,9 +14,7 @@ class UserModel extends Model {
 				FROM " . $this->_table . "
 				ORDER BY lastname ASC";
 
-        $st = $this->_db->prepare($sql);
-        $st->execute();
-        return $st->fetchAll(PDO::FETCH_ASSOC);
+		return DB::getAllRecords($this->_db, $sql, null);
     }
 
     public function get_user_data($userid) {
@@ -24,10 +22,8 @@ class UserModel extends Model {
         $sql = "SELECT id, email, firstname, lastname, role
                 FROM " . $this->_table . "
                 WHERE `id` = ?";
-
-        $st = $this->_db->prepare($sql);
-        $st->execute(array($userid));
-        return $st->fetch(PDO::FETCH_ASSOC);
+				
+		return DB::getRecord($this->_db, $sql, array($userid)); 
     }
 
     public function get_user_by_email($email){
@@ -36,9 +32,7 @@ class UserModel extends Model {
                 FROM ".$this->_table."
                 WHERE `email` = ?";
 
-        $st = $this->_db->prepare($sql);
-        $st->execute(array($email));
-        return $st->fetch(PDO::FETCH_ASSOC);
+		return DB::getRecord($this->_db, $sql, array($email));
     }
 
     public function create_user($user){

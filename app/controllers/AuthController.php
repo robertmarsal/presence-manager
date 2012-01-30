@@ -21,12 +21,10 @@ class AuthController extends Controller {
         //TO DO: sanitize input
         $sql = "SELECT *
                 FROM presence_users
-                WHERE email = ?
-                AND password = ?";
+                WHERE `email` = ?
+                AND `password` = ?";
 
-        $st = $this->_db->prepare($sql);
-        $st->execute(array($params['email'], md5($params['password'])));
-        $result = $st->fetch(PDO::FETCH_ASSOC);
+		$result = DB::getRecord($this->_db, $sql, array($params['email'], md5($params['password'])));
 
         if ($result) {
             $_SESSION['user'] = $result['email'];
