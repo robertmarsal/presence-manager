@@ -57,5 +57,3 @@ if(count($url_fragments) > 2 || count($url_fragments) == 1){
 	
 	new $class($dependencies, $action, $params);
 }
-
-
