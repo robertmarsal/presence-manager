@@ -5,6 +5,7 @@
 //----------------------------------------------------------------------------//
 define('ROOT', dirname(dirname(__FILE__)));
 require_once (ROOT . '/config/config.php');
+global $CONFIG;
 
 //----------------------------------------------------------------------------//
 // AUTOLOADER ----------------------------------------------------------------//
@@ -55,6 +56,8 @@ if(count($url_fragments) > 2 || count($url_fragments) == 1){
 }else{
 	$class = $url_fragments[0];
 	$action = $url_fragments[1];
-	
-	new $class($dependencies, $action, $params);
+   
+    class_exists($class) ? 
+        new $class($dependencies, $action, $params) : 
+        API::errResponse('400', 'Bad Request');
 }

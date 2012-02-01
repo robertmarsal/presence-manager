@@ -7,7 +7,7 @@ Options +FollowSymLinks
 #rewrite rules
 <IfModule mod_rewrite.c>
     RewriteEngine on
-    RewriteBase /
+    #RewriteBase /
     #exclude the api folder from the rewrite
 
     #redirect all petitions to public folder
