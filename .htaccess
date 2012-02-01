@@ -7,11 +7,11 @@ Options +FollowSymLinks
 #rewrite rules
 <IfModule mod_rewrite.c>
     RewriteEngine on
-    
+    RewriteBase /
     #exclude the api folder from the rewrite
-    RewriteRule ^(api)($|/) - [L]
-    
+
     #redirect all petitions to public folder
+    RewriteCond %{REQUEST_URI} !^/?(api)/
     RewriteRule    ^$    public/    [L]
     RewriteRule    (.*) public/$1    [L]
 </IfModule>
