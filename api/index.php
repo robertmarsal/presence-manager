@@ -11,14 +11,12 @@ require_once (ROOT . '/config/config.php');
 //----------------------------------------------------------------------------//
 function presence_api_autoloader($class_name) {
 
-    global $CONFIG;
-
-    if (file_exists(ROOT . '/api/' . $class_name . '.php')) {
-        require_once(ROOT . '/api/' . $class_name . '.php');
+    if (file_exists(ROOT . '/api/json/' . $class_name . '.php')) {
+        require_once(ROOT . '/api/json/' . $class_name . '.php');
     }else if (file_exists(ROOT . '/lib/' . $class_name . '.php')) {
         require_once(ROOT . '/lib/' . $class_name . '.php');
-    }else if (file_exists(ROOT . '/api/' . lcfirst($class_name) . '.class.php')) {
-        require_once(ROOT . '/api/' . lcfirst($class_name) . '.class.php');
+    }else if (file_exists(ROOT . '/api/json/' . lcfirst($class_name) . '.class.php')) {
+        require_once(ROOT . '/api/json/' . lcfirst($class_name) . '.class.php');
     }
 }
 
