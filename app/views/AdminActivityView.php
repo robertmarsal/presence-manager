@@ -23,9 +23,8 @@ class AdminActivityView extends View {
 			<ul class="nav">
 				<li class="active"><a href="' . $CONFIG['wwwroot'] . '/admin/activity">Activity</a></li>
                 <li><a href="' . $CONFIG['wwwroot'] . '/admin/users">Users</a></li>
-                <li><a href="' . $CONFIG['wwwroot'] . '/admin/help">Help</a></li>
             </ul>
-            <ul class="nav secondary-nav">
+            <ul class="nav pull-right">
 				<li><a href="' . $CONFIG['wwwroot'] . '/auth/logout">Log Out</a></li>
             </ul>';
     }
@@ -51,20 +50,21 @@ class AdminActivityView extends View {
         }
 
         return '
-			<table id="activity_table" class="zebra-striped ">
-				<thead>
-					<tr>
-						<th>#</th>
-						<th>Action</th>
-						<th>Time</th>
-						<th>First Name</th>
+        <section id="activity">
+            <table class="table table-condensed table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Action</th>
+                        <th>Time</th>
+                        <th>First Name</th>
                         <th>Last Name</th>
-						<th>User</th>
-					</tr>
-				</thead>
-				<tbody>' . $activity_table_content . '
-				</tbody>
-			</table>
-			';
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>' . $activity_table_content . '
+                </tbody>
+            </table>
+        </section>';
     }
 }

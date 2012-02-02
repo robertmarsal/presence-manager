@@ -23,9 +23,8 @@ class AdminUsersView extends View {
 			<ul class="nav">
 				<li><a href="' . $CONFIG['wwwroot'] . '/admin/activity">Activity</a></li>
 				<li class="active"><a href="' . $CONFIG['wwwroot'] . '/admin/users">Users</a></li>
-                <li><a href="' . $CONFIG['wwwroot'] . '/admin/help">Help</a></li>
 			</ul>
-			<ul class="nav secondary-nav">
+			<ul class="nav pull-right">
 				<li><a href="' . $CONFIG['wwwroot'] . '/auth/logout">Log Out</a></li>
 			</ul>';
     }
@@ -50,23 +49,25 @@ class AdminUsersView extends View {
         }
 
         return '
-			<table class="activity_table zebra-striped">
-				<thead>
-					<tr>
-						<th>#</th>
-						<th>First Name</th>
-						<th>Last Name</th>
+        <section id="users">
+            <table class="table table-condensed table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
                         <th>Role</th>
-						<th>User</th>
-					</tr>
-				</thead>
-				<tbody>
-				' . $users_table_content . '
-				</tbody>
-			</table>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    '.$users_table_content.'
+                </tbody>
+            </table>
             <form action="' . $CONFIG['wwwroot'] . '/admin/user_add" method="post">
-				<button class="btn right_aligned success">+ '.$STRINGS['add:user'].'</button>
-			</form>';
+				<button class="btn btn-success pull-right">+ '.$STRINGS['add:user'].'</button>
+			</form>
+        </section>';
     }
 
 }

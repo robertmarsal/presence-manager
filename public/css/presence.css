@@ -1,25 +1,21 @@
 html{
-	overflow-y:scroll;
+    overflow-y:scroll;
 }
 
 body{
-    padding-top: 75px;
+    padding-top:75px;
 }
 
-#login{
-    padding-top:225px;
+#login-footer{
+    padding-top:25px;
 }
 
-.right_aligned{
-    float:right;
+.id-tab{
+    float: right !important;
+    padding-top:10px;
+    color:grey;
 }
-
-#login-form, #footer{
-    margin: 0 auto;
-    padding: 0;
-    width: 300px;
-}
-
+/*
 .left-form{
     padding-left: 0 !important;
 }
@@ -33,8 +29,9 @@ body{
     padding-top: 10px;
 }
 
-.topbar {
+.navbar-inner{
     box-shadow: #999999 0px 4px 8px 0;
+    margin-bottom: -2px !important;
 }
 
 table{
@@ -43,4 +40,4 @@ table{
 
 .brand{
     border-right: 1px solid black !important;
-}
+}*/
