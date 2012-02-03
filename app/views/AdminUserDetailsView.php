@@ -37,15 +37,19 @@ class AdminUserDetailsView extends View{
 		$selected_admin = $this->_user['role'] == 'admin' ? 'SELECTED' : '';
 
 		return '
-        <div class="subnav subnav-fixed">
-            <ul class="nav nav-pills">
-                <li class="active"><a href="'.$CONFIG['wwwroot'].'/admin/user_details/'.$this->_user['id'].'">Details</a></li>
-                <li><a href="'.$CONFIG['wwwroot'].'/admin/user_activity/'.$this->_user['id'].'">Activity</a></li>
-                <li><a href="#">Statistics</a></li>
-                <li><a href="#">Summary</a></li>
-			    <li><a href="'.$CONFIG['wwwroot'].'/admin/user_account/'.$this->_user['id'].'">Account</a></li>
-                <li class="id-tab">'.$this->_user['firstname'].' '.$this->_user['lastname'].'</li>
-            </ul>
+        <div class="subnav-fixed">
+            <div class="subnav-fixed-inner">
+                <div class="container">
+                <ul class="subnav-pills">
+                    <li class="active-pill"><a href="'.$CONFIG['wwwroot'].'/admin/user_details/'.$this->_user['id'].'">Details</a></li>
+                    <li><a href="'.$CONFIG['wwwroot'].'/admin/user_activity/'.$this->_user['id'].'">Activity</a></li>
+                    <li><a href="#">Statistics</a></li>
+                    <li><a href="#">Summary</a></li>
+			        <li><a href="'.$CONFIG['wwwroot'].'/admin/user_account/'.$this->_user['id'].'">Account</a></li>
+                    <li class="id-tab">'.$this->_user['firstname'].' '.$this->_user['lastname'].'</li>
+                </ul>
+                </div>
+            </div>
         </div>
 
 		<section id="details">
