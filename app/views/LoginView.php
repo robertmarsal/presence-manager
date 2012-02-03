@@ -20,8 +20,8 @@ class LoginView extends View {
         return '
         <section id="login">
             <form class="well" action="'.$CONFIG['wwwroot'].'/auth/login/index.php" method="post">
-                <input class="span3" type="text" name="email" placeholder="Email"><br/>
-                <input class="span3" type="password" name="password" placeholder="Password"><br/>
+                <input type="text" name="email" placeholder="Email"><br/>
+                <input type="password" name="password" placeholder="Password"><br/>
                 <button type="submit" class="btn">Login</button>
                 <div class="container" id="login-footer">
                     <p>Developed by <a href="http://twitter.com/robertboloc" target="_blank">@robertboloc</a><br/>

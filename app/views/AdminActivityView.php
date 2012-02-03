@@ -50,7 +50,7 @@ class AdminActivityView extends View {
         }
 
         return '
-        <section id="activity">
+        <section id="activity" class="well">
             <table class="table table-condensed table-striped">
                 <thead>
                     <tr>

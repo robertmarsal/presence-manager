@@ -28,7 +28,7 @@ class AdminUsersView extends View {
 				<li><a href="' . $CONFIG['wwwroot'] . '/auth/logout">Log Out</a></li>
 			</ul>';
     }
-
+    
     public function content() {
 
         global $CONFIG, $STRINGS;
@@ -49,7 +49,7 @@ class AdminUsersView extends View {
         }
 
         return '
-        <section id="users">
+        <section id="users" class="well">
             <table class="table table-condensed table-striped">
                 <thead>
                     <tr>
@@ -65,7 +65,7 @@ class AdminUsersView extends View {
                 </tbody>
             </table>
             <form action="' . $CONFIG['wwwroot'] . '/admin/user_add" method="post">
-				<button class="btn btn-success pull-right">+ '.$STRINGS['add:user'].'</button>
+				<button class="btn btn-success well-button">+ '.$STRINGS['add:user'].'</button>
 			</form>
         </section>';
     }
