@@ -50,7 +50,7 @@ class AdminUsersView extends View {
 
         return '
         <section id="users" class="well">
-            <table class="table table-condensed table-striped">
+            <table class="table">
                 <thead>
                     <tr>
                         <th>#</th>

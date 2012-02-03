@@ -51,7 +51,7 @@ class AdminActivityView extends View {
 
         return '
         <section id="activity" class="well">
-            <table class="table table-condensed table-striped">
+            <table class="table">
                 <thead>
                     <tr>
                         <th>#</th>
