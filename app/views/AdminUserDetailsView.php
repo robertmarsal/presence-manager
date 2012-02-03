@@ -52,45 +52,26 @@ class AdminUserDetailsView extends View{
             </div>
         </div>
 
-		<section id="details">
-			<form class="form-stacked left-form" method="post" action="'.$CONFIG['wwwroot'].'/admin/update_user/'.$this->_user['id'].'">
-				<fieldset>
-					<div class="clearfix">
-						<label for="firstname">First Name</label>
-						<div class="input">
-						<input class="xlarge" id="xlInput" name="firstname" size="30" type="text" value="'.$this->_user['firstname'].'" />
-						</div>
-					</div><!-- /clearfix -->
-					<div class="clearfix">
-						<label for="lastname">Last Name</label>
-						<div class="input">
-						<input class="xlarge" id="xlInput" name="lastname" size="30" type="text" value="'.$this->_user['lastname'].'"/>
-						</div>
-					</div><!-- /clearfix -->
-					<div class="clearfix">
-						<label for="email">Email</label>
-						<div class="input">
-						<input class="xlarge" id="xlInput" name="email" size="30" type="text" value="'.$this->_user['email'].'"/>
-						</div>
-					</div><!-- /clearfix -->
-					<div class="clearfix">
-						<label for="role">Role</label>
-						<div class="input">
-						<select name="role" class="span5" id="stackedSelect">
-							<option '.$selected_user.'>user</option>
-							<option '.$selected_admin.'>admin</option>
-						</select>
-					</div>
-					</div><!-- /clearfix -->
-					<div class="custom-actions">
-                        <input type="submit" class="btn primary" value="Save Changes">&nbsp;
-                        <button type="reset" class="btn">Cancel</button>
-                    </div>
-				</fieldset>
-			</form>
-		<section>
-		';
-
+        <section id="user-details">
+            <form class="well" action="'.$CONFIG['wwwroot'].'/admin/update_user/'.$this->_user['id'].'"  method="post">
+                <label>First Name</label>
+                <input type="text" name="firstname" value="'.$this->_user['firstname'].'">
+                
+                <label>Last Name</label>
+                <input type="text" name="lastname" value="'.$this->_user['lastname'].'">
+            
+                <label>Email</label>
+                <input type="text" name="email" value="'.$this->_user['email'].'">
+           
+                <label>Role</label>
+                <select name="role">
+                    <option '.$selected_user.'>user</option>
+                    <option '.$selected_admin.'>admin</option>
+                </select>
+                <label></label>
+                <button type="submit" class="btn">Update</button>
+            </form>
+        </section>';
 	}
 
 }
