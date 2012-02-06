@@ -5,10 +5,11 @@ class Helper{
     static function alert($type, $message){
 
         return '
-            <div class="alert-message '.$type.' fade in" data-alert="alert">
-                <a class="close" href="#">×</a>
-                <p><strong>'.$message.'</strong></p>
+            <div class="alert fade in alert-'.$type.'">
+                <a class="close" data-dismiss="alert" href="#">×</a>
+                <strong>'.$message.'</strong>
             </div>';
+
     }
 
 	static function get_event_description($event) {

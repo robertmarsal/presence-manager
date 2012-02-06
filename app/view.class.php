@@ -5,10 +5,9 @@ abstract class View {
     private $_title;
     protected $_alert;
 
-    public function __construct($alert) {
+    public function __construct($alert){
         $this->_alert = $alert;
     }
-
 
     public function __destruct() {
         $this->render();
@@ -27,7 +26,7 @@ abstract class View {
                     <link rel="stylesheet" href="' . $CONFIG['wwwroot'] . '/public/css/presence.css" type="text/css">
                     <link rel="shortcut icon" href="' . $CONFIG['wwwroot'] . '/public/img/favicon.ico">
                     <script type="text/javascript" src="' . $CONFIG['wwwroot'] . '/public/js/jquery-1.7.1.min.js"></script>
-                    <script type="text/javascript" src="' . $CONFIG['wwwroot'] . '/public/js/bootstrap.js"></script>
+                    <script type="text/javascript" src="' . $CONFIG['wwwroot'] . '/public/js/bootstrap-alert.js"></script>
                 </head>
                 <body>
 
@@ -45,7 +44,6 @@ abstract class View {
 
 					<!--MAIN-->
                     <div class="container">
-                    '.$this->_alert.'
                         <!--SUBNAV-->
                         <div class="subnav-fixed">
                             <div class="subnav-fixed-inner">

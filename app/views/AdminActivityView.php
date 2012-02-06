@@ -10,7 +10,6 @@ class AdminActivityView extends View {
         global $STRINGS;
 
         $this->_entries = $entries;
-		$this->_alert = $alert;
 
         $this->title($STRINGS['activity']);
     }
@@ -51,6 +50,7 @@ class AdminActivityView extends View {
 
         return '
         <section id="activity" class="well">
+        '.$this->_alert.'
             <table class="table">
                 <thead>
                     <tr>

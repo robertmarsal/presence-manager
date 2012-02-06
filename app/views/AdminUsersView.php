@@ -50,7 +50,8 @@ class AdminUsersView extends View {
 
         return '
         <section id="users" class="well">
-            <table class="table">
+         '.$this->_alert.'
+         <table class="table">
                 <thead>
                     <tr>
                         <th>#</th>
