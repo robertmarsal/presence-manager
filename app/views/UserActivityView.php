@@ -9,6 +9,7 @@ class UserActivityView extends View {
         global $STRINGS;
 
         $this->_entries = $entries;
+        
         $this->title($STRINGS['activity']);
     }
 
@@ -20,7 +21,7 @@ class UserActivityView extends View {
 			<ul class="nav">
 				<li class="active"><a href="' . $CONFIG['wwwroot'] . '/user/activity">Activity</a></li>
             </ul>
-            <ul class="nav secondary-nav">
+            <ul class="nav pull-right">
 				<li><a href="' . $CONFIG['wwwroot'] . '/auth/logout">Log Out</a></li>
             </ul>';
     }
@@ -33,39 +34,30 @@ class UserActivityView extends View {
         if (!empty($this->_entries)) {
             foreach ($this->_entries as $entry) {
                 $activity_table_content .=
-                        '<tr>
+                '<tr>
 					<td>' . $entry['id'] . '</td>
-					<td><span class="label ' . $entry['action'] . '">' . $this->get_event_description($entry['action']) . '</span></td>
-					<td>' . date('D M j G:i:s Y', $entry['timestamp']) . '</td>
+					<td><span class="label ' . Helper::get_label_for_action($entry['action']). '">' . Helper::get_event_description($entry['action']) . '</span></td>
+                    <td>' . date('D M j G:i:s Y', $entry['timestamp']) . '</td>
 				 </tr>
 				';
             }
         }
 
         return '
-			<table class="activity_table">
-				<thead>
-					<tr>
-						<th>#</th>
-						<th>Action</th>
-						<th>Time</th>
-					</tr>
-				</thead>
-				<tbody>' . $activity_table_content . '
-				</tbody>
-			</table>
-			<form class="form-stacked" action="' . $CONFIG['wwwroot'] . '/' . $_SESSION['role'] . '/activity/index.php" method="post">
-				<input type="hidden" value="20" name="activity_maxrecords"/>
-				<button class="btn right_aligned">More</button>
-			</form>';
-    }
-
-    private function get_event_description($event) {
-        switch ($event) {
-            case 'success': return 'Check-In';
-            case 'important': return 'Check-Out';
-            case 'warning': return 'Incidence';
-        }
+            <section id="user-activity" class="well">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Action</th>
+                            <th>Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    '.$activity_table_content.'
+                    </tbody>
+                </table>
+            </section>';
     }
 
 }

@@ -28,7 +28,7 @@ class UserModel extends Model {
 
     public function get_user_by_email($email){
 
-        $sql = "SELECT email
+        $sql = "SELECT id
                 FROM ".$this->_table."
                 WHERE `email` = ?";
 
