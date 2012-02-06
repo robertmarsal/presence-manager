@@ -50,8 +50,8 @@ class AdminUserDetailsView extends View{
 		$selected_admin = $this->_user['role'] == 'admin' ? 'SELECTED' : '';
 
 		return '
-        <section id="user-details">
-            <form class="well" action="'.$CONFIG['wwwroot'].'/admin/update_user/'.$this->_user['id'].'"  method="post">
+        <section id="user-details" class="well">
+            <form action="'.$CONFIG['wwwroot'].'/admin/update_user/'.$this->_user['id'].'"  method="post">
                 <label>First Name</label>
                 <input type="text" name="firstname" value="'.$this->_user['firstname'].'">
                 
