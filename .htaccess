@@ -10,8 +10,6 @@ Options +FollowSymLinks
     
     #exclude the api folder from the rewrite
     RewriteCond %{REQUEST_URI} !^/?(api)/
-    #exclude the cron script from rewrite
-    RewriteRule ^(lib|PresenceCronJob\.php) - [L]
     #rewrite all petitions to public folder
     RewriteRule    ^$    public/    [L]
     RewriteRule    (.*) public/$1    [L]
