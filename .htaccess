@@ -7,11 +7,12 @@ Options +FollowSymLinks
 #rewrite rules
 <IfModule mod_rewrite.c>
     RewriteEngine on
-    #RewriteBase /
+    
     #exclude the api folder from the rewrite
-
-    #redirect all petitions to public folder
     RewriteCond %{REQUEST_URI} !^/?(api)/
+    #exclude the cron script from rewrite
+    RewriteRule ^(lib|PresenceCronJob\.php) - [L]
+    #rewrite all petitions to public folder
     RewriteRule    ^$    public/    [L]
     RewriteRule    (.*) public/$1    [L]
 </IfModule>
