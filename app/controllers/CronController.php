@@ -42,7 +42,27 @@ class CronController extends Controller{
             $activity = $this->_activity_model->get_user_activity_no_incidence($user['id']);
             if($activity){
                 //group 2 by 2
-                print_r($activity);
+                $grouped_activities = null;
+                for($i=0; $i<count($activity); $i=$i+2){
+                    //group only when we have both members
+                    $activity[$i] && $activity[$i+1] && $grouped_activities[] = array($activity[$i], $activity[$i+1]);
+                }
+
+                //compute final activity array
+                $final_activities = null;
+                foreach($grouped_activities as $gactivity){
+                    //check data integrity
+                    if($gactivity[0]['action'] == 'checkin' && $gactivity[1]['action'] == 'checkout'){
+                        $final_activities[] = array('userid' => $gactivity[0]['userid'],
+                                                    'timestart' => $gactivity[0]['timestamp'],
+                                                    'timestop' => $gactivity[1]['timestamp'],
+                                                    'computedtime' => ($gactivity[1]['timestamp']-$gactivity[0]['timestamp'])
+                                                    );
+                    }else{
+                        die(print_r("FATAL: Corrupted database!"));
+                    }
+                }
+                print_r($final_activities);
             }
         }
     }
