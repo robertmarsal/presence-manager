@@ -13,20 +13,31 @@ class ActivityModel extends Model {
 		$sql = "SELECT pu.id, pa.userid, pa.action, pa.timestamp, pu.firstname, pu.lastname, pu.email
 				FROM " . $this->_table . " pa
 				JOIN presence_users pu ON pa.userid = pu.id
-				ORDER BY pa.timestamp DESC LIMIT 15";
+				ORDER BY pa.timestamp DESC";
 
 		return DB::getAllRecords($this->_db, $sql, null);
     }
-
+    
     public function get_user_activity($userid) {
 
         $sql = "SELECT pa.id, pa.userid, pa.action, pa.timestamp
 				FROM " . $this->_table . " pa
 				JOIN presence_users pu ON `userid` = pu.id
 				WHERE `userid` = ?
-				ORDER BY id DESC LIMIT 15";
+				ORDER BY id DESC";
 
 		return DB::getAllRecords($this->_db, $sql, array($userid));
+    }
+
+    public function get_user_activity_no_incidence($userid){
+        
+        $sql = "SELECT pa.id, pa.userid, pa.action , pa.timestamp
+                FROM " . $this->_table . " pa
+                JOIN presence_users pu ON `userid` = pu.id
+                WHERE `userid` = ? AND pa.action != ?
+                ORDER BY pa.timestamp ASC";
+        
+        return DB::getAllRecords($this->_db, $sql, array($userid, 'incidence'));
     }
 
 	public function delete_user_activity($userid){

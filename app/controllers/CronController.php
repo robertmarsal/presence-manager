@@ -37,12 +37,12 @@ class CronController extends Controller{
         
         foreach($users as $user) {
             
-            //get activity
+            //get activity without incidences
             //TODO: get only not calculated activity
-            $activity = $this->_activity_model->get_user_activity($user['id']);
+            $activity = $this->_activity_model->get_user_activity_no_incidence($user['id']);
             if($activity){
                 //group 2 by 2
-
+                print_r($activity);
             }
         }
     }
