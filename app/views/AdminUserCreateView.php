@@ -17,7 +17,7 @@ class AdminUserCreateView extends View {
             <li><a href="' . $CONFIG['wwwroot'] . '/admin/users">Users</a></li>
         </ul>
         <ul class="nav pull-right">
-            <li><a href="' . $CONFIG['wwwroot'] . '/auth/logout">Log Out</a></li>
+            <a class="btn btn-warning" href="' . $CONFIG['wwwroot'] . '/auth/logout">Log Out</a>
         </ul>';
     }
 

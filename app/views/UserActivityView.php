@@ -22,7 +22,7 @@ class UserActivityView extends View {
 				<li class="active"><a href="' . $CONFIG['wwwroot'] . '/user/activity">Activity</a></li>
             </ul>
             <ul class="nav pull-right">
-				<li><a href="' . $CONFIG['wwwroot'] . '/auth/logout">Log Out</a></li>
+                <a class="btn btn-warning" href="' . $CONFIG['wwwroot'] . '/auth/logout">Log Out</a>
             </ul>';
     }
 
