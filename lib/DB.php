@@ -17,5 +17,4 @@ class DB {
         return $st->fetchAll(PDO::FETCH_ASSOC);
 	}
 	
-	
 }
