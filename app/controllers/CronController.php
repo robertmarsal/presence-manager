@@ -53,10 +53,22 @@ class CronController extends Controller{
                 foreach($grouped_activities as $gactivity){
                     //check data integrity
                     if($gactivity[0]['action'] == 'checkin' && $gactivity[1]['action'] == 'checkout'){
+                        
+                        //compute the interval
+                        $date_start = new DateTime(date(DATE_ATOM, $gactivity[0]['timestamp']));
+                        $date_end = new DateTime(date(DATE_ATOM, $gactivity[1]['timestamp']));
+                        $interval = $date_start->diff($date_end);
+
+
                         $final_activities[] = array('userid' => $gactivity[0]['userid'],
                                                     'timestart' => $gactivity[0]['timestamp'],
                                                     'timestop' => $gactivity[1]['timestamp'],
-                                                    'computedtime' => ($gactivity[1]['timestamp']-$gactivity[0]['timestamp'])
+                                                    'interval' => array('y' => $interval->y,
+                                                                        'm' => $interval->m,
+                                                                        'd' => $interval->d,
+                                                                        'h' => $interval->h,
+                                                                        'i' => $interval->i,
+                                                                        's' => $interval->s)
                                                     );
                     }else{
                         die(print_r("FATAL: Corrupted database!"));

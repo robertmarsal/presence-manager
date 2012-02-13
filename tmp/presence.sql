@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.5
+-- version 3.4.5deb1
 -- http://www.phpmyadmin.net
 --
--- Servidor: 127.0.0.1
--- Temps de generació: 30-01-2012 a les 18:45:28
--- Versió del servidor: 5.5.16
--- Versió de PHP : 5.3.8
+-- Servidor: localhost
+-- Tiempo de generación: 13-02-2012 a las 11:29:21
+-- Versión del servidor: 5.1.58
+-- Versión de PHP: 5.3.6-13ubuntu3.5
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,15 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de dades: `presence`
+-- Base de datos: `presence`
 --
-CREATE DATABASE `presence` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `presence`;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `presence_activity`
+-- Estructura de tabla para la tabla `presence_activity`
 --
 
 CREATE TABLE IF NOT EXISTS `presence_activity` (
@@ -37,18 +35,17 @@ CREATE TABLE IF NOT EXISTS `presence_activity` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=13 ;
 
 --
--- Bolcant dades de la taula `presence_activity`
+-- Volcado de datos para la tabla `presence_activity`
 --
 
 INSERT INTO `presence_activity` (`id`, `userid`, `action`, `timestamp`) VALUES
-(1, '2', 'checkin', 1295791260),
-(2, '2', 'checkout', 1295910180),
-(12, '2', 'checkin', 1327942373);
+(1, '2', 'checkin', 1329120346),
+(2, '2', 'checkout', 1329152549);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `presence_users`
+-- Estructura de tabla para la tabla `presence_users`
 --
 
 CREATE TABLE IF NOT EXISTS `presence_users` (
@@ -63,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `presence_users` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=10 ;
 
 --
--- Bolcant dades de la taula `presence_users`
+-- Volcado de datos para la tabla `presence_users`
 --
 
 INSERT INTO `presence_users` (`id`, `email`, `password`, `role`, `firstname`, `lastname`, `mac`) VALUES
