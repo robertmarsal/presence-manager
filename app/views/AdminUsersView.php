@@ -21,11 +21,11 @@ class AdminUsersView extends View {
 
         return '
 			<ul class="nav">
-				<li><a href="' . $CONFIG['wwwroot'] . '/admin/activity">Activity</a></li>
-				<li class="active"><a href="' . $CONFIG['wwwroot'] . '/admin/users">Users</a></li>
+				<li><a href="' . $CONFIG->wwwroot . '/admin/activity">Activity</a></li>
+				<li class="active"><a href="' . $CONFIG->wwwroot . '/admin/users">Users</a></li>
 			</ul>
 			<ul class="nav pull-right">
-			    <a class="btn btn-warning" href="' . $CONFIG['wwwroot'] . '/auth/logout">Log Out</a>
+			    <a class="btn btn-warning" href="' . $CONFIG->wwwroot . '/auth/logout">Log Out</a>
             </ul>';
     }
     
@@ -42,7 +42,7 @@ class AdminUsersView extends View {
 					<td>' . utf8_encode($user['firstname']) . '</td>
 					<td>' . utf8_encode($user['lastname']) . '</td>
                     <td>' . $user['role'] . '</td>
-					<td><a href="'.$CONFIG['wwwroot'].'/admin/user_details/'.$user['id'].'">' . $user['email'] . '</a></td>
+					<td><a href="'.$CONFIG->wwwroot.'/admin/user_details/'.$user['id'].'">' . $user['email'] . '</a></td>
 				 </tr>
 				';
             }
@@ -65,7 +65,7 @@ class AdminUsersView extends View {
                     '.$users_table_content.'
                 </tbody>
             </table>
-            <form action="' . $CONFIG['wwwroot'] . '/admin/user_add" method="post">
+            <form action="' . $CONFIG->wwwroot . '/admin/user_add" method="post">
 				<button class="btn btn-success well-button">+ '.$STRINGS['add:user'].'</button>
 			</form>
         </section>';

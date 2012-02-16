@@ -19,16 +19,14 @@ class UserActivityView extends View {
 
         return '
 			<ul class="nav">
-				<li class="active"><a href="' . $CONFIG['wwwroot'] . '/user/activity">Activity</a></li>
+				<li class="active"><a href="' . $CONFIG->wwwroot . '/user/activity">Activity</a></li>
             </ul>
             <ul class="nav pull-right">
-                <a class="btn btn-warning" href="' . $CONFIG['wwwroot'] . '/auth/logout">Log Out</a>
+                <a class="btn btn-warning" href="' . $CONFIG->wwwroot . '/auth/logout">Log Out</a>
             </ul>';
     }
 
     public function content() {
-
-        global $CONFIG;
 
         $activity_table_content = '';
         if (!empty($this->_entries)) {

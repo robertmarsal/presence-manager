@@ -21,11 +21,11 @@ class AdminUserActivityView extends View{
  
         return '
         <ul class="nav">
-            <li><a href="' . $CONFIG['wwwroot'] . '/admin/activity">Activity</a></li>
-            <li class="active"><a href="' . $CONFIG['wwwroot'] . '/admin/users">Users</a></li>
+            <li><a href="' . $CONFIG->wwwroot . '/admin/activity">Activity</a></li>
+            <li class="active"><a href="' . $CONFIG->wwwroot . '/admin/users">Users</a></li>
         </ul>
         <ul class="nav pull-right">
-            <a class="btn btn-warning" href="' . $CONFIG['wwwroot'] . '/auth/logout">Log Out</a>
+            <a class="btn btn-warning" href="' .$CONFIG->wwwroot . '/auth/logout">Log Out</a>
         </ul>';
 	}
 
@@ -34,17 +34,15 @@ class AdminUserActivityView extends View{
         global $CONFIG;
 
         return '
-            <li><a href="'.$CONFIG['wwwroot'].'/admin/user_details/'.$this->_user['id'].'">Details</a></li>
-            <li class="active-pill"><a href="'.$CONFIG['wwwroot'].'/admin/user_activity/'.$this->_user['id'].'">Activity</a></li>
+            <li><a href="'.$CONFIG->wwwroot.'/admin/user_details/'.$this->_user['id'].'">Details</a></li>
+            <li class="active-pill"><a href="'.$CONFIG->wwwroot.'/admin/user_activity/'.$this->_user['id'].'">Activity</a></li>
             <li><a href="#">Statistics</a></li>
             <li><a href="#">Summary</a></li>
-            <li><a href="'.$CONFIG['wwwroot'].'/admin/user_account/'.$this->_user['id'].'">Account</a></li>
+            <li><a href="'.$CONFIG->wwwroot.'/admin/user_account/'.$this->_user['id'].'">Account</a></li>
             <li class="id-tab">'.$this->_user['firstname'].' '.$this->_user['lastname'].'</li>';
     }
     
 	public function content(){
-
-		global $CONFIG;
 
 		$activity_table_content = '';
         if (!empty($this->_activity)) {

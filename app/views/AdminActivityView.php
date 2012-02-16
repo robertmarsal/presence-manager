@@ -20,11 +20,11 @@ class AdminActivityView extends View {
 
         return '
 			<ul class="nav">
-				<li class="active"><a href="' . $CONFIG['wwwroot'] . '/admin/activity">Activity</a></li>
-                <li><a href="' . $CONFIG['wwwroot'] . '/admin/users">Users</a></li>
+				<li class="active"><a href="' . $CONFIG->wwwroot. '/admin/activity">Activity</a></li>
+                <li><a href="' . $CONFIG->wwwroot . '/admin/users">Users</a></li>
             </ul>
             <ul class="nav pull-right">
-				<a class="btn btn-warning" href="' . $CONFIG['wwwroot'] . '/auth/logout">Log Out</a>
+				<a class="btn btn-warning" href="' . $CONFIG->wwwroot . '/auth/logout">Log Out</a>
             </ul>';
     }
 
@@ -42,7 +42,7 @@ class AdminActivityView extends View {
 					<td>' . date('D M j G:i:s Y', $entry['timestamp']) . '</td>
 					<td>' . utf8_encode($entry['firstname']) . '</td>
                     <td>' . utf8_encode($entry['lastname']) . '</td>
-					<td><a href="'.$CONFIG['wwwroot'].'/admin/user_details/'.$entry['id'].'">' . $entry['email'] . '</a></td>
+					<td><a href="'.$CONFIG->wwwroot.'/admin/user_details/'.$entry['id'].'">' . $entry['email'] . '</a></td>
 				 </tr>
 				';
             }

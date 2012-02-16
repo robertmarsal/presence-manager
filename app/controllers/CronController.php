@@ -26,7 +26,7 @@ class CronController extends Controller{
     
         global $CONFIG;
 
-        $verbose = $CONFIG['verbose'];
+        $verbose = $CONFIG->verbose;
 
         //get all users
             $time_start = microtime(true);

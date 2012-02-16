@@ -12,7 +12,7 @@ global $CONFIG;
 
 // activate/deactivate debug
 error_reporting(E_ALL);
-$CONFIG['debug'] && ini_set('display_errors', '1');
+$CONFIG->debug && ini_set('display_errors', '1');
 
 // set language
 $_SESSION['lang'] = isset($_SESSION['lang']) ? $_SESSION['lang'] : 'en';
@@ -38,7 +38,7 @@ function presence_autoloader($class_name) {
     } else if (file_exists(ROOT . '/app/views/' . $class_name . '.php')) {
         require_once(ROOT . '/app/views/' . $class_name . '.php');
     } else { //redirect to 404 page
-        header('Location: ' . $CONFIG['wwwroot'] . '/error/notfound');
+        header('Location: ' . $CONFIG->wwwroot . '/error/notfound');
     }
 }
 

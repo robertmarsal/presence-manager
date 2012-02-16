@@ -19,7 +19,7 @@ class UserController extends Controller {
         if ($this->check_role('user') && method_exists($this, $action)) {
             $this->$action($params);
         } else {
-            Helper::redirect($CONFIG['wwwroot'] . '/error/notfound');
+            Helper::redirect($CONFIG->wwwroot . '/error/notfound');
         }
 
 

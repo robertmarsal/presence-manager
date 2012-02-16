@@ -19,7 +19,7 @@ class NotFoundView extends View {
 
         return '
         <div class="container">
-            <h2>Ooops! This is a 404...quick, go <a href="' . $CONFIG['wwwroot'] . '">back!</a></h2>
+            <h2>Ooops! This is a 404...quick, go <a href="' . $CONFIG->wwwroot . '">back!</a></h2>
         </div>';
     }
 

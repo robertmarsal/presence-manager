@@ -15,10 +15,10 @@ class DependencyContainer {
                 !is_a($this->_instances, 'PDO')) {
 
             $this->_instances['db'] = new PDO(
-                            "mysql:host=" . $this->_params['dbhost'] . ";
-                 dbname=" . $this->_params['dbname'],
-                            $this->_params['dbuser'],
-                            $this->_params['dbpassword']
+                            "mysql:host=" . $this->_params->dbhost . ";
+                 dbname=" . $this->_params->dbname,
+                            $this->_params->dbuser,
+                            $this->_params->dbpassword
             );
         }
 

@@ -13,11 +13,11 @@ class AdminUserCreateView extends View {
 
         return '
         <ul class="nav">
-            <li class="active"><a href="' . $CONFIG['wwwroot'] . '/admin/activity">Activity</a></li>
-            <li><a href="' . $CONFIG['wwwroot'] . '/admin/users">Users</a></li>
+            <li class="active"><a href="' . $CONFIG->wwwroot . '/admin/activity">Activity</a></li>
+            <li><a href="' . $CONFIG->wwwroot . '/admin/users">Users</a></li>
         </ul>
         <ul class="nav pull-right">
-            <a class="btn btn-warning" href="' . $CONFIG['wwwroot'] . '/auth/logout">Log Out</a>
+            <a class="btn btn-warning" href="' . $CONFIG->wwwroot . '/auth/logout">Log Out</a>
         </ul>';
     }
 
@@ -27,7 +27,7 @@ class AdminUserCreateView extends View {
 
         return '
 	    <section id="new-user" class="well">
-            <form action="'.$CONFIG['wwwroot'].'/admin/create_user" method="post">
+            <form action="'.$CONFIG->wwwroot.'/admin/create_user" method="post">
                 <label>First Name</label>
                 <input type="text" name="firstname">
 

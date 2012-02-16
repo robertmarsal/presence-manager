@@ -30,9 +30,9 @@ class AuthController extends Controller {
             $_SESSION['user'] = $result['email'];
             $_SESSION['role'] = $result['role'];
 
-            header('Location: ' . $CONFIG['wwwroot'] . '/' . $result['role'] . '/activity/');
+            header('Location: ' . $CONFIG->wwwroot . '/' . $result['role'] . '/activity/');
         } else {
-            header('Location: ' . $CONFIG['wwwroot']);
+            header('Location: ' . $CONFIG->wwwroot);
         }
     }
 
@@ -43,7 +43,7 @@ class AuthController extends Controller {
         session_unset();
         session_destroy();
 
-        header('Location: ' . $CONFIG['wwwroot']);
+        header('Location: ' . $CONFIG->wwwroot);
     }
 
     private function asklogin() {
