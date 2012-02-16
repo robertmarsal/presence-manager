@@ -4,11 +4,10 @@ class CronController extends Controller{
 
     private $_activity_model;
     private $_user_model;
+    private $_interval_model;
     
     public function __construct($dependencies, $action, $params) {
-  
-        global $CONFIG;
-            
+             
         // get the dependencies
         $this->_dependencies = $dependencies;
      
@@ -31,25 +30,29 @@ class CronController extends Controller{
 
         //get all users
             $time_start = microtime(true);
-            $verbose && print_r("Fetching All Users");
+            $verbose && print_r("Fetching all users...");
         
         $users = $this->_user_model->get_all_users();
             
             $time_end = microtime(true);
-            ($verbose && $users) ? print_r("...Ok ".($time_end-$time_start)." ms\n") : print_r("...Failed!\n");
+            ($verbose && $users) 
+                ? print_r (ColorCLI::getColoredString("Ok ".($time_end-$time_start)." ms\n", 'green'))
+                : print_r (ColorCLI::getColoredString("Failed!\n", 'red'));
         
         foreach($users as $user) {
             
             //get activity without incidences
             //TODO: get only not calculated activity
                 $time_start = microtime(true);
-                $verbose && print_r("Fetching activity of user with id ".$user['id']);
+                $verbose && print_r("Fetching activity of user with id ".$user['id'].'...');
 
             $activity = $this->_activity_model->get_user_activity_no_incidence($user['id']);
                 
                 $time_end = microtime(true);
-                ($verbose && $activity) ? print_r("...Ok ".($time_end-$time_start)." ms\n") : print_r("...No Activity!\n");
-
+                ($verbose && $activity)
+                    ? print_r (ColorCLI::getColoredString("Ok ".($time_end-$time_start)." ms\n", 'green'))
+                    : print_r (ColorCLI::getColoredString("No activity!\n", 'red'));
+            
             if($activity){
                 //group 2 by 2
                 $grouped_activities = null;
@@ -60,7 +63,7 @@ class CronController extends Controller{
 
                 //compute the intervals 
                 $time_start = microtime(true);
-                $verbose && print_r("Computing intervals");
+                $verbose && print_r("Computing intervals...");
 
                 $intervals = null;
                 foreach($grouped_activities as $gactivity){
@@ -87,23 +90,23 @@ class CronController extends Controller{
                         $intervals[] = $interval;
                     
                     }else{
-                        die(print_r("FATAL: Corrupted database!"));
+                        die(print_r(ColorCLI::getColoredString("FATAL: Corrupted database!\n", 'red')));
                     }
                 }
 
                     $time_end = microtime(true);
-                    $verbose && print_r("...Done ".($time_end-$time_start)." ms\n");
+                    $verbose && print_r (ColorCLI::getColoredString("Done ".($time_end-$time_start)." ms\n", 'green'));
 
                 //save the intervals to the DB
                 if($intervals){
                     
                         $time_start = microtime(true);
-                        $verbose && print_r("Storing intervals into the database");
+                        $verbose && print_r("Storing intervals into the database...");
 
                             $this->_interval_model->store($intervals);
 
                         $time_end = microtime(true);
-                        $verbose && print_r("...Done ".($time_end-$time_start)." ms\n");
+                        $verbose && print_r (ColorCLI::getColoredString("Done ".($time_end-$time_start)." ms\n", 'green'));
                 
                 }
             }
