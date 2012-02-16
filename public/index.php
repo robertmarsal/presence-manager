@@ -17,7 +17,7 @@ $CONFIG->debug && ini_set('display_errors', '1');
 // set language
 $_SESSION['lang'] = isset($_SESSION['lang']) ? $_SESSION['lang'] : 'en';
 require_once (ROOT . '/lang/' . $_SESSION['lang'] . '.php');
-;
+
 
 //----------------------------------------------------------------------------//
 // AUTOLOADER ----------------------------------------------------------------//
@@ -37,6 +37,10 @@ function presence_autoloader($class_name) {
         require_once(ROOT . '/lib/' . $class_name . '.php');
     } else if (file_exists(ROOT . '/app/views/' . $class_name . '.php')) {
         require_once(ROOT . '/app/views/' . $class_name . '.php');
+    } else if (file_exists(ROOT . '/app/views/admin/' . $class_name . '.php')) {
+        require_once(ROOT . '/app/views/admin/' . $class_name . '.php');
+    } else if (file_exists(ROOT . '/app/views/user/' . $class_name . '.php')) {
+        require_once(ROOT . '/app/views/user/' . $class_name . '.php');
     } else { //redirect to 404 page
         header('Location: ' . $CONFIG->wwwroot . '/error/notfound');
     }
