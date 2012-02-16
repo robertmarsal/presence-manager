@@ -10,18 +10,8 @@ class IntervalModel extends Model{
       
      public function store($intervals){
      
-        foreach($intervals as $interval){
-           
-            $sql = "INSERT INTO ".$this->_table."
-                    (userid, timestart, timestop, y, m ,h ,d ,i ,s)
-                    VALUES(?,?,?,?,?,?,?,?,?)";
-            $st = $this->_db->prepare($sql);
-            $status = $st->execute(array($interval->userid, $interval->timestart, $interval->timestop,
-                                  $interval->y, $interval->m, $interval->h, $interval->d,
-                                  $interval->i, $interval->s));
-        }
+        return DB::putRecords($this->_db, $this->_table, $intervals);
 
-        return $status;
      }
 
 }
