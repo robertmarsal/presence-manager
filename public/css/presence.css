@@ -16,7 +16,7 @@ body{
 
 .id-tab{
     float:right !important;
-    padding: 10px 10px 11px;
+    padding: 10px 2px 11px !important;
     color:grey;
 }
 
@@ -63,29 +63,8 @@ body{
 .active-pill a{
     color: #888
 }
-/*
-.left-form{
-    padding-left: 0 !important;
-}
-
-.custom-actions{
-    margin-top: 15px;
-}
-
-.id-tab{
-    float: right !important;
-    padding-top: 10px;
-}
-
-.navbar-inner{
-    box-shadow: #999999 0px 4px 8px 0;
-    margin-bottom: -2px !important;
-}
-
-table{
-    border: 1px solid #DDDDDD;
-}
 
 .brand{
     border-right: 1px solid black !important;
-}*/
+}
+
