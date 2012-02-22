@@ -26,7 +26,7 @@ class AdminUserCreateView extends View {
         global $CONFIG, $STRINGS;
 
         return '
-	    <section id="new-user" class="well">
+	    <section id="new-user">
             <form action="'.$CONFIG->wwwroot.'/admin/create_user" method="post">
                 <label>First Name</label>
                 <input type="text" name="firstname">

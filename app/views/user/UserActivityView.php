@@ -42,7 +42,7 @@ class UserActivityView extends View {
         }
 
         return '
-            <section id="user-activity" class="well">
+            <section id="user-activity">
                 <table class="table">
                     <thead>
                         <tr>

@@ -46,7 +46,7 @@ class AdminUserAccountView extends View{
 		global $CONFIG;
 
 		return '
-		<section id="user-account" class="well">
+		<section id="user-account">
 			<form action="' . $CONFIG->wwwroot . '/admin/delete_user" method="post">
                 <input type="submit" class="btn btn-danger" value="Delete Account">
                     <span class="help-inline">Warning! This action can not be undone!</span>

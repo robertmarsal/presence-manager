@@ -49,7 +49,7 @@ class AdminActivityView extends View {
         }
 
         return '
-        <section id="activity" class="well">
+        <section id="activity">
         '.$this->_alert.'
             <table class="table">
                 <thead>
