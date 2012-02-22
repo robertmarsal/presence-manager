@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.5deb1
+-- version 3.2.4
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Temps de generació: 13-02-2012 a les 20:12:25
--- Versió del servidor: 5.1.58
--- Versió de PHP : 5.3.6-13ubuntu3.3
+-- Tiempo de generación: 22-02-2012 a las 22:04:38
+-- Versión del servidor: 5.1.41
+-- Versión de PHP: 5.3.1
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -17,13 +16,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de dades: `presence`
+-- Base de datos: `presence`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `presence_activity`
+-- Estructura de tabla para la tabla `presence_activity`
 --
 
 CREATE TABLE IF NOT EXISTS `presence_activity` (
@@ -31,21 +30,22 @@ CREATE TABLE IF NOT EXISTS `presence_activity` (
   `userid` varchar(250) COLLATE utf8_bin NOT NULL,
   `action` varchar(50) COLLATE utf8_bin NOT NULL,
   `timestamp` int(15) NOT NULL,
+  `computed` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=13 ;
 
 --
--- Bolcant dades de la taula `presence_activity`
+-- Volcar la base de datos para la tabla `presence_activity`
 --
 
-INSERT INTO `presence_activity` (`id`, `userid`, `action`, `timestamp`) VALUES
-(1, '2', 'checkin', 1329120346),
-(2, '2', 'checkout', 1329152549);
+INSERT INTO `presence_activity` (`id`, `userid`, `action`, `timestamp`, `computed`) VALUES
+(1, '2', 'checkin', 1329120346, 0),
+(2, '2', 'checkout', 1329152549, 0);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `presence_intervals`
+-- Estructura de tabla para la tabla `presence_intervals`
 --
 
 CREATE TABLE IF NOT EXISTS `presence_intervals` (
@@ -63,16 +63,14 @@ CREATE TABLE IF NOT EXISTS `presence_intervals` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Bolcant dades de la taula `presence_intervals`
+-- Volcar la base de datos para la tabla `presence_intervals`
 --
 
-INSERT INTO `presence_intervals` (`id`, `userid`, `timestart`, `timestop`, `y`, `m`, `d`, `h`, `i`, `s`) VALUES
-(1, 2, 1329120346, 1329152549, 0, 0, 0, 8, 56, 43);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `presence_users`
+-- Estructura de tabla para la tabla `presence_users`
 --
 
 CREATE TABLE IF NOT EXISTS `presence_users` (
@@ -87,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `presence_users` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=10 ;
 
 --
--- Bolcant dades de la taula `presence_users`
+-- Volcar la base de datos para la tabla `presence_users`
 --
 
 INSERT INTO `presence_users` (`id`, `email`, `password`, `role`, `firstname`, `lastname`, `mac`) VALUES
