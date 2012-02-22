@@ -57,7 +57,7 @@ class User extends API{
 	
 	private function status($params){
 	
-		$sql = "SELECT action
+		$sql = "SELECT action, timestamp
 				FROM presence_activity
 				WHERE userid = ?
 				ORDER BY timestamp DESC
@@ -69,14 +69,15 @@ class User extends API{
 		$response = null;
 		switch($last_activity['action']){
 			case 'checkin': 
-				$response = 'checkedin';
+				$response = array('status' => 'checkedin',
+								  'timestamp' => $last_activity['timestamp']);
 				break;
 			case 'checkout' || 'incidence': 
-				$response = 'checkedout';
+				$response = array ('status' => 'checkedout');
 				break;
 		}
 		
-		API::response(array('status' => $response));
+		API::response($response);
 	}
 	
 	
