@@ -45,16 +45,8 @@ abstract class View {
 					<!--MAIN-->
                     <div class="container">
                         <!--SUBNAV-->
-                        <div class="subnav-fixed">
-                            <div class="subnav-fixed-inner">
-                                <div class="container">
-                                    <ul class="subnav-pills">
-                                        '.$this->subnav().'
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    '.$this->content().'
+                        '.$this->subnav().'
+						'.$this->content().'
                     </div>
                 </body>
                   ';
