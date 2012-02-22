@@ -54,11 +54,19 @@ class CronController extends Controller{
                     : print_r (ColorCLI::getColoredString("No activity!\n", 'red'));
             
             if($activity){
+			
+				$activity_entries = array();
+				
                 //group 2 by 2
                 $grouped_activities = null;
                 for($i=0; $i<count($activity); $i=$i+2){
                     //group only when we have both members
-                    $activity[$i] && $activity[$i+1] && $grouped_activities[] = array($activity[$i], $activity[$i+1]);
+                    if($activity[$i] && $activity[$i+1]){
+					    $grouped_activities[] = array($activity[$i], $activity[$i+1]);
+						//mark activities as computed
+						$activity_entries[] = $activity[$i]['id'];
+						$activity_entries[] = $activity[$i+1]['id'];
+					}
                 }
 
                 //compute the intervals 
@@ -109,6 +117,17 @@ class CronController extends Controller{
                         $verbose && print_r (ColorCLI::getColoredString("Done ".($time_end-$time_start)." ms\n", 'green'));
                 
                 }
+				
+				//update marked activity entries
+					$time_start = microtime(true);
+					$verbose && print_r("Marking activities as computed...");
+				
+				if($activity_entries){
+					$this->_activity_model->mark_as_computed($activity_entries);
+				}
+					
+					$time_end = microtime(true);
+                    $verbose && print_r (ColorCLI::getColoredString("Done ".($time_end-$time_start)." ms\n", 'green'));
             }
 
         }

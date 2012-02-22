@@ -34,10 +34,10 @@ class ActivityModel extends Model {
         $sql = "SELECT pa.id, pa.userid, pa.action , pa.timestamp
                 FROM " . $this->_table . " pa
                 JOIN presence_users pu ON `userid` = pu.id
-                WHERE `userid` = ? AND pa.action != ?
+                WHERE `userid` = ? AND pa.action != ? AND pa.computed = ?
                 ORDER BY pa.timestamp ASC";
         
-        return DB::getAllRecords($this->_db, $sql, array($userid, 'incidence'));
+        return DB::getAllRecords($this->_db, $sql, array($userid, 'incidence', '0'));
     }
 
 	public function delete_user_activity($userid){
@@ -47,6 +47,17 @@ class ActivityModel extends Model {
 
         $st = $this->_db->prepare($sql);
         return $st->execute(array($userid));
+	}
+	
+	public function mark_as_computed($entries){
+			
+		$sql = "UPDATE ".$this->_table."
+				SET computed = ?
+				WHERE id IN(".implode(',',$entries).")";
+			
+		$st = $this->_db->prepare($sql);
+		return $st->execute(array('1'));
+		
 	}
 
 }
