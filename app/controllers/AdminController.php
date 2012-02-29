@@ -38,21 +38,21 @@ class AdminController extends Controller {
 
     public function user_details($params) {
 
-        $this->_view = new AdminUserDetailsView($this->_user_model->get_user_data($params[0]));
+        $this->_view = new AdminUserDetailsView($this->_user_model->find($params[0]));
     }
 
     public function user_activity($params) {
 
-        $this->_view = new AdminUserActivityView($this->_user_model->get_user_data($params[0]), $this->_activity_model->get_user_activity($params[0]));
+        $this->_view = new AdminUserActivityView($this->_user_model->find($params[0]), $this->_activity_model->get_user_activity($params[0]));
     }
 	
 	public function user_summary($params){
-		$this->_view = new AdminUserSummaryView($this->_user_model->get_user_data($params[0]), $this->_interval_model->get_user_summary($params[0]));
+		$this->_view = new AdminUserSummaryView($this->_user_model->find($params[0]), $this->_interval_model->get_user_summary($params[0]));
 	}
 	
     public function user_account($params) {
 
-        $this->_view = new AdminUserAccountView($this->_user_model->get_user_data($params[0]));
+        $this->_view = new AdminUserAccountView($this->_user_model->find($params[0]));
     }
 
     public function user_add() {
@@ -125,7 +125,7 @@ class AdminController extends Controller {
             ? $alert = Helper::alert('success', $STRINGS['user:update:success']) 
             : $alert = Helper::alert('error', $STRINGS['user:update:failed']);
 
-        $this->_view = new AdminUserDetailsView($this->_user_model->get_user_data($userid), $alert);
+        $this->_view = new AdminUserDetailsView($this->_user_model->find($userid), $alert);
     }
 
     public function settings() {

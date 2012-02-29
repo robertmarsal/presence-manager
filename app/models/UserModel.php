@@ -17,15 +17,6 @@ class UserModel extends Model {
 		return DB::getAllRecords($this->_db, $sql, null);
     }
 
-    public function get_user_data($userid) {
-
-        $sql = "SELECT id, email, firstname, lastname, role
-                FROM " . $this->_table . "
-                WHERE `id` = ?";
-				
-		return DB::getRecord($this->_db, $sql, array($userid)); 
-    }
-
     public function get_user_by_email($email){
 
         $sql = "SELECT id

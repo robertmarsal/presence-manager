@@ -16,4 +16,5 @@ class Model{
         
         return DB::getRecord($this->_db, $sql, array($id));
     }
+   
 }
