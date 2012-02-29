@@ -21,9 +21,9 @@ class UserActivityView extends View {
 			<ul class="nav">
 				<li class="active"><a href="' . $CONFIG->wwwroot . '/user/activity">Activity</a></li>
             </ul>
-            <ul class="nav pull-right">
-                <a class="btn btn-warning" href="' . $CONFIG->wwwroot . '/auth/logout">Log Out</a>
-            </ul>';
+            <ul class="nav pull-right no-hover-a">
+				<p class="navbar-text pull-right"><a href="' . $CONFIG->wwwroot . '/auth/logout">Log Out</a></p>
+			</ul>';
     }
 
     public function content() {

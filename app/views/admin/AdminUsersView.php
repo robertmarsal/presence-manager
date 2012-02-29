@@ -24,9 +24,9 @@ class AdminUsersView extends View {
 				<li><a href="' . $CONFIG->wwwroot . '/admin/activity">Activity</a></li>
 				<li class="active"><a href="' . $CONFIG->wwwroot . '/admin/users">Users</a></li>
 			</ul>
-			<ul class="nav pull-right">
-			    <a class="btn btn-warning" href="' . $CONFIG->wwwroot . '/auth/logout">Log Out</a>
-            </ul>';
+			<ul class="nav pull-right no-hover-a">
+				<p class="navbar-text pull-right"><a href="' . $CONFIG->wwwroot . '/auth/logout">Log Out</a></p>
+			</ul>';
     }
     
     public function content() {
@@ -65,8 +65,8 @@ class AdminUsersView extends View {
                     '.$users_table_content.'
                 </tbody>
             </table>
-            <form action="' . $CONFIG->wwwroot . '/admin/user_add" method="post">
-				<button class="btn btn-success well-button">+ '.$STRINGS['add:user'].'</button>
+		    <form action="' . $CONFIG->wwwroot . '/admin/user_add" method="post">
+				<button class="btn btn-success ">+ '.$STRINGS['add:user'].'</button>
 			</form>
         </section>';
     }

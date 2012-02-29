@@ -19,3 +19,7 @@ body{
 	padding-top:10px;
     color:grey;
 }
+
+.no-hover-a a:hover{
+	text-decoration:none;
+}

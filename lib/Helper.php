@@ -23,7 +23,7 @@ class Helper{
     static function get_label_for_action($action){
        switch ($action) {
             case 'checkin': return 'label-success';
-            case 'checkout': return '';
+            case 'checkout': return 'label-important';
             case 'incidence': return 'label-warning';
 		}
     }

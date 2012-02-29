@@ -23,8 +23,8 @@ class AdminActivityView extends View {
 				<li class="active"><a href="' . $CONFIG->wwwroot. '/admin/activity">Activity</a></li>
                 <li><a href="' . $CONFIG->wwwroot . '/admin/users">Users</a></li>
             </ul>
-            <ul class="nav pull-right">
-				<a class="btn btn-warning" href="' . $CONFIG->wwwroot . '/auth/logout">Log Out</a>
+            <ul class="nav pull-right no-hover-a">
+				<p class="navbar-text pull-right"><a href="' . $CONFIG->wwwroot . '/auth/logout">Log Out</a></p>
             </ul>';
     }
 

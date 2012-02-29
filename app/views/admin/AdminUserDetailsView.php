@@ -24,9 +24,9 @@ class AdminUserDetailsView extends View{
 				<li><a href="' . $CONFIG->wwwroot . '/admin/activity">Activity</a></li>
 				<li class="active"><a href="' . $CONFIG->wwwroot . '/admin/users">Users</a></li>
 			</ul>
-			<ul class="nav pull-right">
-			    <a class="btn btn-warning" href="' . $CONFIG->wwwroot . '/auth/logout">Log Out</a>
-            </ul>';
+			<ul class="nav pull-right no-hover-a">
+				<p class="navbar-text pull-right"><a href="' . $CONFIG->wwwroot . '/auth/logout">Log Out</a></p>
+			</ul>';
 	}
 
     public function subnav(){
@@ -37,7 +37,6 @@ class AdminUserDetailsView extends View{
 		<ul class="nav nav-tabs">
             <li class="active"><a href="'.$CONFIG->wwwroot.'/admin/user_details/'.$this->_user['id'].'">Details</a></li>
             <li><a href="'.$CONFIG->wwwroot.'/admin/user_activity/'.$this->_user['id'].'">Activity</a></li>
-            <li><a href="#">Statistics</a></li>
             <li><a href="#">Summary</a></li>
             <li><a href="'.$CONFIG->wwwroot.'/admin/user_account/'.$this->_user['id'].'">Account</a></li>
             <li class="id-tab">'.$this->_user['firstname'].' '.$this->_user['lastname'].'</li>
