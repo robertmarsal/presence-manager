@@ -36,6 +36,11 @@ class AdminController extends Controller {
         $this->_view = new AdminUsersView($this->_user_model->get_all_users());
     }
 
+    public function report(){
+        
+        $this->_view = new AdminReportView();
+    }
+    
     public function user_details($params) {
 
         $this->_view = new AdminUserDetailsView($this->_user_model->find($params[0]));
