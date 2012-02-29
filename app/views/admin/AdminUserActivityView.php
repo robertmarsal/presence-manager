@@ -23,6 +23,7 @@ class AdminUserActivityView extends View{
         <ul class="nav">
             <li><a href="' . $CONFIG->wwwroot . '/admin/activity">Activity</a></li>
             <li class="active"><a href="' . $CONFIG->wwwroot . '/admin/users">Users</a></li>
+			<li><a href="' . $CONFIG->wwwroot . '/admin/report">Report</a></li>
         </ul>
         <ul class="nav pull-right no-hover-a">
 			<p class="navbar-text pull-right"><a href="' . $CONFIG->wwwroot . '/auth/logout">Log Out</a></p>
@@ -46,7 +47,7 @@ class AdminUserActivityView extends View{
 	public function content(){
 
 		$activity_table_content = '';
-        if (!empty($this->_activity)) {
+        if ($this->_activity) {
             foreach ($this->_activity as $entry) {
                 $activity_table_content .=
                 '<tr>
@@ -55,22 +56,23 @@ class AdminUserActivityView extends View{
 				 </tr>
 				';
             }
-        }
 
-		return '
-		<section id="user-activity">
-            <table class="table">
-				<thead>
-					<tr>
-						<th>Action</th>
-						<th>Time</th>
-					</tr>
-				</thead>
-				<tbody>' . $activity_table_content . '
-				</tbody>
-			</table>
-		</section>
-		';
+			return '
+			<section id="user-activity">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Action</th>
+							<th>Time</th>
+						</tr>
+					</thead>
+					<tbody>' . $activity_table_content . '
+					</tbody>
+				</table>
+			</section>';
+		}else{
+			return Helper::alert('info', 'No Activity!');
+		}
 
 	}
 }

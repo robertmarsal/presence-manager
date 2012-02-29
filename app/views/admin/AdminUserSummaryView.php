@@ -25,6 +25,7 @@ class AdminUserSummaryView extends View{
 			<ul class="nav">
 				<li><a href="' . $CONFIG->wwwroot . '/admin/activity">Activity</a></li>
 				<li class="active"><a href="' . $CONFIG->wwwroot . '/admin/users">Users</a></li>
+				<li><a href="' . $CONFIG->wwwroot . '/admin/report">Report</a></li>
 			</ul>
 			<ul class="nav pull-right no-hover-a">
 				<p class="navbar-text pull-right"><a href="' . $CONFIG->wwwroot . '/auth/logout">Log Out</a></p>
@@ -50,35 +51,39 @@ class AdminUserSummaryView extends View{
 		global $CONFIG;
 
 		$summary_table_content = null;
-		foreach ($this->_intervals as $interval){
-			$summary_table_content .= '
-				<tr>
-					<td>'.$interval['h'].' h '.$interval['i'].' m '.$interval['s'].' s</td>
-					<td>'.date('D M j G:i:s Y', $interval['timestart']).'</td>
-					<td>'.date('D M j G:i:s Y', $interval['timestop']).'</td>
-					<td>'.$interval['week'].'</td>
-					<td>'.$interval['month'].'</td>
-					<td>'.$interval['year'].'</td>
-				</tr>';
-		}
-		
-		return '
-        <section id="user-summary">
-		    <table class="table">
-				<thead>
+		if($this->_intervals){
+			foreach ($this->_intervals as $interval){
+				$summary_table_content .= '
 					<tr>
-						<th>Interval</th>
-						<th>Start</th>
-						<th>End</th>
-						<th>Week</th>
-						<th>Month</th>
-						<th>Year</th>
-					</tr>
-				</thead>
-				<tbody>' . $summary_table_content . '
-				</tbody>
-			</table>
-        </section>';
+						<td>'.$interval['h'].' h '.$interval['i'].' m '.$interval['s'].' s</td>
+						<td>'.date('D M j G:i:s Y', $interval['timestart']).'</td>
+						<td>'.date('D M j G:i:s Y', $interval['timestop']).'</td>
+						<td>'.$interval['week'].'</td>
+						<td>'.$interval['month'].'</td>
+						<td>'.$interval['year'].'</td>
+					</tr>';
+			}
+		
+			return '
+			<section id="user-summary">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Interval</th>
+							<th>Start</th>
+							<th>End</th>
+							<th>Week</th>
+							<th>Month</th>
+							<th>Year</th>
+						</tr>
+					</thead>
+					<tbody>' . $summary_table_content . '
+					</tbody>
+				</table>
+			</section>';
+		}else{
+			return Helper::alert('info', 'No Summary!');
+		}
 	}
 
 }
