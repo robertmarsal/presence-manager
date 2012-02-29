@@ -17,12 +17,12 @@ class API{
 				WHERE `mac` = ?";
 
 		$user = DB::getRecord($this->_db, $sql, array($params['mac']));
-		
-		if($user['id'] == null){
+
+		if($user->id == null){
 			API::errResponse('401', 'Unauthorized');
 		}
 		
-		return $user['id'];
+		return $user->id;
 	}
 	
 	static function response($message){

@@ -35,11 +35,11 @@ class AdminUserAccountView extends View{
 
         return '
 		<ul class="nav nav-tabs">
-            <li><a href="'.$CONFIG->wwwroot.'/admin/user_details/'.$this->_user['id'].'">Details</a></li>
-            <li><a href="'.$CONFIG->wwwroot.'/admin/user_activity/'.$this->_user['id'].'">Activity</a></li>
-            <li><a href="'.$CONFIG->wwwroot.'/admin/user_summary/'.$this->_user['id'].'">Summary</a></li>
-            <li class="active"><a href="'.$CONFIG->wwwroot.'/admin/user_account/'.$this->_user['id'].'">Account</a></li>
-            <li class="id-tab">'.$this->_user['firstname'].' '.$this->_user['lastname'].'</li>
+            <li><a href="'.$CONFIG->wwwroot.'/admin/user_details/'.$this->_user->id.'">Details</a></li>
+            <li><a href="'.$CONFIG->wwwroot.'/admin/user_activity/'.$this->_user->id.'">Activity</a></li>
+            <li><a href="'.$CONFIG->wwwroot.'/admin/user_summary/'.$this->_user->id.'">Summary</a></li>
+            <li class="active"><a href="'.$CONFIG->wwwroot.'/admin/user_account/'.$this->_user->id.'">Account</a></li>
+            <li class="id-tab">'.$this->_user->firstname.' '.$this->_user->lastname.'</li>
 		</ul>';
     }
 
@@ -52,7 +52,7 @@ class AdminUserAccountView extends View{
 			<form action="' . $CONFIG->wwwroot . '/admin/delete_user" method="post">
                 <input type="submit" class="btn btn-danger" value="Delete Account">
                     <span class="help-inline">Warning! This action can not be undone!</span>
-				<input type="hidden" name="userid" value="'.$this->_user['id'].'">
+				<input type="hidden" name="userid" value="'.$this->_user->id.'">
 			</form>
 		</section>
 		';

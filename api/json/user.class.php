@@ -32,7 +32,7 @@ class User extends API{
 		$last_activity = DB::getRecord($this->_db, $sql, array($this->_userid));
 		
 		// if last activity is checkin do not allow another checkin
-		if($last_activity['action'] == 'checkin'){
+		if($last_activity->action == 'checkin'){
 			API::errResponse('406', 'Not Acceptable');
 		}
 		
@@ -67,10 +67,10 @@ class User extends API{
 		$last_activity = DB::getRecord($this->_db, $sql, array($this->_userid));
 	
 		$response = null;
-		switch($last_activity['action']){
+		switch($last_activity->action){
 			case 'checkin': 
 				$response = array('status' => 'checkedin',
-								  'timestamp' => $last_activity['timestamp']);
+								  'timestamp' => $last_activity->timestamp);
 				break;
 			case 'checkout' || 'incidence': 
 				$response = array ('status' => 'checkedout');

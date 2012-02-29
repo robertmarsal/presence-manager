@@ -38,11 +38,11 @@ class AdminUserSummaryView extends View{
 
         return '
 		<ul class="nav nav-tabs">
-            <li><a href="'.$CONFIG->wwwroot.'/admin/user_details/'.$this->_user['id'].'">Details</a></li>
-            <li><a href="'.$CONFIG->wwwroot.'/admin/user_activity/'.$this->_user['id'].'">Activity</a></li>
-            <li class="active"><a href="'.$CONFIG->wwwroot.'/admin/user_summary/'.$this->_user['id'].'">Summary</a></li>
-            <li><a href="'.$CONFIG->wwwroot.'/admin/user_account/'.$this->_user['id'].'">Account</a></li>
-            <li class="id-tab">'.$this->_user['firstname'].' '.$this->_user['lastname'].'</li>
+            <li><a href="'.$CONFIG->wwwroot.'/admin/user_details/'.$this->_user->id.'">Details</a></li>
+            <li><a href="'.$CONFIG->wwwroot.'/admin/user_activity/'.$this->_user->id.'">Activity</a></li>
+            <li class="active"><a href="'.$CONFIG->wwwroot.'/admin/user_summary/'.$this->_user->id.'">Summary</a></li>
+            <li><a href="'.$CONFIG->wwwroot.'/admin/user_account/'.$this->_user->id.'">Account</a></li>
+            <li class="id-tab">'.$this->_user->firstname.' '.$this->_user->lastname.'</li>
 		</ul>';
     }
 

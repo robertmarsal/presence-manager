@@ -18,19 +18,19 @@ class AuthController extends Controller {
     private function login($params) {
 
         global $CONFIG;
-        //TO DO: sanitize input
+
         $sql = "SELECT *
                 FROM presence_users
                 WHERE `email` = ?
                 AND `password` = ?";
 
 		$result = DB::getRecord($this->_db, $sql, array($params['email'], md5($params['password'])));
-
+        
         if ($result) {
-            $_SESSION['user'] = $result['email'];
-            $_SESSION['role'] = $result['role'];
+            $_SESSION['user'] = $result->email;
+            $_SESSION['role'] = $result->role;
 
-            header('Location: ' . $CONFIG->wwwroot . '/' . $result['role'] . '/activity/');
+            header('Location: ' . $CONFIG->wwwroot . '/' . $result->role . '/activity/');
         } else {
             header('Location: ' . $CONFIG->wwwroot);
         }

@@ -36,11 +36,11 @@ class AdminUserDetailsView extends View{
 
         return '
 		<ul class="nav nav-tabs">
-            <li class="active"><a href="'.$CONFIG->wwwroot.'/admin/user_details/'.$this->_user['id'].'">Details</a></li>
-            <li><a href="'.$CONFIG->wwwroot.'/admin/user_activity/'.$this->_user['id'].'">Activity</a></li>
-            <li><a href="'.$CONFIG->wwwroot.'/admin/user_summary/'.$this->_user['id'].'">Summary</a></li>
-            <li><a href="'.$CONFIG->wwwroot.'/admin/user_account/'.$this->_user['id'].'">Account</a></li>
-            <li class="id-tab">'.$this->_user['firstname'].' '.$this->_user['lastname'].'</li>
+            <li class="active"><a href="'.$CONFIG->wwwroot.'/admin/user_details/'.$this->_user->id.'">Details</a></li>
+            <li><a href="'.$CONFIG->wwwroot.'/admin/user_activity/'.$this->_user->id.'">Activity</a></li>
+            <li><a href="'.$CONFIG->wwwroot.'/admin/user_summary/'.$this->_user->id.'">Summary</a></li>
+            <li><a href="'.$CONFIG->wwwroot.'/admin/user_account/'.$this->_user->id.'">Account</a></li>
+            <li class="id-tab">'.$this->_user->firstname.' '.$this->_user->lastname.'</li>
 		</ul>';
     }
 
@@ -48,20 +48,20 @@ class AdminUserDetailsView extends View{
 
 		global $CONFIG;
 
-		$selected_user = $this->_user['role'] == 'user' ? 'SELECTED' : '';
-		$selected_admin = $this->_user['role'] == 'admin' ? 'SELECTED' : '';
+		$selected_user = $this->_user->role == 'user' ? 'SELECTED' : '';
+		$selected_admin = $this->_user->role == 'admin' ? 'SELECTED' : '';
 
 		return '
         <section id="user-details">
-            <form action="'.$CONFIG->wwwroot.'/admin/update_user/'.$this->_user['id'].'"  method="post">
+            <form action="'.$CONFIG->wwwroot.'/admin/update_user/'.$this->_user->id.'"  method="post">
                 <label>First Name</label>
-                <input type="text" name="firstname" value="'.$this->_user['firstname'].'">
+                <input type="text" name="firstname" value="'.$this->_user->firstname.'">
                 
                 <label>Last Name</label>
-                <input type="text" name="lastname" value="'.$this->_user['lastname'].'">
+                <input type="text" name="lastname" value="'.$this->_user->lastname.'">
             
                 <label>Email</label>
-                <input type="text" name="email" value="'.$this->_user['email'].'">
+                <input type="text" name="email" value="'.$this->_user->email.'">
            
                 <label>Role</label>
                 <select name="role">

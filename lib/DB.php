@@ -2,12 +2,10 @@
 
 class DB {
 	
-	static function getRecord($db, $sql, $params){
-	
+	static function getRecord($db, $sql, array $params){
 		$st = $db->prepare($sql);
 		$st->execute($params);
-		return $st->fetch(PDO::FETCH_ASSOC);
-		
+		return $st->fetch(PDO::FETCH_OBJ);
 	}
 	
 	static function getAllRecords($db, $sql, $params){
