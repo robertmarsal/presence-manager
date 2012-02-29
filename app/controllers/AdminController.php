@@ -4,7 +4,8 @@ class AdminController extends Controller {
 
     private $_activity_model;
     private $_user_model;
-
+	private $_interval_model;
+	
     public function __construct($dependencies, $action, $params) {
 
         global $CONFIG;
@@ -15,7 +16,8 @@ class AdminController extends Controller {
         // instantiate the models
         $this->_activity_model = new ActivityModel($this->_dependencies);
         $this->_user_model = new UserModel($this->_dependencies);
-
+		$this->_interval_model = new IntervalModel($this->_dependencies);
+		
         // check if is admin and if the required action is defined
         if ($this->check_role('admin') && method_exists($this, $action)) {
             $this->$action($params);
@@ -43,7 +45,11 @@ class AdminController extends Controller {
 
         $this->_view = new AdminUserActivityView($this->_user_model->get_user_data($params[0]), $this->_activity_model->get_user_activity($params[0]));
     }
-
+	
+	public function user_summary($params){
+		$this->_view = new AdminUserSummaryView($this->_user_model->get_user_data($params[0]), $this->_interval_model->get_user_summary($params[0]));
+	}
+	
     public function user_account($params) {
 
         $this->_view = new AdminUserAccountView($this->_user_model->get_user_data($params[0]));

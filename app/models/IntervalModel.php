@@ -13,5 +13,16 @@ class IntervalModel extends Model{
         return DB::putRecords($this->_db, $this->_table, $intervals);
 
      }
+	 
+	 public function get_user_summary($userid){
+	 
+		$sql = "SELECT *
+				FROM ".$this->_table."
+				WHERE `userid` = ?
+				ORDER BY year,month,week";
+				
+		return DB::getAllRecords($this->_db, $sql, array($userid));
+	 
+	 }
 
 }
