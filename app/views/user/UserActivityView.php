@@ -9,7 +9,7 @@ class UserActivityView extends View {
         global $STRINGS;
 
         $this->_entries = $entries;
-        
+
         $this->title($STRINGS['activity']);
     }
 
@@ -33,9 +33,9 @@ class UserActivityView extends View {
             foreach ($this->_entries as $entry) {
                 $activity_table_content .=
                 '<tr>
-					<td>' . $entry['id'] . '</td>
-					<td><span class="label ' . Helper::get_label_for_action($entry['action']). '">' . Helper::get_event_description($entry['action']) . '</span></td>
-                    <td>' . date('D M j G:i:s Y', $entry['timestamp']) . '</td>
+					<td>' . $entry->id . '</td>
+					<td><span class="label ' . Helper::get_label_for_action($entry->action). '">' . Helper::get_event_description($entry->action) . '</span></td>
+                    <td>' . date('D M j G:i:s Y', $entry->timestamp) . '</td>
 				 </tr>
 				';
             }

@@ -4,7 +4,7 @@ class AdminUserSummaryView extends View{
 
 	private $_user;
 	private $_intervals;
-	
+
     public function __construct($user, $intervals, $alert = null) {
         parent::__construct($alert);
 
@@ -33,7 +33,7 @@ class AdminUserSummaryView extends View{
 	}
 
     public function subnav(){
-    
+
         global $CONFIG;
 
         return '
@@ -55,15 +55,15 @@ class AdminUserSummaryView extends View{
 			foreach ($this->_intervals as $interval){
 				$summary_table_content .= '
 					<tr>
-						<td>'.$interval['h'].' h '.$interval['i'].' m '.$interval['s'].' s</td>
-						<td>'.date('D M j G:i:s Y', $interval['timestart']).'</td>
-						<td>'.date('D M j G:i:s Y', $interval['timestop']).'</td>
-						<td>'.$interval['week'].'</td>
-						<td>'.$interval['month'].'</td>
-						<td>'.$interval['year'].'</td>
+						<td>'.$interval->h.' h '.$interval->i.' m '.$interval->s.' s</td>
+						<td>'.date('D M j G:i:s Y', $interval->timestart).'</td>
+						<td>'.date('D M j G:i:s Y', $interval->timestop).'</td>
+						<td>'.$interval->week.'</td>
+						<td>'.$interval->month.'</td>
+						<td>'.$interval->year.'</td>
 					</tr>';
 			}
-		
+
 			return '
 			<section id="user-summary">
 				<table class="table">

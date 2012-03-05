@@ -18,7 +18,7 @@ class AdminUserActivityView extends View{
 	public function menu(){
 
 		global $CONFIG;
- 
+
         return '
         <ul class="nav">
             <li><a href="' . $CONFIG->wwwroot . '/admin/activity">Activity</a></li>
@@ -31,7 +31,7 @@ class AdminUserActivityView extends View{
 	}
 
     public function subnav(){
-    
+
         global $CONFIG;
 
         return '
@@ -43,7 +43,7 @@ class AdminUserActivityView extends View{
             <li class="id-tab">'.$this->_user->firstname.' '.$this->_user->lastname.'</li>
 		</ul>';
     }
-    
+
 	public function content(){
 
 		$activity_table_content = '';
@@ -51,8 +51,8 @@ class AdminUserActivityView extends View{
             foreach ($this->_activity as $entry) {
                 $activity_table_content .=
                 '<tr>
-					<td><span class="label ' . Helper::get_label_for_action($entry['action']) . '">' . Helper::get_event_description($entry['action']) . '</span></td>
-					<td>' . date('D M j G:i:s Y', $entry['timestamp']) . '</td>
+					<td><span class="label ' . Helper::get_label_for_action($entry->action) . '">' . Helper::get_event_description($entry->action) . '</span></td>
+					<td>' . date('D M j G:i:s Y', $entry->timestamp) . '</td>
 				 </tr>
 				';
             }

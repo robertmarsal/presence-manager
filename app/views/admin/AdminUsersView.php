@@ -29,7 +29,7 @@ class AdminUsersView extends View {
 				<p class="navbar-text pull-right"><a href="' . $CONFIG->wwwroot . '/auth/logout">Log Out</a></p>
 			</ul>';
     }
-    
+
     public function content() {
 
         global $CONFIG, $STRINGS;
@@ -39,11 +39,11 @@ class AdminUsersView extends View {
             foreach ($this->_users as $user) {
                 $users_table_content .= '
 				<tr>
-					<td>' . $user['id'] . '</td>
-					<td>' . utf8_encode($user['firstname']) . '</td>
-					<td>' . utf8_encode($user['lastname']) . '</td>
-                    <td>' . $user['role'] . '</td>
-					<td><a href="'.$CONFIG->wwwroot.'/admin/user_details/'.$user['id'].'">' . $user['email'] . '</a></td>
+					<td>' . $user->id . '</td>
+					<td>' . utf8_encode($user->firstname) . '</td>
+					<td>' . utf8_encode($user->lastname) . '</td>
+                    <td>' . $user->role . '</td>
+					<td><a href="'.$CONFIG->wwwroot.'/admin/user_details/'.$user->id.'">' . $user->email . '</a></td>
 				 </tr>
 				';
             }

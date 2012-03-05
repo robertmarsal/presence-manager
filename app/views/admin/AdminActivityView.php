@@ -38,12 +38,12 @@ class AdminActivityView extends View {
             foreach ($this->_entries as $entry) {
                 $activity_table_content .=
                 '<tr>
-					<td>' . $entry['id'] . '</td>
-					<td><span class="label ' . Helper::get_label_for_action($entry['action']). '">' . Helper::get_event_description($entry['action']) . '</span></td>
-					<td>' . date('D M j G:i:s Y', $entry['timestamp']) . '</td>
-					<td>' . utf8_encode($entry['firstname']) . '</td>
-                    <td>' . utf8_encode($entry['lastname']) . '</td>
-					<td><a href="'.$CONFIG->wwwroot.'/admin/user_details/'.$entry['id'].'">' . $entry['email'] . '</a></td>
+					<td>' . $entry->id . '</td>
+					<td><span class="label ' . Helper::get_label_for_action($entry->action). '">' . Helper::get_event_description($entry->action) . '</span></td>
+					<td>' . date('D M j G:i:s Y', $entry->timestamp) . '</td>
+					<td>' . utf8_encode($entry->firstname) . '</td>
+                    <td>' . utf8_encode($entry->lastname) . '</td>
+					<td><a href="'.$CONFIG->wwwroot.'/admin/user_details/'.$entry->id.'">' . $entry->email . '</a></td>
 				 </tr>
 				';
             }

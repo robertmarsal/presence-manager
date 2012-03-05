@@ -8,15 +8,6 @@ class UserModel extends Model {
         $this->_table = 'presence_users';
     }
 
-    public function get_all_users() {
-
-        $sql = "SELECT *
-				FROM " . $this->_table . "
-				ORDER BY lastname ASC";
-
-		return DB::getAllRecords($this->_db, $sql, null);
-    }
-
     public function get_user_by_email($email){
 
         $sql = "SELECT id

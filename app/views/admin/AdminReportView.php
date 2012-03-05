@@ -2,12 +2,14 @@
 
 class AdminReportView extends View{
 
-    public function __construct($alert = null) {
+    private $_users;
+
+    public function __construct($users, $alert = null) {
         parent::__construct($alert);
 
         global $STRINGS;
 
-        $this->_alert = $alert;
+        $this->_users = $users;
 
         $this->title($STRINGS['user']);
     }
@@ -28,11 +30,24 @@ class AdminReportView extends View{
 	}
 
 	public function content(){
-        
-		return '
-        <section id="report-build">
-        
-        </section>';
+
+        $users_options = null;
+        if($this->_users){
+
+            foreach($this->_users as $user){
+                $users_options .= '<option value="'.$user->id.'">
+                                      '.$user->firstname.' '.$user->lastname.'</option>';
+            }
+            return '
+            <section id="report-build">
+                <form>
+                    <label>User</label>
+                    <select id="user">
+                        '.$users_options.'
+                    </select>
+                </form>
+            </section>';
+        }
 	}
 
 }
