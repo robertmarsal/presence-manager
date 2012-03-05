@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Temps de generació: 29-02-2012 a les 15:55:44
+-- Temps de generació: 05-03-2012 a les 16:25:24
 -- Versió del servidor: 5.5.20
 -- Versió de PHP : 5.3.9
 
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Base de dades: `presence`
 --
-CREATE DATABASE `presence` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `presence`;
 
 -- --------------------------------------------------------
 
@@ -33,9 +31,9 @@ CREATE TABLE IF NOT EXISTS `presence_activity` (
   `userid` varchar(250) COLLATE utf8_bin NOT NULL,
   `action` varchar(50) COLLATE utf8_bin NOT NULL,
   `timestamp` int(15) NOT NULL,
-  `computed` tinyint(1) NOT NULL,
+  `computed` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=17 ;
 
 --
 -- Bolcant dades de la taula `presence_activity`
@@ -43,7 +41,11 @@ CREATE TABLE IF NOT EXISTS `presence_activity` (
 
 INSERT INTO `presence_activity` (`id`, `userid`, `action`, `timestamp`, `computed`) VALUES
 (1, '2', 'checkin', 1329120346, 1),
-(2, '2', 'checkout', 1329152549, 1);
+(2, '2', 'checkout', 1329152549, 1),
+(13, '2', 'checkin', 1329296424, 1),
+(14, '2', 'checkout', 1329321624, 1),
+(15, '2', 'checkin', 1329375624, 1),
+(16, '2', 'checkout', 1329411624, 1);
 
 -- --------------------------------------------------------
 
@@ -66,14 +68,16 @@ CREATE TABLE IF NOT EXISTS `presence_intervals` (
   `i` int(11) NOT NULL,
   `s` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Bolcant dades de la taula `presence_intervals`
 --
 
 INSERT INTO `presence_intervals` (`id`, `userid`, `timestart`, `timestop`, `week`, `month`, `year`, `y`, `m`, `d`, `h`, `i`, `s`) VALUES
-(6, 2, 1329120346, 1329152549, 7, 2, 2012, 0, 0, 0, 8, 56, 43);
+(6, 2, 1329120346, 1329152549, 7, 2, 2012, 0, 0, 0, 8, 56, 43),
+(8, 2, 1329296424, 1329321624, 7, 2, 2012, 0, 0, 0, 7, 0, 0),
+(9, 2, 1329375624, 1329411624, 7, 2, 2012, 0, 0, 0, 10, 0, 0);
 
 -- --------------------------------------------------------
 

@@ -27,6 +27,7 @@ abstract class View {
                     <link rel="shortcut icon" href="' . $CONFIG->wwwroot . '/public/img/favicon.ico">
                     <script type="text/javascript" src="' . $CONFIG->wwwroot . '/public/js/jquery-1.7.1.min.js"></script>
                     <script type="text/javascript" src="' . $CONFIG->wwwroot . '/public/js/bootstrap-alert.js"></script>
+					<script type="text/javascript" src="' . $CONFIG->wwwroot . '/public/js/bootstrap-dropdown.js"></script>
                 </head>
                 <body>
 
