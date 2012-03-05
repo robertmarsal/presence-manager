@@ -52,7 +52,8 @@ class AdminUserActivityView extends View{
                 $activity_table_content .=
                 '<tr>
 					<td><span class="label ' . Helper::get_label_for_action($entry->action) . '">' . Helper::get_event_description($entry->action) . '</span></td>
-					<td>' . date('D M j G:i:s Y', $entry->timestamp) . '</td>
+					<td>' . date('G:i:s', $entry->timestamp) . '</td>
+					<td>' . date('D M j Y', $entry->timestamp) . '</td>
 				 </tr>
 				';
             }
@@ -64,6 +65,7 @@ class AdminUserActivityView extends View{
 						<tr>
 							<th>Action</th>
 							<th>Time</th>
+							<th>Date</th>
 						</tr>
 					</thead>
 					<tbody>' . $activity_table_content . '

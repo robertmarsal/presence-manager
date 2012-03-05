@@ -56,10 +56,12 @@ class AdminUserSummaryView extends View{
 				$summary_table_content .= '
 					<tr>
 						<td>'.$interval->h.' h '.$interval->i.' m '.$interval->s.' s</td>
-						<td>'.date('D M j G:i:s Y', $interval->timestart).'</td>
-						<td>'.date('D M j G:i:s Y', $interval->timestop).'</td>
+						<td>'.date('G:i:s', $interval->timestart).'</td>
+						<td>'.date('D j', $interval->timestart).'</td>
+						<td>'.date('G:i:s', $interval->timestop).'</td>
+						<td>'.date('D j', $interval->timestop).'</td>
 						<td>'.$interval->week.'</td>
-						<td>'.$interval->month.'</td>
+						<td>'.date('F', mktime(0,0,0,$interval->month)).'</td>
 						<td>'.$interval->year.'</td>
 					</tr>';
 			}
@@ -70,8 +72,10 @@ class AdminUserSummaryView extends View{
 					<thead>
 						<tr>
 							<th>Interval</th>
-							<th>Start</th>
-							<th>End</th>
+							<th>Start Time</th>
+							<th>Start Date</th>
+							<th>End Time</th>
+							<th>End Date</th>
 							<th>Week</th>
 							<th>Month</th>
 							<th>Year</th>

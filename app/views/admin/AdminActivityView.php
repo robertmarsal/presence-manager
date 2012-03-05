@@ -40,7 +40,8 @@ class AdminActivityView extends View {
                 '<tr>
 					<td>' . $entry->id . '</td>
 					<td><span class="label ' . Helper::get_label_for_action($entry->action). '">' . Helper::get_event_description($entry->action) . '</span></td>
-					<td>' . date('D M j G:i:s Y', $entry->timestamp) . '</td>
+					<td>' . date('G:i:s', $entry->timestamp) . '</td>
+					<td>' . date('D M j Y', $entry->timestamp) . '</td>
 					<td>' . utf8_encode($entry->firstname) . '</td>
                     <td>' . utf8_encode($entry->lastname) . '</td>
 					<td><a href="'.$CONFIG->wwwroot.'/admin/user_details/'.$entry->id.'">' . $entry->email . '</a></td>
@@ -58,6 +59,7 @@ class AdminActivityView extends View {
                         <th>#</th>
                         <th>Action</th>
                         <th>Time</th>
+						<th>Date</th>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Email</th>
