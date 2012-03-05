@@ -29,3 +29,5 @@ $STRINGS['admin:no:activities'] = 'No more activity!';
 $STRINGS['add:user'] = 'Add User';
 $STRINGS['create:user'] = 'Create User';
 
+//report
+$STRINGS['build:report'] = 'Build Report';

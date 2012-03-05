@@ -40,6 +40,10 @@ class AdminController extends Controller {
 
         $this->_view = new AdminReportView($this->_user_model->find_all());
     }
+	
+	public function report_build($params){
+		//TODO
+	}
 
     public function user_details($params) {
 

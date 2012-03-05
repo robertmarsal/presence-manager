@@ -31,6 +31,8 @@ class AdminReportView extends View{
 
 	public function content(){
 
+		global $STRINGS, $CONFIG;
+	
         $users_options = null;
         if($this->_users){
 
@@ -38,13 +40,21 @@ class AdminReportView extends View{
                 $users_options .= '<option value="'.$user->id.'">
                                       '.$user->firstname.' '.$user->lastname.'</option>';
             }
+			
             return '
             <section id="report-build">
-                <form>
+                <form action="'.$CONFIG->wwwroot.'/admin/report_build" method="post" >
                     <label>User</label>
                     <select id="user">
                         '.$users_options.'
                     </select>
+					<label>Date Range</label>
+					<input type="text" name="timestart" placeholder="dd/mm/yyyy"> to <input type="text" name="timeend" placeholder="dd/mm/yyyy">
+					<label>Hour Rate</label>
+					<input type="text" name="rate">
+					
+					<label></label>
+					<button type="submit" class="btn">'.$STRINGS['build:report'].'</button>
                 </form>
             </section>';
         }
