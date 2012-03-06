@@ -36,8 +36,8 @@ class CronController extends Controller{
 
             $time_end = microtime(true);
             ($verbose && $users)
-                ? print_r (ColorCLI::getColoredString("Ok ".($time_end-$time_start)." ms\n", 'green'))
-                : print_r (ColorCLI::getColoredString("Failed!\n", 'red'));
+                ? print_r ("Ok ".($time_end-$time_start)." ms\n")
+                : print_r ("Failed!\n");
 
         foreach($users as $user) {
 
@@ -50,8 +50,8 @@ class CronController extends Controller{
 
                 $time_end = microtime(true);
                 ($verbose && $activity)
-                    ? print_r (ColorCLI::getColoredString("Ok ".($time_end-$time_start)." ms\n", 'green'))
-                    : print_r (ColorCLI::getColoredString("No activity!\n", 'red'));
+                    ? print_r ("Ok ".($time_end-$time_start)." ms\n")
+                    : print_r ("No activity!\n");
 
             if($activity){
 
@@ -101,12 +101,12 @@ class CronController extends Controller{
                         $intervals[] = $interval;
 
                     }else{
-                        die(print_r(ColorCLI::getColoredString("FATAL: Corrupted database!\n", 'red')));
+                        die(print_r("FATAL: Corrupted database!\n"));
                     }
                 }
 
                     $time_end = microtime(true);
-                    $verbose && print_r (ColorCLI::getColoredString("Done ".($time_end-$time_start)." ms\n", 'green'));
+                    $verbose && print_r ("Done ".($time_end-$time_start)." ms\n");
 
                 //save the intervals to the DB
                 if($intervals){
@@ -117,7 +117,7 @@ class CronController extends Controller{
                             $this->_interval_model->store($intervals);
 
                         $time_end = microtime(true);
-                        $verbose && print_r (ColorCLI::getColoredString("Done ".($time_end-$time_start)." ms\n", 'green'));
+                        $verbose && print_r ("Done ".($time_end-$time_start)." ms\n");
 
                 }
 
@@ -130,7 +130,7 @@ class CronController extends Controller{
 				}
 
 					$time_end = microtime(true);
-                    $verbose && print_r (ColorCLI::getColoredString("Done ".($time_end-$time_start)." ms\n", 'green'));
+                    $verbose && print_r ("Done ".($time_end-$time_start)." ms\n");
             }
 
         }
