@@ -23,4 +23,8 @@ class Model{
 
         return DB::getAllRecords($this->_db, $sql);
     }
+	
+	public function create($record){
+		return DB::putRecord($this->_db, $this->_table, $record);
+	}
 }

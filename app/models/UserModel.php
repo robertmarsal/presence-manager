@@ -17,17 +17,6 @@ class UserModel extends Model {
 		return DB::getRecord($this->_db, $sql, array($email));
     }
 
-    public function create_user($user){
-
-        $sql = "INSERT INTO ".$this->_table."
-                    (email, password, role, firstname, lastname)
-                VALUES (?, ?, ?, ?, ?)";
-
-        $st = $this->_db->prepare($sql);
-        return $st->execute(array($user['email'], md5($user['password']),$user['role'],
-            $user['firstname'], $user['lastname']));
-    }
-
     public function update_user($userid, $params){
 
         if(isset($userid)){

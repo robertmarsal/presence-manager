@@ -84,13 +84,16 @@ class AdminController extends Controller {
             }
         }
 
+		// cast the params to object
+		$user = (object) $params;
+			
         // check if the email is already registred
-        if ($this->_user_model->get_user_by_email($params['email']) == true) {
+        if ($this->_user_model->get_user_by_email($user->email) == true) {
             $duplicate = true;
         }
 
         if ($valid && !$duplicate) {
-            $result = $this->_user_model->create_user($params);
+            $result = $this->_user_model->create($user);
             ($result == true)
                 ? $alert = Helper::alert('success', $STRINGS['user:create:success'])
                 : $alert = Helper::alert('error', $STRINGS['user:create:failed']);
