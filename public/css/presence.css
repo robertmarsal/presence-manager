@@ -23,3 +23,7 @@ body{
 .no-hover-a a:hover{
 	text-decoration:none;
 }
+
+.span0{
+    width: 30px !important;
+}

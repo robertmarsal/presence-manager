@@ -40,19 +40,36 @@ class AdminReportView extends View{
                 $users_options .= '<option value="'.$user->id.'">
                                       '.$user->firstname.' '.$user->lastname.'</option>';
             }
-			
+            
             return '
-            <section id="report-build">
+            <script>
+                $(function(){	
+        			$("#dp_start").datepicker({
+                        format: "mm-dd-yyyy"
+                    });
+                    
+        			$("#dp_end").datepicker({
+                        format: "mm-dd-yyyy"
+                    });
+                });
+            </script>
+            
+            <section id="report-build" class="well">
                 <form action="'.$CONFIG->wwwroot.'/admin/report_build" method="post" >
-                    <label>User</label>
-                    <select id="user">
+                    <label><i class="icon-user"></i>&nbsp;User</label>
+                    <select id="user" name="user">
                         '.$users_options.'
                     </select>
-					<label>Date Range</label>
-					<input type="text" name="timestart" placeholder="dd/mm/yyyy"> to <input type="text" name="timeend" placeholder="dd/mm/yyyy">
-					<label>Hour Rate</label>
-					<input type="text" name="rate">
+					<label><i class="icon-calendar"></i>&nbsp;Start Date</label>
+                    <input type="text" class="span2" value="02-16-2012" id="dp_start" name="dp_start">
+                    
+                    <label><i class="icon-calendar"></i>&nbsp;End Date</label>
+                    <input type="text" class="span2" value="02-16-2012" id="dp_end" name="dp_end">
 					
+                    <label><i class="icon-time"></i>&nbsp;Hour Rate / Currency</label>
+					<input type="text" class="span0" name="rate">
+					<input type="text" class="span1" name="currency">
+                    
 					<label></label>
 					<button type="submit" class="btn">'.$STRINGS['build:report'].'</button>
                 </form>
