@@ -42,7 +42,7 @@ class AdminController extends Controller {
     }
 	
 	public function report_build($params){
-        var_dump($params);
+
 		//TODO
 	}
 

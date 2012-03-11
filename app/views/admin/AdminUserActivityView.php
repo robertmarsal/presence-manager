@@ -30,22 +30,10 @@ class AdminUserActivityView extends View{
         </ul>';
 	}
 
-    public function subnav(){
+    public function content(){
 
         global $CONFIG;
-
-        return '
-		<ul class="nav nav-tabs">
-            <li><a href="'.$CONFIG->wwwroot.'/admin/user_details/'.$this->_user->id.'">Details</a></li>
-            <li class="active"><a href="'.$CONFIG->wwwroot.'/admin/user_activity/'.$this->_user->id.'">Activity</a></li>
-            <li><a href="'.$CONFIG->wwwroot.'/admin/user_summary/'.$this->_user->id.'">Summary</a></li>
-            <li><a href="'.$CONFIG->wwwroot.'/admin/user_account/'.$this->_user->id.'">Account</a></li>
-            <li class="id-tab">'.$this->_user->firstname.' '.$this->_user->lastname.'</li>
-		</ul>';
-    }
-
-	public function content(){
-
+        
 		$activity_table_content = '';
         if ($this->_activity) {
             foreach ($this->_activity as $entry) {
@@ -57,10 +45,33 @@ class AdminUserActivityView extends View{
 				 </tr>
 				';
             }
+        }
+        
+        return '
+			<section id="user-activity" class="well min-table">
+                
+                <ul class="nav nav-list well inline-menu">
+                    <li class="id-tab">
+                        <i class="icon-user"></i>&nbsp;'.$this->_user->firstname.' '.$this->_user->lastname.'
+                    </li>
+                    <li>&nbsp;</li>
 
-			return '
-			<section id="user-activity">
-				<table class="table">
+                    <li>
+                        <a href="'.$CONFIG->wwwroot.'/admin/user_details/'.$this->_user->id.'">
+                            <i class="icon-edit"></i>&nbsp;Details</a>
+                    </li>
+                    <li class="active">
+                        <a href="'.$CONFIG->wwwroot.'/admin/user_activity/'.$this->_user->id.'">
+                            <i class="icon-map-marker"></i>&nbsp;Activity</a></li>
+                    <li>
+                        <a href="'.$CONFIG->wwwroot.'/admin/user_summary/'.$this->_user->id.'">
+                            <i class="icon-list"></i>&nbsp;Summary</a></li>
+                    <li>
+                        <a href="'.$CONFIG->wwwroot.'/admin/user_account/'.$this->_user->id.'">
+                            <i class="icon-cog"></i>&nbsp;Account</a></li>
+                </ul>
+
+				<table class="table inline-table" >
 					<thead>
 						<tr>
 							<th>Action</th>
@@ -72,9 +83,6 @@ class AdminUserActivityView extends View{
 					</tbody>
 				</table>
 			</section>';
-		}else{
-			return Helper::alert('info', 'No Activity!');
-		}
 
-	}
+  	}
 }

@@ -14,9 +14,11 @@ body{
     padding-top:25px;
 }
 
+.min-table{
+    min-height: 275px;
+}
+
 .id-tab{
-    float:right !important;
-	padding-top:10px;
     color:grey;
 }
 
@@ -26,4 +28,13 @@ body{
 
 .span0{
     width: 30px !important;
+}
+
+.inline-menu{
+    float:right;
+    width:150px;
+}
+
+.inline-table{
+    width:700px;
 }
