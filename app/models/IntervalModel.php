@@ -29,9 +29,12 @@ class IntervalModel extends Model{
 		
 		$sql = "SELECT SEC_TO_TIME(SUM(timediff)) as total
 				FROM ".$this->_table."
-				WHERE timestart BETWEEN ? AND ?";
+				WHERE timestart BETWEEN ? AND ?
+                AND `userid` = ?";
 				
-		$result = DB::getRecord($this->_db, $sql , array(strtotime($params->dp_start), strtotime($params->dp_end)));
+		$result = DB::getRecord($this->_db, $sql , array(strtotime($params->dp_start),
+                                                         strtotime($params->dp_end),
+                                                         $params->user));
 		
 		$result->timestart = $params->dp_start;
 		$result->timeend = $params->dp_end;
