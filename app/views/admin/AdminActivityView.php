@@ -44,7 +44,7 @@ class AdminActivityView extends View {
 					<td>' . date('D M j Y', $entry->timestamp) . '</td>
 					<td>' . utf8_encode($entry->firstname) . '</td>
                     <td>' . utf8_encode($entry->lastname) . '</td>
-					<td><a href="'.$CONFIG->wwwroot.'/admin/user_details/'.$entry->id.'">' . $entry->email . '</a></td>
+					<td><a href="'.$CONFIG->wwwroot.'/admin/user_details/'.$entry->userid.'">' . $entry->email . '</a></td>
 				 </tr>
 				';
             }
