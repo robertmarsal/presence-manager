@@ -33,6 +33,8 @@ function presence_autoloader($class_name) {
         require_once(ROOT . '/app/controllers/' . $class_name . '.php');
     } else if (file_exists(ROOT . '/app/models/' . $class_name . '.php')) {
         require_once(ROOT . '/app/models/' . $class_name . '.php');
+    } else if (file_exists(ROOT . '/app/helpers/' . $class_name . '.php')) {
+        require_once(ROOT . '/app/helpers/' . $class_name . '.php');
     } else if (file_exists(ROOT . '/lib/' . $class_name . '.php')) {
         require_once(ROOT . '/lib/' . $class_name . '.php');
     } else if (file_exists(ROOT . '/app/views/' . $class_name . '.php')) {

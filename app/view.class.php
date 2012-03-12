@@ -46,8 +46,7 @@ abstract class View {
 
 					<!--MAIN-->
                     <div class="container">
-                        <!--SUBNAV-->
-                        '.$this->subnav().'
+                        '.$this->_alert.'
 						'.$this->content().'
                     </div>
                 </body>
@@ -61,8 +60,5 @@ abstract class View {
     }
 
     abstract function menu();
-
-    protected function subnav(){}
-
     abstract function content();
 }

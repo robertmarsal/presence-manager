@@ -11,23 +11,11 @@ class AdminUserActivityView extends View{
 
         $this->_user = $user;
         $this->_activity = $activity;
-
         $this->title($STRINGS['user']);
     }
 
 	public function menu(){
-
-		global $CONFIG;
-
-        return '
-        <ul class="nav">
-            <li><a href="' . $CONFIG->wwwroot . '/admin/activity">Activity</a></li>
-            <li class="active"><a href="' . $CONFIG->wwwroot . '/admin/users">Users</a></li>
-			<li><a href="' . $CONFIG->wwwroot . '/admin/report">Report</a></li>
-        </ul>
-        <ul class="nav pull-right no-hover-a">
-			<p class="navbar-text pull-right"><a href="' . $CONFIG->wwwroot . '/auth/logout">Log Out</a></p>
-        </ul>';
+        return MenuHelper::admin_base_menu('users');
 	}
 
     public function content(){
@@ -39,14 +27,14 @@ class AdminUserActivityView extends View{
             foreach ($this->_activity as $entry) {
                 $activity_table_content .=
                 '<tr>
-					<td><span class="label ' . Helper::get_label_for_action($entry->action) . '">' . Helper::get_event_description($entry->action) . '</span></td>
+					<td><span class="label ' . Helperx::get_label_for_action($entry->action) . '">' . Helperx::get_event_description($entry->action) . '</span></td>
 					<td>' . date('G:i:s', $entry->timestamp) . '</td>
 					<td>' . date('D M j Y', $entry->timestamp) . '</td>
 				 </tr>
 				';
             }
-        }
         
+        }
         return '
 			<section id="user-activity" class="well min-table">
                 
@@ -83,6 +71,6 @@ class AdminUserActivityView extends View{
 					</tbody>
 				</table>
 			</section>';
-
+        
   	}
 }

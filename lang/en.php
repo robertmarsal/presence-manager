@@ -2,14 +2,15 @@
 
 $STRINGS = null;
 
-//page titles
+//page titles, menu
 $STRINGS['brand'] = 'Presence';
 $STRINGS['login'] = 'Login';
 $STRINGS['help'] = 'Help';
 $STRINGS['activity'] = 'Activity';
 $STRINGS['users'] = 'Users';
-$STRINGS['settings'] = 'Settings';
+$STRINGS['report'] = 'Report';
 $STRINGS['user'] = 'User';
+$STRINGS['logout'] = 'Log Out';
 $STRINGS['home'] = 'Home';
 $STRINGS['404'] = '404';
 

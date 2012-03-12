@@ -22,7 +22,7 @@ class AdminController extends Controller {
         if ($this->check_role('admin') && method_exists($this, $action)) {
             $this->$action($params);
         } else {
-            Helper::redirect($CONFIG->wwwroot . '/error/notfound');
+            Helperx::redirect($CONFIG->wwwroot . '/error/notfound');
         }
     }
 
@@ -97,14 +97,14 @@ class AdminController extends Controller {
         if ($valid && !$duplicate) {
             $result = $this->_user_model->create($user);
             ($result == true)
-                ? $alert = Helper::alert('success', $STRINGS['user:create:success'])
-                : $alert = Helper::alert('error', $STRINGS['user:create:failed']);
+                ? $alert = Helperx::alert('success', $STRINGS['user:create:success'])
+                : $alert = Helperx::alert('error', $STRINGS['user:create:failed']);
 
             $this->_view = new AdminUsersView($this->_user_model->find_all(), $alert);
         } else if (!$valid && !$duplicate) {
-            $this->_view = new AdminUserCreateView(Helper::alert('error', $STRINGS['user:create:failed']));
+            $this->_view = new AdminUserCreateView(Helperx::alert('error', $STRINGS['user:create:failed']));
         } else if ($duplicate) {
-            $this->_view = new AdminUsersView($this->_user_model->find_all(), Helper::alert('error', $STRINGS['user:create:duplicate']));
+            $this->_view = new AdminUsersView($this->_user_model->find_all(), Helperx::alert('error', $STRINGS['user:create:duplicate']));
         }
     }
 
@@ -123,8 +123,8 @@ class AdminController extends Controller {
         }
 
         ($result == true)
-            ? $alert = Helper::alert('success', $STRINGS['user:delete:success'])
-            : $alert = Helper::alert('error', $STRINGS['user:delete:failed']);
+            ? $alert = Helperx::alert('success', $STRINGS['user:delete:success'])
+            : $alert = Helperx::alert('error', $STRINGS['user:delete:failed']);
 
         $this->_view = new AdminActivityView($this->_activity_model->get_all_activity(), $alert);
     }
@@ -136,8 +136,8 @@ class AdminController extends Controller {
         $userid = array_shift($params);
         $success = $this->_user_model->update_user($userid, $params);
         ($success == true)
-            ? $alert = Helper::alert('success', $STRINGS['user:update:success'])
-            : $alert = Helper::alert('error', $STRINGS['user:update:failed']);
+            ? $alert = Helperx::alert('success', $STRINGS['user:update:success'])
+            : $alert = Helperx::alert('error', $STRINGS['user:update:failed']);
 
         $this->_view = new AdminUserDetailsView($this->_user_model->find($userid), $alert);
     }

@@ -14,16 +14,7 @@ class UserActivityView extends View {
     }
 
     public function menu() {
-
-        global $CONFIG;
-
-        return '
-			<ul class="nav">
-				<li class="active"><a href="' . $CONFIG->wwwroot . '/user/activity">Activity</a></li>
-            </ul>
-            <ul class="nav pull-right no-hover-a">
-				<p class="navbar-text pull-right"><a href="' . $CONFIG->wwwroot . '/auth/logout">Log Out</a></p>
-			</ul>';
+        return MenuHelper::user_base_menu('activity');
     }
 
     public function content() {
@@ -34,7 +25,7 @@ class UserActivityView extends View {
                 $activity_table_content .=
                 '<tr>
 					<td>' . $entry->id . '</td>
-					<td><span class="label ' . Helper::get_label_for_action($entry->action). '">' . Helper::get_event_description($entry->action) . '</span></td>
+					<td><span class="label ' . Helperx::get_label_for_action($entry->action). '">' . Helperx::get_event_description($entry->action) . '</span></td>
                     <td>' . date('D M j G:i:s Y', $entry->timestamp) . '</td>
 				 </tr>
 				';

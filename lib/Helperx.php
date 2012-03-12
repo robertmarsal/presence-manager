@@ -1,6 +1,6 @@
 <?php
-
-class Helper{
+//TODO: DEPRECATE!!
+class Helperx{
 
     static function alert($type, $message){
 
