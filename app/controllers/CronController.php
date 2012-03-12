@@ -88,6 +88,7 @@ class CronController extends Controller{
                         $interval->userid = $gactivity[0]->userid;
                         $interval->timestart = $gactivity[0]->timestamp;
                         $interval->timestop = $gactivity[1]->timestamp;
+						$interval->timediff = ($gactivity[1]->timestamp-$gactivity[0]->timestamp);
 						$interval->week = date('W', $gactivity[0]->timestamp);
 						$interval->month = date('n', $gactivity[0]->timestamp);
 						$interval->year = date('o', $gactivity[0]->timestamp);

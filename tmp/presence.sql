@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Temps de generació: 05-03-2012 a les 16:25:24
+-- Temps de generació: 12-03-2012 a les 15:35:38
 -- Versió del servidor: 5.5.20
 -- Versió de PHP : 5.3.9
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Base de dades: `presence`
 --
+CREATE DATABASE `presence` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `presence`;
 
 -- --------------------------------------------------------
 
@@ -58,6 +60,7 @@ CREATE TABLE IF NOT EXISTS `presence_intervals` (
   `userid` int(11) NOT NULL,
   `timestart` int(15) NOT NULL,
   `timestop` int(15) NOT NULL,
+  `timediff` int(11) NOT NULL,
   `week` int(11) NOT NULL,
   `month` int(11) NOT NULL,
   `year` int(4) NOT NULL,
@@ -68,16 +71,16 @@ CREATE TABLE IF NOT EXISTS `presence_intervals` (
   `i` int(11) NOT NULL,
   `s` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
 -- Bolcant dades de la taula `presence_intervals`
 --
 
-INSERT INTO `presence_intervals` (`id`, `userid`, `timestart`, `timestop`, `week`, `month`, `year`, `y`, `m`, `d`, `h`, `i`, `s`) VALUES
-(6, 2, 1329120346, 1329152549, 7, 2, 2012, 0, 0, 0, 8, 56, 43),
-(8, 2, 1329296424, 1329321624, 7, 2, 2012, 0, 0, 0, 7, 0, 0),
-(9, 2, 1329375624, 1329411624, 7, 2, 2012, 0, 0, 0, 10, 0, 0);
+INSERT INTO `presence_intervals` (`id`, `userid`, `timestart`, `timestop`, `timediff`, `week`, `month`, `year`, `y`, `m`, `d`, `h`, `i`, `s`) VALUES
+(15, 2, 1329375624, 1329411624, 36000, 7, 2, 2012, 0, 0, 0, 10, 0, 0),
+(14, 2, 1329296424, 1329321624, 25200, 7, 2, 2012, 0, 0, 0, 7, 0, 0),
+(13, 2, 1329120346, 1329152549, 32203, 7, 2, 2012, 0, 0, 0, 8, 56, 43);
 
 -- --------------------------------------------------------
 

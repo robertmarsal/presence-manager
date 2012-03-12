@@ -45,11 +45,11 @@ class AdminReportView extends View{
             <script>
                 $(function(){	
         			$("#dp_start").datepicker({
-                        format: "mm-dd-yyyy"
+                        format: "dd-mm-yyyy"
                     });
                     
         			$("#dp_end").datepicker({
-                        format: "mm-dd-yyyy"
+                        format: "dd-mm-yyyy"
                     });
                 });
             </script>
