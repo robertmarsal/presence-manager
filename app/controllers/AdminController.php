@@ -42,8 +42,9 @@ class AdminController extends Controller {
     }
 	
 	public function report_build($params){
-
-		//TODO
+		$formdata = (object) $params;
+		$this->_view = new AdminReportShowView($this->_user_model->find($formdata->user),
+											$this->_interval_model->get_range_total($formdata));
 	}
 
     public function user_details($params) {
