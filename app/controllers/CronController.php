@@ -32,7 +32,7 @@ class CronController extends Controller{
             $time_start = microtime(true);
             $verbose && print_r("Fetching all users...");
 
-        $users = $this->_user_model->find_all();
+        $users = UserModel::find_all();
 
             $time_end = microtime(true);
             ($verbose && $users)

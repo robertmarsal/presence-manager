@@ -10,7 +10,7 @@ class IntervalModel extends Model{
 
      public function store($intervals){
 
-        return DB::putRecords($this->_db, $this->_table, $intervals);
+        return DB::putRecords($this->_table, $intervals);
 
      }
 
@@ -21,7 +21,7 @@ class IntervalModel extends Model{
 				WHERE `userid` = ?
 				ORDER BY year,month,week";
 
-		return DB::getAllRecords($this->_db, $sql, array($userid));
+		return DB::getAllRecords($sql, array($userid));
 
 	 }
 

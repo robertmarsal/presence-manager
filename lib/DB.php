@@ -22,27 +22,26 @@ class DB {
                                                $params->dbpassword);
 
     }
-    
+
     public static function getDB(){
         $db = self::getInstance();
         return $db->_connection;
     }
 
 	static function getRecord($sql, array $params){
-		$db = DB::getDB();
-        $st = $db->prepare($sql);
+        $st = self::getDB()->prepare($sql);
 		$st->execute($params);
 		return $st->fetch(PDO::FETCH_OBJ);
 	}
 
-	static function getAllRecords($db, $sql, array $params = null){
+	static function getAllRecords($sql, array $params = null){
 
-		$st = $db->prepare($sql);
+		$st = self::getDB()->prepare($sql);
         $st->execute($params);
         return $st->fetchAll(PDO::FETCH_OBJ);
 	}
 
-    static function putRecord($db, $table, $record){
+    static function putRecord($table, $record){
 
         if(!$record){
             return false;
@@ -60,17 +59,17 @@ class DB {
                        (".implode(',', $fields).")
                         VALUES(".implode(',', $values).")";
 
-                $st = $db->prepare($sql);
+                $st = self::getDB()->prepare($sql);
                 return $st->execute($params);
 
             }
        }
     }
 
-    static function putRecords($db, $table, $records){
+    static function putRecords($table, $records){
 
         foreach($records as $record){
-            DB::putRecord($db, $table, $record);
+            DB::putRecord($table, $record);
         }
 
     }

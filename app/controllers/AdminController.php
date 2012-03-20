@@ -33,37 +33,37 @@ class AdminController extends Controller {
 
     public function users() {
 
-        $this->_view = new AdminUsersView($this->_user_model->find_all());
+        $this->_view = new AdminUsersView(UserModel::find_all());
     }
 
     public function report(){
 
-        $this->_view = new AdminReportView($this->_user_model->find_all());
+        $this->_view = new AdminReportView(UserModel::find_all());
     }
-	
+
 	public function report_build($params){
 		$formdata = (object) $params;
-		$this->_view = new AdminReportShowView($this->_user_model->find($formdata->user),
+		$this->_view = new AdminReportShowView(UserModel::find($formdata->user),
 											$this->_interval_model->get_range_total($formdata));
 	}
 
     public function user_details($params) {
 
-        $this->_view = new AdminUserDetailsView($this->_user_model->find($params[0]));
+        $this->_view = new AdminUserDetailsView(UserModel::find($params[0]));
     }
 
     public function user_activity($params) {
 
-        $this->_view = new AdminUserActivityView($this->_user_model->find($params[0]), $this->_activity_model->get_user_activity($params[0]));
+        $this->_view = new AdminUserActivityView(UserModel::find($params[0]), $this->_activity_model->get_user_activity($params[0]));
     }
 
 	public function user_summary($params){
-		$this->_view = new AdminUserSummaryView($this->_user_model->find($params[0]), $this->_interval_model->get_user_summary($params[0]));
+		$this->_view = new AdminUserSummaryView(UserModel::find($params[0]), $this->_interval_model->get_user_summary($params[0]));
 	}
 
     public function user_account($params) {
 
-        $this->_view = new AdminUserAccountView($this->_user_model->find($params[0]));
+        $this->_view = new AdminUserAccountView(UserModel::find($params[0]));
     }
 
     public function user_add() {
@@ -88,7 +88,7 @@ class AdminController extends Controller {
 
 		// cast the params to object
 		$user = (object) $params;
-			
+
         // check if the email is already registred
         if ($this->_user_model->get_user_by_email($user->email) == true) {
             $duplicate = true;
@@ -100,11 +100,11 @@ class AdminController extends Controller {
                 ? $alert = Helperx::alert('success', $STRINGS['user:create:success'])
                 : $alert = Helperx::alert('error', $STRINGS['user:create:failed']);
 
-            $this->_view = new AdminUsersView($this->_user_model->find_all(), $alert);
+            $this->_view = new AdminUsersView(UserModel::find_all(), $alert);
         } else if (!$valid && !$duplicate) {
             $this->_view = new AdminUserCreateView(Helperx::alert('error', $STRINGS['user:create:failed']));
         } else if ($duplicate) {
-            $this->_view = new AdminUsersView($this->_user_model->find_all(), Helperx::alert('error', $STRINGS['user:create:duplicate']));
+            $this->_view = new AdminUsersView(UserModel::find_all(), Helperx::alert('error', $STRINGS['user:create:duplicate']));
         }
     }
 
@@ -139,7 +139,7 @@ class AdminController extends Controller {
             ? $alert = Helperx::alert('success', $STRINGS['user:update:success'])
             : $alert = Helperx::alert('error', $STRINGS['user:update:failed']);
 
-        $this->_view = new AdminUserDetailsView($this->_user_model->find($userid), $alert);
+        $this->_view = new AdminUserDetailsView(UserModel::find($userid), $alert);
     }
 
     public function settings() {

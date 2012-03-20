@@ -15,9 +15,9 @@ class ActivityModel extends Model {
 				JOIN presence_users pu ON pa.userid = pu.id
 				ORDER BY pa.timestamp DESC";
 
-		return DB::getAllRecords($this->_db, $sql, null);
+		return DB::getAllRecords($sql, null);
     }
-    
+
     public function get_user_activity($userid) {
 
         $sql = "SELECT pa.id, pa.userid, pa.action, pa.timestamp
@@ -26,18 +26,18 @@ class ActivityModel extends Model {
 				WHERE `userid` = ?
 				ORDER BY id DESC";
 
-		return DB::getAllRecords($this->_db, $sql, array($userid));
+		return DB::getAllRecords($sql, array($userid));
     }
 
     public function get_user_activity_no_incidence($userid){
-        
+
         $sql = "SELECT pa.id, pa.userid, pa.action , pa.timestamp
                 FROM " . $this->_table . " pa
                 JOIN presence_users pu ON `userid` = pu.id
                 WHERE `userid` = ? AND pa.action != ? AND pa.computed = ?
                 ORDER BY pa.timestamp ASC";
-        
-        return DB::getAllRecords($this->_db, $sql, array($userid, 'incidence', '0'));
+
+        return DB::getAllRecords($sql, array($userid, 'incidence', '0'));
     }
 
 	public function delete_user_activity($userid){
@@ -48,16 +48,16 @@ class ActivityModel extends Model {
         $st = $this->_db->prepare($sql);
         return $st->execute(array($userid));
 	}
-	
+
 	public function mark_as_computed($entries){
-			
+
 		$sql = "UPDATE ".$this->_table."
 				SET computed = ?
 				WHERE id IN(".implode(',',$entries).")";
-			
+
 		$st = $this->_db->prepare($sql);
 		return $st->execute(array('1'));
-		
+
 	}
 
 }
