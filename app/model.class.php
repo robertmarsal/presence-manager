@@ -14,7 +14,7 @@ class Model{
                 FROM ".$this->_table."
                 WHERE `id` = ?";
 
-        return DB::getRecord($this->_db, $sql, array($id));
+        return DB::getRecord($sql, array($id));
     }
 
     public function find_all(){
@@ -23,7 +23,7 @@ class Model{
 
         return DB::getAllRecords($this->_db, $sql);
     }
-	
+
 	public function create($record){
 		return DB::putRecord($this->_db, $this->_table, $record);
 	}

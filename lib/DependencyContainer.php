@@ -1,5 +1,5 @@
 <?php
-
+//TODO::deprecate
 class DependencyContainer {
 
     private $_instances = array();

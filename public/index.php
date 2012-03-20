@@ -53,6 +53,7 @@ spl_autoload_register('presence_autoloader');
 // MANAGE DEPENDENCIES -------------------------------------------------------//
 //----------------------------------------------------------------------------//
 $dependencies = new DependencyContainer($CONFIG);
+DB::setUp($CONFIG); //create a database connection
 
 //----------------------------------------------------------------------------//
 // FRONT CONTROLLER ----------------------------------------------------------//

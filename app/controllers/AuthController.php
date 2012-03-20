@@ -24,8 +24,8 @@ class AuthController extends Controller {
                 WHERE `email` = ?
                 AND `password` = ?";
 
-		$result = DB::getRecord($this->_db, $sql, array($params['email'], md5($params['password'])));
-        
+		$result = DB::getRecord($sql, array($params['email'], md5($params['password'])));
+
         if ($result) {
             $_SESSION['user'] = $result->email;
             $_SESSION['role'] = $result->role;

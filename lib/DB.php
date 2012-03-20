@@ -2,8 +2,35 @@
 
 class DB {
 
-	static function getRecord($db, $sql, array $params){
-		$st = $db->prepare($sql);
+    private static $_instance;
+    private $_connection;
+
+    private static function getInstance(){
+        if(self::$_instance == null){
+            $class = __CLASS__;
+            self::$_instance = new $class();
+        }
+
+        return self::$_instance;
+    }
+
+    public static function setUp($params){
+        $db = self::getInstance();
+        $db->_connection = new PDO("mysql:host=" . $params->dbhost . ";
+                                    dbname=" . $params->dbname,
+                                               $params->dbuser,
+                                               $params->dbpassword);
+
+    }
+    
+    public static function getDB(){
+        $db = self::getInstance();
+        return $db->_connection;
+    }
+
+	static function getRecord($sql, array $params){
+		$db = DB::getDB();
+        $st = $db->prepare($sql);
 		$st->execute($params);
 		return $st->fetch(PDO::FETCH_OBJ);
 	}

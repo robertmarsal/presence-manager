@@ -44,10 +44,6 @@ class AdminReportShowView extends View{
 				<td style="min-width:80px;"></td>
 				</tr>
 				<tr>
-					<td><strong>Report ID:</strong></td>
-					<td>2X4FG3RT</td>
-				</tr>
-				<tr>
 					<td><strong>To: </strong></td>
 					<td>'.$this->_user->firstname.' '.$this->_user->lastname.'</td>
 				</tr>

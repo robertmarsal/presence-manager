@@ -14,7 +14,7 @@ class UserModel extends Model {
                 FROM ".$this->_table."
                 WHERE `email` = ?";
 
-		return DB::getRecord($this->_db, $sql, array($email));
+		return DB::getRecord($sql, array($email));
     }
 
     public function update_user($userid, $params){
