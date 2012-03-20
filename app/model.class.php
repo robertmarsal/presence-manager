@@ -25,8 +25,8 @@ class Model{
         return DB::getAllRecords($sql);
     }
 
-	public function create($record){
-		return DB::putRecord($this->_table, $record);
+	public static function create($record){
+		return DB::putRecord(self::table(), $record);
 	}
 
     /**

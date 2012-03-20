@@ -95,7 +95,7 @@ class AdminController extends Controller {
         }
 
         if ($valid && !$duplicate) {
-            $result = $this->_user_model->create($user);
+            $result = UserModel::create($user);
             ($result == true)
                 ? $alert = Helperx::alert('success', $STRINGS['user:create:success'])
                 : $alert = Helperx::alert('error', $STRINGS['user:create:failed']);
