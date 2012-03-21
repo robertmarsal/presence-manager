@@ -2,17 +2,10 @@
 
 class CronController extends Controller{
 
-    private $_activity_model;
-    private $_interval_model;
-
     public function __construct($dependencies, $action, $params) {
 
         // get the dependencies
         $this->_dependencies = $dependencies;
-
-        // instantiate the models
-        $this->_activity_model = new ActivityModel($this->_dependencies);
-        $this->_interval_model = new IntervalModel($this->_dependencies);
 
         // check if the required action is defined
         if (method_exists($this, $action)) {
@@ -113,7 +106,7 @@ class CronController extends Controller{
                         $time_start = microtime(true);
                         $verbose && print_r("Storing intervals into the database...");
 
-                            $this->_interval_model->store($intervals);
+                        IntervalModel::create_multiple($intervals);
 
                         $time_end = microtime(true);
                         $verbose && print_r ("Done ".($time_end-$time_start)." ms\n");

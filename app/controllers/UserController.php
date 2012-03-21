@@ -10,10 +10,7 @@ class UserController extends Controller {
      
         // get the dependencies
         $this->_dependencies = $dependencies;
-       
-        // instantiate the models
-        $this->_activity_model = new ActivityModel($this->_dependencies);
-        
+               
         // check if is admin and if the required action is defined
         if ($this->check_role('user') && method_exists($this, $action)) {
             $this->$action($params);

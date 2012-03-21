@@ -2,19 +2,12 @@
 
 class AdminController extends Controller {
 
-    private $_activity_model;
-	private $_interval_model;
-
     public function __construct($dependencies, $action, $params) {
 
         global $CONFIG;
 
         // get the dependencies
         $this->_dependencies = $dependencies;
-
-        // instantiate the models
-        $this->_activity_model = new ActivityModel($this->_dependencies);
-		$this->_interval_model = new IntervalModel($this->_dependencies);
 
         // check if is admin and if the required action is defined
         if ($this->check_role('admin') && method_exists($this, $action)) {
@@ -42,7 +35,7 @@ class AdminController extends Controller {
 	public function report_build($params){
 		$formdata = (object) $params;
 		$this->_view = new AdminReportShowView(UserModel::find($formdata->user),
-											$this->_interval_model->get_range_total($formdata));
+        IntervalModel::get_range_total($formdata));
 	}
 
     public function user_details($params) {
@@ -56,7 +49,7 @@ class AdminController extends Controller {
     }
 
 	public function user_summary($params){
-		$this->_view = new AdminUserSummaryView(UserModel::find($params[0]), $this->_interval_model->get_user_summary($params[0]));
+		$this->_view = new AdminUserSummaryView(UserModel::find($params[0]), IntervalModel::find_all_by_user($params[0]));
 	}
 
     public function user_account($params) {
@@ -124,7 +117,7 @@ class AdminController extends Controller {
             ? $alert = Helperx::alert('success', $STRINGS['user:delete:success'])
             : $alert = Helperx::alert('error', $STRINGS['user:delete:failed']);
 
-        $this->_view = new AdminActivityView($this->_activity_model->get_all_activity(), $alert);
+        $this->_view = new AdminActivityView(ActivityModel::find_all(), $alert);
     }
 
     public function update_user($params) {
