@@ -44,7 +44,7 @@ class CronController extends Controller{
                 $time_start = microtime(true);
                 $verbose && print_r("Fetching activity of user with id ".$user->id.'...');
 
-            $activity = $this->_activity_model->get_user_activity_no_incidence($user->id);
+            $activity = ActivityModel::find_all_by_user_not_computed($user->id);
 
                 $time_end = microtime(true);
                 ($verbose && $activity)
@@ -125,7 +125,7 @@ class CronController extends Controller{
 					$verbose && print_r("Marking activities as computed...");
 
 				if($activity_entries){
-					$this->_activity_model->mark_as_computed($activity_entries);
+					ActivityModel::mark_as_computed($activity_entries);
 				}
 
 					$time_end = microtime(true);

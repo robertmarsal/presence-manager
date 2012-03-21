@@ -8,7 +8,7 @@ class UserModel extends Model {
         $this->_table = 'presence_users';
     }
 
-    public static function get_user_by_email($email){
+    public static function find_by_email($email){
 
         $sql = "SELECT id
                 FROM ".self::table()."

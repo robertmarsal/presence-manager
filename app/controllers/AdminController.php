@@ -26,7 +26,7 @@ class AdminController extends Controller {
 
     public function activity() {
 
-        $this->_view = new AdminActivityView($this->_activity_model->get_all_activity());
+        $this->_view = new AdminActivityView(ActivityModel::find_all());
     }
 
     public function users() {
@@ -52,7 +52,7 @@ class AdminController extends Controller {
 
     public function user_activity($params) {
 
-        $this->_view = new AdminUserActivityView(UserModel::find($params[0]), $this->_activity_model->get_user_activity($params[0]));
+        $this->_view = new AdminUserActivityView(UserModel::find($params[0]), ActivityModel::find_all_by_user($params[0]));
     }
 
 	public function user_summary($params){
@@ -88,7 +88,7 @@ class AdminController extends Controller {
 		$user = (object) $params;
 
         // check if the email is already registred
-        if (UserModel::get_user_by_email($user->email) == true) {
+        if (UserModel::find_by_email($user->email) == true) {
             $duplicate = true;
         }
 
@@ -115,7 +115,7 @@ class AdminController extends Controller {
             // delete the user data
             $op1 = UserModel::delete($params['userid']);
             // delete the user activity
-            $op2 = $this->_activity_model->delete_user_activity($params['userid']);
+            $op2 = ActivityModel::delete_all_by_user($params['userid']);
 
             $result = $op1 && $op2;
         }
