@@ -10,7 +10,7 @@ class AdminController extends Controller {
         if ($this->check_role('admin') && method_exists($this, $action)) {
             $this->$action($params);
         } else {
-            Helperx::redirect($CONFIG->wwwroot . '/error/notfound');
+            RoutingHelper::redirect($CONFIG->wwwroot . '/error/notfound');
         }
     }
 

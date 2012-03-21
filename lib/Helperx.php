@@ -27,9 +27,5 @@ class Helperx{
             case 'incidence': return 'label-warning';
 		}
     }
-
-	static function redirect($url){
-		header('Location: '.$url);
-	}
 	
 }

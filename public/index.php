@@ -44,7 +44,7 @@ function presence_autoloader($class_name) {
     } else if (file_exists(ROOT . '/app/views/user/' . $class_name . '.php')) {
         require_once(ROOT . '/app/views/user/' . $class_name . '.php');
     } else { //redirect to 404 page
-        header('Location: ' . $CONFIG->wwwroot . '/error/notfound');
+        RoutingHelper::redirect($CONFIG->wwwroot . '/error/notfound');
     }
 }
 
