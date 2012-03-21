@@ -73,4 +73,36 @@ class DB {
         }
 
     }
+    
+    static function deleteRecord($table, $id){
+        
+        if(empty($id)){
+            return null;
+        }
+        
+        $sql = "DELETE FROM ".$table."
+			    WHERE `id` = ?";
+
+		$st = self::getDB()->prepare($sql);
+        return $st->execute(array($id));
+    }
+    
+    static function updateRecord($table, $id, $fields){
+        
+        if(empty($id)){
+            return null;
+        }
+        
+        $update_params = array();
+        foreach($fields as $key => $field){
+            $update_params [] = '`'.$key.'`="'.$field.'"';
+        }
+
+        $sql = "UPDATE " . $table . "
+                SET ".implode(',', $update_params)."
+                WHERE `id` = ?";
+
+        $st = self::getDB()->prepare($sql);
+        return $st->execute(array($id));
+    }
 }

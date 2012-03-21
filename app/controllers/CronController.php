@@ -3,7 +3,6 @@
 class CronController extends Controller{
 
     private $_activity_model;
-    private $_user_model;
     private $_interval_model;
 
     public function __construct($dependencies, $action, $params) {
@@ -13,7 +12,6 @@ class CronController extends Controller{
 
         // instantiate the models
         $this->_activity_model = new ActivityModel($this->_dependencies);
-        $this->_user_model = new UserModel($this->_dependencies);
         $this->_interval_model = new IntervalModel($this->_dependencies);
 
         // check if the required action is defined

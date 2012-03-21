@@ -28,13 +28,20 @@ class Model{
 	public static function create($record){
 		return DB::putRecord(self::table(), $record);
 	}
+    
+    public static function delete($id){
+        return DB::deleteRecord(self::table(), $id);
+    }
 
+    public static function update($id, array $fields){
+        return DB::updateRecord(self::table(), $id, $fields);
+    }
     /**
      * Returns the name of the table corresponding to the model
      *
      * @return string
      */
-    private static function table(){
+    protected static function table(){
         $prefix = 'presence_';
         $caller = get_called_class();
         $class = lcfirst(substr($caller, 0, -5));

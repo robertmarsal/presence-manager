@@ -3,7 +3,6 @@
 class AdminController extends Controller {
 
     private $_activity_model;
-    private $_user_model;
 	private $_interval_model;
 
     public function __construct($dependencies, $action, $params) {
@@ -15,7 +14,6 @@ class AdminController extends Controller {
 
         // instantiate the models
         $this->_activity_model = new ActivityModel($this->_dependencies);
-        $this->_user_model = new UserModel($this->_dependencies);
 		$this->_interval_model = new IntervalModel($this->_dependencies);
 
         // check if is admin and if the required action is defined
@@ -90,7 +88,7 @@ class AdminController extends Controller {
 		$user = (object) $params;
 
         // check if the email is already registred
-        if ($this->_user_model->get_user_by_email($user->email) == true) {
+        if (UserModel::get_user_by_email($user->email) == true) {
             $duplicate = true;
         }
 
@@ -115,7 +113,7 @@ class AdminController extends Controller {
         $result = false;
         if (isset($params['userid'])) {
             // delete the user data
-            $op1 = $this->_user_model->delete_user($params['userid']);
+            $op1 = UserModel::delete($params['userid']);
             // delete the user activity
             $op2 = $this->_activity_model->delete_user_activity($params['userid']);
 
@@ -134,7 +132,7 @@ class AdminController extends Controller {
         global $STRINGS;
 
         $userid = array_shift($params);
-        $success = $this->_user_model->update_user($userid, $params);
+        $success = UserModel::update($userid, $params);
         ($success == true)
             ? $alert = Helperx::alert('success', $STRINGS['user:update:success'])
             : $alert = Helperx::alert('error', $STRINGS['user:update:failed']);
