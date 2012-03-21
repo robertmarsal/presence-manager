@@ -2,7 +2,7 @@
 
 class HelpController extends Controller {
 
-	public function __construct(DependencyContainer $dependencies, $action, $params) {
+	public function __construct($action, $params) {
 
 		// check if the required action is defined
 		if (method_exists($this, $action)) {

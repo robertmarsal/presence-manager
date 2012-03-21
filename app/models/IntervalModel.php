@@ -2,12 +2,6 @@
 
 class IntervalModel extends Model{
 
-     public function __construct($dependencies) {
-        parent::__construct($dependencies);
-
-        $this->_table = 'presence_intervals';
-     }
-
      public static function create_multiple($records){
          return DB::putRecords(self::table(), $records);
      }

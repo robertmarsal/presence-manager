@@ -2,13 +2,6 @@
 
 class Model{
 
-    protected $_db;
-    protected $_table;
-
-    public function __construct($dependencies){
-        $this->_db = $dependencies->get_db();
-    }
-
     public static function find($id){
 
         $sql = "SELECT *

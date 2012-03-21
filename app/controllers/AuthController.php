@@ -4,10 +4,7 @@ class AuthController extends Controller {
 
     private $_db;
 
-    public function __construct(DependencyContainer $dependencies, $action, $params) {
-
-        // get the connection to the database from the dependencies container
-        $this->_db = $dependencies->get_db();
+    public function __construct($action, $params) {
 
         // check if the required action is defined
         if (method_exists($this, $action)) {

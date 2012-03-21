@@ -52,7 +52,7 @@ spl_autoload_register('presence_autoloader');
 //----------------------------------------------------------------------------//
 // MANAGE DEPENDENCIES -------------------------------------------------------//
 //----------------------------------------------------------------------------//
-$dependencies = new DependencyContainer($CONFIG);
+
 DB::setUp($CONFIG); //create a database connection
 
 //----------------------------------------------------------------------------//
@@ -77,4 +77,4 @@ if ($url == null && $role == null) {
 }
 
 $extra_params = $_POST;
-new $controller($dependencies, $action, array_merge($url_params, $extra_params));
+new $controller($action, array_merge($url_params, $extra_params));

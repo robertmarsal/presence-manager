@@ -2,12 +2,6 @@
 
 class ActivityModel extends Model {
 
-    public function __construct($dependencies) {
-        parent::__construct($dependencies);
-
-        $this->_table = 'presence_activity';
-    }
-
     public static function find_all() {
 
 		$sql = "SELECT pa.id, pa.userid, pa.action, pa.timestamp, pu.firstname, pu.lastname, pu.email

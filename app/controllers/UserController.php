@@ -4,13 +4,10 @@ class UserController extends Controller {
 
     private $_db;
 
-    public function __construct($dependencies, $action, $params) {
+    public function __construct($action, $params) {
 
         global $CONFIG;
-     
-        // get the dependencies
-        $this->_dependencies = $dependencies;
-               
+
         // check if is admin and if the required action is defined
         if ($this->check_role('user') && method_exists($this, $action)) {
             $this->$action($params);
