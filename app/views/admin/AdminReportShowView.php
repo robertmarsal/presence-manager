@@ -36,8 +36,8 @@ class AdminReportShowView extends View{
 		return '
             <section id="report-show" class="well">
 				<div id="report-actions" class="pull-right">
-					<a class="btn" href="#"><i class="icon-download"></i>&nbsp;JSON</a>
-					<a class="btn" href="#"><i class="icon-download"></i>&nbsp;HTML</a>
+					<a class="btn" href="#"><i class="icon-eye-open"></i>&nbsp;JSON</a>
+					<a class="btn" href="#"><i class="icon-eye-open"></i>&nbsp;HTML</a>
 				</div>
 
 			<div class="page-header">
