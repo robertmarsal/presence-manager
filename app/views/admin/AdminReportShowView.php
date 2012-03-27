@@ -23,15 +23,15 @@ class AdminReportShowView extends View{
 
 	public function content(){
 
-        $intervals_list = '<ol>';
+        $intervals_list = '<table class="table table-bordered table-condensed">';
         foreach($this->_intervals as $interval){
-            $intervals_list .='<li>'.$interval->h.'h  '.$interval->i.'m  '.$interval->s.'s ||
-                '.date('G:i:s D M j Y', $interval->timestart).' @ '.
-                  date('G:i:s D M j Y', $interval->timestop).'
-
-            </li>';
+            $intervals_list .='<tr>
+                <td>'.$interval->h.'h  '.$interval->i.'m  '.$interval->s.'s </td>
+                <td>'.date('G:i:s D M j Y', $interval->timestart).' </td>
+                <td>'.date('G:i:s D M j Y', $interval->timestop).' </td>
+                </tr>';
         }
-        $intervals_list.= '</ol>';
+        $intervals_list.= '</table>';
 
 		return '
             <section id="report-show" class="well">
@@ -40,9 +40,7 @@ class AdminReportShowView extends View{
 					<a class="btn" href="#"><i class="icon-eye-open"></i>&nbsp;HTML</a>
 				</div>
 
-			<div class="page-header">
-			</div>
-			<table>
+			<table >
 				<tr>
 				<td style="min-width:80px;"></td>
 				</tr>
@@ -60,7 +58,7 @@ class AdminReportShowView extends View{
 				</tr>
                 <tr>
 					<td><strong>Intervals: </strong></td>
-					<td>'.$intervals_list.'</td>
+					<td><br>'.$intervals_list.'</td>
 				</tr>
                 <tr>
 					<td><strong>Total: </strong></td>
