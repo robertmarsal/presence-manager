@@ -34,4 +34,16 @@ class IntervalModel extends Model{
 		return $result;
 	 }
 
+     public static function get_between($params){
+
+         $sql = "SELECT *
+				 FROM ".self::table()."
+				 WHERE timestart BETWEEN ? AND ?
+                 AND `userid` = ?";
+
+         return DB::getAllRecords($sql , array(strtotime($params->dp_start),
+                                                         strtotime($params->dp_end),
+                                                         $params->user));
+     }
+
 }

@@ -5,13 +5,14 @@ class AdminReportShowView extends View{
     private $_user;
 	private $_range;
 
-    public function __construct($user, $range,$alert = null) {
+    public function __construct($user, $range, $intervals, $alert = null) {
         parent::__construct($alert);
 
         global $STRINGS;
 
         $this->_user = $user;
 		$this->_range = $range;
+        $this->_intervals = $intervals;
 
         $this->title($STRINGS['user']);
     }
@@ -22,29 +23,31 @@ class AdminReportShowView extends View{
 
 	public function content(){
 
+        $intervals_list = '<ol>';
+        foreach($this->_intervals as $interval){
+            $intervals_list .='<li>'.$interval->h.'h  '.$interval->i.'m  '.$interval->s.'s ||
+                '.date('G:i:s D M j Y', $interval->timestart).' @ '.
+                  date('G:i:s D M j Y', $interval->timestop).'
+
+            </li>';
+        }
+        $intervals_list.= '</ol>';
+
 		return '
             <section id="report-show" class="well">
 				<div id="report-actions" class="pull-right">
-					<a class="btn" href="#"><i class="icon-print"></i>&nbsp;Print</a>
-					<a class="btn" href="#"><i class="icon-download"></i>&nbsp;Download</a>
-					<a class="btn" href="#"><i class="icon-envelope"></i>&nbsp;Mail</a>
+					<a class="btn" href="#"><i class="icon-download"></i>&nbsp;JSON</a>
+					<a class="btn" href="#"><i class="icon-download"></i>&nbsp;HTML</a>
 				</div>
-			    <address>
-        <strong>Twitter, Inc.</strong><br>
 
-        795 Folsom Ave, Suite 600<br>
-        San Francisco, CA 94107<br>
-        <abbr title="Phone">P:</abbr> (123) 456-7890
-      </address>
 			<div class="page-header">
-				<h1>Report</h1>
 			</div>
 			<table>
 				<tr>
 				<td style="min-width:80px;"></td>
 				</tr>
 				<tr>
-					<td><strong>To: </strong></td>
+					<td><strong>User: </strong></td>
 					<td>'.$this->_user->firstname.' '.$this->_user->lastname.'</td>
 				</tr>
 				<tr>
@@ -55,9 +58,15 @@ class AdminReportShowView extends View{
 					<td><strong>Period: </strong></td>
 					<td>'.$this->_range->timestart.' to '.$this->_range->timeend.'</td>
 				</tr>
+                <tr>
+					<td><strong>Intervals: </strong></td>
+					<td>'.$intervals_list.'</td>
+				</tr>
+                <tr>
+					<td><strong>Total: </strong></td>
+					<td>'.$this->_range->total.'</td>
+				</tr>
 			</table>
-
-			<h3 class="pull-right">Time: '.$this->_range->total.'</h3></br>
 
             </section>';
 

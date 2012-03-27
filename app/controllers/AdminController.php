@@ -32,7 +32,7 @@ class AdminController extends Controller {
 	public function report_build($params){
 		$formdata = (object) $params;
 		$this->_view = new AdminReportShowView(UserModel::find($formdata->user),
-        IntervalModel::get_range_total($formdata));
+        IntervalModel::get_range_total($formdata), IntervalModel::get_between($formdata));
 	}
 
     public function user_details($params) {
