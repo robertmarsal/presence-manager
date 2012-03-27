@@ -19,10 +19,8 @@ class UserController extends Controller {
     }
 
     function activity($params) {
-        
         $user = UserModel::find_by_email($_SESSION['user']);
-        $this->_view = new UserActivityView(ActivityModel::find_all_by_user($user['id']));
-    
+        $this->_view = new UserActivityView(ActivityModel::find_all_by_user($user->id));
     }
 
 }

@@ -26,7 +26,8 @@ class UserActivityView extends View {
                 '<tr>
 					<td>' . $entry->id . '</td>
 					<td><span class="label ' . Helperx::get_label_for_action($entry->action). '">' . Helperx::get_event_description($entry->action) . '</span></td>
-                    <td>' . date('D M j G:i:s Y', $entry->timestamp) . '</td>
+                    <td>' . date('G:i:s', $entry->timestamp) . '</td>
+					<td>' . date('D M j Y', $entry->timestamp) . '</td>
 				 </tr>
 				';
             }
@@ -40,6 +41,7 @@ class UserActivityView extends View {
                             <th>#</th>
                             <th>Action</th>
                             <th>Time</th>
+                            <th>Date</th>
                         </tr>
                     </thead>
                     <tbody>
