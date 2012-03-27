@@ -6,8 +6,7 @@ class AdminReportShowView extends View{
 	private $_range;
 
     public function __construct($user, $range, $intervals, $alert = null) {
-        parent::__construct($alert);
-
+        
         global $STRINGS;
 
         $this->_user = $user;

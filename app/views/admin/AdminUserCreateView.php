@@ -2,11 +2,6 @@
 
 class AdminUserCreateView extends View {
 
-    public function __construct($alert = null) {
-        parent::__construct($alert);
-    }
-
-
     public function menu() {
         return MenuHelper::admin_base_menu('users');
     }

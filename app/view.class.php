@@ -5,10 +5,6 @@ abstract class View {
     private $_title;
     protected $_alert;
 
-    public function __construct($alert){
-        $this->_alert = $alert;
-    }
-
     public function __destruct() {
         $this->render();
     }
@@ -61,4 +57,5 @@ abstract class View {
 
     abstract function menu();
     abstract function content();
+
 }

@@ -85,14 +85,14 @@ class AdminController extends Controller {
         if ($valid && !$duplicate) {
             $result = UserModel::create($user);
             ($result == true)
-                ? $alert = Helperx::alert('success', $STRINGS['user:create:success'])
-                : $alert = Helperx::alert('error', $STRINGS['user:create:failed']);
+                ? $alert = BootstrapHelper::alert('success', 'Success!' , $STRINGS['user:create:success'])
+                : $alert = BootstrapHelper::alert('error', 'Error!', $STRINGS['user:create:failed']);
 
             $this->_view = new AdminUsersView(UserModel::find_all(), $alert);
         } else if (!$valid && !$duplicate) {
-            $this->_view = new AdminUserCreateView(Helperx::alert('error', $STRINGS['user:create:failed']));
+            $this->_view = new AdminUserCreateView(BootstrapHelper::alert('error', 'Error!' ,$STRINGS['user:create:failed']));
         } else if ($duplicate) {
-            $this->_view = new AdminUsersView(UserModel::find_all(), Helperx::alert('error', $STRINGS['user:create:duplicate']));
+            $this->_view = new AdminUsersView(UserModel::find_all(), BootstrapHelper::alert('error', 'Error!',$STRINGS['user:create:duplicate']));
         }
     }
 
@@ -111,8 +111,8 @@ class AdminController extends Controller {
         }
 
         ($result == true)
-            ? $alert = Helperx::alert('success', $STRINGS['user:delete:success'])
-            : $alert = Helperx::alert('error', $STRINGS['user:delete:failed']);
+            ? $alert = BootstrapHelper::alert('success', 'Success!', $STRINGS['user:delete:success'])
+            : $alert = BootstrapHelper::alert('error', 'Error!', $STRINGS['user:delete:failed']);
 
         $this->_view = new AdminActivityView(ActivityModel::find_all(), $alert);
     }
@@ -124,8 +124,8 @@ class AdminController extends Controller {
         $userid = array_shift($params);
         $success = UserModel::update($userid, $params);
         ($success == true)
-            ? $alert = Helperx::alert('success', $STRINGS['user:update:success'])
-            : $alert = Helperx::alert('error', $STRINGS['user:update:failed']);
+            ? $alert = BootstrapHelper::alert('success', 'Success!', $STRINGS['user:update:success'])
+            : $alert = BootstrapHelper::alert('error', 'Error!', $STRINGS['user:update:failed']);
 
         $this->_view = new AdminUserDetailsView(UserModel::find($userid), $alert);
     }

@@ -5,8 +5,7 @@ class AdminUserDetailsView extends View{
 	private $_user;
 
     public function __construct($user, $alert = null) {
-        parent::__construct($alert);
-
+        
         global $STRINGS;
 
         $this->_user = $user;

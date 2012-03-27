@@ -5,7 +5,6 @@ class AdminReportView extends View{
     private $_users;
 
     public function __construct($users, $alert = null) {
-        parent::__construct($alert);
 
         global $STRINGS;
 

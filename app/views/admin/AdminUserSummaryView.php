@@ -6,8 +6,7 @@ class AdminUserSummaryView extends View{
 	private $_intervals;
 
     public function __construct($user, $intervals, $alert = null) {
-        parent::__construct($alert);
-
+        
         global $STRINGS;
 
         $this->_user = $user;

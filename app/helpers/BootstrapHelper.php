@@ -1,18 +1,16 @@
 <?php
-//TODO: DEPRECATE!!
-class Helperx{
 
-    static function alert($type, $message){
+class BootstrapHelper extends Helper{
 
+    static function alert($type, $title, $message){    
         return '
             <div class="alert fade in alert-'.$type.'">
                 <a class="close" data-dismiss="alert" href="#">×</a>
-                <strong>'.$message.'</strong>
+                <strong>'.$title.'</strong>&nbsp;'.$message.'
             </div>';
-
     }
-
-	static function get_event_description($event) {
+    
+    static function get_event_description($event) {
         switch ($event) {
             case 'checkin': return 'Check-In';
             case 'checkout': return 'Check-Out';
@@ -27,5 +25,4 @@ class Helperx{
             case 'incidence': return 'label-warning';
 		}
     }
-	
 }
