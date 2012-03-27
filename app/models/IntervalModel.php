@@ -5,16 +5,16 @@ class IntervalModel extends Model{
      public static function create_multiple($records){
          return DB::putRecords(self::table(), $records);
      }
-     
+
      public static function find_all_by_user($user){
-         		
+
         $sql = "SELECT *
 				FROM ".self::table()."
 				WHERE `userid` = ?
 				ORDER BY year,month,week";
 
 		return DB::getAllRecords($sql, array($user));
-     
+
      }
 
 	 public static function get_range_total($params){

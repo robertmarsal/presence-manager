@@ -4,7 +4,7 @@ class AdminReportShowView extends View{
 
     private $_user;
 	private $_range;
-	
+
     public function __construct($user, $range,$alert = null) {
         parent::__construct($alert);
 
@@ -12,7 +12,7 @@ class AdminReportShowView extends View{
 
         $this->_user = $user;
 		$this->_range = $range;
-		
+
         $this->title($STRINGS['user']);
     }
 
@@ -21,8 +21,8 @@ class AdminReportShowView extends View{
 	}
 
 	public function content(){
-	
-		return '            
+
+		return '
             <section id="report-show" class="well">
 				<div id="report-actions" class="pull-right">
 					<a class="btn" href="#"><i class="icon-print"></i>&nbsp;Print</a>
@@ -56,11 +56,11 @@ class AdminReportShowView extends View{
 					<td>'.$this->_range->timestart.' to '.$this->_range->timeend.'</td>
 				</tr>
 			</table>
-			
-			<h3 class="pull-right">Total Hours: '.$this->_range->total.'</h3></br>
+
+			<h3 class="pull-right">Time: '.$this->_range->total.'</h3></br>
 
             </section>';
-        
+
 	}
 
 }

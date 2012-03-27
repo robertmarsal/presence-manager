@@ -28,13 +28,13 @@ class AdminUserDetailsView extends View{
 
 		return '
         <section id="user-details" class="well">
-            
+
             <ul class="nav nav-list well inline-menu">
                 <li class="id-tab">
                     <i class="icon-user"></i>&nbsp;'.$this->_user->firstname.' '.$this->_user->lastname.'
                 </li>
                 <li>&nbsp;</li>
-                
+
                 <li class="active">
                     <a href="'.$CONFIG->wwwroot.'/admin/user_details/'.$this->_user->id.'">
                         <i class="icon-edit"></i>&nbsp;Details</a>
@@ -49,17 +49,20 @@ class AdminUserDetailsView extends View{
                     <a href="'.$CONFIG->wwwroot.'/admin/user_account/'.$this->_user->id.'">
                         <i class="icon-cog"></i>&nbsp;Account</a></li>
             </ul>
-            
+
             <form action="'.$CONFIG->wwwroot.'/admin/update_user/'.$this->_user->id.'"  method="post">
                 <label>First Name</label>
                 <input type="text" name="firstname" value="'.$this->_user->firstname.'">
-                
+
                 <label>Last Name</label>
                 <input type="text" name="lastname" value="'.$this->_user->lastname.'">
-            
+
                 <label>Email</label>
                 <input type="text" name="email" value="'.$this->_user->email.'">
-           
+
+                <label>Position</label>
+                <input type="text" name="position" value="'.$this->_user->position.'">
+
                 <label>Role</label>
                 <select name="role">
                     <option '.$selected_user.'>user</option>

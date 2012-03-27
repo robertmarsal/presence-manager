@@ -32,6 +32,7 @@ class AdminUsersView extends View {
 					<td>' . utf8_encode($user->firstname) . '</td>
 					<td>' . utf8_encode($user->lastname) . '</td>
                     <td>' . $user->role . '</td>
+                    <td>' . $user->position . '</td>
 					<td><a href="'.$CONFIG->wwwroot.'/admin/user_details/'.$user->id.'">' . $user->email . '</a></td>
 				 </tr>
 				';
@@ -48,6 +49,7 @@ class AdminUsersView extends View {
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Role</th>
+                        <th>Position</th>
                         <th>Email</th>
                     </tr>
                 </thead>

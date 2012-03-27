@@ -30,7 +30,6 @@ class CronController extends Controller{
         foreach($users as $user) {
 
             //get activity without incidences
-            //TODO: get only not calculated activity
                 $time_start = microtime(true);
                 $verbose && print_r("Fetching activity of user with id ".$user->id.'...');
 

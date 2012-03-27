@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.9
+-- version 3.4.5deb1
 -- http://www.phpmyadmin.net
 --
--- Servidor: 127.0.0.1
--- Temps de generació: 12-03-2012 a les 15:35:38
--- Versió del servidor: 5.5.20
--- Versió de PHP : 5.3.9
+-- Servidor: localhost
+-- Tiempo de generación: 27-03-2012 a las 12:02:52
+-- Versión del servidor: 5.1.61
+-- Versión de PHP: 5.3.6-13ubuntu3.6
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,15 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de dades: `presence`
+-- Base de datos: `presence`
 --
-CREATE DATABASE `presence` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `presence`;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `presence_activity`
+-- Estructura de tabla para la tabla `presence_activity`
 --
 
 CREATE TABLE IF NOT EXISTS `presence_activity` (
@@ -38,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `presence_activity` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=17 ;
 
 --
--- Bolcant dades de la taula `presence_activity`
+-- Volcado de datos para la tabla `presence_activity`
 --
 
 INSERT INTO `presence_activity` (`id`, `userid`, `action`, `timestamp`, `computed`) VALUES
@@ -52,7 +50,7 @@ INSERT INTO `presence_activity` (`id`, `userid`, `action`, `timestamp`, `compute
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `presence_intervals`
+-- Estructura de tabla para la tabla `presence_intervals`
 --
 
 CREATE TABLE IF NOT EXISTS `presence_intervals` (
@@ -74,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `presence_intervals` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
--- Bolcant dades de la taula `presence_intervals`
+-- Volcado de datos para la tabla `presence_intervals`
 --
 
 INSERT INTO `presence_intervals` (`id`, `userid`, `timestart`, `timestop`, `timediff`, `week`, `month`, `year`, `y`, `m`, `d`, `h`, `i`, `s`) VALUES
@@ -85,7 +83,7 @@ INSERT INTO `presence_intervals` (`id`, `userid`, `timestart`, `timestop`, `time
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `presence_users`
+-- Estructura de tabla para la tabla `presence_users`
 --
 
 CREATE TABLE IF NOT EXISTS `presence_users` (
@@ -95,24 +93,25 @@ CREATE TABLE IF NOT EXISTS `presence_users` (
   `role` varchar(20) COLLATE utf8_bin NOT NULL,
   `firstname` varchar(200) COLLATE utf8_bin NOT NULL,
   `lastname` varchar(300) COLLATE utf8_bin NOT NULL,
+  `position` varchar(200) COLLATE utf8_bin NOT NULL,
   `mac` varchar(20) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=10 ;
 
 --
--- Bolcant dades de la taula `presence_users`
+-- Volcado de datos para la tabla `presence_users`
 --
 
-INSERT INTO `presence_users` (`id`, `email`, `password`, `role`, `firstname`, `lastname`, `mac`) VALUES
-(1, 'robertboloc@gmail.com', '098f6bcd4621d373cade4e832627b4f6', 'admin', 'Robert', 'Boloc', ''),
-(2, 'monica.figuerola@gmail.com', '098f6bcd4621d373cade4e832627b4f6', 'user', 'Monica', 'Figuerola', '7d:61:93:2d:c2:01'),
-(3, 'mikael.bloomkvist@urv.cat', '098f6bcd4621d373cade4e832627b4f6', 'user', 'Mikael', 'Bloomkvist', ''),
-(4, 'charles.babbage@gmail.com', '098f6bcd4621d373cade4e832627b4f6', 'user', 'Charles', 'Babbage', ''),
-(5, 'manuel.blum@hotmail.com', '098f6bcd4621d373cade4e832627b4f6', 'user', 'Manuels', 'Blum', ''),
-(6, 'crayseymour@caltech.com', '098f6bcd4621d373cade4e832627b4f6', 'user', 'Seymour', 'Cray', ''),
-(7, 'blangefors@millenium.se', '098f6bcd4621d373cade4e832627b4f6', 'user', 'Borje', 'Langefors', ''),
-(8, 'lluisdomenech@mtn.org', '098f6bcd4621d373cade4e832627b4f6', 'user', 'Llui', 'Domenech i Montaner', ''),
-(9, 'housemd@plainsboro.com', '098f6bcd4621d373cade4e832627b4f6', 'user', 'Greg', 'House', '');
+INSERT INTO `presence_users` (`id`, `email`, `password`, `role`, `firstname`, `lastname`, `position`, `mac`) VALUES
+(1, 'robertboloc@gmail.com', '098f6bcd4621d373cade4e832627b4f6', 'admin', 'Robert', 'Boloc', 'User Experience Expert', ''),
+(2, 'monica.figuerola@gmail.com', '098f6bcd4621d373cade4e832627b4f6', 'user', 'Monica', 'Figuerola', 'Mobile Visual Director', '7d:61:93:2d:c2:01'),
+(3, 'mikael.bloomkvist@urv.cat', '098f6bcd4621d373cade4e832627b4f6', 'user', 'Mikael', 'Bloomkvist', 'Junior Content Producer', ''),
+(4, 'charles.babbage@gmail.com', '098f6bcd4621d373cade4e832627b4f6', 'user', 'Charles', 'Babbage', 'Front End Design', ''),
+(5, 'manuel.blum@hotmail.com', '098f6bcd4621d373cade4e832627b4f6', 'user', 'Manuels', 'Blum', 'User Centered Design', ''),
+(6, 'crayseymour@caltech.com', '098f6bcd4621d373cade4e832627b4f6', 'user', 'Seymour', 'Cray', 'Human Factors Architect', ''),
+(7, 'blangefors@millenium.se', '098f6bcd4621d373cade4e832627b4f6', 'user', 'Borje', 'Langefors', 'Interaction Designer', ''),
+(8, 'lluisdomenech@mtn.org', '098f6bcd4621d373cade4e832627b4f6', 'user', 'Llui', 'Domenech i Montaner', 'User Experience Developer', ''),
+(9, 'housemd@plainsboro.com', '098f6bcd4621d373cade4e832627b4f6', 'user', 'Greg', 'House', 'Interaction Guru', '');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

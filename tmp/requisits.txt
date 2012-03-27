@@ -1,0 +1,3 @@
+Ubuntu
+PHP 5.3 (with OAuth extension) http://djpate.com/2010/10/07/how-to-install-oauth-support-for-php-on-ubuntu/
+

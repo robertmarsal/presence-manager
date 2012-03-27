@@ -12,7 +12,7 @@ class AdminUserCreateView extends View {
     }
 
     public function content() {
-    
+
         global $CONFIG, $STRINGS;
 
         return '
@@ -29,13 +29,16 @@ class AdminUserCreateView extends View {
 
                 <label>Password</label>
                 <input type="text" name="password">
-                
+
+                <label>Position</label>
+                <input type="text" name="position">
+
                 <label>Role</label>
                 <select name="role">
                     <option>user</option>
                     <option>admin</option>
                 </select>
-                
+
                 <label></label>
                 <button type="submit" class="btn">'.$STRINGS['create:user'].'</button>
             </form>
