@@ -50,10 +50,10 @@ class AdminReportView extends View{
                         '.$users_options.'
                     </select>
 					<label><i class="icon-calendar"></i>&nbsp;Start Date</label>
-                    <input type="text" class="span2" value="'.date('m-d-y').'" id="dp_start" name="dp_start">
+                    <input type="text" class="span2" value="'.date('d-m-Y').'" id="dp_start" name="dp_start">
 
                     <label><i class="icon-calendar"></i>&nbsp;End Date</label>
-                    <input type="text" class="span2" value="'.date('m-d-y').'" id="dp_end" name="dp_end">
+                    <input type="text" class="span2" value="'.date('d-m-Y').'" id="dp_end" name="dp_end">
 
 					<label></label>
 					<button type="submit" class="btn">'.$STRINGS['build:report'].'</button>
