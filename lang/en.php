@@ -9,6 +9,7 @@ $STRINGS['help'] = 'Help';
 $STRINGS['activity'] = 'Activity';
 $STRINGS['users'] = 'Users';
 $STRINGS['report'] = 'Report';
+$STRINGS['notifications'] = 'Notifications';
 $STRINGS['user'] = 'User';
 $STRINGS['logout'] = 'Log Out';
 $STRINGS['home'] = 'Home';

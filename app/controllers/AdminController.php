@@ -29,6 +29,10 @@ class AdminController extends Controller {
         $this->_view = new AdminReportView(UserModel::find_all());
     }
 
+    public function notifications(){
+        $this->_view = new NotificationsView();
+    }
+
 	public function report_build($params){
 		$formdata = (object) $params;
 		$this->_view = new AdminReportShowView(UserModel::find($formdata->user),
