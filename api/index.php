@@ -24,9 +24,9 @@ function presence_api_autoloader($class_name) {
 spl_autoload_register('presence_api_autoloader');
 
 //----------------------------------------------------------------------------//
-// MANAGE DEPENDENCIES -------------------------------------------------------//
+// SET UP DB CONNECTION ------------------------------------------------------//
 //----------------------------------------------------------------------------//
-$dependencies = new DependencyContainer($CONFIG);
+DB::setUp($CONFIG);
 
 //----------------------------------------------------------------------------//
 // API FRONT CONTROLLER ----------------------------------------------------------//
@@ -36,7 +36,7 @@ $dependencies = new DependencyContainer($CONFIG);
 //ROUTER ENABLE MAC FILTERING? - extra security
 
 $method = $_SERVER['REQUEST_METHOD'];
-$url = isset($_GET['url']) ? $_GET['url'] : null ; 
+$url = isset($_GET['url']) ? $_GET['url'] : null ;
 
 switch($method){
 	case 'GET':
@@ -56,8 +56,8 @@ if(count($url_fragments) > 2 || count($url_fragments) == 1){
 }else{
 	$class = $url_fragments[0];
 	$action = $url_fragments[1];
-   
-    class_exists($class) ? 
-        new $class($dependencies, $action, $params) : 
+
+    class_exists($class) ?
+        new $class($action, $params) :
         API::errResponse('400', 'Bad Request');
 }

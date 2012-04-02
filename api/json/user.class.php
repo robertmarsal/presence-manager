@@ -4,8 +4,7 @@ class User extends API{
 
 	private $_userid;
 
-	public function __construct($dependencies, $action , $params){
-		parent::__construct($dependencies);
+	public function __construct($action , $params){
 
 		//validate the user
 		$this->_userid = API::validate($params);
@@ -42,9 +41,7 @@ class User extends API{
 		$sql = "INSERT INTO presence_activity (userid, action, timestamp)
 				VALUES(?,?,?)";
 
-		$st = $this->_db->prepare($sql);
-        $st->execute(array($this->_userid, 'checkin', time()));
-
+        DB::runSQL($sql, array($this->_userid, 'checkin', time()));
     }
 
 	private function checkout ($params){
