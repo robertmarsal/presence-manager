@@ -6,7 +6,7 @@ class AdminReportShowView extends View{
 	private $_range;
 
     public function __construct($user, $range, $intervals, $alert = null) {
-        
+
         global $STRINGS;
 
         $this->_user = $user;
@@ -21,6 +21,10 @@ class AdminReportShowView extends View{
 	}
 
 	public function content(){
+
+        if(empty($this->_intervals)){
+            return BootstrapHelper::alert('info', 'No activity!', 'There is no user activity in the selected period');
+        }
 
         $intervals_list = '<table class="table table-bordered table-condensed">';
         foreach($this->_intervals as $interval){
