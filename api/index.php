@@ -14,8 +14,6 @@ function presence_api_autoloader($class_name) {
 
     if (file_exists(ROOT . '/api/json/' . $class_name . '.php')) {
         require_once(ROOT . '/api/json/' . $class_name . '.php');
-    }else if (file_exists(ROOT . '/lib/' . $class_name . '.php')) {
-        require_once(ROOT . '/lib/' . $class_name . '.php');
     }else if (file_exists(ROOT . '/api/json/' . lcfirst($class_name) . '.class.php')) {
         require_once(ROOT . '/api/json/' . lcfirst($class_name) . '.class.php');
     }
@@ -27,7 +25,6 @@ spl_autoload_register('presence_api_autoloader');
 // SET UP DB CONNECTION ------------------------------------------------------//
 //----------------------------------------------------------------------------//
 DB::setUp($CONFIG);
-
 //----------------------------------------------------------------------------//
 // API FRONT CONTROLLER ----------------------------------------------------------//
 //----------------------------------------------------------------------------//
