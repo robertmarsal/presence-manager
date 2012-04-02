@@ -21,9 +21,9 @@ class AdminReportShowView extends View{
 	}
 
 	public function content(){
-
+        global $STRINGS;
         if(empty($this->_intervals)){
-            return BootstrapHelper::alert('info', 'No activity!', 'There is no user activity in the selected period');
+            return BootstrapHelper::alert('info', $STRINGS['event:noactivity'], $STRINGS['event:noactivityinterval:message']);
         }
 
         $intervals_list = '<table class="table table-bordered table-condensed">';
@@ -40,7 +40,6 @@ class AdminReportShowView extends View{
             <section id="report-show" class="well">
 				<div id="report-actions" class="pull-right">
 					<a class="btn" href="#"><i class="icon-eye-open"></i>&nbsp;JSON</a>
-					<a class="btn" href="#"><i class="icon-eye-open"></i>&nbsp;HTML</a>
 				</div>
 
 			<table >
@@ -48,23 +47,23 @@ class AdminReportShowView extends View{
 				<td style="min-width:80px;"></td>
 				</tr>
 				<tr>
-					<td><strong>User: </strong></td>
+					<td><strong>'.$STRINGS['user'].': </strong></td>
 					<td>'.$this->_user->firstname.' '.$this->_user->lastname.'</td>
 				</tr>
 				<tr>
-					<td><strong>Issued:</strong></td>
+					<td><strong>'.$STRINGS['issued'].':</strong></td>
 					<td>'.date("F j, Y, g:i a").'</td>
 				</tr>
 				<tr>
-					<td><strong>Period: </strong></td>
+					<td><strong>'.$STRINGS['period'].': </strong></td>
 					<td>'.$this->_range->timestart.' to '.$this->_range->timeend.'</td>
 				</tr>
                 <tr>
-					<td><strong>Intervals: </strong></td>
+					<td><strong>'.$STRINGS['intervals'].': </strong></td>
 					<td><br>'.$intervals_list.'</td>
 				</tr>
                 <tr>
-					<td><strong>Total: </strong></td>
+					<td><strong>'.$STRINGS['total'].': </strong></td>
 					<td>'.$this->_range->total.'</td>
 				</tr>
 			</table>

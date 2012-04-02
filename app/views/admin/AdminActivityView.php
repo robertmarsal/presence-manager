@@ -19,10 +19,10 @@ class AdminActivityView extends View {
 
     public function content() {
 
-        global $CONFIG;
+        global $CONFIG, $STRINGS;
 
         if(empty($this->_entries)){
-            return BootstrapHelper::alert('info', 'No Activity!', 'There is no user activity');
+            return BootstrapHelper::alert('info', $STRINGS['event:noactivity'], $STRINGS['event:noactivity:message']);
         }
 
         $activity_table_content = '';
@@ -46,12 +46,12 @@ class AdminActivityView extends View {
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Action</th>
-                        <th>Time</th>
-						<th>Date</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Email</th>
+                        <th>'.$STRINGS['action'].'</th>
+                        <th>'.$STRINGS['time'].'</th>
+						<th>'.$STRINGS['date'].'</th>
+                        <th>'.$STRINGS['firstname'].'</th>
+                        <th>'.$STRINGS['lastname'].'</th>
+                        <th>'.$STRINGS['email'].'</th>
                     </tr>
                 </thead>
                 <tbody>' . $activity_table_content . '

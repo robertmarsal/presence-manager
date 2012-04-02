@@ -18,6 +18,7 @@ class UserActivityView extends View {
     }
 
     public function content() {
+        global $STRINGS;
 
         $activity_table_content = '';
         if (!empty($this->_entries)) {
@@ -39,9 +40,9 @@ class UserActivityView extends View {
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Action</th>
-                            <th>Time</th>
-                            <th>Date</th>
+                            <th>'.$STRINGS['action'].'</th>
+                            <th>'.$STRINGS['time'].'</th>
+                            <th>'.$STRINGS['date'].'</th>
                         </tr>
                     </thead>
                     <tbody>

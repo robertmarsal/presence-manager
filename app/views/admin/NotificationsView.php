@@ -16,7 +16,7 @@ class NotificationsView extends View{
 
     public function content() {
 
-        global $CONFIG;
+        global $CONFIG, $STRINGS;
 
         if(empty($this->_notifications)){
             return BootstrapHelper::alert('info', 'No notifications!', 'There are no new notifications');
@@ -41,11 +41,11 @@ class NotificationsView extends View{
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Email</th>
-                        <th>Type</th>
-                        <th>Message</th>
+                        <th>'.$STRINGS['firstname'] .'</th>
+                        <th>'.$STRINGS['lastname'] .'</th>
+                        <th>'.$STRINGS['email'] .'</th>
+                        <th>'.$STRINGS['type'].'</th>
+                        <th>'.$STRINGS['message'].'</th>
                     </tr>
                 </thead>
                 <tbody>

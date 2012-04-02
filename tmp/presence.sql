@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.5deb1
+-- version 3.4.5
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 02-04-2012 a las 11:14:47
--- Versión del servidor: 5.1.61
--- Versión de PHP: 5.3.6-13ubuntu3.6
+-- Tiempo de generación: 02-04-2012 a las 19:37:12
+-- Versión del servidor: 5.5.16
+-- Versión de PHP: 5.3.8
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -102,6 +102,19 @@ CREATE TABLE IF NOT EXISTS `presence_notifications` (
 INSERT INTO `presence_notifications` (`id`, `userid`, `type`, `message`, `status`) VALUES
 (1, 2, 'incidence', 'Hello, last week I had to leave work for two hours to attend a family reunion.', 'pending'),
 (2, 2, 'incidence', 'Hello, last week I had to leave work for two hours to attend a family reunion.', 'pending');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `presence_tokens`
+--
+
+CREATE TABLE IF NOT EXISTS `presence_tokens` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userid` int(11) NOT NULL,
+  `token` varchar(25) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 

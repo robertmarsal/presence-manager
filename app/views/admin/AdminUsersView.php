@@ -44,11 +44,11 @@ class AdminUsersView extends View {
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Role</th>
-                        <th>Position</th>
-                        <th>Email</th>
+                        <th>'.$STRINGS['firstname'] .'</th>
+                        <th>'.$STRINGS['lastname'] .'</th>
+                        <th>'.$STRINGS['role'] .'</th>
+                        <th>'.$STRINGS['position'] .'</th>
+                        <th>'.$STRINGS['email'] .'</th>
                     </tr>
                 </thead>
                 <tbody>

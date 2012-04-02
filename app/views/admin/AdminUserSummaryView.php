@@ -21,9 +21,9 @@ class AdminUserSummaryView extends View{
 	}
 
 	public function content(){
-
-		global $CONFIG;
-
+        
+        global $STRINGS;
+        
 		$summary_table_content = null;
 		if($this->_intervals){
 			foreach ($this->_intervals as $interval){
@@ -47,14 +47,14 @@ class AdminUserSummaryView extends View{
 				<table class="table inline-table">
 					<thead>
 						<tr>
-							<th>Interval</th>
-							<th>Start Time</th>
-							<th>Start Date</th>
-							<th>End Time</th>
-							<th>End Date</th>
-							<th>Week</th>
-							<th>Month</th>
-							<th>Year</th>
+							<th>'.$STRINGS['interval'].'</th>
+							<th>'.$STRINGS['starttime'].'</th>
+							<th>'.$STRINGS['startdate'].'</th>
+							<th>'.$STRINGS['endtime'].'</th>
+							<th>'.$STRINGS['enddate'].'</th>
+							<th>'.$STRINGS['week'] .'</th>
+							<th>'.$STRINGS['month'] .'</th>
+							<th>'.$STRINGS['year'] .'</th>
 						</tr>
 					</thead>
 					<tbody>' . $summary_table_content . '

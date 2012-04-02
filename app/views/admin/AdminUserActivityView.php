@@ -20,7 +20,7 @@ class AdminUserActivityView extends View{
 
     public function content(){
 
-        global $CONFIG;
+        global $CONFIG, $STRINGS;
 
 		$activity_table_content = '';
         if ($this->_activity) {
@@ -41,9 +41,9 @@ class AdminUserActivityView extends View{
 				<table class="table inline-table">
 					<thead>
 						<tr>
-							<th>Action</th>
-							<th>Time</th>
-							<th>Date</th>
+							<th>'.$STRINGS['action'].'</th>
+							<th>'.$STRINGS['time'].'</th>
+							<th>'.$STRINGS['date'].'</th>
 						</tr>
 					</thead>
 					<tbody>' . $activity_table_content . '

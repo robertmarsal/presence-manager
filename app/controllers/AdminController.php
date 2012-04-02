@@ -75,16 +75,16 @@ class AdminController extends Controller {
 
         if ($valid && !$duplicate) {
             $result = UserModel::create($user);
-            ($result == true) ? $alert = BootstrapHelper::alert('success', 'Success!', $STRINGS['user:create:success']) : $alert = BootstrapHelper::alert('error', 'Error!', $STRINGS['user:create:failed']);
+            ($result == true) ? $alert = BootstrapHelper::alert('success', $STRINGS['event:success'], $STRINGS['user:create:success']) : $alert = BootstrapHelper::alert('error', $STRINGS['event:error'], $STRINGS['user:create:failed']);
 
             $this->_view = new AdminUsersView(UserModel::find_all(), $alert);
         } else if (!$valid && !$duplicate) {
             $this->_view =
-                    new AdminUserCreateView(BootstrapHelper::alert('error', 'Error!', $STRINGS['user:create:failed']));
+                    new AdminUserCreateView(BootstrapHelper::alert('error', $STRINGS['event:error'], $STRINGS['user:create:failed']));
         } else if ($duplicate) {
             $this->_view =
                     new AdminUsersView(UserModel::find_all(),
-                            BootstrapHelper::alert('error', 'Error!', $STRINGS['user:create:duplicate']));
+                            BootstrapHelper::alert('error', $STRINGS['event:error'], $STRINGS['user:create:duplicate']));
         }
     }
 
@@ -101,7 +101,7 @@ class AdminController extends Controller {
             $result = $op1 && $op2;
         }
 
-        ($result == true) ? $alert = BootstrapHelper::alert('success', 'Success!', $STRINGS['user:delete:success']) : $alert = BootstrapHelper::alert('error', 'Error!', $STRINGS['user:delete:failed']);
+        ($result == true) ? $alert = BootstrapHelper::alert('success', $STRINGS['event:success'], $STRINGS['user:delete:success']) : $alert = BootstrapHelper::alert('error', $STRINGS['event:error'], $STRINGS['user:delete:failed']);
 
         $this->_view = new AdminActivityView(ActivityModel::find_all(), $alert);
     }
@@ -114,7 +114,7 @@ class AdminController extends Controller {
         $params = array_slice($params, 1);
 
         $success = UserModel::update($userid, $params);
-        ($success == true) ? $alert = BootstrapHelper::alert('success', 'Success!', $STRINGS['user:update:success']) : $alert = BootstrapHelper::alert('error', 'Error!', $STRINGS['user:update:failed']);
+        ($success == true) ? $alert = BootstrapHelper::alert('success', $STRINGS['event:success'], $STRINGS['user:update:success']) : $alert = BootstrapHelper::alert('error', $STRINGS['event:error'], $STRINGS['user:update:failed']);
 
         $this->_view = new AdminUserDetailsView(UserModel::find($userid), $alert);
     }

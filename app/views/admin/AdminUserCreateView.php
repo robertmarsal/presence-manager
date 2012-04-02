@@ -13,22 +13,22 @@ class AdminUserCreateView extends View {
         return '
 	    <section id="new-user" class="well">
             <form action="'.$CONFIG->wwwroot.'/admin/users/new/create" method="post">
-                <label>First Name</label>
+                <label>'.$STRINGS['firstname'].'</label>
                 <input type="text" name="firstname">
 
-                <label>Last Name</label>
+                <label>'.$STRINGS['lastname'].'</label>
                 <input type="text" name="lastname">
 
-                <label>Email</label>
+                <label>'.$STRINGS['email'].'</label>
                 <input type="text" name="email">
 
-                <label>Password</label>
+                <label>'.$STRINGS['password'].'</label>
                 <input type="text" name="password">
 
-                <label>Position</label>
+                <label>'.$STRINGS['position'].'</label>
                 <input type="text" name="position">
 
-                <label>Role</label>
+                <label>'.$STRINGS['role'].'</label>
                 <select name="role">
                     <option>user</option>
                     <option>admin</option>

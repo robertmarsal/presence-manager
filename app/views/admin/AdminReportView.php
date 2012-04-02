@@ -44,14 +44,14 @@ class AdminReportView extends View{
 
             <section id="report-build" class="well">
                 <form action="'.$CONFIG->wwwroot.'/admin/report/new/build" method="post" >
-                    <label><i class="icon-user"></i>&nbsp;User</label>
+                    <label><i class="icon-user"></i>&nbsp;'.$STRINGS['user'].'/label>
                     <select id="user" name="user">
                         '.$users_options.'
                     </select>
-					<label><i class="icon-calendar"></i>&nbsp;Start Date</label>
+					<label><i class="icon-calendar"></i>&nbsp;'.$STRINGS['startdate'].'</label>
                     <input type="text" class="span2" value="'.date('d-m-Y').'" id="dp_start" name="dp_start">
 
-                    <label><i class="icon-calendar"></i>&nbsp;End Date</label>
+                    <label><i class="icon-calendar"></i>&nbsp;'.$STRINGS['enddate'].'</label>
                     <input type="text" class="span2" value="'.date('d-m-Y').'" id="dp_end" name="dp_end">
 
 					<label></label>

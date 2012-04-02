@@ -14,6 +14,33 @@ $STRINGS['user'] = 'User';
 $STRINGS['logout'] = 'Log Out';
 $STRINGS['home'] = 'Home';
 $STRINGS['404'] = '404';
+$STRINGS['details'] = 'Details';
+$STRINGS['summary'] = 'Summary';
+$STRINGS['account'] = 'Account';
+$STRINGS['starttime'] = 'Start Time';
+$STRINGS['startdate'] = 'Start Date';
+$STRINGS['endtime'] = 'End Time';
+$STRINGS['enddate'] = 'End Date';
+$STRINGS['action'] = 'Action';
+$STRINGS['time'] = 'Time';
+$STRINGS['date'] = 'Date';
+$STRINGS['firstname'] = 'First Name';
+$STRINGS['lastname'] = 'Last Name';
+$STRINGS['email'] = 'Email';
+$STRINGS['issued'] = 'Issued';
+$STRINGS['period'] = 'Period';
+$STRINGS['intervals'] = 'Intervals';
+$STRINGS['interval'] = 'Interval';
+$STRINGS['total'] = 'Total';
+$STRINGS['password'] = 'Password';
+$STRINGS['position'] = 'Position';
+$STRINGS['role'] = 'Role';
+$STRINGS['update'] = 'Update';
+$STRINGS['week'] = 'Week';
+$STRINGS['month'] = 'Month';
+$STRINGS['year'] = 'Year';
+$STRINGS['type'] = 'Type';
+$STRINGS['message'] = 'Message';
 
 //user
 $STRINGS['user:update:success'] = 'User details updated successfully!';
@@ -33,3 +60,15 @@ $STRINGS['create:user'] = 'Create User';
 
 //report
 $STRINGS['build:report'] = 'Build Report';
+
+//events
+$STRINGS['event:success'] = 'Success!';
+$STRINGS['event:error'] = 'Error!';
+$STRINGS['event:checkin'] = 'Check-In';
+$STRINGS['event:checkout'] = 'Check-Out';
+$STRINGS['event:incidence'] = 'Incidence';
+$STRINGS['event:noactivity'] = 'No Activity!';
+$STRINGS['event:noactivity:message'] = 'There is no user activity';
+$STRINGS['event:noactivityinterval:message'] = 'There is no user activity';
+$STRINGS['event:delete:account'] = 'Delete Account';
+$STRINGS['event:delete:account:warning'] = 'Warning! This action can not be undone!';

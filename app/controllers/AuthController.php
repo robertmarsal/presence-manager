@@ -28,9 +28,9 @@ class AuthController extends Controller {
             //set language
             $_SESSION['lang'] = $params['lang'];
             
-            header('Location: ' . $CONFIG->wwwroot . '/' . $result->role . '/activity/');
+            RoutingHelper::redirect($CONFIG->wwwroot . '/' . $result->role . '/activity/');
         } else {
-            header('Location: ' . $CONFIG->wwwroot);
+            RoutingHelper::redirect($CONFIG->wwwroot);
         }
     }
 
@@ -41,7 +41,8 @@ class AuthController extends Controller {
         session_unset();
         session_destroy();
 
-        header('Location: ' . $CONFIG->wwwroot);
+        RoutingHelper::redirect($CONFIG->wwwroot);
+        
     }
 
     private function asklogin() {
