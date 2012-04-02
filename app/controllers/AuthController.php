@@ -25,6 +25,9 @@ class AuthController extends Controller {
             $_SESSION['user'] = $result->email;
             $_SESSION['role'] = $result->role;
 
+            //set language
+            $_SESSION['lang'] = $params['lang'];
+            
             header('Location: ' . $CONFIG->wwwroot . '/' . $result->role . '/activity/');
         } else {
             header('Location: ' . $CONFIG->wwwroot);

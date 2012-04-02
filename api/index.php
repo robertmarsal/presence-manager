@@ -51,7 +51,7 @@ switch($method){
 
 $url_fragments = explode ('/', $url);
 
-if(count($url_fragments) > 2 || count($url_fragments) == 1){
+if(count($url_fragments) != 2){
 	API::errResponse('400', 'Bad Request');
 }else{
 	$class = $url_fragments[0];
