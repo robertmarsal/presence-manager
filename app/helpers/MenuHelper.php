@@ -25,6 +25,32 @@ class MenuHelper extends Helper {
             </ul>' . MenuHelper::get_logout_option();
     }
 
+    static public function admin_submenu($active, $user){
+        global $CONFIG;
+        $details = $activity = $summary = $account = null;
+        $$active = 'class="active"';
+
+        return '
+            <ul class="nav nav-list well inline-menu">
+                <li class="id-tab">
+                    <i class="icon-user"></i>&nbsp;'.$user->firstname.' '.$user->lastname.'
+                </li>
+                <li>&nbsp;</li>
+                <li ' . $details . '>
+                    <a href="'.$CONFIG->wwwroot.'/admin/users/'.$user->id.'/details">
+                    <i class="icon-edit"></i>&nbsp;Details</a></li>
+                <li ' . $activity . '>
+                    <a href="'.$CONFIG->wwwroot.'/admin/users/'.$user->id.'/activity">
+                    <i class="icon-map-marker"></i>&nbsp;Activity</a></li>
+                <li ' . $summary . '>
+                    <a href="'.$CONFIG->wwwroot.'/admin/users/'.$user->id.'/summary">
+                    <i class="icon-list"></i>&nbsp;Summary</a></li>
+                <li ' . $account . '>
+                    <a href="'.$CONFIG->wwwroot.'/admin/users/'.$user->id.'/account">
+                    <i class="icon-cog"></i>&nbsp;Account</a></li>
+                </ul>';
+    }
+
     /**
      * Returns the html that builds the user menu, and sets the active element,
      * based on the parameters. Contains a "log out" option.
