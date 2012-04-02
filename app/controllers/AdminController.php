@@ -30,7 +30,7 @@ class AdminController extends Controller {
     }
 
     public function notifications(){
-        $this->_view = new NotificationsView();
+        $this->_view = new NotificationsView(NotificationModel::find_all_by_status('pending'));
     }
 
 	public function report_build($params){
