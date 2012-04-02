@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 27-03-2012 a las 12:02:52
+-- Tiempo de generación: 02-04-2012 a las 11:14:47
 -- Versión del servidor: 5.1.61
 -- Versión de PHP: 5.3.6-13ubuntu3.6
 
@@ -79,6 +79,29 @@ INSERT INTO `presence_intervals` (`id`, `userid`, `timestart`, `timestop`, `time
 (15, 2, 1329375624, 1329411624, 36000, 7, 2, 2012, 0, 0, 0, 10, 0, 0),
 (14, 2, 1329296424, 1329321624, 25200, 7, 2, 2012, 0, 0, 0, 7, 0, 0),
 (13, 2, 1329120346, 1329152549, 32203, 7, 2, 2012, 0, 0, 0, 8, 56, 43);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `presence_notifications`
+--
+
+CREATE TABLE IF NOT EXISTS `presence_notifications` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userid` int(10) NOT NULL,
+  `type` varchar(15) NOT NULL,
+  `message` text NOT NULL,
+  `status` varchar(15) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Volcado de datos para la tabla `presence_notifications`
+--
+
+INSERT INTO `presence_notifications` (`id`, `userid`, `type`, `message`, `status`) VALUES
+(1, 2, 'incidence', 'Hello, last week I had to leave work for two hours to attend a family reunion.', 'pending'),
+(2, 2, 'incidence', 'Hello, last week I had to leave work for two hours to attend a family reunion.', 'pending');
 
 -- --------------------------------------------------------
 

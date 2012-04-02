@@ -27,7 +27,7 @@ class NotificationsView extends View{
             $notifications_content .= '
                 <tr>
                     <td>'.$notification->id.'</td>
-                    <td><a href="'.$CONFIG->wwwroot.'/admin/user_details/'.$notification->userid.'">'.$notification->firstname.' '.$notification->lastname.'</a></td>
+                    <td><a href="'.$CONFIG->wwwroot.'/admin/users/'.$notification->userid.'/details">'.$notification->firstname.' '.$notification->lastname.'</a></td>
                     <td>'.$notification->type.'</td>
                     <td>'.$notification->message.'</td>
                 </tr>';

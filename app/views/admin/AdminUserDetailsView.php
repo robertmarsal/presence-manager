@@ -5,7 +5,7 @@ class AdminUserDetailsView extends View{
 	private $_user;
 
     public function __construct($user, $alert = null) {
-        
+
         global $STRINGS;
 
         $this->_user = $user;
@@ -35,21 +35,21 @@ class AdminUserDetailsView extends View{
                 <li>&nbsp;</li>
 
                 <li class="active">
-                    <a href="'.$CONFIG->wwwroot.'/admin/user_details/'.$this->_user->id.'">
+                    <a href="'.$CONFIG->wwwroot.'/admin/users/'.$this->_user->id.'/details">
                         <i class="icon-edit"></i>&nbsp;Details</a>
                 </li>
                 <li>
-                    <a href="'.$CONFIG->wwwroot.'/admin/user_activity/'.$this->_user->id.'">
+                    <a href="'.$CONFIG->wwwroot.'/admin/users/'.$this->_user->id.'/activity">
                         <i class="icon-map-marker"></i>&nbsp;Activity</a></li>
                 <li>
-                    <a href="'.$CONFIG->wwwroot.'/admin/user_summary/'.$this->_user->id.'">
+                    <a href="'.$CONFIG->wwwroot.'/admin/users/'.$this->_user->id.'/summary">
                         <i class="icon-list"></i>&nbsp;Summary</a></li>
                 <li>
-                    <a href="'.$CONFIG->wwwroot.'/admin/user_account/'.$this->_user->id.'">
+                    <a href="'.$CONFIG->wwwroot.'/admin/users/'.$this->_user->id.'/account">
                         <i class="icon-cog"></i>&nbsp;Account</a></li>
             </ul>
 
-            <form action="'.$CONFIG->wwwroot.'/admin/update_user/'.$this->_user->id.'"  method="post">
+            <form action="'.$CONFIG->wwwroot.'/admin/users/'.$this->_user->id.'/update"  method="post">
                 <label>First Name</label>
                 <input type="text" name="firstname" value="'.$this->_user->firstname.'">
 

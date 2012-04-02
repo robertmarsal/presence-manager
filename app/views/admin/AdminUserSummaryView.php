@@ -6,7 +6,7 @@ class AdminUserSummaryView extends View{
 	private $_intervals;
 
     public function __construct($user, $intervals, $alert = null) {
-        
+
         global $STRINGS;
 
         $this->_user = $user;
@@ -19,20 +19,6 @@ class AdminUserSummaryView extends View{
 	public function menu(){
         return MenuHelper::admin_base_menu('users');
 	}
-
-    public function subnav(){
-/*
-        global $CONFIG;
-
-        return '
-		<ul class="nav nav-tabs">
-            <li><a href="'.$CONFIG->wwwroot.'/admin/user_details/'.$this->_user->id.'">Details</a></li>
-            <li><a href="'.$CONFIG->wwwroot.'/admin/user_activity/'.$this->_user->id.'">Activity</a></li>
-            <li class="active"><a href="'.$CONFIG->wwwroot.'/admin/user_summary/'.$this->_user->id.'">Summary</a></li>
-            <li><a href="'.$CONFIG->wwwroot.'/admin/user_account/'.$this->_user->id.'">Account</a></li>
-            <li class="id-tab">'.$this->_user->firstname.' '.$this->_user->lastname.'</li>
-		</ul>';*/
-    }
 
 	public function content(){
 
@@ -54,10 +40,10 @@ class AdminUserSummaryView extends View{
 					</tr>';
 			}
         }
-        
+
 		return '
 			<section id="user-summary" class="well min-table">
-            
+
                 <ul class="nav nav-list well inline-menu">
                     <li class="id-tab">
                         <i class="icon-user"></i>&nbsp;'.$this->_user->firstname.' '.$this->_user->lastname.'
@@ -65,17 +51,17 @@ class AdminUserSummaryView extends View{
                     <li>&nbsp;</li>
 
                     <li>
-                        <a href="'.$CONFIG->wwwroot.'/admin/user_details/'.$this->_user->id.'">
+                        <a href="'.$CONFIG->wwwroot.'/admin/users/'.$this->_user->id.'/details">
                             <i class="icon-edit"></i>&nbsp;Details</a>
                     </li>
                     <li>
-                        <a href="'.$CONFIG->wwwroot.'/admin/user_activity/'.$this->_user->id.'">
+                        <a href="'.$CONFIG->wwwroot.'/admin/users/'.$this->_user->id.'/activity">
                             <i class="icon-map-marker"></i>&nbsp;Activity</a></li>
                     <li class="active">
-                        <a href="'.$CONFIG->wwwroot.'/admin/user_summary/'.$this->_user->id.'">
+                        <a href="'.$CONFIG->wwwroot.'/admin/users/'.$this->_user->id.'/summary">
                             <i class="icon-list"></i>&nbsp;Summary</a></li>
                     <li>
-                        <a href="'.$CONFIG->wwwroot.'/admin/user_account/'.$this->_user->id.'">
+                        <a href="'.$CONFIG->wwwroot.'/admin/users/'.$this->_user->id.'/account">
                             <i class="icon-cog"></i>&nbsp;Account</a></li>
                 </ul>
 

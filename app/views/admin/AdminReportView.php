@@ -43,7 +43,7 @@ class AdminReportView extends View{
             </script>
 
             <section id="report-build" class="well">
-                <form action="'.$CONFIG->wwwroot.'/admin/report_build" method="post" >
+                <form action="'.$CONFIG->wwwroot.'/admin/report/new/build" method="post" >
                     <label><i class="icon-user"></i>&nbsp;User</label>
                     <select id="user" name="user">
                         '.$users_options.'

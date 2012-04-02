@@ -9,7 +9,7 @@ class AdminActivityView extends View {
 
         $this->_entries = $entries;
         $this->_alert = $alert;
-        
+
         $this->title($STRINGS['activity']);
     }
 
@@ -24,7 +24,7 @@ class AdminActivityView extends View {
         if(empty($this->_entries)){
             return BootstrapHelper::alert('info', 'No Activity!', 'There is no user activity');
         }
-        
+
         $activity_table_content = '';
         foreach ($this->_entries as $entry) {
             $activity_table_content .=
@@ -35,11 +35,11 @@ class AdminActivityView extends View {
                 <td>' . date('D M j Y', $entry->timestamp) . '</td>
                 <td>' . utf8_encode($entry->firstname) . '</td>
                 <td>' . utf8_encode($entry->lastname) . '</td>
-                <td><a href="'.$CONFIG->wwwroot.'/admin/user_details/'.$entry->userid.'">' . $entry->email . '</a></td>
+                <td><a href="'.$CONFIG->wwwroot.'/admin/users/'.$entry->userid.'/details">' . $entry->email . '</a></td>
                 </tr>
             ';
         }
-        
+
         return '
         <section id="activity">
             <table class="table">

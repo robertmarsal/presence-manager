@@ -12,7 +12,7 @@ class AdminUserCreateView extends View {
 
         return '
 	    <section id="new-user" class="well">
-            <form action="'.$CONFIG->wwwroot.'/admin/create_user" method="post">
+            <form action="'.$CONFIG->wwwroot.'/admin/users/new/create" method="post">
                 <label>First Name</label>
                 <input type="text" name="firstname">
 
