@@ -44,7 +44,7 @@ class AdminReportView extends View{
 
             <section id="report-build" class="well">
                 <form action="'.$CONFIG->wwwroot.'/admin/report/new/build" method="post" >
-                    <label><i class="icon-user"></i>&nbsp;'.$STRINGS['user'].'/label>
+                    <label><i class="icon-user"></i>&nbsp;'.$STRINGS['user'].'</label>
                     <select id="user" name="user">
                         '.$users_options.'
                     </select>
