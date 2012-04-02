@@ -82,4 +82,4 @@ isset($url_params[1])
     : $extra_action = null;
 
 $extra_params = $_POST;
-new $controller($action, $extra_action, array_merge($url_params, $extra_params));
+new $controller($action, array_merge($url_params, $extra_params), $extra_action);

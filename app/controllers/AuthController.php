@@ -2,8 +2,6 @@
 
 class AuthController extends Controller {
 
-    private $_db;
-
     public function __construct($action, $params) {
 
         // check if the required action is defined

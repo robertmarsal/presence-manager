@@ -2,7 +2,7 @@
 
 class AdminController extends Controller {
 
-    public function __construct($action, $extra_action, $params) {
+    public function __construct($action, $params, $extra_action = null) {
 
         global $CONFIG;
 
