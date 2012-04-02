@@ -27,7 +27,9 @@ class NotificationsView extends View{
             $notifications_content .= '
                 <tr>
                     <td>'.$notification->id.'</td>
-                    <td><a href="'.$CONFIG->wwwroot.'/admin/users/'.$notification->userid.'/details">'.$notification->firstname.' '.$notification->lastname.'</a></td>
+                    <td>'.$notification->firstname.'</td>
+                    <td>'.$notification->lastname.'</td>
+                    <td><a href="'.$CONFIG->wwwroot.'/admin/users/'.$notification->userid.'/details">'.$notification->email.'</a></td>
                     <td>'.$notification->type.'</td>
                     <td>'.$notification->message.'</td>
                 </tr>';
@@ -39,7 +41,9 @@ class NotificationsView extends View{
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>From</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
                         <th>Type</th>
                         <th>Message</th>
                     </tr>
