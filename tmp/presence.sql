@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 02-04-2012 a las 19:37:12
+-- Tiempo de generación: 03-04-2012 a las 19:18:28
 -- Versión del servidor: 5.5.16
 -- Versión de PHP: 5.3.8
 
@@ -112,9 +112,17 @@ INSERT INTO `presence_notifications` (`id`, `userid`, `type`, `message`, `status
 CREATE TABLE IF NOT EXISTS `presence_tokens` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userid` int(11) NOT NULL,
-  `token` varchar(25) NOT NULL,
+  `token` varchar(40) NOT NULL,
+  `timeexpires` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Volcado de datos para la tabla `presence_tokens`
+--
+
+INSERT INTO `presence_tokens` (`id`, `userid`, `token`, `timeexpires`) VALUES
+(1, 2, '554f1f737e9a9f462f6c0a6e79992e83ecfede66', 1333471590);
 
 -- --------------------------------------------------------
 
@@ -130,7 +138,7 @@ CREATE TABLE IF NOT EXISTS `presence_users` (
   `firstname` varchar(200) COLLATE utf8_bin NOT NULL,
   `lastname` varchar(300) COLLATE utf8_bin NOT NULL,
   `position` varchar(200) COLLATE utf8_bin NOT NULL,
-  `mac` varchar(20) COLLATE utf8_bin NOT NULL,
+  `UUID` varchar(36) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=10 ;
 
@@ -138,9 +146,9 @@ CREATE TABLE IF NOT EXISTS `presence_users` (
 -- Volcado de datos para la tabla `presence_users`
 --
 
-INSERT INTO `presence_users` (`id`, `email`, `password`, `role`, `firstname`, `lastname`, `position`, `mac`) VALUES
+INSERT INTO `presence_users` (`id`, `email`, `password`, `role`, `firstname`, `lastname`, `position`, `UUID`) VALUES
 (1, 'robertboloc@gmail.com', '098f6bcd4621d373cade4e832627b4f6', 'admin', 'Robert', 'Boloc', 'User Experience Expert', ''),
-(2, 'monica.figuerola@gmail.com', '098f6bcd4621d373cade4e832627b4f6', 'user', 'Monica', 'Figuerola', 'Mobile Visual Director', '7d:61:93:2d:c2:01'),
+(2, 'monica.figuerola@gmail.com', '098f6bcd4621d373cade4e832627b4f6', 'user', 'Monica', 'Figuerola', 'Mobile Visual Director', 'f81d4fae-7dec-11d0-a765-00a0c91e6bf6'),
 (3, 'mikael.bloomkvist@urv.cat', '098f6bcd4621d373cade4e832627b4f6', 'user', 'Mikael', 'Bloomkvist', 'Junior Content Producer', ''),
 (4, 'charles.babbage@gmail.com', '098f6bcd4621d373cade4e832627b4f6', 'user', 'Charles', 'Babbage', 'Front End Design', ''),
 (5, 'manuel.blum@hotmail.com', '098f6bcd4621d373cade4e832627b4f6', 'user', 'Manuels', 'Blum', 'User Centered Design', ''),

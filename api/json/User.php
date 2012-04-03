@@ -42,4 +42,30 @@ class User extends API{
         $response = DB::getAllRecords($sql, array($this->_token));
         return API::response($response);
     }
+    
+    private function status(){
+		$sql = "SELECT action, timestamp
+				FROM presence_activity pa
+                JOIN presence_tokens pt ON pa.userid = pt.userid
+				WHERE pt.token = ?
+				ORDER BY timestamp DESC
+				LIMIT 1";
+
+		// fetch the record from the DB
+		$last_activity = DB::getRecord($sql, array($this->_token));
+
+		switch($last_activity->action){
+			case 'checkin':
+				$response = array('status' => 'checkedin',
+								  'timestamp' => $last_activity->timestamp);
+				break;
+			case 'checkout' || 'incidence':
+				$response = array ('status' => 'checkedout',
+                                   'timestamp' => $last_activity->timestamp);
+				break;
+            default: 
+                $response = null;
+		}
+		return API::response($response);
+	}
 }
