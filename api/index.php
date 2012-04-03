@@ -36,12 +36,6 @@ if(count($url_fragments) != 3){
     HTTP::response('400'); //Bad Request
 }
 
-//check if token exists and is still valid
-if(!key_exists('token', $params)){
-    HTTP::response('401');
-}
-API::validate_token($params->token);
-
 //format of the response
 $format = $url_fragments[0];
 //resource
