@@ -1,3 +1,6 @@
+#do not allow directory listing
+Options -Indexes
+
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
