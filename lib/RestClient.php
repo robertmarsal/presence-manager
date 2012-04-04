@@ -21,12 +21,9 @@ class RestClient{
         curl_setopt($this->session, CURLOPT_URL, $this->apiroot.$uri);
         //so we can use self generated ssl certificates
         curl_setopt($this->session, CURLOPT_SSL_VERIFYPEER, false);
-        
         //set the user defined options
-        foreach($options as $option => $value){
-            curl_setopt($this->session, $option, $value);
-        }
-
+        curl_setopt_array($this->session, $options);
+        
         //get the request content
         $this->response['content'] = curl_exec($this->session);
         //get the request info
