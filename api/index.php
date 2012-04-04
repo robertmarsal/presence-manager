@@ -43,7 +43,7 @@ $resource = $url_fragments[1];
 //action to be made on the resource
 $action = $url_fragments[2];
 //check if the required format is implemented and if the resource exists
-is_dir(ROOT.'/api/'.$format) && class_exists($resource) 
-        ? new $resource($action, $params) 
+is_dir(ROOT.'/api/'.$format) && class_exists(ucfirst($resource))
+        ? new $resource($action, $params)
         : HTTP::response('400'); //Bad Request
 
