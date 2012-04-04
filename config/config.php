@@ -3,6 +3,7 @@
 $CONFIG = new stdClass();
 
 $CONFIG->wwwroot = 'https://localhost/presence-manager';
+$CONFIG->apiroot = $CONFIG->wwwroot.'/api/json';
 
 $CONFIG->debug= 1;
 $CONFIG->verbose = 1;

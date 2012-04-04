@@ -19,6 +19,8 @@ class User extends API{
         //$params->mac
         $params->userid = 2;//TEST ONLY
         
+        //check if this user doesn't have a valid token already!
+        
         //generate the token
         $token = sha1(time());
         $sql = "INSERT INTO presence_tokens

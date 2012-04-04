@@ -5,17 +5,15 @@ class API{
     protected $_token;
  
     public function __construct($action, $params){
-        
         //check if token exists and is still valid
         if(key_exists('token', $params)){
             $this->validate_token($params->token);
         }else{
             //only allow authentication calls
             if($action != 'authenticate'){
-            HTTP::response('401');
+                HTTP::response('401');
+            }
         }
-    }
-        
     }
     
     protected function response($response){
