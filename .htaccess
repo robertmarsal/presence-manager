@@ -8,8 +8,9 @@ Options +FollowSymLinks
 <IfModule mod_rewrite.c>
     RewriteEngine on
 
-    #only allow ssl requests
-    SSLRequireSSL
+    #redirect to https always
+    RewriteCond %{HTTPS} off
+    RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L]
 
     #exclude the api folder from the rewrite
     RewriteCond %{REQUEST_URI} !^/?(api)/
