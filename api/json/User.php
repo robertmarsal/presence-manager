@@ -1,7 +1,7 @@
 <?php
 
 class User extends API{
-    
+
     public function __construct($action, $params){
         parent::__construct($action, $params);
         //check if the action is available for the resource
@@ -11,22 +11,22 @@ class User extends API{
         //call the action on the resource
         $this->$action($params);
     }
-        
+
     private function authenticate($params){
         //TODO: authenticate!!
         //$params->userid
         //$params->UUID
         //$params->mac
         $params->userid = 2;//TEST ONLY
-        
+
         //check if this user doesn't have a valid token already!
-        
+
         //generate the token
         $token = sha1(time());
         $sql = "INSERT INTO presence_tokens
                 (userid, token, timeexpires)
                 VALUES(?,?,?)";
-        $expire_time = time()+24;
+        $expire_time = time()+(24*60*60);
         $response = DB::runSQL($sql, array($params->userid, $token, $expire_time));
         if($response){
             $auth = new stdClass();
@@ -35,7 +35,7 @@ class User extends API{
             API::response($auth);
         }
     }
-    
+
     private function activity(){
         $sql = "SELECT pa.id, pa.action, pa.timestamp
                 FROM presence_activity pa
@@ -44,7 +44,7 @@ class User extends API{
         $response = DB::getAllRecords($sql, array($this->_token));
         return API::response($response);
     }
-    
+
     private function status(){
 		$sql = "SELECT action, timestamp
 				FROM presence_activity pa
@@ -65,7 +65,7 @@ class User extends API{
 				$response = array ('status' => 'checkedout',
                                    'timestamp' => $last_activity->timestamp);
 				break;
-            default: 
+            default:
                 $response = null;
 		}
 		return API::response($response);
