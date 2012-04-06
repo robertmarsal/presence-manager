@@ -2,6 +2,11 @@
 
 class API{
     
+    /**
+     * The token that identifies the device making the request
+     * 
+     * @var String
+     */
     protected $_token;
  
     public function __construct($action, $params){

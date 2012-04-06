@@ -39,7 +39,7 @@ class AdminController extends Controller {
         $this->_view = new AdminUsersView(UserModel::find_all());
     }
 
-    /*
+    /**
      * Obtains the details of the user, identified by the id contained in the 
      * params array, and sets the user details view as active
      * 
@@ -146,7 +146,6 @@ class AdminController extends Controller {
     }
 
     public function report() {
-
         $this->_view = new AdminReportView(UserModel::find_all());
     }
 
@@ -159,15 +158,4 @@ class AdminController extends Controller {
     public function notifications() {
         $this->_view = new NotificationsView(NotificationModel::find_all_by_status('pending'));
     }
-
-    public function settings() {
-
-        $this->_view = new AdminSettingsView();
-    }
-
-    public function help() {
-
-        $this->_view = new AdminHelpView();
-    }
-
 }

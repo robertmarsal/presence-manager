@@ -1,11 +1,7 @@
 <?php
 
-//----------------------------------------------------------------------------//
-// BOOTSTRAP -----------------------------------------------------------------//
-//----------------------------------------------------------------------------//
 session_start();
 
-// include the config
 define('ROOT', dirname(dirname(__FILE__)));
 require_once (ROOT . '/config/config.php');
 global $CONFIG;
@@ -18,13 +14,8 @@ $CONFIG->debug && ini_set('display_errors', '1');
 $_SESSION['lang'] = isset($_SESSION['lang']) ? $_SESSION['lang'] : 'en';
 require_once (ROOT . '/lang/' . $_SESSION['lang'] . '.php');
 
-
-//----------------------------------------------------------------------------//
-// AUTOLOADER ----------------------------------------------------------------//
-//----------------------------------------------------------------------------//
-
+// autoloader
 function presence_autoloader($class_name) {
-
     global $CONFIG;
 
     if (file_exists(ROOT . '/app/' . lcfirst($class_name) . '.class.php')) {
@@ -47,17 +38,12 @@ function presence_autoloader($class_name) {
         RoutingHelper::redirect($CONFIG->wwwroot . '/error/notfound');
     }
 }
-
 spl_autoload_register('presence_autoloader');
-//----------------------------------------------------------------------------//
-// MANAGE DEPENDENCIES -------------------------------------------------------//
-//----------------------------------------------------------------------------//
 
-DB::setUp($CONFIG); //create a database connection
+// set up the database connection
+DB::setUp($CONFIG);
 
-//----------------------------------------------------------------------------//
-// FRONT CONTROLLER ----------------------------------------------------------//
-//----------------------------------------------------------------------------//
+// parse the request
 $url = isset($_GET['url']) ? $_GET['url'] : null;
 $role = isset($_SESSION['role']) ? $_SESSION['role'] : null;
 
