@@ -6,10 +6,10 @@ class MenuHelper extends Helper {
      * Returns the html that builds the admin menu, and sets the active element,
      * based on the parameters. Contains a "log out" option.
      *
-     * @global type stdClass $CONFIG  global configuration variable
-     * @global type $STRINGS  global language variable
-     * @param string $active  string that defines the active element of the menu
-     * @return type  html
+     * @global Object $CONFIG  global configuration variable
+     * @global Array $STRINGS  global language variable
+     * @param String $active  string that defines the active element of the menu
+     * @return Html
      */
     static public function admin_base_menu($active) {
         global $CONFIG, $STRINGS;
@@ -25,6 +25,15 @@ class MenuHelper extends Helper {
             </ul>' . MenuHelper::get_logout_option();
     }
 
+    /**
+     * Returns html containing the submenu used in some of the views
+     * 
+     * @global Object $CONFIG
+     * @global Array $STRINGS
+     * @param String $active
+     * @param Object $user
+     * @return Html
+     */
     static public function admin_submenu($active, $user){
         global $CONFIG, $STRINGS;
         $details = $activity = $summary = $account = null;
@@ -87,5 +96,4 @@ class MenuHelper extends Helper {
                 <p class="navbar-text pull-right"><a href="' . $CONFIG->wwwroot . '/auth/logout">' . $STRINGS['logout'] . '</a></p>
              </ul>';
     }
-
 }

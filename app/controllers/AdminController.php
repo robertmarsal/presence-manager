@@ -2,13 +2,21 @@
 
 class AdminController extends Controller {
 
+    /**
+     * Checks if an extra_action is available and updates the action attribute 
+     * accordingly, if the caller is admin, and if the required action exists
+     * 
+     * @global Object $CONFIG
+     * @param String $action
+     * @param Array $params
+     * @param String $extra_action 
+     */
     public function __construct($action, $params, $extra_action = null) {
-
         global $CONFIG;
-
+        
         // if the extra action is defined update action
         isset($extra_action) ? $action = $action . '_' . $extra_action : null;
-
+        
         // check if is admin and if the required action is defined
         if ($this->check_role('admin') && method_exists($this, $action)) {
             $this->$action($params);
@@ -17,18 +25,36 @@ class AdminController extends Controller {
         }
     }
 
+    /**
+     * Obtains the recent activity and sets the activity view as active 
+     */
     public function activity() {
         $this->_view = new AdminActivityView(ActivityModel::find_all());
     }
 
+    /**
+     * Obtains all users and sets the users view as active 
+     */
     public function users() {
         $this->_view = new AdminUsersView(UserModel::find_all());
     }
 
+    /*
+     * Obtains the details of the user, identified by the id contained in the 
+     * params array, and sets the user details view as active
+     * 
+     * @param Array $params
+     */
     public function users_details($params) {
         $this->_view = new AdminUserDetailsView(UserModel::find($params[0]));
     }
 
+    /**
+     * Obtains the activity of a user, identified by the id contained in the 
+     * params array, and sets the user activity view as active
+     * 
+     * @param Array $params 
+     */
     public function users_activity($params) {
         $this->_view =
                 new AdminUserActivityView(UserModel::find($params[0]),

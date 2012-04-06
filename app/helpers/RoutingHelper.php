@@ -2,7 +2,11 @@
 
 class RoutingHelper extends Helper{
     	
-    static function redirect($url){
+    /**
+     * Redirects to the url indicated by the url parameter
+     * @param type $url 
+     */
+    static public function redirect($url){
 		header('Location: '.$url);
 	}
 }

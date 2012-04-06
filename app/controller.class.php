@@ -1,6 +1,6 @@
 <?php
 
-abstract class Controller {
+class Controller {
 
     /**
      * The active view of the controller
