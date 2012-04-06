@@ -15,30 +15,27 @@ $_SESSION['lang'] = isset($_SESSION['lang']) ? $_SESSION['lang'] : 'en';
 require_once (ROOT . '/lang/' . $_SESSION['lang'] . '.php');
 
 // autoloader
-function presence_autoloader($class_name) {
-    global $CONFIG;
-
-    if (file_exists(ROOT . '/app/' . lcfirst($class_name) . '.class.php')) {
-        require_once(ROOT . '/app/' . lcfirst($class_name) . '.class.php');
-    } else if (file_exists(ROOT . '/app/controllers/' . $class_name . '.php')) {
-        require_once(ROOT . '/app/controllers/' . $class_name . '.php');
-    } else if (file_exists(ROOT . '/app/models/' . $class_name . '.php')) {
-        require_once(ROOT . '/app/models/' . $class_name . '.php');
-    } else if (file_exists(ROOT . '/app/helpers/' . $class_name . '.php')) {
-        require_once(ROOT . '/app/helpers/' . $class_name . '.php');
-    } else if (file_exists(ROOT . '/lib/' . $class_name . '.php')) {
-        require_once(ROOT . '/lib/' . $class_name . '.php');
-    } else if (file_exists(ROOT . '/app/views/' . $class_name . '.php')) {
-        require_once(ROOT . '/app/views/' . $class_name . '.php');
-    } else if (file_exists(ROOT . '/app/views/admin/' . $class_name . '.php')) {
-        require_once(ROOT . '/app/views/admin/' . $class_name . '.php');
-    } else if (file_exists(ROOT . '/app/views/user/' . $class_name . '.php')) {
-        require_once(ROOT . '/app/views/user/' . $class_name . '.php');
+spl_autoload_register(function ($class) {
+    if (file_exists(ROOT . '/app/' . lcfirst($class) . '.class.php')) {
+        require_once(ROOT . '/app/' . lcfirst($class) . '.class.php');
+    } else if (file_exists(ROOT . '/app/controllers/' . $class . '.php')) {
+        require_once(ROOT . '/app/controllers/' . $class . '.php');
+    } else if (file_exists(ROOT . '/app/models/' . $class . '.php')) {
+        require_once(ROOT . '/app/models/' . $class . '.php');
+    } else if (file_exists(ROOT . '/app/helpers/' . $class . '.php')) {
+        require_once(ROOT . '/app/helpers/' . $class . '.php');
+    } else if (file_exists(ROOT . '/lib/' . $class . '.php')) {
+        require_once(ROOT . '/lib/' . $class . '.php');
+    } else if (file_exists(ROOT . '/app/views/' . $class . '.php')) {
+        require_once(ROOT . '/app/views/' . $class . '.php');
+    } else if (file_exists(ROOT . '/app/views/admin/' . $class . '.php')) {
+        require_once(ROOT . '/app/views/admin/' . $class . '.php');
+    } else if (file_exists(ROOT . '/app/views/user/' . $class . '.php')) {
+        require_once(ROOT . '/app/views/user/' . $class . '.php');
     } else { //redirect to 404 page
         RoutingHelper::redirect($CONFIG->wwwroot . '/error/notfound');
     }
-}
-spl_autoload_register('presence_autoloader');
+});
 
 // set up the database connection
 DB::setUp($CONFIG);

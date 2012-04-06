@@ -3,20 +3,19 @@ define('ROOT', dirname(dirname(__FILE__)));
 require_once (ROOT . '/config/config.php');
 global $CONFIG;
 
-// Autoloader
-function presence_api_autoloader($class_name) {
-    if (file_exists(ROOT . '/api/json/' . $class_name . '.php')) {
-        require_once(ROOT . '/api/json/' . $class_name . '.php');
-    }else if (file_exists(ROOT . '/lib/' . $class_name . '.php')) {
-        require_once(ROOT . '/lib/' . $class_name . '.php');
+// autoloader
+spl_autoload_register(function ($class) {
+    if (file_exists(ROOT . '/api/json/' . $class . '.php')) {
+        require_once(ROOT . '/api/json/' . $class . '.php');
+    }else if (file_exists(ROOT . '/lib/' . $class . '.php')) {
+        require_once(ROOT . '/lib/' . $class . '.php');
     }
-}
-spl_autoload_register('presence_api_autoloader');
+});
 
-// Create the DB connection
+// create the DB connection
 DB::setUp($CONFIG);
 
-// Validate and respond to the request
+// validate and respond to the request
 $method = $_SERVER['REQUEST_METHOD'];
 $url = isset($_GET['url']) ? $_GET['url'] : null ;
 
@@ -46,4 +45,3 @@ $action = $url_fragments[2];
 is_dir(ROOT.'/api/'.$format) && class_exists(ucfirst($resource))
         ? new $resource($action, $params)
         : HTTP::response('400'); //Bad Request
-
