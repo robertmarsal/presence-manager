@@ -16,6 +16,8 @@ require_once (ROOT . '/lang/' . $_SESSION['lang'] . '.php');
 
 // autoloader
 spl_autoload_register(function ($class) {
+    global $CONFIG;
+    
     if (file_exists(ROOT . '/app/' . lcfirst($class) . '.class.php')) {
         require_once(ROOT . '/app/' . lcfirst($class) . '.class.php');
     } else if (file_exists(ROOT . '/app/controllers/' . $class . '.php')) {
