@@ -4,6 +4,11 @@ require_once dirname(__FILE__) . '/../../lib/RestClient.php';
 
 class API_IntegrationTests extends PHPUnit_Framework_TestCase {
 
+    /**
+     * Creates an instance of the RestClient, that will be used for testing
+     * 
+     * @global Object $CONFIG 
+     */
     protected function setUp() {
         global $CONFIG;
         $this->restclient = new RestClient($CONFIG->apiroot);
@@ -64,9 +69,5 @@ class API_IntegrationTests extends PHPUnit_Framework_TestCase {
         $this->assertEmpty($response->content);
     }
             
-    protected function tearDown() { 
-    }
-
+    protected function tearDown(){}
 }
-
-?>
