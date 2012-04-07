@@ -1,5 +1,6 @@
 <?php
 require_once dirname(__FILE__) . '/../../../app/controller.class.php';
+require_once dirname(__FILE__) . '/../../TestHelper.php';
 
 class ControllerClassTest extends PHPUnit_Framework_TestCase {
 
@@ -28,9 +29,7 @@ class ControllerClassTest extends PHPUnit_Framework_TestCase {
         $this->controller = $this->getMockForAbstractClass('Controller');
         
         //change visibility of 'check_role' to public
-        $class = new ReflectionClass('Controller');
-        $this->method = $class->getMethod('check_role');
-        $this->method->setAccessible(true); 
+        $this->method = TestHelper::getAccessibleMethod('Controller', 'check_role');
         
         //set the role to admin
         $_SESSION['role'] = 'admin';
