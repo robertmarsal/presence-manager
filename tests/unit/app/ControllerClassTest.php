@@ -38,6 +38,8 @@ class ControllerClassTest extends PHPUnit_Framework_TestCase {
     
     /**
      * Tests the 'check_role' method 
+     * 
+     * @group unit
      */
     public function testCheckRole(){
         $this->assertFalse(

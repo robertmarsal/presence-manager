@@ -18,6 +18,8 @@ class API_IntegrationTests extends PHPUnit_Framework_TestCase {
      * Test if an empty request returnsa 403 (Forbidden) code. It does not check
      * for html output as this depends on the server and is irelevant for this 
      * test case.
+     * 
+     * @group integration
      */
     public function testEmptyURIRequest(){
         $request_options = array(CURLOPT_RETURNTRANSFER => false);
@@ -30,6 +32,8 @@ class API_IntegrationTests extends PHPUnit_Framework_TestCase {
     /**
      * If a request is made on an inexistent/unimplemented resource the API 
      * should return a 400 code and no content.
+     * 
+     * @group integration
      */
     public function testBadURIRequest(){
         $request_uri = '/foo/bar';
@@ -44,6 +48,8 @@ class API_IntegrationTests extends PHPUnit_Framework_TestCase {
     /**
      * If a request does not have a 'token' parameter API should return 401 code
      * and the content of the response should be empty.
+     * 
+     * @group integration
      */
     public function testNoTokenRequest(){
         $request_uri = '/user/status';
@@ -58,6 +64,8 @@ class API_IntegrationTests extends PHPUnit_Framework_TestCase {
     /**
      * If a request suplies a 'fake' token the API should return a 401 code and
      * no content.
+     * 
+     * @group integration
      */
     public function testFakeTokenRequest(){
         $request_uri = '/user/status?token=thisisafaketoken';
