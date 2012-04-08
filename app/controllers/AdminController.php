@@ -154,8 +154,4 @@ class AdminController extends Controller {
         $this->_view = new AdminReportShowView(UserModel::find($formdata->user),
                         IntervalModel::get_range_total($formdata), IntervalModel::get_between($formdata));
     }
-
-    public function notifications() {
-        $this->_view = new NotificationsView(NotificationModel::find_all_by_status('pending'));
-    }
 }

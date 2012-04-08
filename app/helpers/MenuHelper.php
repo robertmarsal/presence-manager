@@ -13,7 +13,7 @@ class MenuHelper extends Helper {
      */
     static public function admin_base_menu($active) {
         global $CONFIG, $STRINGS;
-        $activity = $users = $report = $notifications = null; // so we don't get a debugger notice
+        $activity = $users = $report = null; // so we don't get a debugger notice
         $$active = 'class="active"';
 
         return
@@ -21,7 +21,6 @@ class MenuHelper extends Helper {
                 <li ' . $activity . '><a href="' . $CONFIG->wwwroot . '/admin/activity">' . $STRINGS['activity'] . '</a></li>
                 <li ' . $users . ' ><a href="' . $CONFIG->wwwroot . '/admin/users">' . $STRINGS['users'] . '</a></li>
                 <li ' . $report . ' ><a href="' . $CONFIG->wwwroot . '/admin/report">' . $STRINGS['report'] . '</a></li>
-                <li ' . $notifications. ' ><a href="' . $CONFIG->wwwroot . '/admin/notifications">' . $STRINGS['notifications'] . '</a></li>
             </ul>' . MenuHelper::get_logout_option();
     }
 
