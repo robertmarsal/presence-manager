@@ -3,20 +3,20 @@
 class AdminController extends Controller {
 
     /**
-     * Checks if an extra_action is available and updates the action attribute 
+     * Checks if an extra_action is available and updates the action attribute
      * accordingly, if the caller is admin, and if the required action exists
-     * 
+     *
      * @global Object $CONFIG
      * @param String $action
      * @param Array $params
-     * @param String $extra_action 
+     * @param String $extra_action
      */
     public function __construct($action, $params, $extra_action = null) {
         global $CONFIG;
-        
+
         // if the extra action is defined update action
         isset($extra_action) ? $action = $action . '_' . $extra_action : null;
-        
+
         // check if is admin and if the required action is defined
         if ($this->check_role('admin') && method_exists($this, $action)) {
             $this->$action($params);
@@ -26,23 +26,23 @@ class AdminController extends Controller {
     }
 
     /**
-     * Obtains the recent activity and sets the activity view as active 
+     * Obtains the recent activity and sets the activity view as active
      */
     public function activity() {
         $this->_view = new AdminActivityView(ActivityModel::find_all());
     }
 
     /**
-     * Obtains all users and sets the users view as active 
+     * Obtains all users and sets the users view as active
      */
     public function users() {
         $this->_view = new AdminUsersView(UserModel::find_all());
     }
 
     /**
-     * Obtains the details of the user, identified by the id contained in the 
+     * Obtains the details of the user, identified by the id contained in the
      * params array, and sets the user details view as active
-     * 
+     *
      * @param Array $params
      */
     public function users_details($params) {
@@ -50,10 +50,10 @@ class AdminController extends Controller {
     }
 
     /**
-     * Obtains the activity of a user, identified by the id contained in the 
+     * Obtains the activity of a user, identified by the id contained in the
      * params array, and sets the user activity view as active
-     * 
-     * @param Array $params 
+     *
+     * @param Array $params
      */
     public function users_activity($params) {
         $this->_view =
@@ -61,20 +61,39 @@ class AdminController extends Controller {
                         ActivityModel::find_all_by_user($params[0]));
     }
 
+    /**
+     * Obtains the user info and activity and sets the summary view as active
+     *
+     * @param Array $params
+     */
     public function users_summary($params) {
         $this->_view =
                 new AdminUserSummaryView(UserModel::find($params[0]),
                         IntervalModel::find_all_by_user($params[0]));
     }
 
+    /**
+     * Displays account options using the user account view
+     *
+     * @param Array $params
+     */
     public function users_account($params) {
         $this->_view = new AdminUserAccountView(UserModel::find($params[0]));
     }
 
+    /**
+     * Displays the user create form contained in the user create view
+     */
     public function users_add() {
         $this->_view = new AdminUserCreateView();
     }
 
+    /**
+     * Creates a new user using the information received in the parameters
+     *
+     * @global Array $STRINGS
+     * @param Array $params
+     */
     public function users_create($params) {
         global $STRINGS;
 
@@ -101,7 +120,9 @@ class AdminController extends Controller {
 
         if ($valid && !$duplicate) {
             $result = UserModel::create($user);
-            ($result == true) ? $alert = BootstrapHelper::alert('success', $STRINGS['event:success'], $STRINGS['user:create:success']) : $alert = BootstrapHelper::alert('error', $STRINGS['event:error'], $STRINGS['user:create:failed']);
+            ($result == true)
+                ? $alert = BootstrapHelper::alert('success', $STRINGS['event:success'], $STRINGS['user:create:success'])
+                : $alert = BootstrapHelper::alert('error', $STRINGS['event:error'], $STRINGS['user:create:failed']);
 
             $this->_view = new AdminUsersView(UserModel::find_all(), $alert);
         } else if (!$valid && !$duplicate) {
@@ -114,6 +135,12 @@ class AdminController extends Controller {
         }
     }
 
+    /**
+     * Deletes a user identified in the 'params' parameter
+     *
+     * @global Array $STRINGS
+     * @param Array $params
+     */
     public function users_delete($params) {
         global $STRINGS;
 
@@ -127,11 +154,19 @@ class AdminController extends Controller {
             $result = $op1 && $op2;
         }
 
-        ($result == true) ? $alert = BootstrapHelper::alert('success', $STRINGS['event:success'], $STRINGS['user:delete:success']) : $alert = BootstrapHelper::alert('error', $STRINGS['event:error'], $STRINGS['user:delete:failed']);
+        ($result == true)
+            ? $alert = BootstrapHelper::alert('success', $STRINGS['event:success'], $STRINGS['user:delete:success'])
+            : $alert = BootstrapHelper::alert('error', $STRINGS['event:error'], $STRINGS['user:delete:failed']);
 
         $this->_view = new AdminActivityView(ActivityModel::find_all(), $alert);
     }
 
+    /**
+     * Updates the info of a user using the 'params' data
+     *
+     * @global Array $STRINGS
+     * @param Array $params
+     */
     public function users_update($params) {
         global $STRINGS;
 
@@ -140,15 +175,26 @@ class AdminController extends Controller {
         $params = array_slice($params, 1);
 
         $success = UserModel::update($userid, $params);
-        ($success == true) ? $alert = BootstrapHelper::alert('success', $STRINGS['event:success'], $STRINGS['user:update:success']) : $alert = BootstrapHelper::alert('error', $STRINGS['event:error'], $STRINGS['user:update:failed']);
+        ($success == true)
+            ? $alert = BootstrapHelper::alert('success', $STRINGS['event:success'], $STRINGS['user:update:success'])
+            : $alert = BootstrapHelper::alert('error', $STRINGS['event:error'], $STRINGS['user:update:failed']);
 
         $this->_view = new AdminUserDetailsView(UserModel::find($userid), $alert);
     }
 
+    /**
+     * Displays a new report form using the report view
+     */
     public function report() {
         $this->_view = new AdminReportView(UserModel::find_all());
     }
 
+    /**
+     * Builds a report using the passed parameters, and displays the result
+     * using the report show view
+     *
+     * @param Array $params
+     */
     public function report_build($params) {
         $formdata = (object) $params;
         $this->_view = new AdminReportShowView(UserModel::find($formdata->user),
