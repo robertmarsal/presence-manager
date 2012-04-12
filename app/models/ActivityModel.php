@@ -43,7 +43,7 @@ class ActivityModel extends Model {
 
 	public static function mark_as_computed($entries){
 
-		$sql = "UPDATE ".$this->_table."
+		$sql = "UPDATE ".self::table()."
 				SET computed = ?
 				WHERE id IN(".implode(',',$entries).")";
 
