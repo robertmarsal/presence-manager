@@ -2,14 +2,17 @@
 
 class ActivityModel extends Model {
 
-    public static function find_all() {
+    public static function find_page($page) {
+
+        $limit = 15;
 
 		$sql = "SELECT pa.id, pa.userid, pa.action, pa.timestamp, pu.firstname, pu.lastname, pu.email
 				FROM " . self::table() . " pa
 				JOIN presence_users pu ON pa.userid = pu.id
-				ORDER BY pa.timestamp DESC";
+				ORDER BY pa.timestamp DESC
+                LIMIT ".$limit." OFFSET ".($limit*$page);
 
-		return DB::getAllRecords($sql, null);
+		return DB::getAllRecords($sql);
     }
 
     public static function find_all_by_user($user) {

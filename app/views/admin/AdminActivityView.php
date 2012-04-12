@@ -3,12 +3,14 @@
 class AdminActivityView extends View {
 
     private $_entries;
+    private $_page;
 
-    public function __construct($entries, $alert = null) {
+    public function __construct($entries, $page = 0, $alert = null) {
         global $STRINGS;
 
         $this->_entries = $entries;
         $this->_alert = $alert;
+        $this->_page = $page;
 
         $this->title($STRINGS['activity']);
     }
@@ -57,6 +59,7 @@ class AdminActivityView extends View {
                 <tbody>' . $activity_table_content . '
                 </tbody>
             </table>
+            '.MenuHelper::get_pagination_links($this->_page).'
         </section>';
     }
 }

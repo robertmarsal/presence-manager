@@ -73,39 +73,39 @@ class DB {
         }
 
     }
-    
+
     static function deleteRecord($table, $id){
-        
+
         if(empty($id)){
             return null;
         }
-        
+
         $sql = "DELETE FROM ".$table."
 			    WHERE `id` = ?";
 
 		$st = self::getDB()->prepare($sql);
         return $st->execute(array($id));
     }
-    
+
     static function deleteAllRecordsByField($table, $field, $id){
-        
+
         if(empty($id) || empty($field)){
             return null;
         }
-        
+
         $sql = "DELETE FROM ".$table."
 			    WHERE `".$field."` = ?";
 
 		$st = self::getDB()->prepare($sql);
         return $st->execute(array($id));
     }
-    
+
     static function updateRecord($table, $id, $fields){
-        
+
         if(empty($id)){
             return null;
         }
-        
+
         $update_params = array();
         foreach($fields as $key => $field){
             $update_params [] = '`'.$key.'`="'.$field.'"';
@@ -118,7 +118,7 @@ class DB {
         $st = self::getDB()->prepare($sql);
         return $st->execute(array($id));
     }
-    
+
     static function runSQL($sql, array $params){
         $st = self::getDB()->prepare($sql);
 		return $st->execute($params);

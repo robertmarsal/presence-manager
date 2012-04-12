@@ -26,7 +26,7 @@ class MenuHelper extends Helper {
 
     /**
      * Returns html containing the submenu used in some of the views
-     * 
+     *
      * @global Object $CONFIG
      * @global Array $STRINGS
      * @param String $active
@@ -77,6 +77,30 @@ class MenuHelper extends Helper {
             '<ul class="nav">
 			     <li ' . $activity . '><a href="' . $CONFIG->wwwroot . '/user/activity">' . $STRINGS['activity'] . '</a></li>
             </ul>' . MenuHelper::get_logout_option();;
+    }
+
+    /**
+     * Returns the pagination links for a page
+     *
+     * @global Array $STRINGS
+     * @global Object $CONFIG
+     * @param Int $page
+     * @return Html
+     */
+    static public function get_pagination_links($page){
+        global $STRINGS, $CONFIG;
+
+        ($page == 0)
+            ? $previous = ''
+            : $previous = '<li><a href="'.$CONFIG->wwwroot.'/admin/activity/'.(max(($page-1), 0)).'">'.$STRINGS['previous'].'</a></li>';
+
+        $next = '<li><a href="'.$CONFIG->wwwroot.'/admin/activity/'.($page+1).'">'.$STRINGS['next'].'</a></li>';
+
+        return
+            '<ul class="pager pull-right">
+                '.$previous.'
+                '.$next.'
+             </ul>';
     }
 
     /**

@@ -28,8 +28,9 @@ class AdminController extends Controller {
     /**
      * Obtains the recent activity and sets the activity view as active
      */
-    public function activity() {
-        $this->_view = new AdminActivityView(ActivityModel::find_all());
+    public function activity($params) {
+        $page = isset($params[0]) ? $params[0] : 0; //page number
+        $this->_view = new AdminActivityView(ActivityModel::find_page($page), $page);
     }
 
     /**
@@ -158,7 +159,7 @@ class AdminController extends Controller {
             ? $alert = BootstrapHelper::alert('success', $STRINGS['event:success'], $STRINGS['user:delete:success'])
             : $alert = BootstrapHelper::alert('error', $STRINGS['event:error'], $STRINGS['user:delete:failed']);
 
-        $this->_view = new AdminActivityView(ActivityModel::find_all(), $alert);
+        $this->_view = new AdminUsersView(UserModel::find_all(), $alert);
     }
 
     /**

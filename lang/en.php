@@ -40,6 +40,8 @@ $STRINGS['month'] = 'Month';
 $STRINGS['year'] = 'Year';
 $STRINGS['type'] = 'Type';
 $STRINGS['message'] = 'Message';
+$STRINGS['previous'] = 'Previous';
+$STRINGS['next'] = 'Next';
 
 //user
 $STRINGS['user:update:success'] = 'User details updated successfully!';
