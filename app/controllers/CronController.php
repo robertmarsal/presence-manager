@@ -38,7 +38,7 @@ class CronController extends Controller{
                 $time_end = microtime(true);
                 ($verbose && $activity)
                     ? print_r ("Ok ".($time_end-$time_start)." ms\n")
-                    : print_r ("No activity!\n");
+                    : print_r ("No new activity!\n");
 
             if($activity){
 

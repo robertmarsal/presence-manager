@@ -4,7 +4,7 @@ class ActivityModel extends Model {
 
     public static function find_page($page) {
 
-        $limit = 15;
+        $limit = 10;
 
 		$sql = "SELECT pa.id, pa.userid, pa.action, pa.timestamp, pu.firstname, pu.lastname, pu.email
 				FROM " . self::table() . " pa

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.5
+-- version 3.4.5deb1
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 08-04-2012 a las 20:30:33
--- Versión del servidor: 5.5.16
--- Versión de PHP: 5.3.8
+-- Tiempo de generación: 12-04-2012 a las 11:10:47
+-- Versión del servidor: 5.1.61
+-- Versión de PHP: 5.3.6-13ubuntu3.6
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `presence_activity` (
   `timestamp` int(15) NOT NULL,
   `computed` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=18 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=23 ;
 
 --
 -- Volcado de datos para la tabla `presence_activity`
@@ -46,7 +46,12 @@ INSERT INTO `presence_activity` (`id`, `userid`, `action`, `timestamp`, `compute
 (14, '2', 'checkout', 1329321624, 1),
 (15, '2', 'checkin', 1329375624, 1),
 (16, '2', 'checkout', 1329411624, 1),
-(17, '2', 'incidence', 1329411624, 1);
+(17, '2', 'incidence', 1329411624, 0),
+(18, '1', 'checkin', 1329120346, 1),
+(19, '1', 'checkout', 1329152549, 1),
+(20, '4', 'incidence', 1329411624, 0),
+(21, '3', 'checkin', 1329120346, 1),
+(22, '3', 'checkout', 1329152549, 1);
 
 -- --------------------------------------------------------
 
@@ -70,16 +75,18 @@ CREATE TABLE IF NOT EXISTS `presence_intervals` (
   `i` int(11) NOT NULL,
   `s` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Volcado de datos para la tabla `presence_intervals`
 --
 
 INSERT INTO `presence_intervals` (`id`, `userid`, `timestart`, `timestop`, `timediff`, `week`, `month`, `year`, `y`, `m`, `d`, `h`, `i`, `s`) VALUES
-(15, 2, 1329375624, 1329411624, 36000, 7, 2, 2012, 0, 0, 0, 10, 0, 0),
-(14, 2, 1329296424, 1329321624, 25200, 7, 2, 2012, 0, 0, 0, 7, 0, 0),
-(13, 2, 1329120346, 1329152549, 32203, 7, 2, 2012, 0, 0, 0, 8, 56, 43);
+(1, 2, 1329120346, 1329152549, 32203, 7, 2, 2012, 0, 0, 0, 8, 56, 43),
+(2, 2, 1329296424, 1329321624, 25200, 7, 2, 2012, 0, 0, 0, 7, 0, 0),
+(3, 2, 1329375624, 1329411624, 36000, 7, 2, 2012, 0, 0, 0, 10, 0, 0),
+(8, 3, 1329120346, 1329152549, 32203, 7, 2, 2012, 0, 0, 0, 8, 56, 43),
+(7, 1, 1329120346, 1329152549, 32203, 7, 2, 2012, 0, 0, 0, 8, 56, 43);
 
 -- --------------------------------------------------------
 
@@ -118,7 +125,7 @@ CREATE TABLE IF NOT EXISTS `presence_users` (
   `position` varchar(200) COLLATE utf8_bin NOT NULL,
   `UUID` varchar(36) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=11 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=12 ;
 
 --
 -- Volcado de datos para la tabla `presence_users`
@@ -134,7 +141,8 @@ INSERT INTO `presence_users` (`id`, `email`, `password`, `role`, `firstname`, `l
 (7, 'blangefors@millenium.se', '098f6bcd4621d373cade4e832627b4f6', 'user', 'Borje', 'Langefors', 'Interaction Designer', ''),
 (8, 'lluisdomenech@mtn.org', '098f6bcd4621d373cade4e832627b4f6', 'user', 'Llui', 'Domenech i Montaner', 'User Experience Developer', ''),
 (9, 'housemd@plainsboro.com', '098f6bcd4621d373cade4e832627b4f6', 'user', 'Greg', 'House', 'Interaction Guru', ''),
-(10, 'mb@test.com', 'test', 'user', 'Michael', 'Boone', 'Lead Anchor', '');
+(10, 'mb@test.com', 'test', 'user', 'Michael', 'Boone', 'Lead Anchor', ''),
+(11, 'assdfs', 'fsdf', 'user', 'asd', 'asd', 'dfsdf', '');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
