@@ -4,14 +4,14 @@ abstract class View {
 
     /**
      * Title of the view. Used as a page title in the html render
-     * 
+     *
      * @var String
      */
     private $_title;
-    
+
     /**
      * Contains the current alert
-     * 
+     *
      * @var Html
      */
     protected $_alert;
@@ -24,11 +24,11 @@ abstract class View {
     }
 
     /**
-     * It contains the base html template. 
+     * It contains the base html template.
      * Builds the html of the view
-     * 
+     *
      * @global Object $CONFIG
-     * @global Array $STRINGS 
+     * @global Array $STRINGS
      */
     private function render() {
         global $CONFIG, $STRINGS;
@@ -41,9 +41,9 @@ abstract class View {
                     <link rel="stylesheet" href="' . $CONFIG->wwwroot . '/public/css/presence.css" type="text/css">
                     <link rel="stylesheet" href="' . $CONFIG->wwwroot . '/public/css/datepicker.css" type="text/css">
                     <link rel="shortcut icon" href="' . $CONFIG->wwwroot . '/public/img/favicon.ico">
-                    <script type="text/javascript" src="' . $CONFIG->wwwroot . '/public/js/jquery-1.7.1.min.js"></script>
-                    <script type="text/javascript" src="' . $CONFIG->wwwroot . '/public/js/bootstrap-alert.js"></script>
-                    <script type="text/javascript" src="' . $CONFIG->wwwroot . '/public/js/bootstrap-datepicker.js"></script>
+                    <script async type="text/javascript" src="' . $CONFIG->wwwroot . '/public/js/jquery-1.7.1.min.js"></script>
+                    <script async type="text/javascript" src="' . $CONFIG->wwwroot . '/public/js/bootstrap-alert.js"></script>
+                    <script async type="text/javascript" src="' . $CONFIG->wwwroot . '/public/js/bootstrap-datepicker.js"></script>
                 </head>
                 <body>
                   <!--MENU-->
@@ -68,20 +68,20 @@ abstract class View {
 
     /**
      * Sets the title of the view
-     * 
-     * @param String $title 
+     *
+     * @param String $title
      */
     protected function title($title) {
         $this->_title = $title;
     }
 
     /**
-     * Builds the html containing the menu 
+     * Builds the html containing the menu
      */
     abstract function menu();
 
     /**
-     * Builds the html with the content of the page 
+     * Builds the html with the content of the page
      */
     abstract function content();
 }
