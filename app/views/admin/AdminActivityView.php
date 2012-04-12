@@ -24,7 +24,9 @@ class AdminActivityView extends View {
         global $CONFIG, $STRINGS;
 
         if(empty($this->_entries)){
-            return BootstrapHelper::alert('info', $STRINGS['event:noactivity'], $STRINGS['event:noactivity:message']);
+            return BootstrapHelper::alert('info',
+                    $STRINGS['event:noactivity'],
+                    $STRINGS['event:noactivity:message']);
         }
 
         $activity_table_content = '';

@@ -23,7 +23,9 @@ class AdminReportShowView extends View{
 	public function content(){
         global $STRINGS;
         if(empty($this->_intervals)){
-            return BootstrapHelper::alert('info', $STRINGS['event:noactivity'], $STRINGS['event:noactivityinterval:message']);
+            return BootstrapHelper::alert('info',
+                    $STRINGS['event:noactivity'],
+                    $STRINGS['event:noactivityinterval:message']);
         }
 
         $intervals_list = '<table class="table table-bordered table-condensed">';
