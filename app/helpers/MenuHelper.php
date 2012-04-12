@@ -92,7 +92,7 @@ class MenuHelper extends Helper {
 
         ($page == 0)
             ? $previous = ''
-            : $previous = '<li><a href="'.$CONFIG->wwwroot.'/admin/activity/'.(max(($page-1), 0)).'">'.$STRINGS['previous'].'</a></li>';
+            : $previous = '<li><a href="'.$CONFIG->wwwroot.'/admin/activity/'.( $page==1 ? '': $page-1).'">'.$STRINGS['previous'].'</a></li>';
 
         $next = '<li><a href="'.$CONFIG->wwwroot.'/admin/activity/'.($page+1).'">'.$STRINGS['next'].'</a></li>';
 
