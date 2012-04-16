@@ -36,8 +36,9 @@ class AdminController extends Controller {
     /**
      * Obtains all users and sets the users view as active
      */
-    public function users() {
-        $this->_view = new AdminUsersView(UserModel::find_all());
+    public function users($params) {
+        $page = isset($params[0]) ? $params[0] : 0; //page number
+        $this->_view = new AdminUsersView(UserModel::find_page($page), $page);
     }
 
     /**

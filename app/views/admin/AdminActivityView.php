@@ -61,7 +61,7 @@ class AdminActivityView extends View {
                 <tbody>' . $activity_table_content . '
                 </tbody>
             </table>
-            '.MenuHelper::get_pagination_links($this->_page).'
+            '.MenuHelper::get_pagination_links($CONFIG->wwwroot.'/admin/activity/',$this->_page).'
         </section>';
     }
 }

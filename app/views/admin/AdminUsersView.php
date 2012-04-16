@@ -3,13 +3,15 @@
 class AdminUsersView extends View {
 
     private $_users;
+    private $_page;
 
-    public function __construct($users, $alert = null) {
+    public function __construct($users, $page = 0, $alert = null) {
 
         global $STRINGS;
 
         $this->_users = $users;
         $this->_alert = $alert;
+        $this->_page = $page;
 
         $this->title($STRINGS['users']);
     }
@@ -23,9 +25,14 @@ class AdminUsersView extends View {
         global $CONFIG, $STRINGS;
 
         $users_table_content = '';
-        if (!empty($this->_users)) {
-            foreach ($this->_users as $user) {
-                $users_table_content .= '
+        if (empty($this->_users)) {
+            return BootstrapHelper::alert('info',
+                    $STRINGS['event:nousers'],
+                    $STRINGS['event:nouser:message']);
+        }
+
+        foreach ($this->_users as $user) {
+            $users_table_content .= '
 				<tr>
 					<td>' . $user->id . '</td>
 					<td>' . utf8_encode($user->firstname) . '</td>
@@ -35,8 +42,8 @@ class AdminUsersView extends View {
 					<td><a href="'.$CONFIG->wwwroot.'/admin/users/'.$user->id.'/details">' . $user->email . '</a></td>
 				 </tr>
 				';
-            }
         }
+
 
         return '
         <section id="users">
@@ -57,7 +64,9 @@ class AdminUsersView extends View {
             </table>
 		    <form action="' . $CONFIG->wwwroot . '/admin/users/new/add" method="post">
 				<button class="btn btn-success ">+ '.$STRINGS['add:user'].'</button>
+                '.MenuHelper::get_pagination_links($CONFIG->wwwroot.'/admin/users/',$this->_page).'
 			</form>
+
         </section>';
     }
 
