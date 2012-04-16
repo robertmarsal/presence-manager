@@ -41,9 +41,9 @@ abstract class View {
                     <link rel="stylesheet" href="' . $CONFIG->wwwroot . '/public/css/presence.css" type="text/css">
                     <link rel="stylesheet" href="' . $CONFIG->wwwroot . '/public/css/datepicker.css" type="text/css">
                     <link rel="shortcut icon" href="' . $CONFIG->wwwroot . '/public/img/favicon.ico">
-                    <script async type="text/javascript" src="' . $CONFIG->wwwroot . '/public/js/jquery-1.7.1.min.js"></script>
-                    <script async type="text/javascript" src="' . $CONFIG->wwwroot . '/public/js/bootstrap-alert.js"></script>
-                    <script async type="text/javascript" src="' . $CONFIG->wwwroot . '/public/js/bootstrap-datepicker.js"></script>
+                    <script type="text/javascript" src="' . $CONFIG->wwwroot . '/public/js/jquery-1.7.1.min.js"></script>
+                    <script type="text/javascript" src="' . $CONFIG->wwwroot . '/public/js/bootstrap-alert.js"></script>
+                    <script type="text/javascript" src="' . $CONFIG->wwwroot . '/public/js/bootstrap-datepicker.js"></script>
                 </head>
                 <body>
                   <!--MENU-->
