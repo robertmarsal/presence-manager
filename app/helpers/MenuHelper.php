@@ -86,15 +86,16 @@ class MenuHelper extends Helper {
      * @param Int $page
      * @return Html
      */
-    static public function get_pagination_links($url, $page){
+    static public function get_pagination_links($url, $page, $next = true){
         global $STRINGS;
 
         ($page == 0)
             ? $previous = ''
             : $previous = '<li><a href="'.$url.( $page==1 ? '': $page-1).'">'.$STRINGS['previous'].'</a></li>';
 
-        $next = '<li><a href="'.$url.($page+1).'">'.$STRINGS['next'].'</a></li>';
-
+        ($next)
+            ? $next = '<li><a href="'.$url.($page+1).'">'.$STRINGS['next'].'</a></li>'
+            : $next = '';
         return
             '<ul class="pager pull-right">
                 '.$previous.'

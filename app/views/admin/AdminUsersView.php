@@ -31,6 +31,9 @@ class AdminUsersView extends View {
                     $STRINGS['event:nouser:message']);
         }
 
+        //check if there is a next page
+        count($this->_users) == 10 ? $next = true : $next = false;
+
         foreach ($this->_users as $user) {
             $users_table_content .= '
 				<tr>
@@ -64,7 +67,7 @@ class AdminUsersView extends View {
             </table>
 		    <form action="' . $CONFIG->wwwroot . '/admin/users/new/add" method="post">
 				<button class="btn btn-success ">+ '.$STRINGS['add:user'].'</button>
-                '.MenuHelper::get_pagination_links($CONFIG->wwwroot.'/admin/users/',$this->_page).'
+                '.MenuHelper::get_pagination_links($CONFIG->wwwroot.'/admin/users/', $this->_page, $next).'
 			</form>
 
         </section>';

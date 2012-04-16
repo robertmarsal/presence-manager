@@ -126,13 +126,13 @@ class AdminController extends Controller {
                 ? $alert = BootstrapHelper::alert('success', $STRINGS['event:success'], $STRINGS['user:create:success'])
                 : $alert = BootstrapHelper::alert('error', $STRINGS['event:error'], $STRINGS['user:create:failed']);
 
-            $this->_view = new AdminUsersView(UserModel::find_all(), $alert);
+            $this->_view = new AdminUsersView(UserModel::find_page(0), 0,$alert);
         } else if (!$valid && !$duplicate) {
             $this->_view =
                     new AdminUserCreateView(BootstrapHelper::alert('error', $STRINGS['event:error'], $STRINGS['user:create:failed']));
         } else if ($duplicate) {
             $this->_view =
-                    new AdminUsersView(UserModel::find_all(),
+                    new AdminUsersView(UserModel::find_page(0),0,
                             BootstrapHelper::alert('error', $STRINGS['event:error'], $STRINGS['user:create:duplicate']));
         }
     }
@@ -160,7 +160,7 @@ class AdminController extends Controller {
             ? $alert = BootstrapHelper::alert('success', $STRINGS['event:success'], $STRINGS['user:delete:success'])
             : $alert = BootstrapHelper::alert('error', $STRINGS['event:error'], $STRINGS['user:delete:failed']);
 
-        $this->_view = new AdminUsersView(UserModel::find_all(), $alert);
+        $this->_view = new AdminUsersView(UserModel::find_page(0), 0, $alert);
     }
 
     /**

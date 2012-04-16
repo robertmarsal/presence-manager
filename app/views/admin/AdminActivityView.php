@@ -29,6 +29,9 @@ class AdminActivityView extends View {
                     $STRINGS['event:noactivity:message']);
         }
 
+        //check if there is a next page
+        count($this->_entries) == 10 ? $next = true : $next = false;
+
         $activity_table_content = '';
         foreach ($this->_entries as $entry) {
             $activity_table_content .=
@@ -61,7 +64,7 @@ class AdminActivityView extends View {
                 <tbody>' . $activity_table_content . '
                 </tbody>
             </table>
-            '.MenuHelper::get_pagination_links($CONFIG->wwwroot.'/admin/activity/',$this->_page).'
+            '.MenuHelper::get_pagination_links($CONFIG->wwwroot.'/admin/activity/',$this->_page, $next).'
         </section>';
     }
 }
