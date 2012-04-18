@@ -75,4 +75,30 @@ class User extends API{
 		}
 		return API::response($response);
 	}
+
+    private function checkin(){
+        //check the current status
+        $user_status = $this->status();
+        if($user_status->code != 0){ //the user is already checkedin
+            return API::response(array('code' => '0',
+                                       'timestamp'=> '0'));
+        }
+
+        //proceed with the check-in
+        $checkin = new stdClass();
+        $checkin->userid = $this->get_userid($this->_token);
+        $checkin->action = 'checkin';
+        $checkin->timestamp = time();
+        $checkin->computed = 0;
+
+        $sq_status = DB::putRecord('presence_activity', $checkin);
+
+        if($sq_status){
+            return API::response(array('code' => '1',
+                                       'timestamp' => $checkin->timestamp));
+        }else{
+            return API::response(array('code' => '0',
+                                       'timestamp'=> '0'));
+        }
+    }
 }

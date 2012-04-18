@@ -1,14 +1,14 @@
 <?php
 
 class API{
-    
+
     /**
      * The token that identifies the device making the request
-     * 
+     *
      * @var String
      */
     protected $_token;
- 
+
     public function __construct($action, $params){
         //check if token exists and is still valid
         if(key_exists('token', $params)){
@@ -20,22 +20,30 @@ class API{
             }
         }
     }
-    
+
     protected function response($response){
         echo json_encode($response);
     }
-    
+
     private function validate_token($token){
         $sql = "SELECT id
                 FROM presence_tokens pt
                 WHERE pt.token = ?
                 AND pt.timeexpires < ?";
-        
+
         $response = DB::getRecord($sql, array($token, time()));
         if(!$response){
             HTTP::response('401');
         }
         //set the request token
         $this->_token = $token;
+    }
+
+    protected function get_userid($token){
+        $sql = "SELECT userid
+                FROM presence_tokens pt
+                WHERE pt.token = ?";
+        $user = DB::getRecord($sql, array($token));
+        return $user->userid;
     }
 }
