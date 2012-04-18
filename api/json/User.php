@@ -46,9 +46,10 @@ class User extends API{
     }
 
     private function status(){
-		$sql = "SELECT action, timestamp
+		$sql = "SELECT action, timestamp, pu.firstname, pu.lastname, pu.position
 				FROM presence_activity pa
                 JOIN presence_tokens pt ON pa.userid = pt.userid
+                JOIN presence_users pu ON pa.userid = pu.id
 				WHERE pt.token = ? AND pa.action != ?
 				ORDER BY timestamp DESC
 				LIMIT 1";
@@ -58,12 +59,16 @@ class User extends API{
 
 		switch($last_activity->action){
 			case 'checkin':
-				$response = array('status' => '1',
-								  'timestamp' => $last_activity->timestamp);
+				$response = array('code' => '1',
+								  'timestamp' => $last_activity->timestamp,
+                                  'user' => $last_activity->firstname.' '.$last_activity->lastname,
+                                  'position' => $last_activity->position);
 				break;
 			case 'checkout':
-				$response = array ('status' => '0',
-                                   'timestamp' => $last_activity->timestamp);
+				$response = array ('code' => '0',
+                                   'timestamp' => $last_activity->timestamp,
+                                   'user' => $last_activity->firstname.' '.$last_activity->lastname,
+                                   'position' => $last_activity->position);
 				break;
             default:
                 $response = null;
