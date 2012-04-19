@@ -13,13 +13,27 @@ class User extends API{
     }
 
     private function authenticate($params){
+
+        //check if all the params are supplied
+        $valid_params = $params->UUID && $params->mac;
+
+        if(!$valid_params){
+            return HTTP::response('400');
+        }
+
+        //validate the user
+        $sql = "SELECT id
+                FROM presence_users pu
+                WHERE pu.UUID = ? AND pu.mac = ?";
+
+        $user = DB::getRecord($sql, array($params->UUID, $params->mac));
+
         //TODO: authenticate!!
-        //$params->userid
         //$params->UUID
         //$params->mac
-        $params->userid = 2;//TEST ONLY
+        //$params->userid
 
-        //check if this user doesn't have a valid token already!
+        //TODO: check if this user doesn't have a valid token already!
 
         //generate the token
         $token = sha1(time());

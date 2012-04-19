@@ -29,7 +29,7 @@ class API{
         $sql = "SELECT id
                 FROM presence_tokens pt
                 WHERE pt.token = ?
-                AND pt.timeexpires < ?";
+                AND pt.timeexpires > ?";
 
         $response = DB::getRecord($sql, array($token, time()));
         if(!$response){
