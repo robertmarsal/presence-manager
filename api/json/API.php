@@ -27,9 +27,9 @@ class API{
 
     private function validate_token($token){
         $sql = "SELECT id
-                FROM presence_tokens pt
-                WHERE pt.token = ?
-                AND pt.timeexpires > ?";
+                FROM presence_auth pa
+                WHERE pa.token = ?
+                AND pa.timeexpires > ?";
 
         $response = DB::getRecord($sql, array($token, time()));
         if(!$response){
@@ -39,10 +39,21 @@ class API{
         $this->_token = $token;
     }
 
+    protected function has_token($userid){
+        $sql = "SELECT token, timeexpires
+                FROM presence_auth pa
+                WHERE pa.userid = ?
+                AND pa.timeexpires > ?";
+
+        $response = DB::getRecord($sql, array($userid, time()));
+
+        return isset($response->id);
+    }
+
     protected function get_userid($token){
         $sql = "SELECT userid
-                FROM presence_tokens pt
-                WHERE pt.token = ?";
+                FROM presence_auth pa
+                WHERE pa.token = ?";
         $user = DB::getRecord($sql, array($token));
         return $user->userid;
     }

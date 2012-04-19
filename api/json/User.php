@@ -28,24 +28,29 @@ class User extends API{
 
         $user = DB::getRecord($sql, array($params->UUID, $params->mac));
 
-        //TODO: authenticate!!
-        //$params->UUID
-        //$params->mac
-        //$params->userid
+        //check if we obtained a numeric id
+        if(!$user || !is_int((int)$user->id)){
+            return HTTP::response('401');
+        }
 
-        //TODO: check if this user doesn't have a valid token already!
+        //check if the user does not have a token already
+        $old_token = $this->has_token($user->id);
+        if($old_token){
+            API::response($old_token);
+        }
+
+        //TODO: check if the user is in network --> ARP ?
 
         //generate the token
-        $token = sha1(time());
-        $sql = "INSERT INTO presence_tokens
-                (userid, token, timeexpires)
-                VALUES(?,?,?)";
-        $expire_time = time()+(24*60*60);
-        $response = DB::runSQL($sql, array($params->userid, $token, $expire_time));
-        if($response){
-            $auth = new stdClass();
-            $auth->token = $token;
-            $auth->expires = $expire_time;
+        $auth = new stdClass();
+        $auth->userid = $user->id;
+        $auth->token = sha1(time());
+        $auth->timeexpires = time()+(24*60*60);
+
+        $auth_response = DB::putRecord('presence_auth', $auth);
+
+        if($auth_response){
+            unset($auth->userid);
             API::response($auth);
         }
     }
@@ -53,8 +58,8 @@ class User extends API{
     private function activity(){
         $sql = "SELECT pa.id, pa.action, pa.timestamp
                 FROM presence_activity pa
-                JOIN presence_tokens pt ON pa.userid = pt.userid
-                WHERE pt.token = ?";
+                JOIN presence_auth pau ON pa.userid = pau.userid
+                WHERE pau.token = ?";
         $response = DB::getAllRecords($sql, array($this->_token));
         return API::response($response);
     }
@@ -62,9 +67,9 @@ class User extends API{
     private function status(){
 		$sql = "SELECT action, timestamp, pu.firstname, pu.lastname, pu.position
 				FROM presence_activity pa
-                JOIN presence_tokens pt ON pa.userid = pt.userid
+                JOIN presence_auth pau ON pa.userid = pau.userid
                 JOIN presence_users pu ON pa.userid = pu.id
-				WHERE pt.token = ? AND pa.action != ?
+				WHERE pau.token = ? AND pa.action != ?
 				ORDER BY timestamp DESC
 				LIMIT 1";
 
