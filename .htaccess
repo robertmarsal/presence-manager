@@ -8,6 +8,9 @@ Options +FollowSymLinks
 <IfModule mod_rewrite.c>
     RewriteEngine on
 
+    #exclude install script
+    RewriteRule ^tmp/install.php($|/) - [L]
+
     #redirect to https always
     RewriteCond %{HTTPS} off
     RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L]
