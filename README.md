@@ -1,7 +1,13 @@
 # Presence Manager #
 
-**Presence Manager** is the web app needed to run the **Presence System**. It contains an application that allows user interaction and an API, trough wich the mobile apps interact with the database.
+**Presence Manager** is the web app needed to run the **Presence System**. It contains a web application that allows user interaction and an API, trough wich the mobile apps interact with the database.
 
-# Requirements #
-* PHP 5.3 with the following extensions:
-    * cURL
+## Installation ##
+
+Configure the app using the /config/config.php and then run the /tmp/install.php script
+
+## Requirements ##
+
+* PHP 5.3
+
+
