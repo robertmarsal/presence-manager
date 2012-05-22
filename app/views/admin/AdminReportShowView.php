@@ -5,13 +5,14 @@ class AdminReportShowView extends View{
     private $_user;
 	private $_range;
 
-    public function __construct($user, $range, $intervals, $alert = null) {
+    public function __construct($user, $range, $intervals, $incidences, $alert = null) {
 
         global $STRINGS;
 
         $this->_user = $user;
 		$this->_range = $range;
         $this->_intervals = $intervals;
+        $this->_incidences = $incidences;
 
         $this->title($STRINGS['user']);
     }
@@ -38,7 +39,15 @@ class AdminReportShowView extends View{
         }
         $intervals_list.= '</table>';
 
-		return '
+        $incidences_list = '<table class="table table-bordered table-condensed">';
+        foreach($this->_incidences as $incidence){
+            $incidences_list .= '<tr>
+                <td>'.date('G:i:s D M j Y', $incidence->timestamp).'
+                </tr>';
+        }
+        $incidences_list.= '</table>';
+
+        return '
             <section id="report-show" class="well">
 				<div id="report-actions" class="pull-right">
 					<a class="btn" href="#"><i class="icon-eye-open"></i>&nbsp;JSON</a>
@@ -62,8 +71,12 @@ class AdminReportShowView extends View{
 				</tr>
                 <tr>
 					<td><strong>'.$STRINGS['intervals'].': </strong></td>
-					<td><br>'.$intervals_list.'</td>
+					<td></br>'.$intervals_list.'</td>
 				</tr>
+                <tr>
+                    <td><strong>'.$STRINGS['incidences'].':</strong></td>
+                    <td></br>'.$incidences_list.'</td>
+                </tr>
                 <tr>
 					<td><strong>'.$STRINGS['total'].': </strong></td>
 					<td>'.$this->_range->total.'</td>

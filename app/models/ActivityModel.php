@@ -37,6 +37,15 @@ class ActivityModel extends Model {
         return DB::getAllRecords($sql, array($user, 'incidence', '0'));
     }
 
+    public static function find_all_incidences($user){
+
+        $sql = "SELECT timestamp
+                FROM ".self::table(). "
+                WHERE `userid` = ? AND action = ?";
+
+        return DB::getAllRecords($sql, array($user, 'incidence'));
+    }
+
     public static function delete_all_by_user($user){
         return DB::deleteAllRecordsByField(self::table(), 'userid', $user);
     }

@@ -30,6 +30,7 @@ $STRINGS['issued'] = 'Issued';
 $STRINGS['period'] = 'Period';
 $STRINGS['intervals'] = 'Intervals';
 $STRINGS['interval'] = 'Interval';
+$STRINGS['incidences'] = 'Incidences';
 $STRINGS['total'] = 'Total';
 $STRINGS['password'] = 'Password';
 $STRINGS['position'] = 'Position';
