@@ -29,8 +29,10 @@ class AdminActivityView extends View {
                     $STRINGS['event:noactivity:message']);
         }
 
-        //check if there is a next page
-        count($this->_entries) == 10 ? $next = true : $next = false;
+        //check if there is a next page (page count starts at 0 thus the +1)
+        $this->_page + 1 < ActivityModel::pages() == 10 
+                ? $next = true 
+                : $next = false;
 
         $activity_table_content = '';
         foreach ($this->_entries as $entry) {

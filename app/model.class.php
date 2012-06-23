@@ -75,7 +75,22 @@ abstract class Model{
 
         return $prefix.self::pluralise($class);
     }
-
+    
+    /**
+     * Returns the number of available pages for a table. 10 rows per page
+     * 
+     * @return int $pages
+     */
+    public static function pages(){
+        
+        $sql = "SELECT COUNT(*) as count
+                FROM ".self::table();
+        
+        $total = DB::getRecord($sql,array());
+        
+        return (int) $total->count % 10;
+    }
+    
     /**
      * Returns a pluralised version of a word (very basic)
      * DO NOT USE OUTSIDE THIS CLASS!

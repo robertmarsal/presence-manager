@@ -32,7 +32,9 @@ class AdminUsersView extends View {
         }
 
         //check if there is a next page
-        count($this->_users) == 10 ? $next = true : $next = false;
+        $this->_page + 1 < UserModel::pages()
+            ? $next = true 
+            : $next = false;
 
         foreach ($this->_users as $user) {
             $users_table_content .= '
