@@ -2,6 +2,10 @@ html{
     overflow-y:scroll;
 }
 
+html a{
+    color: #C83E22;
+}
+
 body{
     padding-top:75px;
 }
@@ -43,4 +47,22 @@ body{
     margin: 0;
     padding: 0;
     width: 164px;
+}
+
+.navbar-inner {
+    background: #FFFFFF;
+    box-shadow: 0 0 3px #888 !important;
+}
+.navbar a {
+    color: #111 !important;
+    text-shadow: none !important;
+}
+
+.navbar a:hover {
+    color: #C83E22 !important;
+}
+
+.active a {
+    background: #FFFFFF !important;
+    color: #C83E22 !important;
 }
