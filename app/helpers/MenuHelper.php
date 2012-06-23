@@ -116,7 +116,7 @@ class MenuHelper extends Helper {
 
         return
             '<ul class="nav pull-right no-hover-a">
-                <p class="navbar-text pull-right"><a href="' . $CONFIG->wwwroot . '/auth/logout">' . $STRINGS['logout'] . '</a></p>
+                <p class="navbar-text pull-right"><a href="' . $CONFIG->wwwroot . '/auth/logout"><b>' . $STRINGS['logout'] . '</b></a></p>
              </ul>';
     }
 }

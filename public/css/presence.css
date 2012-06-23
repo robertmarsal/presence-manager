@@ -6,6 +6,10 @@ html a{
     color: #C83E22;
 }
 
+html a:hover{
+    color: #C83E22 !important;       
+}
+
 body{
     padding-top:75px;
 }
@@ -51,7 +55,7 @@ body{
 
 .navbar-inner {
     background: #FFFFFF;
-    box-shadow: 0 0 3px #888 !important;
+    box-shadow: 0 0 2px #888 !important;
 }
 .navbar a {
     color: #111 !important;
