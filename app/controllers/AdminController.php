@@ -60,7 +60,7 @@ class AdminController extends Controller {
     public function users_activity($params) {
         $this->_view =
                 new AdminUserActivityView(UserModel::find($params[0]),
-                        ActivityModel::find_all_by_user($params[0]));
+                        ActivityModel::find_last($params[0]));
     }
 
     /**
@@ -71,7 +71,7 @@ class AdminController extends Controller {
     public function users_summary($params) {
         $this->_view =
                 new AdminUserSummaryView(UserModel::find($params[0]),
-                        IntervalModel::find_all_by_user($params[0]));
+                        IntervalModel::find_last($params[0]));
     }
 
     /**

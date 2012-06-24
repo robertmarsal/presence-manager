@@ -2,6 +2,22 @@
 
 class ActivityModel extends Model {
 
+    /**
+     * Returns the last 10 records oredered by timestamp in reversed order
+     * 
+     * @param type $id
+     * @return type 
+     */
+    public static function find_last($id){
+        $sql = "SELECT *
+                FROM ".self::table()."
+                WHERE `userid` = ?
+                ORDER BY timestamp DESC
+                LIMIT 10";
+
+        return DB::getAllRecords($sql, array($id));
+    }
+    
     public static function find_page($page) {
 
         $limit = 10;

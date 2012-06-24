@@ -20,7 +20,7 @@ class AdminUserActivityView extends View{
 
     public function content(){
 
-        global $CONFIG, $STRINGS;
+        global $STRINGS;
 
 		$activity_table_content = '';
         if ($this->_activity) {
