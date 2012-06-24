@@ -30,7 +30,7 @@ class AdminActivityView extends View {
         }
 
         //check if there is a next page (page count starts at 0 thus the +1)
-        $this->_page + 1 < ActivityModel::pages() == 10 
+        $this->_page + 1 < ActivityModel::pages()
                 ? $next = true 
                 : $next = false;
 
