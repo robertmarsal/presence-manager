@@ -88,7 +88,9 @@ abstract class Model{
         
         $total = DB::getRecord($sql,array());
         
-        return (int) $total->count % 10;
+        ($total->count % 10) > 0 ? $rest = 1 : $rest = 0;
+
+        return (int)(($total->count - ($total->count % 10)) / 10) + $rest;
     }
     
     /**
