@@ -21,7 +21,7 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
-
+USE presence;
 --
 -- Estructura de tabla para la tabla `presence_activity`
 --

@@ -70,12 +70,13 @@ class MenuHelper extends Helper {
      */
     static public function user_base_menu($active) {
         global $CONFIG, $STRINGS;
-        $activity = null;
+        $activity = $report = null;
         $$active = 'class="active"';
 
         return
             '<ul class="nav">
-			     <li ' . $activity . '><a href="' . $CONFIG->wwwroot . '/user/activity">' . $STRINGS['activity'] . '</a></li>
+			    <li ' . $activity . '><a href="' . $CONFIG->wwwroot . '/user/activity">' . $STRINGS['activity'] . '</a></li>
+				<li ' . $report . '><a href="' . $CONFIG->wwwroot . '/user/report">' . $STRINGS['report'] . '</a></li>
             </ul>' . MenuHelper::get_logout_option();;
     }
 
