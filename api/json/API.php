@@ -23,6 +23,7 @@ class API{
 
     protected function response($response){
         echo json_encode($response);
+        die();
     }
 
     private function validate_token($token){
@@ -39,15 +40,13 @@ class API{
         $this->_token = $token;
     }
 
-    protected function has_token($userid){
+    protected function get_token($userid){
         $sql = "SELECT token, timeexpires
                 FROM presence_auth pa
                 WHERE pa.userid = ?
                 AND pa.timeexpires > ?";
 
-        $response = DB::getRecord($sql, array($userid, time()));
-
-        return isset($response->id);
+        return $response = DB::getRecord($sql, array($userid, time()));
     }
 
     protected function get_userid($token){

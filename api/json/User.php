@@ -34,7 +34,7 @@ class User extends API{
         }
 
         //check if the user does not have a token already
-        $old_token = $this->has_token($user->id);
+        $old_token = $this->get_token($user->id);
         if($old_token){
             API::response($old_token);
         }
