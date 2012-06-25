@@ -15,7 +15,7 @@ class User extends API{
     private function authenticate($params){
 
         //check if all the params are supplied
-        $valid_params = $params->UUID && $params->mac;
+        $valid_params = isset($params->UUID) && isset($params->mac);
 
         if(!$valid_params){
             return HTTP::response('400');
@@ -38,8 +38,6 @@ class User extends API{
         if($old_token){
             API::response($old_token);
         }
-
-        //TODO: check if the user is in network --> ARP ?
 
         //generate the token
         $auth = new stdClass();
@@ -103,6 +101,8 @@ class User extends API{
                                        'timestamp'=> '0'));
         }
 
+		//TODO: check if the user is in network --> ARP ?
+		
         //proceed with the check-in
         $checkin = new stdClass();
         $checkin->userid = $this->get_userid($this->_token);
