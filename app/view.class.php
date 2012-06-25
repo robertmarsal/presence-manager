@@ -50,7 +50,9 @@ abstract class View {
                   <div class="navbar navbar-fixed-top">
                     <div class="navbar-inner">
                       <div class="container">
-                        <a class="brand" href="'.$CONFIG->wwwroot.'">'.$STRINGS['brand'].'</a>
+                        <a class="brand" href="'.$CONFIG->wwwroot.'">
+							<img src="' . $CONFIG->wwwroot . '/public/img/presence32.png">
+							'.$STRINGS['brand'].'</a>
                           <div class="nav-collapse">
                             '.$this->menu().'
                           </div>
