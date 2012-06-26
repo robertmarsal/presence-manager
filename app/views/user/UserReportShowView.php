@@ -50,10 +50,6 @@ class UserReportShowView extends View {
 
         return '
             <section id="report-show" class="well">
-				<div id="report-actions" class="pull-right">
-					<a class="btn" href="#"><i class="icon-eye-open"></i>&nbsp;JSON</a>
-				</div>
-
 			<table >
 				<tr>
 				<td style="min-width:80px;"></td>
