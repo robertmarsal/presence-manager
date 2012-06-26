@@ -30,7 +30,7 @@ class LoginView extends View {
                 </select>
                 <div class="container" id="login-footer">
                     <p>Developed by <a href="http://twitter.com/robertboloc" target="_blank">@robertboloc</a><br/>
-                     Licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>
+                     Licensed under the <a href="http://www.opensource.org/licenses/mit-license.html" target="_blank">MIT Licence</a>
                     </p>
                 </div>
             </form>
