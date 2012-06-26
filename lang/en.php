@@ -43,6 +43,8 @@ $STRINGS['type'] = 'Type';
 $STRINGS['message'] = 'Message';
 $STRINGS['previous'] = 'Previous';
 $STRINGS['next'] = 'Next';
+$STRINGS['day'] = 'Day';
+$STRINGS['identifier'] = 'Identifier';
 
 //user
 $STRINGS['user:update:success'] = 'User details updated successfully!';
