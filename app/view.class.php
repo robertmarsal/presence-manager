@@ -51,7 +51,7 @@ abstract class View {
                     <div class="navbar-inner">
                       <div class="container">
                         <a class="brand" href="'.$CONFIG->wwwroot.'">
-							<img src="' . $CONFIG->wwwroot . '/public/img/presence.jpg" style="height: 35px;">
+							<img src="' . $CONFIG->wwwroot . '/public/img/presence2.png" style="height: 20px;">
 							</a>
                           <div class="nav-collapse">
                             '.$this->menu().'
