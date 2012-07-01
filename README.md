@@ -1,4 +1,4 @@
-# Presence Manager #
+[![Foo](https://github.com/robertboloc/presence-manager/raw/master/public/img/presence.png)]()
 
 **Presence Manager** is the web app needed to run the **Presence System**. It contains a web application that allows user interaction and an API, trough wich the mobile apps interact with the database.
 
