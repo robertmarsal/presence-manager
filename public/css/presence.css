@@ -68,9 +68,10 @@ body{
 }
 
 .nav{
-	/*margin-top: 2px !important;*/
+	margin-top: 5px !important;
 }
 
 .brand{
 	margin-top: 2px !important;
+    margin-bottom: -6px !important;
 }
