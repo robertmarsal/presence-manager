@@ -75,3 +75,7 @@ body{
 	margin-top: 2px !important;
     margin-bottom: -6px !important;
 }
+
+.logout{
+    padding-top: 8px;
+}
