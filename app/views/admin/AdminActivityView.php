@@ -43,7 +43,8 @@ class AdminActivityView extends View {
                 <td>'.date('l', $entry->timestamp).'</td>
                 <td>' . date('d/m/Y', $entry->timestamp) . '</td>
                 <td>' . date('G:i:s', $entry->timestamp) . '</td>
-                <td>' . utf8_encode($entry->firstname).' '.utf8_encode($entry->lastname) . '</td>
+                <td>' . utf8_encode($entry->firstname).'</td> 
+                <td>'.utf8_encode($entry->lastname) . '</td>
                 <td><a href="'.$CONFIG->wwwroot.'/admin/users/'.$entry->userid.'/details">'.$entry->email.'</a></td>
             </tr>
             ';
@@ -59,7 +60,8 @@ class AdminActivityView extends View {
                         <th>'.$STRINGS['day'].'</th>    
                         <th>'.$STRINGS['date'].'</th>
                         <th>'.$STRINGS['time'].'</th>
-                        <th>'.$STRINGS['user'].'</th>
+                        <th>'.$STRINGS['firstname'].'</th>
+                        <th>'.$STRINGS['lastname'].'</th>
                         <th>'.$STRINGS['identifier'].'</th>
                     </tr>
                 </thead>

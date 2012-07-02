@@ -5,23 +5,6 @@ class IntervalModel extends Model{
      public static function create_multiple($records){
          return DB::putRecords(self::table(), $records);
      }
-
-     /**
-      * Returns the last 10 records ordered by timestart in reversed order
-      * 
-      * @param type $user
-      * @return type 
-      */
-     public static function find_last($user){
-         
-         $sql = "SELECT *
-                 FROM ".self::table()."
-                 WHERE `userid` = ?
-                 ORDER BY timestart DESC
-                 LIMIT 10";
-         
-         return DB::getAllRecords($sql,array($user));
-     }
      
      public static function find_all_by_user($user){
 

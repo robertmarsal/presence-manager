@@ -35,7 +35,7 @@ class MenuHelper extends Helper {
      */
     static public function admin_submenu($active, $user){
         global $CONFIG, $STRINGS;
-        $details = $activity = $summary = $account = null;
+        $details = $account = null;
         $$active = 'class="active"';
 
         return '
@@ -47,12 +47,6 @@ class MenuHelper extends Helper {
                 <li ' . $details . '>
                     <a href="'.$CONFIG->wwwroot.'/admin/users/'.$user->id.'/details">
                     <i class="icon-edit"></i>&nbsp;'.$STRINGS['details'].'</a></li>
-                <li ' . $activity . '>
-                    <a href="'.$CONFIG->wwwroot.'/admin/users/'.$user->id.'/activity">
-                    <i class="icon-map-marker"></i>&nbsp;'.$STRINGS['activity'].'</a></li>
-                <li ' . $summary . '>
-                    <a href="'.$CONFIG->wwwroot.'/admin/users/'.$user->id.'/summary">
-                    <i class="icon-list"></i>&nbsp;'.$STRINGS['summary'].'</a></li>
                 <li ' . $account . '>
                     <a href="'.$CONFIG->wwwroot.'/admin/users/'.$user->id.'/account">
                     <i class="icon-cog"></i>&nbsp;'.$STRINGS['account'].'</a></li>

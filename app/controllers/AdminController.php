@@ -52,29 +52,6 @@ class AdminController extends Controller {
     }
 
     /**
-     * Obtains the activity of a user, identified by the id contained in the
-     * params array, and sets the user activity view as active
-     *
-     * @param Array $params
-     */
-    public function users_activity($params) {
-        $this->_view =
-                new AdminUserActivityView(UserModel::find($params[0]),
-                        ActivityModel::find_last($params[0]));
-    }
-
-    /**
-     * Obtains the user info and activity and sets the summary view as active
-     *
-     * @param Array $params
-     */
-    public function users_summary($params) {
-        $this->_view =
-                new AdminUserSummaryView(UserModel::find($params[0]),
-                        IntervalModel::find_last($params[0]));
-    }
-
-    /**
      * Displays account options using the user account view
      *
      * @param Array $params

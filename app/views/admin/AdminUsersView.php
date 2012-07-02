@@ -60,7 +60,7 @@ class AdminUsersView extends View {
                         <th>'.$STRINGS['lastname'] .'</th>
                         <th>'.$STRINGS['role'] .'</th>
                         <th>'.$STRINGS['position'] .'</th>
-                        <th>'.$STRINGS['email'] .'</th>
+                        <th>'.$STRINGS['identifier'] .'</th>
                     </tr>
                 </thead>
                 <tbody>
