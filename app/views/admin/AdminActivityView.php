@@ -31,7 +31,7 @@ class AdminActivityView extends View {
 
         //check if there is a next page (page count starts at 0 thus the +1)
         $this->_page + 1 < ActivityModel::pages()
-                ? $next = true 
+                ? $next = true
                 : $next = false;
 
         $activity_table_content = '';
@@ -43,7 +43,7 @@ class AdminActivityView extends View {
                 <td>'.date('l', $entry->timestamp).'</td>
                 <td>' . date('d/m/Y', $entry->timestamp) . '</td>
                 <td>' . date('G:i:s', $entry->timestamp) . '</td>
-                <td>' . utf8_encode($entry->firstname).'</td> 
+                <td>' . utf8_encode($entry->firstname).'</td>
                 <td>'.utf8_encode($entry->lastname) . '</td>
                 <td><a href="'.$CONFIG->wwwroot.'/admin/users/'.$entry->userid.'/details">'.$entry->email.'</a></td>
             </tr>
@@ -51,13 +51,13 @@ class AdminActivityView extends View {
         }
 
         return '
-        <section id="activity">
+        <section id="activity" class="well">
             <table class="table">
                 <thead>
                     <tr>
                         <th>#</th>
                         <th>'.$STRINGS['action'].'</th>
-                        <th>'.$STRINGS['day'].'</th>    
+                        <th>'.$STRINGS['day'].'</th>
                         <th>'.$STRINGS['date'].'</th>
                         <th>'.$STRINGS['time'].'</th>
                         <th>'.$STRINGS['firstname'].'</th>
@@ -69,6 +69,7 @@ class AdminActivityView extends View {
                 </tbody>
             </table>
             '.MenuHelper::get_pagination_links($CONFIG->wwwroot.'/admin/activity/',$this->_page, $next).'
+            <div class="container"></div>
         </section>';
     }
 }

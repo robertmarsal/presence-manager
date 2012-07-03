@@ -18,7 +18,7 @@ class LoginView extends View {
         global $CONFIG;
 
         return '
-        <section id="login">
+        <section id="login" class="well">
             <form action="'.$CONFIG->wwwroot.'/auth/login" method="post">
                 <input type="text" name="email" placeholder="Email"><br/>
                 <input type="password" name="password" placeholder="Password"><br/>

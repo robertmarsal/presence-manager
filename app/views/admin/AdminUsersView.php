@@ -33,7 +33,7 @@ class AdminUsersView extends View {
 
         //check if there is a next page
         $this->_page + 1 < UserModel::pages()
-            ? $next = true 
+            ? $next = true
             : $next = false;
 
         foreach ($this->_users as $user) {
@@ -51,7 +51,7 @@ class AdminUsersView extends View {
 
 
         return '
-        <section id="users">
+        <section id="users" class="well">
          <table class="table">
                 <thead>
                     <tr>
