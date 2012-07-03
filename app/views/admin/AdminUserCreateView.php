@@ -19,8 +19,8 @@ class AdminUserCreateView extends View {
                 <label>'.$STRINGS['lastname'].'</label>
                 <input type="text" name="lastname">
 
-                <label>'.$STRINGS['email'].'</label>
-                <input type="text" name="email">
+                <label>'.$STRINGS['identifier'].'</label>
+                <input type="text" name="identifier">
 
                 <label>'.$STRINGS['password'].'</label>
                 <input type="text" name="password">

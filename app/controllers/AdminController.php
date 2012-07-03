@@ -92,8 +92,8 @@ class AdminController extends Controller {
         // cast the params to object
         $user = (object) $params;
 
-        // check if the email is already registred
-        if (UserModel::find_by_email($user->email) == true) {
+        // check if the identifier is already registred
+        if (UserModel::find_by_identifier($user->identifier) == true) {
             $duplicate = true;
         }
 

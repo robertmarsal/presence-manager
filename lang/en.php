@@ -25,7 +25,6 @@ $STRINGS['time'] = 'Time';
 $STRINGS['date'] = 'Date';
 $STRINGS['firstname'] = 'First Name';
 $STRINGS['lastname'] = 'Last Name';
-$STRINGS['email'] = 'Email';
 $STRINGS['issued'] = 'Issued';
 $STRINGS['period'] = 'Period';
 $STRINGS['intervals'] = 'Intervals';

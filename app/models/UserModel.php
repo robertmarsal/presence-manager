@@ -14,16 +14,16 @@ class UserModel extends Model {
     }
 
     /**
-     * Returns the id of the user identified by the email passed as a parameter
+     * Returns the id of the user identified by the identifier passed as a parameter
      *
-     * @param String $email
+     * @param String $identifier
      * @return Int
      */
-    public static function find_by_email($email){
+    public static function find_by_identifier($identifier){
         $sql = "SELECT id
                 FROM ".self::table()."
-                WHERE `email` = ?";
+                WHERE `identifier` = ?";
 
-		return DB::getRecord($sql, array($email));
+		return DB::getRecord($sql, array($identifier));
     }
 }

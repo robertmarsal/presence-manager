@@ -6,7 +6,7 @@ class ActivityModel extends Model {
 
         $limit = 10;
 
-		$sql = "SELECT pa.id, pa.userid, pa.action, pa.timestamp, pu.firstname, pu.lastname, pu.email
+		$sql = "SELECT pa.id, pa.userid, pa.action, pa.timestamp, pu.firstname, pu.lastname, pu.identifier
 				FROM " . self::table() . " pa
 				JOIN presence_users pu ON pa.userid = pu.id
 				ORDER BY pa.timestamp DESC

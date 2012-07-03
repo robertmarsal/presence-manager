@@ -27,13 +27,13 @@ class AuthController extends Controller {
 
         $sql = "SELECT *
                 FROM presence_users
-                WHERE `email` = ?
+                WHERE `identifier` = ?
                 AND `password` = ?";
 
-		$result = DB::getRecord($sql, array($params['email'], md5($params['password'])));
+		$result = DB::getRecord($sql, array($params['identifier'], md5($params['password'])));
 
         if ($result) {
-            $_SESSION['user'] = $result->email;
+            $_SESSION['user'] = $result->identifier;
             $_SESSION['role'] = $result->role;
 
             //set language

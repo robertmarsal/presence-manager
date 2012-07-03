@@ -14,7 +14,7 @@ class UserController extends Controller {
     public function __construct($action, $params, $extra_action = null) {
         global $CONFIG;
 
-		$this->_user = UserModel::find_by_email($_SESSION['user']);
+		$this->_user = UserModel::find_by_identifier($_SESSION['user']);
 
 		// if the extra action is defined update action
         isset($extra_action) ? $action = $action . '_' . $extra_action : null;

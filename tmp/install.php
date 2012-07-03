@@ -86,7 +86,7 @@ $presence_users_table_sql = '
     USE '.$CONFIG->dbname.';
     CREATE TABLE IF NOT EXISTS `presence_users` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
-    `email` varchar(150) COLLATE utf8_bin NOT NULL,
+    `identifier` varchar(150) COLLATE utf8_bin NOT NULL,
     `password` varchar(50) COLLATE utf8_bin NOT NULL,
     `role` varchar(20) COLLATE utf8_bin NOT NULL,
     `firstname` varchar(200) COLLATE utf8_bin NOT NULL,

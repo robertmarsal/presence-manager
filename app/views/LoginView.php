@@ -20,7 +20,7 @@ class LoginView extends View {
         return '
         <section id="login" class="well">
             <form action="'.$CONFIG->wwwroot.'/auth/login" method="post">
-                <input type="text" name="email" placeholder="Email"><br/>
+                <input type="text" name="identifier" placeholder="Identifier"><br/>
                 <input type="password" name="password" placeholder="Password"><br/>
                 <button type="submit" class="btn btn-success">Login</button>
                 <select id="lang-selector" name="lang">

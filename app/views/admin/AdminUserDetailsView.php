@@ -35,8 +35,8 @@ class AdminUserDetailsView extends View{
                 <label>'.$STRINGS['lastname'].'</label>
                 <input type="text" name="lastname" value="'.$this->_user->lastname.'">
 
-                <label>'.$STRINGS['email'].'</label>
-                <input type="text" name="email" value="'.$this->_user->email.'">
+                <label>'.$STRINGS['identifier'].'</label>
+                <input type="text" name="identifier" value="'.$this->_user->identifier.'">
 
                 <label>'.$STRINGS['position'].'</label>
                 <input type="text" name="position" value="'.$this->_user->position.'">

@@ -117,7 +117,7 @@ INSERT INTO `presence_intervals` (`id`, `userid`, `timestart`, `timestop`, `time
 
 CREATE TABLE IF NOT EXISTS `presence_users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `email` varchar(150) COLLATE utf8_bin NOT NULL,
+  `identifier` varchar(150) COLLATE utf8_bin NOT NULL,
   `password` varchar(50) COLLATE utf8_bin NOT NULL,
   `role` varchar(20) COLLATE utf8_bin NOT NULL,
   `firstname` varchar(200) COLLATE utf8_bin NOT NULL,
@@ -132,7 +132,7 @@ CREATE TABLE IF NOT EXISTS `presence_users` (
 -- Volcado de datos para la tabla `presence_users`
 --
 
-INSERT INTO `presence_users` (`id`, `email`, `password`, `role`, `firstname`, `lastname`, `position`, `UUID`, `mac`) VALUES
+INSERT INTO `presence_users` (`id`, `identifier`, `password`, `role`, `firstname`, `lastname`, `position`, `UUID`, `mac`) VALUES
 (1, 'robertboloc@gmail.com', '098f6bcd4621d373cade4e832627b4f6', 'admin', 'Robert', 'Boloc', 'User Experience Expert', '', '0'),
 (2, 'monica.figuerola@gmail.com', '098f6bcd4621d373cade4e832627b4f6', 'user', 'Monica', 'Figuerola', 'Mobile Visual Director', 'f81d4fae-7dec-11d0-a765-00a0c91e6bf6', '3c:d9:2b:5b:a2:c4'),
 (3, 'mikael.bloomkvist@urv.cat', '098f6bcd4621d373cade4e832627b4f6', 'user', 'Mikael', 'Bloomkvist', 'Junior Content Producer', '', '0'),
