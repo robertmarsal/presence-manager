@@ -65,6 +65,6 @@ class AuthController extends Controller {
      * Redirects to the main login form
      */
     private function asklogin() {
-        $this->view = new LoginView();
+        new LoginView();
     }
 }

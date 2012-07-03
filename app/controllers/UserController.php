@@ -15,7 +15,7 @@ class UserController extends Controller {
         global $CONFIG;
 
 		$this->_user = UserModel::find_by_email($_SESSION['user']);
-		
+
 		// if the extra action is defined update action
         isset($extra_action) ? $action = $action . '_' . $extra_action : null;
 
@@ -33,13 +33,13 @@ class UserController extends Controller {
      * @param Array $params
      */
     public function activity() {
-        $this->_view = new UserActivityView(ActivityModel::find_all_by_user($this->_user->id));
+        new UserActivityView(ActivityModel::find_all_by_user($this->_user->id));
     }
-	
+
 	public function report(){
-		$this->_view = new UserReportView($this->_user);
+		new UserReportView($this->_user);
 	}
-	
+
 	/**
      * Builds a report using the passed parameters, and displays the result
      * using the report show view
@@ -48,8 +48,8 @@ class UserController extends Controller {
      */
     public function report_build($params) {
         $formdata = (object) $params;
-        $this->_view = new UserReportShowView(UserModel::find($formdata->user),
-                        IntervalModel::get_range_total($formdata), IntervalModel::get_between($formdata),
-                        ActivityModel::find_all_incidences($formdata->user));
+        new UserReportShowView(UserModel::find($formdata->user),
+            IntervalModel::get_range_total($formdata), IntervalModel::get_between($formdata),
+            ActivityModel::find_all_incidences($formdata->user));
     }
 }

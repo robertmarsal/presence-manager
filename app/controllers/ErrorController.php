@@ -19,6 +19,6 @@ class ErrorController extends Controller {
      * Displays the 404 not found page
      */
     private function notfound() {
-        $this->_view = new NotFoundView();
+        new NotFoundView();
     }
 }

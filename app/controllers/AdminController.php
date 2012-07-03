@@ -30,7 +30,7 @@ class AdminController extends Controller {
      */
     public function activity($params) {
         $page = isset($params[0]) ? $params[0] : 0; //page number
-        $this->_view = new AdminActivityView(ActivityModel::find_page($page), $page);
+        new AdminActivityView(ActivityModel::find_page($page), $page);
     }
 
     /**
@@ -38,7 +38,7 @@ class AdminController extends Controller {
      */
     public function users($params) {
         $page = isset($params[0]) ? $params[0] : 0; //page number
-        $this->_view = new AdminUsersView(UserModel::find_page($page), $page);
+        new AdminUsersView(UserModel::find_page($page), $page);
     }
 
     /**
@@ -48,7 +48,7 @@ class AdminController extends Controller {
      * @param Array $params
      */
     public function users_details($params) {
-        $this->_view = new AdminUserDetailsView(UserModel::find($params[0]));
+        new AdminUserDetailsView(UserModel::find($params[0]));
     }
 
     /**
@@ -57,14 +57,14 @@ class AdminController extends Controller {
      * @param Array $params
      */
     public function users_account($params) {
-        $this->_view = new AdminUserAccountView(UserModel::find($params[0]));
+        new AdminUserAccountView(UserModel::find($params[0]));
     }
 
     /**
      * Displays the user create form contained in the user create view
      */
     public function users_add() {
-        $this->_view = new AdminUserCreateView();
+        new AdminUserCreateView();
     }
 
     /**
@@ -103,14 +103,12 @@ class AdminController extends Controller {
                 ? $alert = BootstrapHelper::alert('success', $STRINGS['event:success'], $STRINGS['user:create:success'])
                 : $alert = BootstrapHelper::alert('error', $STRINGS['event:error'], $STRINGS['user:create:failed']);
 
-            $this->_view = new AdminUsersView(UserModel::find_page(0), 0,$alert);
+            new AdminUsersView(UserModel::find_page(0), 0,$alert);
         } else if (!$valid && !$duplicate) {
-            $this->_view =
-                    new AdminUserCreateView(BootstrapHelper::alert('error', $STRINGS['event:error'], $STRINGS['user:create:failed']));
+            new AdminUserCreateView(BootstrapHelper::alert('error', $STRINGS['event:error'], $STRINGS['user:create:failed']));
         } else if ($duplicate) {
-            $this->_view =
-                    new AdminUsersView(UserModel::find_page(0),0,
-                            BootstrapHelper::alert('error', $STRINGS['event:error'], $STRINGS['user:create:duplicate']));
+            new AdminUsersView(UserModel::find_page(0),0,
+                BootstrapHelper::alert('error', $STRINGS['event:error'], $STRINGS['user:create:duplicate']));
         }
     }
 
@@ -137,7 +135,7 @@ class AdminController extends Controller {
             ? $alert = BootstrapHelper::alert('success', $STRINGS['event:success'], $STRINGS['user:delete:success'])
             : $alert = BootstrapHelper::alert('error', $STRINGS['event:error'], $STRINGS['user:delete:failed']);
 
-        $this->_view = new AdminUsersView(UserModel::find_page(0), 0, $alert);
+        new AdminUsersView(UserModel::find_page(0), 0, $alert);
     }
 
     /**
@@ -158,14 +156,14 @@ class AdminController extends Controller {
             ? $alert = BootstrapHelper::alert('success', $STRINGS['event:success'], $STRINGS['user:update:success'])
             : $alert = BootstrapHelper::alert('error', $STRINGS['event:error'], $STRINGS['user:update:failed']);
 
-        $this->_view = new AdminUserDetailsView(UserModel::find($userid), $alert);
+        new AdminUserDetailsView(UserModel::find($userid), $alert);
     }
 
     /**
      * Displays a new report form using the report view
      */
     public function report() {
-        $this->_view = new AdminReportView(UserModel::find_all());
+        new AdminReportView(UserModel::find_all());
     }
 
     /**
@@ -176,7 +174,7 @@ class AdminController extends Controller {
      */
     public function report_build($params) {
         $formdata = (object) $params;
-        $this->_view = new AdminReportShowView(UserModel::find($formdata->user),
+        new AdminReportShowView(UserModel::find($formdata->user),
                         IntervalModel::get_range_total($formdata), IntervalModel::get_between($formdata),
                         ActivityModel::find_all_incidences($formdata->user));
     }

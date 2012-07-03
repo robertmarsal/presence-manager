@@ -3,16 +3,9 @@
 class Controller {
 
     /**
-     * The active view of the controller
-     * 
-     * @var View
-     */
-    protected $_view;
-    
-    /**
-     * Checks that the role assigned to this session corresponds to the one 
+     * Checks that the role assigned to this session corresponds to the one
      * passed as a parameter
-     * 
+     *
      * @param String $role
      * @return Boolean
      */
