@@ -9,7 +9,7 @@ class AdminReportView extends View{
         global $STRINGS;
 
         $this->_users = $users;
-
+        $this->_alert = $alert;
         $this->title($STRINGS['user']);
     }
 
@@ -41,7 +41,6 @@ class AdminReportView extends View{
                     });
                 });
             </script>
-
             <section id="report-build" class="well">
                 <form action="'.$CONFIG->wwwroot.'/admin/report/new/build" method="post" >
                     <label><i class="icon-user"></i>&nbsp;'.$STRINGS['user'].'</label>

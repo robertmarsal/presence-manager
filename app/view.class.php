@@ -3,6 +3,13 @@
 abstract class View {
 
     /**
+     * Contains the data received from the controller
+     * 
+     * @var type 
+     */
+    private $_data;
+    
+    /**
      * Title of the view. Used as a page title in the html render
      *
      * @var String

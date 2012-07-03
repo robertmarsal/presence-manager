@@ -173,9 +173,22 @@ class AdminController extends Controller {
      * @param Array $params
      */
     public function report_build($params) {
+        global $STRINGS;
         $formdata = (object) $params;
-        new AdminReportShowView(UserModel::find($formdata->user),
-                        IntervalModel::get_range_total($formdata), IntervalModel::get_between($formdata),
-                        ActivityModel::find_all_incidences($formdata->user));
+        
+        $this->_data->user = UserModel::find($formdata->user);
+        $this->_data->range = IntervalModel::get_range_total($formdata);
+        $this->_data->intervals = IntervalModel::get_between($formdata);
+        $this->_data->incidences =  ActivityModel::find_all_incidences($formdata->user);
+
+        //check if the report is not empty
+        if(empty($this->_data->range->total) && empty($this->_data->intervals) &&
+            empty($this->_data->incidences)){
+            $alert = BootstrapHelper::alert('info', $STRINGS['event:noactivity'],
+                $STRINGS['event:noactivityinterval:message']);
+            new AdminReportView(UserModel::find_all(), $alert);
+        }else{
+            new AdminReportShowView($this->_data);
+        }
     }
 }
