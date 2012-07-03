@@ -63,45 +63,24 @@ class User extends API{
     }
 
     private function status(){
-		$sql = "SELECT action, timestamp, pu.firstname, pu.lastname, pu.position
+		$sql = "SELECT action as status, timestamp
 				FROM presence_activity pa
                 JOIN presence_auth pau ON pa.userid = pau.userid
-                JOIN presence_users pu ON pa.userid = pu.id
 				WHERE pau.token = ? AND pa.action != ?
 				ORDER BY timestamp DESC
 				LIMIT 1";
 
-		// fetch the record from the DB
-		$last_activity = DB::getRecord($sql, array($this->_token, 'incidence'));
-
-		switch($last_activity->action){
-			case 'checkin':
-				$response = array('code' => '1',
-								  'timestamp' => $last_activity->timestamp,
-                                  'user' => $last_activity->firstname.' '.$last_activity->lastname,
-                                  'position' => $last_activity->position);
-				break;
-			case 'checkout':
-				$response = array ('code' => '0',
-                                   'timestamp' => $last_activity->timestamp,
-                                   'user' => $last_activity->firstname.' '.$last_activity->lastname,
-                                   'position' => $last_activity->position);
-				break;
-            default:
-                $response = null;
-		}
-		return API::response($response);
+		$status = DB::getRecord($sql, array($this->_token, 'incidence'));
+        
+		return API::response($status);
 	}
 
     private function checkin(){
         //check the current status
         $user_status = $this->status();
-        if($user_status->code != 0){ //the user is already checkedin
-            return API::response(array('code' => '0',
-                                       'timestamp'=> '0'));
+        if($user_status->status != 'checkout'){ //the user is already checkedin
+            return API::response(array('timestamp' => $user_status->timestamp));
         }
-
-		//TODO: check if the user is in network --> ARP ?
 		
         //proceed with the check-in
         $checkin = new stdClass();
@@ -113,11 +92,9 @@ class User extends API{
         $sq_status = DB::putRecord('presence_activity', $checkin);
 
         if($sq_status){
-            return API::response(array('code' => '1',
-                                       'timestamp' => $checkin->timestamp));
+            return API::response(array('timestamp' => $checkin->timestamp));
         }else{
-            return API::response(array('code' => '0',
-                                       'timestamp'=> '0'));
+            return API::response(array('timestamp'=> NULL ));
         }
     }
 }
