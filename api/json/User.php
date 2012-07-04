@@ -15,7 +15,7 @@ class User extends API{
     private function authenticate($params){
 
         //check if all the params are supplied
-        $valid_params = isset($params->UUID) && isset($params->mac);
+        $valid_params = isset($params->UUID) && isset($params->MAC);
 
         if(!$valid_params){
             return HTTP::response('400');
@@ -26,7 +26,7 @@ class User extends API{
                 FROM presence_users pu
                 WHERE pu.UUID = ? AND pu.mac = ?";
 
-        $user = DB::getRecord($sql, array($params->UUID, $params->mac));
+        $user = DB::getRecord($sql, array($params->UUID, $params->MAC));
 
         //check if we obtained a numeric id
         if(!$user || !is_int((int)$user->id)){
@@ -62,6 +62,15 @@ class User extends API{
         return API::response($response);
     }
 
+    private function data(){
+        $sql = "SELECT pu.identifier, pu.firstname, pu.lastname, pu.position
+                FROM presence_users pu
+                JOIN presence_auth pau ON pu.id = pau.userid
+                WHERE pau.token = ?";
+        $data = DB::getRecord($sql, array($this->_token));
+        return API::response($data);
+    }
+    
     private function status(){
 		$sql = "SELECT action as status, timestamp
 				FROM presence_activity pa
@@ -71,7 +80,6 @@ class User extends API{
 				LIMIT 1";
 
 		$status = DB::getRecord($sql, array($this->_token, 'incidence'));
-        
 		return API::response($status);
 	}
 
