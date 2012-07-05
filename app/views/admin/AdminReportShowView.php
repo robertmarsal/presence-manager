@@ -45,11 +45,11 @@ class AdminReportShowView extends View{
 			<table class="table report-table">
 				<tr>
 					<td><strong>'.$STRINGS['user'].': </strong></td>
-					<td>'.$this->_data->user->firstname.' '.$this->_data->user->lastname.'</td>
+					<td>'.$this->_data->user->firstname.' '.$this->_data->user->lastname.' ('.$this->_data->user->identifier.')</td>
 				</tr>
 				<tr>
 					<td><strong>'.$STRINGS['issued'].':</strong></td>
-					<td>'.date("F j, Y, g:i a").'</td>
+					<td>'.date("F j Y g:i a").'</td>
 				</tr>
 				<tr>
 					<td><strong>'.$STRINGS['period'].': </strong></td>
