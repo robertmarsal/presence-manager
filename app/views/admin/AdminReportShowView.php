@@ -20,34 +20,29 @@ class AdminReportShowView extends View{
                     $STRINGS['event:noactivityinterval:message']);
         }
 
-        $intervals_list = '<table class="table table-bordered table-condensed">';
+        $intervals_list = '<ul>';
         foreach($this->_data->intervals as $interval){
-            $intervals_list .='<tr>
-                <td>'.$interval->h.'h  '.$interval->i.'m  '.$interval->s.'s </td>
-                <td>'.date('G:i:s D M j Y', $interval->timestart).' </td>
-                <td>'.date('G:i:s D M j Y', $interval->timestop).' </td>
-                </tr>';
+            $intervals_list .='<li>
+                '.$interval->h.'h  '.$interval->i.'m  '.$interval->s.'s
+                '.date('G:i:s D M j Y', $interval->timestart).'
+                '.date('G:i:s D M j Y', $interval->timestop).'
+                </li>';
         }
-        $intervals_list.= '</table>';
+        $intervals_list.= '</ul>';
 
-        $incidences_list = '<table class="table table-bordered table-condensed">';
+        $incidences_list = '<ul>';
         foreach($this->_data->incidences as $incidence){
-            $incidences_list .= '<tr>
-                <td>'.date('G:i:s D M j Y', $incidence->timestamp).'
-                </tr>';
+            $incidences_list .= '<li>
+                '.date('G:i:s D M j Y', $incidence->timestamp).'
+                </li>';
         }
-        $incidences_list.= '</table>';
+        $incidences_list.= '</ul>';
 
         return '
             <section id="report-show" class="well">
-				<div id="report-actions" class="pull-right">
-					<a class="btn" href="#"><i class="icon-eye-open"></i>&nbsp;JSON</a>
-				</div>
 
-			<table >
-				<tr>
-				<td style="min-width:80px;"></td>
-				</tr>
+
+			<table class="table report-table">
 				<tr>
 					<td><strong>'.$STRINGS['user'].': </strong></td>
 					<td>'.$this->_data->user->firstname.' '.$this->_data->user->lastname.'</td>
@@ -62,11 +57,11 @@ class AdminReportShowView extends View{
 				</tr>
                 <tr>
 					<td><strong>'.$STRINGS['intervals'].': </strong></td>
-					<td></br>'.$intervals_list.'</td>
+					<td>'.$intervals_list.'</td>
 				</tr>
                 <tr>
                     <td><strong>'.$STRINGS['incidences'].':</strong></td>
-                    <td></br>'.$incidences_list.'</td>
+                    <td>'.$incidences_list.'</td>
                 </tr>
                 <tr>
 					<td><strong>'.$STRINGS['total'].': </strong></td>
