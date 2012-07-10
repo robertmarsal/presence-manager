@@ -33,7 +33,9 @@ class AdminReportShowView extends View{
         $incidences_list = '<ul>';
         foreach($this->_data->incidences as $incidence){
             $incidences_list .= '<li>
+				<span class="label label-warning">
                 '.date('G:i:s D M j Y', $incidence->timestamp).'
+				</span>
                 </li>';
         }
         $incidences_list.= '</ul>';
@@ -45,7 +47,7 @@ class AdminReportShowView extends View{
 			<table class="table report-table">
 				<tr>
 					<td><strong>'.$STRINGS['user'].': </strong></td>
-					<td>'.$this->_data->user->firstname.' '.$this->_data->user->lastname.' ('.$this->_data->user->identifier.')</td>
+					<td>'.$this->_data->user->firstname.' '.$this->_data->user->lastname.' (<b>'.$this->_data->user->identifier.'</b>)</td>
 				</tr>
 				<tr>
 					<td><strong>'.$STRINGS['issued'].':</strong></td>
