@@ -64,14 +64,15 @@ class MenuHelper extends Helper {
      */
     static public function user_base_menu($active) {
         global $CONFIG, $STRINGS;
-        $activity = $report = null;
+        $activity = $report = $profile = null;
         $$active = 'class="active"';
 
         return
             '<ul class="nav">
 			    <li ' . $activity . '><a href="' . $CONFIG->wwwroot . '/user/activity">' . $STRINGS['activity'] . '</a></li>
 				<li ' . $report . '><a href="' . $CONFIG->wwwroot . '/user/report">' . $STRINGS['report'] . '</a></li>
-            </ul>' . MenuHelper::get_logout_option();;
+	            <li ' . $profile . '><a href="' . $CONFIG->wwwroot . '/user/profile">' . $STRINGS['profile'] . '</a></li>
+        	</ul>' . MenuHelper::get_logout_option();;
     }
 
     /**

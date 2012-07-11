@@ -52,4 +52,8 @@ class UserController extends Controller {
             IntervalModel::get_range_total($formdata), IntervalModel::get_between($formdata),
             ActivityModel::find_all_incidences($formdata->user));
     }
+    
+    public function profile(){
+    	new UserProfileView($this->_user);
+    }
 }

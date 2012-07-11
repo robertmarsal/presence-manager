@@ -12,6 +12,7 @@ $STRINGS['report'] = 'Report';
 $STRINGS['user'] = 'User';
 $STRINGS['logout'] = 'Log Out';
 $STRINGS['home'] = 'Home';
+$STRINGS['profile'] = 'Profile';
 $STRINGS['404'] = '404';
 $STRINGS['details'] = 'Details';
 $STRINGS['summary'] = 'Summary';
