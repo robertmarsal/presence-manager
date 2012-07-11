@@ -20,15 +20,15 @@ class AdminReportShowView extends View{
                     $STRINGS['event:noactivityinterval:message']);
         }
 
-        $intervals_list = '<ul>';
+        $intervals_list = '<table class="table inner-table">';
         foreach($this->_data->intervals as $interval){
-            $intervals_list .='<li>
-                '.$interval->h.'h  '.$interval->i.'m  '.$interval->s.'s
-                '.date('G:i:s D M j Y', $interval->timestart).'
-                '.date('G:i:s D M j Y', $interval->timestop).'
-                </li>';
+            $intervals_list .='<tr>
+                <td>'.$interval->h.'h  '.$interval->i.'m  '.$interval->s.'s</td>
+                <td>'.date('G:i:s D M j Y', $interval->timestart).'</td>
+                <td>'.date('G:i:s D M j Y', $interval->timestop).'</td>
+                </tr>';
         }
-        $intervals_list.= '</ul>';
+        $intervals_list.= '</table>';
 
         $incidences_list = '<ul>';
         foreach($this->_data->incidences as $incidence){

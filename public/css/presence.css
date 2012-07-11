@@ -98,3 +98,11 @@ body{
     margin-left: 0 !important;
     margin-bottom: 0 !important;
 }
+
+.inner-table tr:first-child > td{
+    border-top: none !important;
+}
+
+.inner-table td:last-child{
+    border-right: none !important;
+}
