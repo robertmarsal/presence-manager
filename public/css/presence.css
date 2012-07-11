@@ -100,11 +100,10 @@ body{
 }
 
 .inner-table{
+width:102.5% !important;
 	margin-top: -10px !important;
 	margin-bottom: -10px !important;
 	margin-left: -9px !important;
-	margin-right: 10px !important;
-	padding-right: 10px !important;
 }
 
 .inner-table tr:first-child > td{
