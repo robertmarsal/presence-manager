@@ -21,9 +21,13 @@ class API{
         }
     }
 
-    protected function response($response){
-        echo json_encode($response);
-        die();
+    protected function response($response, $internal = false){
+        if($internal === false){
+        	echo json_encode($response);
+        	die();
+        }else{
+        	return $response;
+        }
     }
 
     private function validate_token($token){

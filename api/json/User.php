@@ -71,8 +71,8 @@ class User extends API{
         return API::response($data);
     }
     
-    private function status(){
-		$sql = "SELECT action as status, timestamp
+    private function status($params, $internal = false){
+    	$sql = "SELECT action as status, timestamp
 				FROM presence_activity pa
                 JOIN presence_auth pau ON pa.userid = pau.userid
 				WHERE pau.token = ? AND pa.action != ?
@@ -80,12 +80,14 @@ class User extends API{
 				LIMIT 1";
 
 		$status = DB::getRecord($sql, array($this->_token, 'incidence'));
-		return API::response($status);
+
+		return API::response($status, $internal);
+		
 	}
 
     private function checkin(){
         //check the current status
-        $user_status = $this->status();
+        $user_status = $this->status(null, true);
         if($user_status->status != 'checkout'){ //the user is already checkedin
             return API::response(array('timestamp' => $user_status->timestamp));
         }
@@ -102,7 +104,31 @@ class User extends API{
         if($sq_status){
             return API::response(array('timestamp' => $checkin->timestamp));
         }else{
-            return API::response(array('timestamp'=> NULL ));
+            return API::response(array('timestamp'=> NULL));
         }
     }
+    
+
+	private function checkout(){
+		//check the current status
+		$user_status = $this->status(null, true);
+		if($user_status->status != 'checkin'){ //the user is not checkedin
+			return API::response(array('timestamp' => NULL));
+		}
+		
+		//checkout
+		$checkout = new stdClass();
+		$checkout->userid = $this->get_userid($this->_token);
+		$checkout->action = 'checkout';
+		$checkout->timestamp = time();
+		$checkout->computed = 0;
+		
+		$sq_status = Db::putRecord('presence_activity', $checkout);
+		
+		if($sq_status){
+			return API::response(array('timestamp' => $checkout->timestamp));
+		}else{
+			return API::response(array('timestamp' => NULL));
+		}
+	}
 }

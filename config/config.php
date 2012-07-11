@@ -11,6 +11,6 @@ $CONFIG->verbose = 1;
 $CONFIG->dbhost = 'localhost';
 $CONFIG->dbname = 'presence';
 $CONFIG->dbuser = 'root';
-$CONFIG->dbpassword = '';
+$CONFIG->dbpassword = 'doremi';
 
 date_default_timezone_set('UTC');
