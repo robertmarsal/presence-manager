@@ -1,6 +1,19 @@
 <?php
 
 class ActivityModel extends Model {
+	
+	public static function find_by_week_and_user($userid, $week = null){
+		
+		// if the week is not provided set actual
+		empty($week) ? $week = date("W") : null;
+
+		$sql = "SELECT pa.id, pa.timestamp, pa.action
+				FROM ".self::table()." pa
+				WHERE ? = WEEKOFYEAR(FROM_UNIXTIME(pa.timestamp))
+				AND pa.userid = ?";
+		
+		return DB::getAllRecords($sql, array($week, $userid));
+	}
     
     public static function find_page($page) {
 
