@@ -2,19 +2,16 @@
 
 class LoginView extends View {
 
-    public function __construct() {
-
-        global $STRINGS;
-
-        $this->title($STRINGS['home']);
+    public function title(){
+    	global $STRINGS;
+    	return $STRINGS['home'];
     }
-
+    
     public function menu() {
         return null;
     }
 
     public function content() {
-
         global $CONFIG;
 
         return '

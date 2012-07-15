@@ -23,7 +23,13 @@ abstract class View {
      */
     protected $_alert;
 
-    public function __construct($data, $alert = null){
+    /**
+     * Passes the _data to the view and shows the alert, if any
+     * 
+     * @param Object $data
+     * @param Html $alert
+     */
+    public function __construct($data = null, $alert = null){
     	$this->_data = $data;
     	$this->_alert = $alert;
     }
@@ -48,7 +54,7 @@ abstract class View {
               <html lang="en">
                 <head>
                 <meta charset="utf-8">
-                  <title>' . $this->_title . ' | ' . $STRINGS['brand'] . '</title>
+                  <title>' . $this->title() . ' | ' . $STRINGS['brand'] . '</title>
                     <link rel="stylesheet" href="' . $CONFIG->wwwroot . '/public/css/bootstrap.min.css" type="text/css">
                     <link rel="stylesheet" href="' . $CONFIG->wwwroot . '/public/css/presence.css" type="text/css">
                     <link rel="stylesheet" href="' . $CONFIG->wwwroot . '/public/css/datepicker.css" type="text/css">
@@ -83,11 +89,8 @@ abstract class View {
     /**
      * Sets the title of the view
      *
-     * @param String $title
      */
-    protected function title($title) {
-        $this->_title = $title;
-    }
+    abstract function title();
 
     /**
      * Builds the html containing the menu

@@ -2,12 +2,11 @@
 
 class AdminReportShowView extends View{
 
-    public function __construct($data, $alert = null) {
-        global $STRINGS;
-        $this->_data = $data;
-        $this->title($STRINGS['user']);
+    public function title(){
+    	global $STRINGS;
+    	return $STRINGS['report'];
     }
-
+    
 	public function menu(){
         return MenuHelper::admin_base_menu('report');
 	}

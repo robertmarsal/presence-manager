@@ -1,16 +1,10 @@
 <?php
 
 class AdminReportView extends View{
-
-    private $_users;
-
-    public function __construct($users, $alert = null) {
-
-        global $STRINGS;
-
-        $this->_users = $users;
-        $this->_alert = $alert;
-        $this->title($STRINGS['user']);
+    
+    public function title(){
+    	global $STRINGS;
+    	return $STRINGS['report'];
     }
 
 	public function menu(){
@@ -22,9 +16,8 @@ class AdminReportView extends View{
 		global $STRINGS, $CONFIG;
 
         $users_options = null;
-        if($this->_users){
-
-            foreach($this->_users as $user){
+        if($this->_data->users){
+            foreach($this->_data->users as $user){
                 $users_options .= '<option value="'.$user->id.'">
                                       '.$user->firstname.' '.$user->lastname.'</option>';
             }

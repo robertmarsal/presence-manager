@@ -1,14 +1,12 @@
 <?php
 
 class NotFoundView extends View {
-
-    public function __construct() {
-
-        global $STRINGS;
-
-        $this->title($STRINGS['404']);
+    
+    public function title(){
+    	global $STRINGS;
+    	return $STRINGS['404'];
     }
-
+    
     public function menu(){
         return null;
     }

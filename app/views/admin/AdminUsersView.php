@@ -2,20 +2,11 @@
 
 class AdminUsersView extends View {
 
-    private $_users;
-    private $_page;
-
-    public function __construct($users, $page = 0, $alert = null) {
-
-        global $STRINGS;
-
-        $this->_users = $users;
-        $this->_alert = $alert;
-        $this->_page = $page;
-
-        $this->title($STRINGS['users']);
-    }
-
+	public function title(){
+		global $STRINGS;
+		return $STRINGS['users'];
+	}
+	
     public function menu() {
         return MenuHelper::admin_base_menu('users');
     }
@@ -25,18 +16,18 @@ class AdminUsersView extends View {
         global $CONFIG, $STRINGS;
 
         $users_table_content = '';
-        if (empty($this->_users)) {
+        if (empty($this->_data->users)) {
             return BootstrapHelper::alert('info',
                     $STRINGS['event:nousers'],
                     $STRINGS['event:nouser:message']);
         }
 
         //check if there is a next page
-        $this->_page + 1 < UserModel::pages()
+        $this->_data->page + 1 < UserModel::pages()
             ? $next = true
             : $next = false;
 
-        foreach ($this->_users as $user) {
+        foreach ($this->_data->users as $user) {
             $users_table_content .= '
 				<tr>
 					<td>' . $user->id . '</td>
@@ -69,7 +60,7 @@ class AdminUsersView extends View {
             </table>
 		    <form action="' . $CONFIG->wwwroot . '/admin/users/new/add" method="post">
 				<button class="btn btn-success ">+ '.$STRINGS['add:user'].'</button>
-                '.MenuHelper::get_pagination_links($CONFIG->wwwroot.'/admin/users/', $this->_page, $next).'
+                '.MenuHelper::get_pagination_links($CONFIG->wwwroot.'/admin/users/', $this->_data->page, $next).'
 			</form>
 
         </section>';

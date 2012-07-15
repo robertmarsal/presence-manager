@@ -2,6 +2,11 @@
 
 class AdminUserCreateView extends View {
 
+	public function title(){
+		global $STRINGS;
+		return $STRINGS['user'];
+	}
+	
     public function menu() {
         return MenuHelper::admin_base_menu('users');
     }

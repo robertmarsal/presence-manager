@@ -2,15 +2,17 @@
 
 class UserReportView extends View {
 	
+	public function title(){
+		global $STRINGS;
+		return $STRINGS['user'];
+	}
+	
 	public function menu() {
 		return MenuHelper::user_base_menu('report');
 	}
 	
 	public function content(){
-	
 		global $CONFIG, $STRINGS;
-	
-		parent::title($STRINGS['user']);
 		
 		return '
 		<script>

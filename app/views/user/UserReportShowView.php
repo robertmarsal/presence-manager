@@ -2,14 +2,17 @@
 
 class UserReportShowView extends View {
 
+	public function title(){
+		global $STRINGS;
+		return $STRINGS['user'];
+	}
+	
 	public function menu(){
 		return MenuHelper::user_base_menu('report');
 	}
 
 	public function content(){
 		global $STRINGS;
-
-		parent::title($STRINGS['user']);
 
 		if(empty($this->_data->intervals)){
 			return BootstrapHelper::alert('info',

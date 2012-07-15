@@ -2,15 +2,17 @@
 
 class UserProfileView extends View {
     
+	public function title(){
+		global $STRINGS;
+		return $STRINGS['profile'];
+	}
+	
     public function menu(){
     	return MenuHelper::user_base_menu('profile');
     }
     
     public function content(){
-    	
     	global $CONFIG, $STRINGS;
-    	
-    	parent::title($STRINGS['profile']);
     	
     	return '
     	<section id="user-profile" class="well">

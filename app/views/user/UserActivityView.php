@@ -2,6 +2,11 @@
 
 class UserActivityView extends View {
 	
+	public function title(){
+		global $STRINGS;
+		return $STRINGS['activity'];
+	}
+	
     public function menu() {
     	return MenuHelper::user_base_menu('activity');
     }
@@ -9,10 +14,6 @@ class UserActivityView extends View {
     public function content() {
         global $STRINGS;
 
-        //set the title
-        parent::title($STRINGS['activity']);
-        
-        //set the content
         $activity_table_content = '';
         if (!empty($this->_data->activity)) {
             foreach ($this->_data->activity as $entry) {

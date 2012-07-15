@@ -2,19 +2,11 @@
 
 class AdminActivityView extends View {
 
-    private $_entries;
-    private $_page;
-
-    public function __construct($entries, $page = 0, $alert = null) {
-        global $STRINGS;
-
-        $this->_entries = $entries;
-        $this->_alert = $alert;
-        $this->_page = $page;
-
-        $this->title($STRINGS['activity']);
-    }
-
+	public function title(){
+		global $STRINGS;
+		return $STRINGS['activity'];
+	}
+	
     public function menu() {
         return MenuHelper::admin_base_menu('activity');
     }
@@ -22,20 +14,20 @@ class AdminActivityView extends View {
     public function content() {
 
         global $CONFIG, $STRINGS;
-
-        if(empty($this->_entries)){
+        
+        if(empty($this->_data->activity)){
             return BootstrapHelper::alert('info',
                     $STRINGS['event:noactivity'],
                     $STRINGS['event:noactivity:message']);
         }
 
         //check if there is a next page (page count starts at 0 thus the +1)
-        $this->_page + 1 < ActivityModel::pages()
+        $this->_data->page + 1 < ActivityModel::pages()
                 ? $next = true
                 : $next = false;
 
         $activity_table_content = '';
-        foreach ($this->_entries as $entry) {
+        foreach ($this->_data->activity as $entry) {
             $activity_table_content .=
             '<tr>
                 <td>' . $entry->id . '</td>
@@ -68,7 +60,7 @@ class AdminActivityView extends View {
                 <tbody>' . $activity_table_content . '
                 </tbody>
             </table>
-            '.MenuHelper::get_pagination_links($CONFIG->wwwroot.'/admin/activity/',$this->_page, $next).'
+            '.MenuHelper::get_pagination_links($CONFIG->wwwroot.'/admin/activity/',$this->_data->page, $next).'
             <div class="container"></div>
         </section>';
     }
