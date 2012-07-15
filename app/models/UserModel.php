@@ -20,7 +20,7 @@ class UserModel extends Model {
      * @return Int
      */
     public static function find_by_identifier($identifier){
-        $sql = "SELECT id
+        $sql = "SELECT id, firstname, lastname, identifier
                 FROM ".self::table()."
                 WHERE `identifier` = ?";
 

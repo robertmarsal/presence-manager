@@ -56,4 +56,19 @@ class UserController extends Controller {
     public function profile(){
     	new UserProfileView($this->_user);
     }
+    
+    public function profile_update($params){
+    	global $STRINGS;
+    	
+    	$userid = array_shift($params);
+        //remove url params
+        $params = array_slice($params, 1);
+
+        $success = UserModel::update($userid, $params);
+        ($success == true)
+            ? $alert = BootstrapHelper::alert('success', $STRINGS['event:success'], $STRINGS['user:update:success'])
+            : $alert = BootstrapHelper::alert('error', $STRINGS['event:error'], $STRINGS['user:update:failed']);
+
+        new UserProfileView(UserModel::find($userid), $alert);    
+    }
 }
