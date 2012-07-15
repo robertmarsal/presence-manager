@@ -7,7 +7,7 @@ abstract class View {
      * 
      * @var type 
      */
-    private $_data;
+    protected $_data;
     
     /**
      * Title of the view. Used as a page title in the html render
@@ -23,6 +23,11 @@ abstract class View {
      */
     protected $_alert;
 
+    public function __construct($data, $alert = null){
+    	$this->_data = $data;
+    	$this->_alert = $alert;
+    }
+    
     /**
      * Renders the view
      */

@@ -1,28 +1,21 @@
 <?php
 
 class UserActivityView extends View {
-
-    private $_entries;
-
-    public function __construct($entries) {
-
-        global $STRINGS;
-
-        $this->_entries = $entries;
-
-        $this->title($STRINGS['activity']);
-    }
-
+	
     public function menu() {
-        return MenuHelper::user_base_menu('activity');
+    	return MenuHelper::user_base_menu('activity');
     }
 
     public function content() {
         global $STRINGS;
 
+        //set the title
+        parent::title($STRINGS['activity']);
+        
+        //set the content
         $activity_table_content = '';
-        if (!empty($this->_entries)) {
-            foreach ($this->_entries as $entry) {
+        if (!empty($this->_data->activity)) {
+            foreach ($this->_data->activity as $entry) {
                 $activity_table_content .=
                 '<tr>
 					<td>' . $entry->id . '</td>

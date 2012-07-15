@@ -14,7 +14,7 @@ class UserController extends Controller {
     public function __construct($action, $params, $extra_action = null) {
         global $CONFIG;
 
-		$this->_user = UserModel::find_by_identifier($_SESSION['user']);
+		$this->_data->user = UserModel::find_by_identifier($_SESSION['user']);
 
 		// if the extra action is defined update action
         isset($extra_action) ? $action = $action . '_' . $extra_action : null;
@@ -33,11 +33,12 @@ class UserController extends Controller {
      * @param Array $params
      */
     public function activity() {
-        new UserActivityView(ActivityModel::find_all_by_user($this->_user->id));
+    	$this->_data->activity = ActivityModel::find_all_by_user($this->_data->user->id); 
+        new UserActivityView($this->_data);
     }
 
 	public function report(){
-		new UserReportView($this->_user);
+		new UserReportView($this->_data);
 	}
 
 	/**
@@ -48,13 +49,14 @@ class UserController extends Controller {
      */
     public function report_build($params) {
         $formdata = (object) $params;
-        new UserReportShowView(UserModel::find($formdata->user),
-            IntervalModel::get_range_total($formdata), IntervalModel::get_between($formdata),
-            ActivityModel::find_all_incidences($formdata->user));
+        $this->_data->range = IntervalModel::get_range_total($formdata);
+        $this->_data->intervals = IntervalModel::get_between($formdata);
+        $this->_data->incidences = ActivityModel::find_all_incidences($formdata->user);
+        new UserReportShowView($this->_data);
     }
     
     public function profile(){
-    	new UserProfileView($this->_user);
+    	new UserProfileView($this->_data);
     }
     
     public function profile_update($params){

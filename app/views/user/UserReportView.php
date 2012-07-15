@@ -1,17 +1,6 @@
 <?php
 
 class UserReportView extends View {
-
-	private $_user;
-	
-	public function __construct($user, $alert = null) {
-		
-		global $STRINGS;
-		
-		$this->_user = $user;
-		
-		$this->title($STRINGS['user']);
-	}
 	
 	public function menu() {
 		return MenuHelper::user_base_menu('report');
@@ -21,6 +10,8 @@ class UserReportView extends View {
 	
 		global $CONFIG, $STRINGS;
 	
+		parent::title($STRINGS['user']);
+		
 		return '
 		<script>
                 $(function(){
@@ -42,7 +33,7 @@ class UserReportView extends View {
                     <label><i class="icon-calendar"></i>&nbsp;'.$STRINGS['enddate'].'</label>
                     <input type="text" class="span2" value="'.date('d-m-Y').'" id="dp_end" name="dp_end">
 
-					<input type="hidden" name="user" value="'.$this->_user->id.'">
+					<input type="hidden" name="user" value="'.$this->_data->user->id.'">
 					
 					<label></label>
 					<button type="submit" class="btn">'.$STRINGS['build:report'].'</button>
