@@ -3,8 +3,7 @@
 class LoginView extends View {
 
     public function title(){
-    	global $STRINGS;
-    	return $STRINGS['home'];
+       return Lang::get('home');
     }
     
     public function menu() {
