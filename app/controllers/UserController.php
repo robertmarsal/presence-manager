@@ -2,8 +2,6 @@
 
 class UserController extends Controller {
 
-	protected $_user;
-
     /**
      * Checks the role and if the called action exists
      *
@@ -33,10 +31,13 @@ class UserController extends Controller {
      * @param Array $params
      */
     public function activity() {
-    	$this->_data->activity = ActivityModel::find_all_by_user($this->_data->user->id); 
+    	$this->_data->activity = ActivityModel::find_all_by_user($this->_data->user->id);
         new UserActivityView($this->_data);
     }
 
+    /**
+     * Shows the report form
+     */
 	public function report(){
 		new UserReportView($this->_data);
 	}
@@ -54,14 +55,23 @@ class UserController extends Controller {
         $this->_data->incidences = ActivityModel::find_all_incidences($formdata->user);
         new UserReportShowView($this->_data);
     }
-    
+
+    /**
+     * Shows the user data and allows modifying it
+     */
     public function profile(){
     	new UserProfileView($this->_data);
     }
-    
+
+    /**
+     * Updates the user data
+     *
+     * @global type $STRINGS
+     * @param type $params
+     */
     public function profile_update($params){
     	global $STRINGS;
-    	
+
     	$userid = array_shift($params);
         //remove url params
         $params = array_slice($params, 1);
@@ -72,6 +82,6 @@ class UserController extends Controller {
             : $alert = BootstrapHelper::alert('error', $STRINGS['event:error'], $STRINGS['user:update:failed']);
 		//refresh the user data
         $this->_data->user = UserModel::find($userid);
-        new UserProfileView($this->_data, $alert);    
+        new UserProfileView($this->_data, $alert);
     }
 }
