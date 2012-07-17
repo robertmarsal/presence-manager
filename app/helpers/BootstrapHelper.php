@@ -11,11 +11,10 @@ class BootstrapHelper extends Helper{
     }
 
     static function get_event_description($event) {
-        global $STRINGS;
         switch ($event) {
-            case 'checkin': return $STRINGS['event:checkin'];
-            case 'checkout': return $STRINGS['event:checkout'];
-            case 'incidence': return $STRINGS['event:incidence'];
+            case 'checkin': return Lang::get('event:checkin');
+            case 'checkout': return Lang::get('event:checkout');
+            case 'incidence': return Lang::get('event:incidence');
 		}
 	}
 
