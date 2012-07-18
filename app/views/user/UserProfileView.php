@@ -17,17 +17,21 @@ class UserProfileView extends View {
     	return '
     	<section id="user-profile" class="well">
     		<form action="'.$CONFIG->wwwroot.'/user/profile/'.$this->_data->user->id.'/update"  method="post">
-    			<label>'.$STRINGS['firstname'].'</label>
+    			
+    			<label>'.Lang::get('firstname').'</label>
                 <input type="text" name="firstname" value="'.$this->_data->user->firstname.'">
 
-                <label>'.$STRINGS['lastname'].'</label>
+                <label>'.Lang::get('lastname').'</label>
                 <input type="text" name="lastname" value="'.$this->_data->user->lastname.'">
     		
-                <label>'.$STRINGS['identifier'].'</label>
+                <label>'.Lang::get('identifier').'</label>
                 <input type="text" name="identifier" value="'.$this->_data->user->identifier.'">
                 
+                <label>'.Lang::get('password').'</label>
+                <input type="password" name="password" value="">
+                
     			<label></label>
-            	<button type="submit" class="btn">'.$STRINGS['update'].'</button>
+            	<button type="submit" class="btn">'.Lang::get('update').'</button>
     		</form>
     	</section>';
     }

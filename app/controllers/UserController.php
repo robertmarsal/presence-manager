@@ -75,6 +75,14 @@ class UserController extends Controller {
     	$userid = array_shift($params);
         //remove url params
         $params = array_slice($params, 1);
+		//check if the password is set
+		if(empty($params['password'])){
+			//no password is provided -> remove key
+			unset($params['password']);
+		}else{
+			//compute new password and store
+			$params['password'] = md5($params['password']);
+		}
 
         $success = UserModel::update($userid, $params);
         ($success == true)
