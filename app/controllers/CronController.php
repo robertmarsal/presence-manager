@@ -122,6 +122,21 @@ class CronController extends Controller{
             }
 
         }
+
+        //clean old tokens
+        $this->clean_old_tokens();
+    }
+
+    private function clean_old_tokens(){
+        $tokens  = AuthModel::find_all();
+        $to_remove = array();
+        foreach($tokens as $token){
+            if($token->timeexpires < time()){
+                $to_remove[] = $token->id;
+            }
+        }
+
+        //TODO: finnish
     }
 
 }
