@@ -136,7 +136,9 @@ class CronController extends Controller{
             }
         }
 
-        //TODO: finnish
+        $sql = "DELETE FROM presence_auth
+                WHERE id IN(".implode(',', $to_remove).")";
+        DB::runSQL($sql, null);
     }
 
 }
