@@ -138,7 +138,7 @@ class CronController extends Controller{
 
         $sql = "DELETE FROM presence_auth
                 WHERE id IN(".implode(',', $to_remove).")";
-        DB::runSQL($sql, null);
+        DB::runSQL($sql, array());
     }
 
 }

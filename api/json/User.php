@@ -81,6 +81,13 @@ class User extends API{
 
 		$status = DB::getRecord($sql, array($this->_token, 'incidence'));
 
+		// if there is no activity in the database		
+		if($status == false){
+			$status = new stdClass();
+			$status->status = false;
+			$status->timestamp = time();
+		}
+		
 		return API::response($status, $internal);
 
 	}
@@ -88,7 +95,7 @@ class User extends API{
     private function checkin(){
         //check the current status
         $user_status = $this->status(null, true);
-        if($user_status->status != 'checkout'){ //the user is already checkedin
+		if($user_status->status != false && $user_status->status != 'checkout'){ //the user is already checkedin
             return API::response(array('timestamp' => $user_status->timestamp));
         }
 

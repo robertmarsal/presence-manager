@@ -14,19 +14,24 @@ class UserActivityView extends View {
     public function content() {
         global $STRINGS;
 
+        if(empty($this->_data->activity)){
+        	return BootstrapHelper::alert('info',
+        			Lang::get('event:noactivity'),
+        			Lang::get('event:noactivity:message'));
+        }
+        
         $activity_table_content = '';
-        if (!empty($this->_data->activity)) {
-            foreach ($this->_data->activity as $entry) {
-                $activity_table_content .=
-                '<tr>
+        foreach ($this->_data->activity as $entry) {
+            $activity_table_content .=
+            '<tr>
 					<td>' . $entry->id . '</td>
 					<td><span class="label ' . BootstrapHelper::get_label_for_action($entry->action). '">' . BootstrapHelper::get_event_description($entry->action) . '</span></td>
                     <td>' . date('G:i:s', $entry->timestamp) . '</td>
 					<td>' . date('D M j Y', $entry->timestamp) . '</td>
-				 </tr>
-				';
-            }
+			 </tr>
+			';
         }
+        
 
         return '
             <section id="user-activity" class="well">

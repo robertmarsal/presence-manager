@@ -22,7 +22,7 @@ class API{
     }
 
     protected function response($response, $internal = false){
-        if($internal === false){
+        if($internal == false){
         	echo json_encode($response);
         	die();
         }else{
