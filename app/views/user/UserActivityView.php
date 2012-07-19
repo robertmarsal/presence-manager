@@ -14,41 +14,49 @@ class UserActivityView extends View {
     public function content() {
         global $STRINGS;
 
-        if(empty($this->_data->activity)){
+        if(empty($this->_data->intervals)){
         	return BootstrapHelper::alert('info',
         			Lang::get('event:noactivity'),
         			Lang::get('event:noactivity:message'));
         }
         
-        $activity_table_content = '';
-        foreach ($this->_data->activity as $entry) {
-            $activity_table_content .=
-            '<tr>
-					<td>' . $entry->id . '</td>
-					<td><span class="label ' . BootstrapHelper::get_label_for_action($entry->action). '">' . BootstrapHelper::get_event_description($entry->action) . '</span></td>
-                    <td>' . date('G:i:s', $entry->timestamp) . '</td>
-					<td>' . date('D M j Y', $entry->timestamp) . '</td>
-			 </tr>
-			';
-        }
+       	$intervals_list = '<table class="table inner-table">';
+		foreach($this->_data->intervals as $interval){
+			$intervals_list .='<tr>
+			<td>'.$interval->h.'h  '.$interval->i.'m  '.$interval->s.'s</td>
+			<td><span class="label label-success">
+			'.date('G:i:s D M j Y', $interval->timestart).'
+			</span></td>
+			<td><span class="label label-important">
+			'.date('G:i:s D M j Y', $interval->timestop).'
+			</span></td>
+			</tr>';
+		}
+		$intervals_list.= '</table>';
         
-
-        return '
-            <section id="user-activity" class="well">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>'.$STRINGS['action'].'</th>
-                            <th>'.$STRINGS['time'].'</th>
-                            <th>'.$STRINGS['date'].'</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    '.$activity_table_content.'
-                    </tbody>
-                </table>
-            </section>';
+		$incidences_list = '<ul>';
+		foreach($this->_data->incidences as $incidence){
+			$incidences_list .= '<li>
+			<span class="label label-warning">
+			'.date('G:i:s D M j Y', $incidence->timestamp).'
+			</span>
+			</li>';
+		}
+		$incidences_list.= '</ul>';
+		
+		return '
+		<section id="user-activity" class="well">
+		<table class="table report-table">
+		<tr>
+		<td><strong>'.$STRINGS['intervals'].' </strong></td>
+		<td>'.$intervals_list.'</td>
+		</tr>
+		<tr>
+		<td><strong>'.$STRINGS['incidences'].'</strong></td>
+		<td>'.$incidences_list.'</td>
+		</tr>
+		</table>
+		</section>';
     }
 
 }

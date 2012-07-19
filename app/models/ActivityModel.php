@@ -2,7 +2,7 @@
 
 class ActivityModel extends Model {
 	
-	public static function find_by_week_and_user($userid, $week = null){
+	public static function find_all_incidences_by_week_and_user($userid, $week = null){
 		
 		// if the week is not provided set actual
 		empty($week) ? $week = date("W") : null;
@@ -10,9 +10,9 @@ class ActivityModel extends Model {
 		$sql = "SELECT pa.id, pa.timestamp, pa.action
 				FROM ".self::table()." pa
 				WHERE ? = WEEKOFYEAR(FROM_UNIXTIME(pa.timestamp))
-				AND pa.userid = ?";
+				AND pa.userid = ? AND pa.action = ?";
 		
-		return DB::getAllRecords($sql, array($week, $userid));
+		return DB::getAllRecords($sql, array($week, $userid, 'incidence'));
 	}
     
     public static function find_page($page) {

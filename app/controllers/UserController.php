@@ -31,7 +31,8 @@ class UserController extends Controller {
      * @param Array $params
      */
     public function activity() {
-    	$this->_data->activity = ActivityModel::find_all_by_user($this->_data->user->id);
+        $this->_data->intervals = IntervalModel::find_all_by_week_and_user($this->_data->user->id);
+    	$this->_data->incidences = ActivityModel::find_all_incidences_by_week_and_user($this->_data->user->id);
         new UserActivityView($this->_data);
     }
 

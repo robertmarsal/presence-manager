@@ -49,27 +49,27 @@ class UserReportShowView extends View {
 
 		<table class="table report-table">
 		<tr>
-		<td><strong>'.$STRINGS['user'].': </strong></td>
+		<td><strong>'.$STRINGS['user'].' </strong></td>
 		<td>'.$this->_data->user->firstname.' '.$this->_data->user->lastname.' (<b>'.$this->_data->user->identifier.'</b>)</td>
 		</tr>
 		<tr>
-		<td><strong>'.$STRINGS['issued'].':</strong></td>
+		<td><strong>'.$STRINGS['issued'].'</strong></td>
 		<td>'.date("F j Y g:i a").'</td>
 		</tr>
 		<tr>
-		<td><strong>'.$STRINGS['period'].': </strong></td>
+		<td><strong>'.$STRINGS['period'].' </strong></td>
 		<td>'.$this->_data->range->timestart.' to '.$this->_data->range->timeend.'</td>
 		</tr>
 		<tr>
-		<td><strong>'.$STRINGS['intervals'].': </strong></td>
+		<td><strong>'.$STRINGS['intervals'].' </strong></td>
 		<td>'.$intervals_list.'</td>
 		</tr>
 		<tr>
-		<td><strong>'.$STRINGS['incidences'].':</strong></td>
+		<td><strong>'.$STRINGS['incidences'].'</strong></td>
 		<td>'.$incidences_list.'</td>
 		</tr>
 		<tr>
-		<td><strong>'.$STRINGS['total'].': </strong></td>
+		<td><strong>'.$STRINGS['total'].' </strong></td>
 		<td>'.$this->_data->range->total.'</td>
 		</tr>
 		</table>

@@ -2,6 +2,20 @@
 
 class IntervalModel extends Model{
 
+	public static function find_all_by_week_and_user($userid, $week = null){
+	
+		// if the week is not provided set actual
+		empty($week) ? $week = date("W") : null;
+	
+		$sql = "SELECT *
+		FROM ".self::table()." pi
+		WHERE week = ?
+		AND pi.userid = ?";
+
+		return DB::getAllRecords($sql, array($week, $userid));
+	}
+	
+	
      public static function create_multiple($records){
          return DB::putRecords(self::table(), $records);
      }
