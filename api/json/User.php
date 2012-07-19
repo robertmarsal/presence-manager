@@ -26,7 +26,7 @@ class User extends API{
                 FROM presence_users pu
                 WHERE pu.UUID = ? AND pu.mac = ?";
 
-        $user = DB::getRecord($sql, array($params->UUID, $params->MAC));
+        $user = DB::getRecord($sql, array(sha1($params->UUID), sha1($params->MAC)));
 
         //check if we obtained a numeric id
         if(!$user || !is_int((int)$user->id)){
@@ -70,7 +70,7 @@ class User extends API{
         $data = DB::getRecord($sql, array($this->_token));
         return API::response($data);
     }
-    
+
     private function status($params, $internal = false){
     	$sql = "SELECT action as status, timestamp
 				FROM presence_activity pa
@@ -82,7 +82,7 @@ class User extends API{
 		$status = DB::getRecord($sql, array($this->_token, 'incidence'));
 
 		return API::response($status, $internal);
-		
+
 	}
 
     private function checkin(){
@@ -91,7 +91,7 @@ class User extends API{
         if($user_status->status != 'checkout'){ //the user is already checkedin
             return API::response(array('timestamp' => $user_status->timestamp));
         }
-		
+
         //proceed with the check-in
         $checkin = new stdClass();
         $checkin->userid = $this->get_userid($this->_token);
@@ -107,7 +107,7 @@ class User extends API{
             return API::response(array('timestamp'=> NULL));
         }
     }
-    
+
 
 	private function checkout(){
 		//check the current status
@@ -115,16 +115,16 @@ class User extends API{
 		if($user_status->status != 'checkin'){ //the user is not checkedin
 			return API::response(array('timestamp' => NULL));
 		}
-		
+
 		//checkout
 		$checkout = new stdClass();
 		$checkout->userid = $this->get_userid($this->_token);
 		$checkout->action = 'checkout';
 		$checkout->timestamp = time();
 		$checkout->computed = 0;
-		
+
 		$sq_status = Db::putRecord('presence_activity', $checkout);
-		
+
 		if($sq_status){
 			return API::response(array('timestamp' => $checkout->timestamp));
 		}else{

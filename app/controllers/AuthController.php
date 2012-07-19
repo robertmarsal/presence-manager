@@ -30,7 +30,7 @@ class AuthController extends Controller {
                 WHERE `identifier` = ?
                 AND `password` = ?";
 
-		$result = DB::getRecord($sql, array($params['identifier'], md5($params['password'])));
+		$result = DB::getRecord($sql, array($params['identifier'], sha1($params['password'])));
 
         if ($result) {
             $_SESSION['user'] = $result->identifier;

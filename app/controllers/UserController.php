@@ -81,7 +81,7 @@ class UserController extends Controller {
 			unset($params['password']);
 		}else{
 			//compute new password and store
-			$params['password'] = md5($params['password']);
+			$params['password'] = sha1($params['password']);
 		}
 
         $success = UserModel::update($userid, $params);
