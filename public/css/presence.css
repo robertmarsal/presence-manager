@@ -113,3 +113,7 @@ body{
 .inner-table td:last-child{
     border-right: none !important;
 }
+
+.week-header{
+	height: 35px;
+}

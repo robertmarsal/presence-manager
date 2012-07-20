@@ -30,9 +30,10 @@ class UserController extends Controller {
      *
      * @param Array $params
      */
-    public function activity() {
-        $this->_data->intervals = IntervalModel::find_all_by_week_and_user($this->_data->user->id);
-    	$this->_data->incidences = ActivityModel::find_all_incidences_by_week_and_user($this->_data->user->id);
+    public function activity($params) {
+    	$this->_data->week = isset($params[0]) ? $params[0] : date('W');
+        $this->_data->intervals = IntervalModel::find_all_by_week_and_user($this->_data->user->id, $this->_data->week);
+    	$this->_data->incidences = ActivityModel::find_all_incidences_by_week_and_user($this->_data->user->id, $this->_data->week);
         new UserActivityView($this->_data);
     }
 

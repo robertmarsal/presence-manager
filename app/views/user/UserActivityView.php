@@ -12,8 +12,12 @@ class UserActivityView extends View {
     }
 
     public function content() {
-        global $STRINGS;
+        global $CONFIG, $STRINGS;
 
+        $this->_data->week == date('W')
+        ? $next = false
+        : $next = true;
+        
         if(empty($this->_data->intervals)){
         	return BootstrapHelper::alert('info',
         			Lang::get('event:noactivity'),
@@ -44,8 +48,14 @@ class UserActivityView extends View {
 		}
 		$incidences_list.= '</ul>';
 		
+		$monday = date('d/m/Y', strtotime('Last Monday', mktime (1,1,1,1,7*$this->_data->week,date('Y'))));
+		$sunday = date('d/m/Y', strtotime('Next Sunday', mktime (1,1,1,1,7*$this->_data->week,date('Y'))));
+		
 		return '
 		<section id="user-activity" class="well">
+		<div class="week-header">
+		<b>'.Lang::get('period').'</b> '.$monday.' - '.$sunday.'
+		</div>
 		<table class="table report-table">
 		<tr>
 		<td><strong>'.$STRINGS['intervals'].' </strong></td>
@@ -56,6 +66,8 @@ class UserActivityView extends View {
 		<td>'.$incidences_list.'</td>
 		</tr>
 		</table>
+		'.MenuHelper::get_pagination_links($CONFIG->wwwroot.'/user/activity/',$this->_data->week, $next).'
+		<div class="container"></div>
 		</section>';
     }
 
