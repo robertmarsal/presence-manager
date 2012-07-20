@@ -165,6 +165,35 @@ class AdminController extends Controller {
         $this->_data->user = UserModel::find($userid);
         new AdminUserDetailsView($this->_data, $alert);
     }
+    
+    
+    public function users_updateaccount($params){
+    	global $STRINGS;
+    	
+    	$userid = array_shift($params);
+    	//remove url params
+    	$params = array_slice($params, 1);
+    	
+    	if(empty($params['uuid'])){
+    		unset($params['uuid']);
+    	}
+    	if(isset($params['uuid'])){
+    		$params['uuid'] = sha1($params['uuid']);
+    	}
+    	if(empty($params['mac'])){
+    		unset($params['mac']);
+    	}
+    	if(isset($params['mac'])){
+    		$params['mac'] = sha1($params['mac']);
+    	}
+    	
+    	$success = UserModel::update($userid, $params);
+    	($success == true)
+    	? $alert = BootstrapHelper::alert('success', $STRINGS['event:success'], $STRINGS['user:update:success'])
+    	: $alert = BootstrapHelper::alert('error', $STRINGS['event:error'], $STRINGS['user:update:failed']);
+    	$this->_data->user = UserModel::find($userid);
+    	new AdminUserAccountView($this->_data, $alert);
+    }
 
     /**
      * Displays a new report form using the report view

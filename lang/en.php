@@ -45,6 +45,9 @@ $STRINGS['previous'] = 'Previous';
 $STRINGS['next'] = 'Next';
 $STRINGS['day'] = 'Day';
 $STRINGS['identifier'] = 'Identifier';
+$STRINGS['uuid'] = 'UUID';
+$STRINGS['mac'] = 'MAC';
+$STRINGS['useraccountnotice'] = 'For security reasons the user UUID and MAC can only be updated not consulted';
 
 //user
 $STRINGS['user:update:success'] = 'User details updated successfully!';
