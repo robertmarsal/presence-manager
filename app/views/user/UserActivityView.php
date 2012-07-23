@@ -21,7 +21,7 @@ class UserActivityView extends View {
         if(empty($this->_data->intervals)){
         	return BootstrapHelper::alert('info',
         			Lang::get('event:noactivity'),
-        			Lang::get('event:noactivity:message'));
+        			Lang::get('event:noactivitythisweek:message'));
         }
         
        	$intervals_list = '<table class="table inner-table">';

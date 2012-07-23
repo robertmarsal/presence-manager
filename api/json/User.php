@@ -53,13 +53,13 @@ class User extends API{
         }
     }
 
-    private function activity(){
-        $sql = "SELECT pa.id, pa.action, pa.timestamp
-                FROM presence_activity pa
-                JOIN presence_auth pau ON pa.userid = pau.userid
-                WHERE pau.token = ?";
-        $response = DB::getAllRecords($sql, array($this->_token));
-        return API::response($response);
+    private function activity($params){
+        $sql = "SELECT pi.timestart, pi.timestop, pi.timediff
+                FROM presence_intervals pi
+                JOIN presence_auth pau ON pi.userid = pau.userid
+                WHERE pau.token = ? AND pi.week = ?";
+        $response = DB::getAllRecords($sql, array($this->_token, date('W')));
+        return API::response(array('intervals' => $response));
     }
 
     private function data(){

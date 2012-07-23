@@ -78,6 +78,7 @@ $STRINGS['event:incidence'] = 'Incidence';
 $STRINGS['event:noactivity'] = 'No Activity!';
 $STRINGS['event:noactivity:message'] = 'No activity';
 $STRINGS['event:noactivityinterval:message'] = 'There is no user activity in the selected interval';
+$STRINGS['event:noactivitythisweek:message'] = 'No activity for this week';
 $STRINGS['event:nousers'] = 'No users';
 $STRINGS['event:nouser:message'] = 'No users left to show';
 $STRINGS['event:delete:account'] = 'Delete Account';
