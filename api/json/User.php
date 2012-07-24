@@ -118,9 +118,9 @@ class User extends API{
 				FROM presence_activity pa
 				JOIN presence_auth pau ON pa.userid = pau.userid
 				WHERE pa.timestamp BETWEEN ? AND ?
-				AND pau.token = ? AND pa.action = ?";
+				AND pau.token = ? AND pa.action = ? AND pa.computed = ?";
 		$checkins = DB::getRecord($sql, array(strtotime($params->start),
-				strtotime($params->end), $this->_token, 'checkin'));
+				strtotime($params->end), $this->_token, 'checkin', 1));
 		$response->checkins = $checkins->checkins;
 		
 		//get the incidence count
