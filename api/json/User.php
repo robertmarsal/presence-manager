@@ -91,6 +91,51 @@ class User extends API{
 		return API::response($status, $internal);
 
 	}
+	
+	private function report($params){
+		
+		//cast the params to object
+		$params = (object)$params;
+		
+		//prepare the response
+		$response = new stdClass();
+		$response->start = $params->start;
+		$response->end = $params->end;
+
+		//get the timediff
+		$sql = "SELECT SEC_TO_TIME(SUM(pi.timediff)) as time
+				FROM presence_intervals pi
+				JOIN presence_auth pau ON pi.userid = pau.userid 
+				WHERE pi.timestart BETWEEN ? AND ?
+				AND pau.token = ?";
+
+		$time = DB::getRecord($sql , array(strtotime($params->start),
+			strtotime($params->end), $this->_token));
+		$response->time = $time->time;
+		
+		//get the checkin count
+		$sql = "SELECT COUNT(*) as checkins
+				FROM presence_activity pa
+				JOIN presence_auth pau ON pa.userid = pau.userid
+				WHERE pa.timestamp BETWEEN ? AND ?
+				AND pau.token = ? AND pa.action = ?";
+		$checkins = DB::getRecord($sql, array(strtotime($params->start),
+				strtotime($params->end), $this->_token, 'checkin'));
+		$response->checkins = $checkins->checkins;
+		
+		//get the incidence count
+		$sql = "SELECT COUNT(*) as incidences
+		FROM presence_activity pa
+		JOIN presence_auth pau ON pa.userid = pau.userid
+		WHERE pa.timestamp BETWEEN ? AND ?
+		AND pau.token = ? AND pa.action = ?";
+		$incidences = DB::getRecord($sql, array(strtotime($params->start),
+				strtotime($params->end), $this->_token, 'incidence'));
+		$response->incidences = $incidences->incidences;
+		
+		return API::response($response);
+		
+	}
 
     private function checkin(){
         //check the current status
