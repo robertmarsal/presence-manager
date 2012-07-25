@@ -136,6 +136,25 @@ class User extends API{
 		return API::response($response);
 		
 	}
+	
+	private function update($params){
+		
+		//cast the params to object
+		$params = (object)$params;
+		
+		//check that only allowed params have been sent
+		$userdata = new stdClass();
+		$userdata->firstname = $params->firstname;
+		$userdata->lastname = $params->lastname;
+		$userdata->identifier = $params->identifier;
+		
+		$sql = "SELECT userid
+				FROM presence_auth
+				WHERE token = ?";
+		$user = DB::getRecord($sql, array($this->_token)); 
+		
+		DB::updateRecord('presence_users', $user->userid, $userdata);
+	}
 
     private function checkin(){
         //check the current status
