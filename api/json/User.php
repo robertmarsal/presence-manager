@@ -194,9 +194,39 @@ class User extends API{
 		$checkout->timestamp = time();
 		$checkout->computed = 0;
 
-		$sq_status = Db::putRecord('presence_activity', $checkout);
+		$sq_status = DB::putRecord('presence_activity', $checkout);
 
 		if($sq_status){
+			return API::response(array('timestamp' => $checkout->timestamp));
+		}else{
+			return API::response(array('timestamp' => NULL));
+		}
+	}
+	
+	private function incidence(){
+		//check the current status
+		$user_status = $this->status(null, true);
+		if($user_status->status != 'checkin'){ //the user is not checkedin
+			return API::response(array('timestamp' => NULL));
+		}
+		
+		//incidence
+		$incidence = new stdClass();
+		$incidence->userid = $this->get_userid($this->_token);
+		$incidence->action = 'incidence';
+		$incidence->timestamp = time();
+		$indicence->computed = 0;
+		
+		//store the incidence
+		$in_status = DB::putRecord('presence_activity', $incidence);
+		
+		//checkout the user
+		$checkout = clone $incidence;
+		$checkout->action = 'checkout';
+		
+		$ch_status = DB::putRecord('presence_activity', $checkout);
+		
+		if($in_status && $ch_status){
 			return API::response(array('timestamp' => $checkout->timestamp));
 		}else{
 			return API::response(array('timestamp' => NULL));
