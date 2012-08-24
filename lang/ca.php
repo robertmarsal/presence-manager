@@ -83,3 +83,12 @@ $STRINGS['event:nousers'] = 'Sense usuaris';
 $STRINGS['event:nouser:message'] = 'No queden usuaris per mostrar';
 $STRINGS['event:delete:account'] = 'Elimina compte';
 $STRINGS['event:delete:account:warning'] = 'Compte! Aquesta acció no es pot desfer!';
+
+//days of the week
+$STRINGS['dayofweek1'] = 'Dilluns';
+$STRINGS['dayofweek2'] = 'Dimarts';
+$STRINGS['dayofweek3'] = 'Dimecres';
+$STRINGS['dayofweek4'] = 'Dijous';
+$STRINGS['dayofweek5'] = 'Divendres';
+$STRINGS['dayofweek6'] = 'Dissabte';
+$STRINGS['dayofweek7'] = 'Diumenge';

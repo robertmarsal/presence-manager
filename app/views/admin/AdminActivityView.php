@@ -31,7 +31,7 @@ class AdminActivityView extends View {
 			'<tr>
 			<td>' . $entry->id . '</td>
 			<td><span class="label ' . BootstrapHelper::get_label_for_action($entry->action). '">' . BootstrapHelper::get_event_description($entry->action) . '</span></td>
-			<td>'.date('l', $entry->timestamp).'</td>
+			<td>'.Lang::get('dayofweek'.date('N', $entry->timestamp)).'</td>
 			<td>' . date('d/m/Y', $entry->timestamp) . '</td>
 			<td>' . date('G:i:s', $entry->timestamp) . '</td>
 			<td>' . utf8_encode($entry->firstname).'</td>

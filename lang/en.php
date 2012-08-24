@@ -83,3 +83,12 @@ $STRINGS['event:nousers'] = 'No users';
 $STRINGS['event:nouser:message'] = 'No users left to show';
 $STRINGS['event:delete:account'] = 'Delete Account';
 $STRINGS['event:delete:account:warning'] = 'Warning! This action can not be undone!';
+
+//days of the week
+$STRINGS['dayofweek1'] = 'Monday';
+$STRINGS['dayofweek2'] = 'Tuesday';
+$STRINGS['dayofweek3'] = 'Wednesday';
+$STRINGS['dayofweek4'] = 'Thursday';
+$STRINGS['dayofweek5'] = 'Friday';
+$STRINGS['dayofweek6'] = 'Saturday';
+$STRINGS['dayofweek7'] = 'Sunday';
