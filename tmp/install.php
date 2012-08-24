@@ -22,11 +22,11 @@ if(!$CONFIG){
 
 // set up the database connection
 require_once '../lib/DB.php';
-DB::setUp($CONFIG);
+DB::setUpNoDB($CONFIG);
 
 //create the database
 echo 'Creating the database <b>'.$CONFIG->dbname.'</b></br>';
-$presence_db_sql = 'CREATE DATABASE '.$CONFIG->dbname;
+$presence_db_sql = 'CREATE DATABASE '.$CONFIG->dbname.' ;';
 DB::runSQL($presence_db_sql, array());
 
 //create the tables
@@ -38,9 +38,9 @@ $presence_activity_table_sql = '
     `userid` varchar(250) COLLATE utf8_bin NOT NULL,
     `action` varchar(50) COLLATE utf8_bin NOT NULL,
     `timestamp` int(15) NOT NULL,
-    `computed` tinyint(1) NOT NULL DEFAULT "0",
+    `computed` tinyint(1) NOT NULL DEFAULT \'0\',
     PRIMARY KEY (`id`)
-    ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;';
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;';
 echo 'Creating the table <b>presence_activity</b></br>';
 DB::runSQL($presence_activity_table_sql, array());
 
@@ -54,7 +54,7 @@ $presence_auth_table_sql = '
     `token` varchar(40) NOT NULL,
     `timeexpires` int(11) NOT NULL,
     PRIMARY KEY (`id`)
-    ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;';
+    ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;';
 echo 'Creating the table <b>presence_auth</b></br>';
 DB::runSQL($presence_auth_table_sql, array());
 
@@ -77,7 +77,7 @@ $presence_intervals_table_sql = '
     `i` int(11) NOT NULL,
     `s` int(11) NOT NULL,
     PRIMARY KEY (`id`)
-    ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;';
+    ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;';
 echo 'Creating the table <b>presence_intervals</b></br>';
 DB::runSQL($presence_intervals_table_sql, array());
 
@@ -87,15 +87,15 @@ $presence_users_table_sql = '
     CREATE TABLE IF NOT EXISTS `presence_users` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `identifier` varchar(150) COLLATE utf8_bin NOT NULL,
-    `password` varchar(50) COLLATE utf8_bin NOT NULL,
+    `password` char(40) COLLATE utf8_bin NOT NULL,
     `role` varchar(20) COLLATE utf8_bin NOT NULL,
     `firstname` varchar(200) COLLATE utf8_bin NOT NULL,
     `lastname` varchar(300) COLLATE utf8_bin NOT NULL,
     `position` varchar(200) COLLATE utf8_bin NOT NULL,
-    `UUID` varchar(36) COLLATE utf8_bin NOT NULL,
-    `mac` char(17) COLLATE utf8_bin NOT NULL,
+    `UUID` char(40) COLLATE utf8_bin NOT NULL,
+    `mac` char(40) COLLATE utf8_bin NOT NULL,
     PRIMARY KEY (`id`)
-    ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin;';
+    ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;';
 echo 'Creating the table <b>presence_users</b></br>';
 DB::runSQL($presence_users_table_sql, array());
 

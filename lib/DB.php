@@ -22,6 +22,13 @@ class DB {
                                                $params->dbpassword);
 
     }
+    
+    public static function setUpNoDB($params){
+        $db = self::getInstance();
+        $db->_connection = new PDO("mysql:host".$params->dbhost,
+                                    $params->dbuser,
+                                    $params->dbpassword);
+    }
 
     public static function getDB(){
         $db = self::getInstance();
