@@ -49,6 +49,8 @@ $STRINGS['uuid'] = 'UUID';
 $STRINGS['mac'] = 'MAC';
 $STRINGS['useraccountnotice'] = 'Per raons de seguretat l\'UUID i el MAC només es poden consultar i no actualitzar';
 $STRINGS['period'] = 'Periode';
+$STRINGS['login'] = 'Accedir';
+$STRINGS['developer'] = 'Desenvolupat per';
 
 //user
 $STRINGS['user:update:success'] = 'Els detalls del usuari s\'han actualitzat amb éxit!';

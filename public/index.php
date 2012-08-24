@@ -11,6 +11,8 @@ error_reporting(E_ALL);
 $CONFIG->debug && ini_set('display_errors', '1');
 
 // set language
+//check config first
+$_SESSION['lang'] = isset($CONFIG->lang) ? $CONFIG->lang: null;
 $_SESSION['lang'] = isset($_SESSION['lang']) ? $_SESSION['lang'] : 'en';
 require_once (ROOT . '/lang/' . $_SESSION['lang'] . '.php');
 

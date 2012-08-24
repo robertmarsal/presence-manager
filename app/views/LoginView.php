@@ -16,17 +16,16 @@ class LoginView extends View {
         return '
         <section id="login" class="well">
             <form action="'.$CONFIG->wwwroot.'/auth/login" method="post">
-                <input type="text" name="identifier" placeholder="Identifier"><br/>
-                <input type="password" name="password" placeholder="Password"><br/>
-                <button type="submit" class="btn btn-success">Login</button>
+                <input type="text" name="identifier" placeholder="'.Lang::get('identifier').'"><br/>
+                <input type="password" name="password" placeholder="'.Lang::get('password').'"><br/>
+                <button type="submit" class="btn btn-success">'.Lang::get('login').'</button>
                 <select id="lang-selector" name="lang">
                     <option value="en">english</option>
                     <option value="ca">català</option>
                     <option value="es">castellano</option>
                 </select>
                 <div class="container" id="login-footer">
-                    <p>Developed by <a href="http://twitter.com/robertboloc" target="_blank">@robertboloc</a><br/>
-                     Licensed under the <a href="http://www.opensource.org/licenses/mit-license.html" target="_blank">MIT Licence</a>
+                    <p>'.Lang::get('developer').' <a href="http://twitter.com/robertboloc" target="_blank">@robertboloc</a><br/>
                     </p>
                 </div>
             </form>
