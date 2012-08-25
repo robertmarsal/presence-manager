@@ -16,7 +16,7 @@ class AdminReportView extends View{
 		global $STRINGS, $CONFIG;
 
 		$users_options = null;
-		if($this->_data->users){
+		if(isset($this->_data->users)){
 			foreach($this->_data->users as $user){
 				$users_options .= '<option value="'.$user->id.'">
 				'.$user->firstname.' '.$user->lastname.'</option>';

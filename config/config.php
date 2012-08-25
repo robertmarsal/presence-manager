@@ -7,6 +7,7 @@ $CONFIG->apiroot = $CONFIG->wwwroot.'/api/json';
 
 $CONFIG->debug= 1;
 $CONFIG->verbose = 1;
+$CONFIG->lang = 'ca';
 
 $CONFIG->dbhost = 'localhost';
 $CONFIG->dbname = 'presence';
