@@ -28,7 +28,7 @@ class AdminUserCreateView extends View {
 		<input type="text" name="identifier">
 
 		<label>'.$STRINGS['password'].'</label>
-		<input type="text" name="password">
+		<input type="password" name="password">
 
 		<label>'.$STRINGS['position'].'</label>
 		<input type="text" name="position">

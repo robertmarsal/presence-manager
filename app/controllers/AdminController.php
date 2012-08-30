@@ -96,6 +96,9 @@ class AdminController extends Controller {
         // cast the params to object
         $user = (object) $params;
 
+        //encrypt password
+        $user->password = sha1($user->password);
+
         // check if the identifier is already registred
         if (UserModel::find_by_identifier($user->identifier) == true) {
             $duplicate = true;
