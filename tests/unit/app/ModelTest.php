@@ -6,11 +6,12 @@ require_once dirname(__FILE__) . '/../../../app/models/UserModel.php';
 require_once dirname(__FILE__) . '/../../../lib/DB.php';
 
 /**
- * Test class for Model
+ * Test class for Model. UserModel class is used to test the core Model 
+ * functions because a Model class is binded to a database table and the parent
+ * model class is not binded to one beeing an abstract class
  */
 class ModelTest extends PHPUnit_Framework_TestCase {
     
-    //config
     protected $id = '999999';
     protected $identifier = 'tester';
     protected $pass = 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3';
@@ -36,16 +37,19 @@ class ModelTest extends PHPUnit_Framework_TestCase {
     }
 
     protected function tearDown() {
-        //restore presence_users table
+        //restore presence_users table state
        
-        //remove tester users
+        //remove possible tester users
         $sql = "DELETE 
                 FROM presence_users 
                 WHERE id = ? OR id = ? OR id = ? LIMIT 1";
-        DB::runSQL($sql, array('999999', '999998', '999997'));
-        
+        DB::runSQL($sql, array('999999', '999998', '999997'));  
     }
 
+    /**
+     * Returns the total rows of the presence_users table.
+     * @return type Integer
+     */
     protected function total(){
         //get the total count
         $sql = "SELECT COUNT(*) as total
@@ -54,8 +58,12 @@ class ModelTest extends PHPUnit_Framework_TestCase {
         return $total->total;
     }
 
+    //+------------------------------------------------------------------------+
+    //+ Tests for the abstract Model functions using UserModel as instance     +
+    //+------------------------------------------------------------------------+
+    
     /**
-     * Tests the find method;
+     * Tests the find method
      */
     public function testFind() {
         
@@ -82,7 +90,7 @@ class ModelTest extends PHPUnit_Framework_TestCase {
     /**
      * Tests for the find_all method
      */
-    public function testFind_all() {
+    public function testFindAll() {
         //compare the count of results
         $this->assertEquals($this->total(), count(UserModel::find_all()));
     }
@@ -150,7 +158,19 @@ class ModelTest extends PHPUnit_Framework_TestCase {
         
         //compare page numbers
         $this->assertEquals($pages, UserModel::pages());
-   }
+    }
+   
+    //+------------------------------------------------------------------------+
+    //+ Tests for the UserModel class specific functions                      +
+    //+------------------------------------------------------------------------+
+    
+    public function testFindByIdentifier() {
+        
+        //get the user using his identifier
+        $user = UserModel::find_by_identifier('tester');
+        //compare the id's
+        $this->assertEquals($this->id, $user->id);
+    }
 
 }
 
